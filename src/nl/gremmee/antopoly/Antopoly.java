@@ -1,10 +1,19 @@
 package nl.gremmee.antopoly;
 
+import java.util.List;
+
 import nl.gremmee.antopoly.core.DiceList;
+import nl.gremmee.antopoly.core.Player;
+import nl.gremmee.antopoly.core.cards.CardList;
+import nl.gremmee.antopoly.core.tiles.TileList;
 
 public class Antopoly {
     private static final int NUM_DICE = 2;
+    private static final int NUM_PLAYERS = 2;
     private static DiceList diceList;
+    private static CardList cardList;
+    private static List<Player> playerList;
+    private static TileList tileList;
 
     public static void main(String[] args) {
         long beginTime = System.currentTimeMillis();
@@ -21,8 +30,15 @@ public class Antopoly {
 
     public static void initialize() {
         Initialize.getInstance();
-        int max = NUM_DICE;
         diceList = Initialize.getInstance().initializeDice(NUM_DICE);
+        int max = diceList.size();
+        cardList = Initialize.getInstance().initializeCards();
+        max += cardList.size();
+        tileList = Initialize.getInstance().initializeTileList();
+        max += tileList.size();
+        playerList = Initialize.getInstance().initializePlayers(NUM_PLAYERS);
+        max += playerList.size();
+
     }
 
 }
