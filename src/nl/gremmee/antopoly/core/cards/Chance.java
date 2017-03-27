@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.cards;
 public class Chance extends Card {
 
     public Chance(CardAction aCardAction, String aName, String aText, int aValue) {
-        super(CardType.Chance, aCardAction, aName, aText, aValue);
+        super(CardType.CT_Chance, aCardAction, aName, aText, aValue);
     }
 
     // Boete voor te snel rijden ƒ 15

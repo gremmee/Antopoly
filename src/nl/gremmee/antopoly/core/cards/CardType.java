@@ -1,5 +1,5 @@
 package nl.gremmee.antopoly.core.cards;
 
 public enum CardType {
-    Chance(), CommunityChest()
+    CT_Chance(), CT_CommunityChest()
 }

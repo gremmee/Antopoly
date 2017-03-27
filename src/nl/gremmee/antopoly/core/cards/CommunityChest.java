@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.cards;
 public class CommunityChest extends Card {
 
     public CommunityChest(CardAction aCardAction, String aName, String aText, int aValue) {
-        super(CardType.CommunityChest, aCardAction, aName, aText, aValue);
+        super(CardType.CT_CommunityChest, aCardAction, aName, aText, aValue);
     }
 
     // U erft ƒ 100

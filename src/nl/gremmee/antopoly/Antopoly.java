@@ -46,7 +46,7 @@ public class Antopoly {
                 player.setActive(true);
                 System.out.println(player.getName() + " is playing");
                 System.out.println("PlayerTileList = " + player.getTileList().toString());
-                // int points = player.play();
+                player.play();
                 if (player.getName().contains("4")) {
                     player.setWinner(true);
                 }

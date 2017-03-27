@@ -13,4 +13,6 @@ public interface IPlayer {
     public boolean isWinner();
 
     public void setWinner(boolean b);
+
+    public void play();
 }

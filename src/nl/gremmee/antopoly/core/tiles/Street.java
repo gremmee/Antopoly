@@ -1,18 +1,15 @@
-package nl.gremmee.antopoly.core.tiles.streets;
+package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.core.Municipality;
-import nl.gremmee.antopoly.core.tiles.Tile;
 
-public class Street extends Tile {
+public class Street extends Property {
 
     private Municipality municipality;
-    private int value;
     private int building;
 
-    public Street(String aName, Municipality aMunicipality, int aValue) {
-        super(aName);
+    public Street(int aID, String aName, Municipality aMunicipality, int aValue) {
+        super(aID, aName, TileType.TT_Street, aValue);
         this.setMunicipality(aMunicipality);
-        this.setValue(aValue);
         this.building = 0;
     }
 
@@ -28,13 +25,5 @@ public class Street extends Tile {
 
     public void setMunicipality(Municipality aMunicipality) {
         this.municipality = aMunicipality;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int aValue) {
-        this.value = aValue;
     }
 }

@@ -1,5 +1,8 @@
 package nl.gremmee.antopoly.players;
 
+import nl.gremmee.antopoly.Initialize;
+import nl.gremmee.antopoly.core.DiceList;
+import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.ICard;
@@ -93,6 +96,19 @@ public class Player implements IPlayer {
 
     public void setWinner(boolean winner) {
         this.winner = winner;
+    }
+
+    @Override
+    public void play() {
+        // TODO: use AI
+        int doubles = 0;
+        DiceList diceList = Initialize.getInstance().getDiceList();
+        RollList rollList = diceList.roll();
+        if (rollList.isDouble()) {
+            doubles++;
+        }
+        System.out.println("Rolled " + rollList.getResult());
+
     }
 
 }
