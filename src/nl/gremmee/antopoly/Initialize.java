@@ -1,7 +1,7 @@
 package nl.gremmee.antopoly;
 
-import nl.gremmee.antopoly.material.DiceList;
-import nl.gremmee.antopoly.material.Die;
+import nl.gremmee.antopoly.core.DiceList;
+import nl.gremmee.antopoly.core.Die;
 
 /**
  * Initialize

@@ -1,4 +1,4 @@
-package nl.gremmee.antopoly.material;
+package nl.gremmee.antopoly.core;
 
 public class Die {
 

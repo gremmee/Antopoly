@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly;
 
-import nl.gremmee.antopoly.material.DiceList;
+import nl.gremmee.antopoly.core.DiceList;
 
 public class Antopoly {
     private static final int NUM_DICE = 2;
