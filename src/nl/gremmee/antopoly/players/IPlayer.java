@@ -12,7 +12,13 @@ public interface IPlayer {
 
     public boolean isWinner();
 
-    public void setWinner(boolean b);
+    public boolean isBusted();
+
+    public int getMoney();
+
+    public void setWinner(boolean aWinner);
+
+    public void setBusted(boolean aBusted);
 
     public void play();
 }

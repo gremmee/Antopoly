@@ -16,11 +16,21 @@ public class PlayerList extends ArrayList<IPlayer> {
     }
 
     public IPlayer getWinner() {
+        int bustedCount = 0;
         for (IPlayer player : this) {
-            if (player.isWinner()) {
-                return player;
+            if (player.isBusted()) {
+                bustedCount++;
             }
+        }
+        if (bustedCount == this.size() - 1) {
+            for (IPlayer player : this) {
+                if (!player.isBusted()) {
+                    return player;
+                }
+            }
+
         }
         return null;
     }
+
 }

@@ -84,7 +84,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Dorpsstraat", Municipality.OnsDorp, 1);
+        tile = new Street(i++, "Dorpsstraat", Municipality.OnsDorp, 60, 2/* 10,30,90,160,250 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -94,7 +94,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Brink", Municipality.OnsDorp, 1);
+        tile = new Street(i++, "Brink", Municipality.OnsDorp, 60, 4 /* 20,60,180,320,450 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -109,7 +109,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Steenstraat", Municipality.Arnhem, 1);
+        tile = new Street(i++, "Steenstraat", Municipality.Arnhem, 100, 6/* 30,90,270,400,550 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -119,12 +119,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Ketelstraat", Municipality.Arnhem, 1);
+        tile = new Street(i++, "Ketelstraat", Municipality.Arnhem, 100, 6/* 30,90,270,400,550 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Velperplein", Municipality.Arnhem, 1);
+        tile = new Street(i++, "Velperplein", Municipality.Arnhem, 120, 8/* 40,100,300,450,600 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -134,7 +134,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Barteljorisstraat", Municipality.Haarlem, 1);
+        tile = new Street(i++, "Barteljorisstraat", Municipality.Haarlem, 140, 10 /* 50,150,450,625,750 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -144,12 +144,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Zijlweg", Municipality.Haarlem, 1);
+        tile = new Street(i++, "Zijlweg", Municipality.Haarlem, 140, 10 /* 50,150,450,625,750 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Houtstraat", Municipality.Haarlem, 1);
+        tile = new Street(i++, "Houtstraat", Municipality.Haarlem, 160, 12 /* 60,180,500,700,900 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -159,7 +159,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Neude", Municipality.Utrect, 1);
+        tile = new Street(i++, "Neude", Municipality.Utrect, 180, 14/* 70,200550,750,950 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -169,12 +169,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Biltstraat", Municipality.Utrect, 1);
+        tile = new Street(i++, "Biltstraat", Municipality.Utrect, 180, 14/* 70,200550,750,950 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Vreeburg", Municipality.Utrect, 1);
+        tile = new Street(i++, "Vreeburg", Municipality.Utrect, 200, 16/* 80,220,600,800,1000 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -184,7 +184,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "A. Kerkhof", Municipality.Groningen, 1);
+        tile = new Street(i++, "A. Kerkhof", Municipality.Groningen, 220, 18/* 90,250,700,875,1050 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -194,12 +194,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Grote Markt", Municipality.Groningen, 1);
+        tile = new Street(i++, "Grote Markt", Municipality.Groningen, 220, 18/* 90,250,700,875,1050 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Heerestraat", Municipality.Groningen, 1);
+        tile = new Street(i++, "Heerestraat", Municipality.Groningen, 240, 20/* 100,300,750,925,1100 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -209,12 +209,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Spui", Municipality.DenHaag, 1);
+        tile = new Street(i++, "Spui", Municipality.DenHaag, 260, 22/* 120,330,800,975,1150 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Plein", Municipality.DenHaag, 1);
+        tile = new Street(i++, "Plein", Municipality.DenHaag, 260, 22/* 120,330,800,975,1150 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -224,7 +224,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "L. Poten", Municipality.DenHaag, 1);
+        tile = new Street(i++, "L. Poten", Municipality.DenHaag, 280, 22/* 120,360,850,1025,1200 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -234,12 +234,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Hofplein", Municipality.Rotterdam, 1);
+        tile = new Street(i++, "Hofplein", Municipality.Rotterdam, 300, 26/* 130,390,900,1100,1275 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Brink", Municipality.Rotterdam, 1);
+        tile = new Street(i++, "Brink", Municipality.Rotterdam, 300, 26/* 130,390,900,1100,1275 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -249,7 +249,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Coolsingel", Municipality.Rotterdam, 1);
+        tile = new Street(i++, "Coolsingel", Municipality.Rotterdam, 320, 28/* 150,450,1000,1200,1400 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -264,7 +264,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Leidsestraat", Municipality.Amsterdam, 5000);
+        tile = new Street(i++, "Leidsestraat", Municipality.Amsterdam, 350, 35/* 175,500,1100,1300,1500 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -274,7 +274,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Kalverstraat", Municipality.Amsterdam, 5000);
+        tile = new Street(i++, "Kalverstraat", Municipality.Amsterdam, 400, 50/* 200,600,1400,1700,2000 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -295,18 +295,21 @@ public class Initialize {
         System.out.println("[OK]");
 
         card = new GotoCard(CardType.CT_Chance, "Goto Barteljorisstraat",
-                "Ga verder naar Barteljorisstraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+                "Ga verder naar Barteljorisstraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
+                tileList.getTileByName("Barteljorisstraat"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard(CardType.CT_Chance, "Goto West",
-                "Reis naar station \"West\". Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+                "Reis naar station \"West\". Indien u langs \"Start\" komt, ontvangt u ƒ 200",
+                tileList.getTileByName("Station West"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GotoCard(CardType.CT_Chance, "Goto Start", "Ga verder naar \"Start\"", tileList.get(1));
+        card = new GotoCard(CardType.CT_Chance, "Goto Start", "Ga verder naar \"Start\"",
+                tileList.getTileByName("Start"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -317,13 +320,15 @@ public class Initialize {
         System.out.println("[OK]");
 
         card = new GoDirect(CardType.CT_Chance, "Goto Jail",
-                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20", tileList.get(10));
+                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
+                tileList.getTileByName("Naar de gevangenis"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard(CardType.CT_Chance, "Goto Heerestraat",
-                "Ga verder naar Heerestraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+                "Ga verder naar Heerestraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
+                tileList.getTileByName("Heerestraat"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -362,7 +367,8 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GotoCard(CardType.CT_Chance, "Goto Kalverstraat", "Ga verder naar Kalverstraat.", tileList.get(1));
+        card = new GotoCard(CardType.CT_Chance, "Goto Kalverstraat", "Ga verder naar Kalverstraat.",
+                tileList.getTileByName("Kalverstraat"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -396,13 +402,14 @@ public class Initialize {
         System.out.println("[OK]");
 
         card = new GotoCard(CardType.CT_CommunityChest, "Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
-                tileList.get(1));
+                tileList.getTileByName("Dorpsstraat"));
         communityChestCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GoDirect(CardType.CT_CommunityChest, "Goto Jail",
-                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200", tileList.get(1));
+                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200",
+                tileList.getTileByName("Naar de gevangenis"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -457,7 +464,8 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GotoCard(CardType.CT_CommunityChest, "Goto Start", "Ga verder naar \"Start\"", tileList.get(1));
+        card = new GotoCard(CardType.CT_CommunityChest, "Goto Start", "Ga verder naar \"Start\"",
+                tileList.getTileByName("Start"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -485,5 +493,10 @@ public class Initialize {
     public DiceList getDiceList() {
 
         return this.diceList;
+    }
+
+    public TileList getTileList() {
+
+        return this.tileList;
     }
 }

@@ -9,7 +9,7 @@ import nl.gremmee.antopoly.players.PlayerList;
 
 public class Antopoly {
     private static final int NUM_DICE = 2;
-    private static final int NUM_PLAYERS = 4;
+    private static final int NUM_PLAYERS = 8;
     private static DiceList diceList;
     private static ChanceCardList chanceCardList;
     private static CommunityChestCardList communityChestCardList;
@@ -47,18 +47,24 @@ public class Antopoly {
     public static void game() {
         GAME: do {
             for (IPlayer player : playerList) {
-                player.setActive(true);
-                System.out.println(player.getName() + " is playing");
-                System.out.println("PlayerTileList = " + player.getTileList().toString());
-                player.play();
-                if (player.getName().contains("4")) {
-                    player.setWinner(true);
+                if (!player.isBusted()) {
+                    player.setActive(true);
+                    System.out.println(player.getName() + " is playing");
+                    System.out.println("PlayerTileList = " + player.getTileList().toString());
+                    player.play();
+                    // if (player.getName().contains("8")) {
+                    // player.setWinner(true);
+                    // }
+                    // if (player.isWinner()) {
+                    // break;
+                    // }
+                    player.setActive(false);
+                    if (player.getMoney() < 0) {
+                        playerList.get(0).setBusted(true);
+                    }
                 }
-                if (player.isWinner()) {
-                    break;
-                }
-                player.setActive(false);
             }
+
         } while (!playerList.isWinner());
         IPlayer winner = playerList.getWinner();
         System.out.println("Winner: " + winner.getName());

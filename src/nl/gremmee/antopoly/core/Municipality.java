@@ -2,7 +2,7 @@ package nl.gremmee.antopoly.core;
 
 public enum Municipality {
 
-    Amsterdam(20), Arnhem(5), DenHaag(15), Groningen(15), Haarlem(10), OnsDorp(5), Rotterdam(20), Utrect(10);
+    Amsterdam(200), Arnhem(50), DenHaag(150), Groningen(150), Haarlem(100), OnsDorp(50), Rotterdam(200), Utrect(100);
 
     private Municipality(int aHousePrice) {
 
