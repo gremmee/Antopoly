@@ -1,12 +1,8 @@
 package nl.gremmee.antopoly;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.Die;
 import nl.gremmee.antopoly.core.Municipality;
-import nl.gremmee.antopoly.core.Player;
 import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.Chance;
@@ -15,6 +11,9 @@ import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 import nl.gremmee.antopoly.core.tiles.streets.Street;
+import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.PlayerList;
 
 /**
  * Initialize
@@ -24,7 +23,7 @@ public class Initialize {
     private static Initialize instance;
     private DiceList diceList;
     private CardList cardList;
-    private ArrayList<Player> playerList;
+    private PlayerList playerList;
     private TileList tileList;
 
     private Initialize() {
@@ -50,12 +49,12 @@ public class Initialize {
         return diceList;
     }
 
-    public List<Player> initializePlayers(int aNumPlayers) {
+    public PlayerList initializePlayers(int aNumPlayers) {
         System.out.println("Initializing Players");
-        playerList = new ArrayList<Player>();
+        playerList = new PlayerList();
         for (int i = 0; i < aNumPlayers; i++) {
             System.out.print("Creating Player " + (i + 1) + "...");
-            Player player = new Player(i + 1, "Player " + (i + 1));
+            IPlayer player = new Player(i + 1, "Player " + (i + 1));
             playerList.add(player);
             System.out.println("[OK]");
             repaint("Creating Player " + (i + 1) + "...");

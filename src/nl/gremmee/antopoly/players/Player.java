@@ -1,18 +1,33 @@
-package nl.gremmee.antopoly.core;
+package nl.gremmee.antopoly.players;
 
 import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.tiles.TileList;
 
-public class Player {
+public class Player implements IPlayer {
     private CardList cardList;
+    private TileList tileList;
     private String name;
     private int id;
+    private boolean active;
+    private boolean winner;
 
     public Player(int aID, String aName) {
         this.setId(aID);
+        this.setActive(false);
+        this.setWinner(false);
         this.setName(aName);
         this.setCardList(new CardList());
+        this.setTileList(new TileList());
+    }
+
+    public boolean isActive() {
+        return this.active;
+    }
+
+    public void setActive(boolean aActive) {
+        this.active = aActive;
     }
 
     public CardList getCardList() {
@@ -62,6 +77,22 @@ public class Player {
 
     public void setId(int aID) {
         this.id = aID;
+    }
+
+    public TileList getTileList() {
+        return tileList;
+    }
+
+    public void setTileList(TileList aTileList) {
+        this.tileList = aTileList;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 
 }
