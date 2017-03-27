@@ -3,11 +3,16 @@ package nl.gremmee.antopoly;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.Die;
 import nl.gremmee.antopoly.core.Municipality;
-import nl.gremmee.antopoly.core.cards.CardAction;
-import nl.gremmee.antopoly.core.cards.CardList;
-import nl.gremmee.antopoly.core.cards.Chance;
-import nl.gremmee.antopoly.core.cards.CommunityChest;
+import nl.gremmee.antopoly.core.cards.CardType;
+import nl.gremmee.antopoly.core.cards.ChanceCardList;
+import nl.gremmee.antopoly.core.cards.ChoiceCard;
+import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
+import nl.gremmee.antopoly.core.cards.GetOutOfJailCard;
+import nl.gremmee.antopoly.core.cards.GoDirect;
+import nl.gremmee.antopoly.core.cards.GotoCard;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.cards.PayCard;
+import nl.gremmee.antopoly.core.cards.RecieveCard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
@@ -28,7 +33,8 @@ public class Initialize {
     private static final long SLEEP = 250;
     private static Initialize instance;
     private DiceList diceList;
-    private CardList cardList;
+    private ChanceCardList chanceCardList;
+    private CommunityChestCardList communityChestCardList;
     private PlayerList playerList;
     private TileList tileList;
 
@@ -275,19 +281,193 @@ public class Initialize {
         return tileList;
     }
 
-    public CardList initializeCards() {
-        System.out.println("Initializing Cards");
-        cardList = new CardList();
-        ICard card = new Chance(CardAction.Pay, "Speeding", "Boete voor te snel rijden ƒ 15", 15);
-        cardList.add(card);
+    public ChanceCardList initializeChanceCards() {
+        System.out.println("Initializing Chance Cards");
+        chanceCardList = new ChanceCardList();
+        ICard card = new PayCard(CardType.CT_Chance, "Speeding", "Boete voor te snel rijden ƒ 15", 15);
+        chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
-        card = new CommunityChest(CardAction.Recieve, "Inherit", "U erft ƒ 100", 100);
-        cardList.add(card);
-        System.out.print("Creating Card " + card.getName() + "...");
-        System.out.println("[OK]");
-        return cardList;
 
+        card = new PayCard(CardType.CT_Chance, "Schoolfee", "Betaal schoolgeld ƒ 150", 150);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto Barteljorisstraat",
+                "Ga verder naar Barteljorisstraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto West",
+                "Reis naar station \"West\". Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto Start", "Ga verder naar \"Start\"", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto Back 3", "Ga drie plaatsen terug", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GoDirect(CardType.CT_Chance, "Goto Jail",
+                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20", tileList.get(10));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto Heerestraat",
+                "Ga verder naar Heerestraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_Chance, "Bank pays", "De bank betaalt u ƒ 50 dividend", 50);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GetOutOfJailCard(CardType.CT_Chance, "Verlaat de gevangenis",
+                "Verlaat de gevangenis zonder te betalen");
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_Chance, "Fix houses",
+                "Repareer uw huizen. Betaal voor elk huis ƒ 25, betaal voor elk hotel ƒ 100", 50);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_Chance, "Streettax",
+                "U wordt aangeslagen voor straatgeld. ƒ 40 per huis, ƒ 115 per hotel", 50);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_Chance, "Buildinginsurance", "Uw bouwverzekering vervalt, u ontvangt ƒ 150",
+                150);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_Chance, "Drunk", "Aangehouden wegens dronkenschap ƒ 20 boete", 20);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_Chance, "Goto Kalverstraat", "Ga verder naar Kalverstraat.", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_Chance, "Crossword puzzle",
+                "U hebt een kruiswoordpuzzel gewonnen en ontvangt ƒ 100", 100);
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+        return chanceCardList;
+    }
+
+    public CommunityChestCardList initializeCommunityChestCards() {
+        System.out.println("Initializing Community Chest Cards");
+        communityChestCardList = new CommunityChestCardList();
+        ICard card = new RecieveCard(CardType.CT_CommunityChest, "Inherit", "U erft ƒ 100", 100);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Intrest",
+                "U ontvangt rente van 7% preferente aandelen ƒ 25", 25);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Mistake Bank",
+                "Een vergissing van de bank in uw voordeel, u ontvangt ƒ 200", 200);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_CommunityChest, "Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
+                tileList.get(1));
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GoDirect(CardType.CT_CommunityChest, "Goto Jail",
+                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Birthday",
+                "U bent jarig en ontvangt van iedere speler ƒ 10", 10);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Beauty Contest",
+                "U hebt de tweede prijs in een schoonheidswedstrijd gewonnen en ontvangt ƒ 10", 10);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_CommunityChest, "Doctors bill", "Betaal uw doktersrekening ƒ 50", 50);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_CommunityChest, "Insurace bill", "Betaal uw verzekeringspremie ƒ 50", 50);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Sell stock", "Door verkoop van effecten ontvangt u ƒ 50",
+                50);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GetOutOfJailCard(CardType.CT_CommunityChest, "Verlaat de gevangenis",
+                "Verlaat de gevangenis zonder te betalen");
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Refund taxws",
+                "Restitutie inkomstenbelasting, u ontvangt ƒ 20", 20);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new RecieveCard(CardType.CT_CommunityChest, "Aannuity", "Lijfrente vervalt, u ontvangt ƒ 100", 100);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new PayCard(CardType.CT_CommunityChest, "Hospital bill", "Betaal het hospitaal ƒ 100", 100);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new GotoCard(CardType.CT_CommunityChest, "Goto Start", "Ga verder naar \"Start\"", tileList.get(1));
+        chanceCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        card = new ChoiceCard(CardType.CT_CommunityChest, "Choice", "Betaal ƒ 10 boete of neem een Kanskaart", 10);
+        communityChestCardList.add(card);
+        System.out.print("Creating Card " + card.getName() + "...");
+        System.out.println("[OK]");
+
+        return communityChestCardList;
     }
 
     private void repaint(String aMessage) {

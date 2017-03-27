@@ -39,7 +39,7 @@ public class Player implements IPlayer {
 
     public boolean hasGetOutOfJailCard() {
         for (ICard card : this.cardList) {
-            if (CardAction.GetOutOfJail.equals(card.getCardType())) {
+            if (CardAction.CA_GetOutOfJail.equals(card.getCardType())) {
                 return true;
             }
         }
@@ -54,7 +54,7 @@ public class Player implements IPlayer {
         assert hasGetOutOfJailCard() : "Cannot use what you do not have!";
         if (hasGetOutOfJailCard()) {
             for (ICard card : this.cardList) {
-                if (CardAction.GetOutOfJail.equals(card.getCardType())) {
+                if (CardAction.CA_GetOutOfJail.equals(card.getCardType())) {
                     removeCard(card);
                     break;
                 }

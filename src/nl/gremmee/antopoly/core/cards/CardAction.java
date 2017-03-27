@@ -1,5 +1,5 @@
 package nl.gremmee.antopoly.core.cards;
 
 public enum CardAction {
-    Pay(), Recieve(), Goto(), GoDirect(), Choice(), GetOutOfJail();
+    CA_Pay(), CA_Recieve(), CA_Goto(), CA_GoDirect(), CA_Choice(), CA_GetOutOfJail();
 }

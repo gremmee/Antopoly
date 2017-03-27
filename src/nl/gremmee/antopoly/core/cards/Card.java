@@ -6,14 +6,12 @@ public class Card implements ICard {
     private String text;
     private CardType cardType;
     private CardAction cardAction;
-    private int value;
 
-    public Card(CardType aCardType, CardAction aCardAction, String aName, String aText, int aValue) {
+    public Card(CardType aCardType, CardAction aCardAction, String aName, String aText) {
         this.setName(aName);
         this.setText(aText);
         this.setCardType(aCardType);
         this.setCardAction(aCardAction);
-        this.setValue(aValue);
     }
 
     public String getName() {
@@ -48,11 +46,4 @@ public class Card implements ICard {
         this.cardAction = aCardAction;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int aValue) {
-        this.value = aValue;
-    }
 }
