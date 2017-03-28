@@ -104,7 +104,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Station(i++, "Station Zuid", 1);
+        tile = new Station(i++, "Station Zuid");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -139,7 +139,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Utility(i++, "Elektriciteitsbedrijf", 1);
+        tile = new Utility(i++, "Elektriciteitsbedrijf");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -154,7 +154,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Station(i++, "Station West", 1);
+        tile = new Station(i++, "Station West");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -204,7 +204,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Station(i++, "Station Noord", 1);
+        tile = new Station(i++, "Station Noord");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -219,7 +219,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Utility(i++, "Waterleiding", 1);
+        tile = new Utility(i++, "Waterleiding");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -254,7 +254,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Station(i++, "Station Oost", 1);
+        tile = new Station(i++, "Station Oost");
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
