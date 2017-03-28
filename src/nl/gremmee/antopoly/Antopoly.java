@@ -49,6 +49,7 @@ public class Antopoly {
             for (IPlayer player : playerList) {
                 if (!player.isBusted()) {
                     player.setActive(true);
+                    System.out.println("------------------");
                     System.out.println(player.getName() + " is playing");
                     System.out.println("PlayerTileList = " + player.getTileList().toString());
                     player.play();
@@ -60,12 +61,13 @@ public class Antopoly {
                     // }
                     player.setActive(false);
                     if (player.getMoney() < 0) {
-                        playerList.get(0).setBusted(true);
+                        player.setBusted(true);
                     }
+                    System.out.println(playerList);
                 }
             }
 
-        } while (!playerList.isWinner());
+        } while (playerList.getWinner() == null);
         IPlayer winner = playerList.getWinner();
         System.out.println("Winner: " + winner.getName());
         System.out.println("Done!");

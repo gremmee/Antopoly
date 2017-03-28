@@ -47,5 +47,10 @@ public class Tile implements ITile {
     public void setOwner(Player aOwner) {
         this.owner = aOwner;
     }
+    
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 
 }

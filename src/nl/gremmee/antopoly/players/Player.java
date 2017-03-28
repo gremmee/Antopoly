@@ -121,8 +121,10 @@ public class Player implements IPlayer {
         System.out.println("Rolled " + diceResult);
 
         int id = this.currentTile.getID();
-        int newID = id + diceResult;
+        int newID = (id + diceResult) % 40;
 
+        System.out.println(id +", " + newID);
+        System.out.println(Initialize.getInstance().getTileList());
         ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
         System.out.println("Goto : " + newTile.getName());
         setCurrentTile(newTile);
@@ -190,6 +192,11 @@ public class Player implements IPlayer {
 
     public void setBusted(boolean aBusted) {
         this.busted = aBusted;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getName() + ", "+ this.getMoney() + ", " + (this.isBusted() ? "B" :  "A");
     }
 
 }
