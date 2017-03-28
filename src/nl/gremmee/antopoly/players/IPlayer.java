@@ -20,5 +20,7 @@ public interface IPlayer {
 
     public void setBusted(boolean aBusted);
 
+    public void setMoney(int aMoney);
+
     public void play();
 }

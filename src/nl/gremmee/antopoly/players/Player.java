@@ -10,6 +10,7 @@ import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Property;
 import nl.gremmee.antopoly.core.tiles.Station;
 import nl.gremmee.antopoly.core.tiles.Street;
+import nl.gremmee.antopoly.core.tiles.TaxTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 import nl.gremmee.antopoly.core.tiles.Utility;
 
@@ -154,18 +155,25 @@ public class Player implements IPlayer {
                     System.out.println("Street");
                     Street street = (Street) property;
                     payRent(owner, street);
-                } else if (property instanceof Utility){
+                } else if (property instanceof Utility) {
                     System.out.println("Utility");
                     Utility utility = (Utility) property;
                     payRent(owner, utility, diceResult);
-                } else if (property instanceof Station){
+                } else if (property instanceof Station) {
                     System.out.println("Station");
                     Station station = (Station) property;
                     payRent(owner, station);
                 }
 
             }
+        } else if (newTile instanceof TaxTile) {
+            System.out.println("Tax");
+            TaxTile taxes = (TaxTile) newTile;
+            int costs = taxes.getValue();
+            this.setMoney(getMoney() - costs);
+
         }
+
         System.out.println("Money: " + getMoney());
 
     }
@@ -191,13 +199,11 @@ public class Player implements IPlayer {
         aOwner.setMoney(aOwner.getMoney() + costs);
         this.setMoney(getMoney() - costs);
     }
-    
-    public int numberOwnedStations(Player aOwner)
-    {
+
+    public int numberOwnedStations(Player aOwner) {
         int owned = 0;
         for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof Station)
-            {
+            if (tile instanceof Station) {
                 owned++;
             }
         }
@@ -212,24 +218,37 @@ public class Player implements IPlayer {
         this.setMoney(getMoney() - costs);
     }
 
-    public boolean hasBothUtilities(Player aOwner)
-    {
+    public boolean hasBothUtilities(Player aOwner) {
         int utilities = 0;
         for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof Utility)
-            {
+            if (tile instanceof Utility) {
                 utilities++;
             }
         }
         return (utilities >= 2);
     }
-    
+
     private void payRent(Player aOwner, Street aStreet) {
         System.out.println("PayRent to " + aOwner.getName());
-        int rentValue = aStreet.getRent();
+        int factor = hasMunicipality(aOwner, aStreet) ? 2 : 1;
+        int rentValue = aStreet.getRent() * factor;
         aOwner.setMoney(aOwner.getMoney() + rentValue);
         this.setMoney(getMoney() - rentValue);
 
+    }
+
+    public boolean hasMunicipality(Player aOwner, Street aStreet) {
+        boolean municipality = false;
+        int complete = aStreet.getMunicipality().getSize();
+        for (ITile tile : aOwner.getTileList()) {
+            if (tile instanceof Street) {
+                Street street = (Street) tile;
+                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+                    complete--;
+                }
+            }
+        }
+        return (complete == 0);
     }
 
     private void buyProperty(Property aProperty) {

@@ -18,6 +18,7 @@ import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Station;
 import nl.gremmee.antopoly.core.tiles.Street;
+import nl.gremmee.antopoly.core.tiles.TaxTile;
 import nl.gremmee.antopoly.core.tiles.Tile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 import nl.gremmee.antopoly.core.tiles.TileType;
@@ -84,7 +85,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Dorpsstraat", Municipality.OnsDorp, 60, 2/* 10,30,90,160,250 */);
+        tile = new Street(i++, "Dorpsstraat", Municipality.OnsDorp, 60,
+                2/* 10,30,90,160,250 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -94,12 +96,13 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Brink", Municipality.OnsDorp, 60, 4 /* 20,60,180,320,450 */);
+        tile = new Street(i++, "Brink", Municipality.OnsDorp, 60,
+                4 /* 20,60,180,320,450 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Tile(i++, "Income Taxes", TileType.TT_IncomeTaxes);
+        tile = new TaxTile(i++, 200);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -109,7 +112,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Steenstraat", Municipality.Arnhem, 100, 6/* 30,90,270,400,550 */);
+        tile = new Street(i++, "Steenstraat", Municipality.Arnhem, 100,
+                6/* 30,90,270,400,550 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -119,12 +123,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Ketelstraat", Municipality.Arnhem, 100, 6/* 30,90,270,400,550 */);
+        tile = new Street(i++, "Ketelstraat", Municipality.Arnhem, 100,
+                6/* 30,90,270,400,550 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Velperplein", Municipality.Arnhem, 120, 8/* 40,100,300,450,600 */);
+        tile = new Street(i++, "Velperplein", Municipality.Arnhem, 120,
+                8/* 40,100,300,450,600 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -134,7 +140,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Barteljorisstraat", Municipality.Haarlem, 140, 10 /* 50,150,450,625,750 */);
+        tile = new Street(i++, "Barteljorisstraat", Municipality.Haarlem, 140,
+                10 /* 50,150,450,625,750 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -144,12 +151,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Zijlweg", Municipality.Haarlem, 140, 10 /* 50,150,450,625,750 */);
+        tile = new Street(i++, "Zijlweg", Municipality.Haarlem, 140,
+                10 /* 50,150,450,625,750 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Houtstraat", Municipality.Haarlem, 160, 12 /* 60,180,500,700,900 */);
+        tile = new Street(i++, "Houtstraat", Municipality.Haarlem, 160,
+                12 /* 60,180,500,700,900 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -159,7 +168,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Neude", Municipality.Utrect, 180, 14/* 70,200550,750,950 */);
+        tile = new Street(i++, "Neude", Municipality.Utrect, 180,
+                14/* 70,200550,750,950 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -169,12 +179,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Biltstraat", Municipality.Utrect, 180, 14/* 70,200550,750,950 */);
+        tile = new Street(i++, "Biltstraat", Municipality.Utrect, 180,
+                14/* 70,200550,750,950 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Vreeburg", Municipality.Utrect, 200, 16/* 80,220,600,800,1000 */);
+        tile = new Street(i++, "Vreeburg", Municipality.Utrect, 200,
+                16/* 80,220,600,800,1000 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -184,7 +196,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "A. Kerkhof", Municipality.Groningen, 220, 18/* 90,250,700,875,1050 */);
+        tile = new Street(i++, "A. Kerkhof", Municipality.Groningen, 220,
+                18/* 90,250,700,875,1050 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -194,12 +207,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Grote Markt", Municipality.Groningen, 220, 18/* 90,250,700,875,1050 */);
+        tile = new Street(i++, "Grote Markt", Municipality.Groningen, 220,
+                18/* 90,250,700,875,1050 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Heerestraat", Municipality.Groningen, 240, 20/* 100,300,750,925,1100 */);
+        tile = new Street(i++, "Heerestraat", Municipality.Groningen, 240,
+                20/* 100,300,750,925,1100 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -209,12 +224,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Spui", Municipality.DenHaag, 260, 22/* 120,330,800,975,1150 */);
+        tile = new Street(i++, "Spui", Municipality.DenHaag, 260,
+                22/* 120,330,800,975,1150 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Plein", Municipality.DenHaag, 260, 22/* 120,330,800,975,1150 */);
+        tile = new Street(i++, "Plein", Municipality.DenHaag, 260,
+                22/* 120,330,800,975,1150 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -224,7 +241,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "L. Poten", Municipality.DenHaag, 280, 22/* 120,360,850,1025,1200 */);
+        tile = new Street(i++, "L. Poten", Municipality.DenHaag, 280,
+                22/* 120,360,850,1025,1200 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -234,12 +252,14 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Hofplein", Municipality.Rotterdam, 300, 26/* 130,390,900,1100,1275 */);
+        tile = new Street(i++, "Hofplein", Municipality.Rotterdam, 300,
+                26/* 130,390,900,1100,1275 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Brink", Municipality.Rotterdam, 300, 26/* 130,390,900,1100,1275 */);
+        tile = new Street(i++, "Brink", Municipality.Rotterdam, 300,
+                26/* 130,390,900,1100,1275 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -249,7 +269,8 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Coolsingel", Municipality.Rotterdam, 320, 28/* 150,450,1000,1200,1400 */);
+        tile = new Street(i++, "Coolsingel", Municipality.Rotterdam, 320,
+                28/* 150,450,1000,1200,1400 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -264,17 +285,19 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Leidsestraat", Municipality.Amsterdam, 350, 35/* 175,500,1100,1300,1500 */);
+        tile = new Street(i++, "Leidsestraat", Municipality.Amsterdam, 350,
+                35/* 175,500,1100,1300,1500 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Tile(i++, "Extra belasting", TileType.TT_ExtraTaxes);
+        tile = new TaxTile(i++, 100);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Street(i++, "Kalverstraat", Municipality.Amsterdam, 400, 50/* 200,600,1400,1700,2000 */);
+        tile = new Street(i++, "Kalverstraat", Municipality.Amsterdam, 400,
+                50/* 200,600,1400,1700,2000 */);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
