@@ -1,10 +1,10 @@
 package nl.gremmee.antopoly.core.tiles;
 
-public class Property extends Tile {
+public class PropertyTile extends Tile {
 
     private int value;
 
-    public Property(int aID, String aName, TileType aTileType, int aValue) {
+    public PropertyTile(int aID, String aName, TileType aTileType, int aValue) {
         super(aID, aName, aTileType);
         this.setValue(aValue);
     }

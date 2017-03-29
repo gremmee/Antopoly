@@ -10,12 +10,12 @@ import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
-import nl.gremmee.antopoly.core.tiles.Property;
-import nl.gremmee.antopoly.core.tiles.Station;
-import nl.gremmee.antopoly.core.tiles.Street;
+import nl.gremmee.antopoly.core.tiles.PropertyTile;
+import nl.gremmee.antopoly.core.tiles.StationTile;
+import nl.gremmee.antopoly.core.tiles.StreetTile;
 import nl.gremmee.antopoly.core.tiles.TaxTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
-import nl.gremmee.antopoly.core.tiles.Utility;
+import nl.gremmee.antopoly.core.tiles.UtilityTile;
 
 public class Player implements IPlayer {
     private CardList cardList;
@@ -148,29 +148,29 @@ public class Player implements IPlayer {
         System.out.println("Goto : " + newTile.getName());
         setCurrentTile(newTile);
 
-        if (newTile instanceof Property) {
+        if (newTile instanceof PropertyTile) {
             System.out.println("Property");
-            Property property = (Property) newTile;
-            Player owner = property.getOwner();
+            PropertyTile propertyTile = (PropertyTile) newTile;
+            Player owner = propertyTile.getOwner();
             if (owner == null) {
-                buyProperty(property);
+                buyProperty(propertyTile);
 
             } else if (owner.equals(this)) {
                 // My tile, do nothing
 
             } else {
-                if (property instanceof Street) {
+                if (propertyTile instanceof StreetTile) {
                     System.out.println("Street");
-                    Street street = (Street) property;
-                    payRent(owner, street);
-                } else if (property instanceof Utility) {
+                    StreetTile streetTile = (StreetTile) propertyTile;
+                    payRent(owner, streetTile);
+                } else if (propertyTile instanceof UtilityTile) {
                     System.out.println("Utility");
-                    Utility utility = (Utility) property;
-                    payRent(owner, utility, diceResult);
-                } else if (property instanceof Station) {
+                    UtilityTile utilityTile = (UtilityTile) propertyTile;
+                    payRent(owner, utilityTile, diceResult);
+                } else if (propertyTile instanceof StationTile) {
                     System.out.println("Station");
-                    Station station = (Station) property;
-                    payRent(owner, station);
+                    StationTile stationTile = (StationTile) propertyTile;
+                    payRent(owner, stationTile);
                 }
 
             }
@@ -212,22 +212,22 @@ public class Player implements IPlayer {
 
     }
 
-    private void payRent(Player aOwner, Station station) {
+    private void payRent(Player aOwner, StationTile stationTile) {
         System.out.println("PayRent to " + aOwner.getName());
         int costs = 0;
         int numStations = numberOwnedStations(aOwner);
         switch (numStations) {
             case 1:
-                costs = Station.PRICE_ONE;
+                costs = StationTile.PRICE_ONE;
                 break;
             case 2:
-                costs = Station.PRICE_TWO;
+                costs = StationTile.PRICE_TWO;
                 break;
             case 3:
-                costs = Station.PRICE_THREE;
+                costs = StationTile.PRICE_THREE;
                 break;
             case 4:
-                costs = Station.PRICE_FOUR;
+                costs = StationTile.PRICE_FOUR;
                 break;
         }
         aOwner.setMoney(aOwner.getMoney() + costs);
@@ -237,16 +237,16 @@ public class Player implements IPlayer {
     public int numberOwnedStations(Player aOwner) {
         int owned = 0;
         for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof Station) {
+            if (tile instanceof StationTile) {
                 owned++;
             }
         }
         return owned;
     }
 
-    private void payRent(Player aOwner, Utility aUtility, int aDiceResult) {
+    private void payRent(Player aOwner, UtilityTile aUtility, int aDiceResult) {
         System.out.println("PayRent to " + aOwner.getName());
-        int factor = hasBothUtilities(aOwner) ? Utility.FACTOR_OWN_DOUBLE : Utility.FACTOR_OWN_SINGLE;
+        int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
         int costs = aDiceResult * factor;
         aOwner.setMoney(aOwner.getMoney() + costs);
         this.setMoney(getMoney() - costs);
@@ -255,14 +255,14 @@ public class Player implements IPlayer {
     public boolean hasBothUtilities(Player aOwner) {
         int utilities = 0;
         for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof Utility) {
+            if (tile instanceof UtilityTile) {
                 utilities++;
             }
         }
         return (utilities >= 2);
     }
 
-    private void payRent(Player aOwner, Street aStreet) {
+    private void payRent(Player aOwner, StreetTile aStreet) {
         System.out.println("PayRent to " + aOwner.getName());
         int factor = hasMunicipality(aOwner, aStreet) ? 2 : 1;
         int rentValue = aStreet.getRent() * factor;
@@ -271,12 +271,12 @@ public class Player implements IPlayer {
 
     }
 
-    public boolean hasMunicipality(Player aOwner, Street aStreet) {
+    public boolean hasMunicipality(Player aOwner, StreetTile aStreet) {
         int complete = aStreet.getMunicipality().getSize();
         for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof Street) {
-                Street street = (Street) tile;
-                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+            if (tile instanceof StreetTile) {
+                StreetTile streetTile = (StreetTile) tile;
+                if (streetTile.getMunicipality().equals(aStreet.getMunicipality())) {
                     complete--;
                 }
             }
@@ -284,7 +284,7 @@ public class Player implements IPlayer {
         return (complete == 0);
     }
 
-    private void buyProperty(Property aProperty) {
+    private void buyProperty(PropertyTile aProperty) {
         System.out.println("Buy Property " + aProperty.getName());
         int value = aProperty.getValue();
         if (this.getMoney() > value) {

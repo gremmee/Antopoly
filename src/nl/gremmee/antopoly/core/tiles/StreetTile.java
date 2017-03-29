@@ -2,13 +2,13 @@ package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.core.Municipality;
 
-public class Street extends Property {
+public class StreetTile extends PropertyTile {
 
     private Municipality municipality;
     private int building;
     private int rent;
 
-    public Street(int aID, String aName, Municipality aMunicipality, int aValue, int aRent) {
+    public StreetTile(int aID, String aName, Municipality aMunicipality, int aValue, int aRent) {
         super(aID, aName, TileType.TT_Street, aValue);
         this.setMunicipality(aMunicipality);
         this.setRent(aRent);
