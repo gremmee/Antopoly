@@ -46,6 +46,7 @@ public class Antopoly {
     }
 
     public static void game() {
+        long round = 0;
         GAME: do {
             for (IPlayer player : playerList) {
                 if (!player.isBusted()) {
@@ -68,7 +69,9 @@ public class Antopoly {
                     } while (player.isAgain());
                 }
             }
-
+            round++;
+            System.out.println("------------------");
+            System.out.println("Round " + round);
         } while (playerList.getWinner() == null);
         IPlayer winner = playerList.getWinner();
         System.out.println("Winner: " + winner.getName());

@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class Card implements ICard {
@@ -72,6 +73,11 @@ public class Card implements ICard {
                 int receive = card.getValue();
                 System.out.println("Recieve " + receive);
                 aPlayer.setMoney(aPlayer.getMoney() + receive);
+                break;
+            case CA_GoDirect:
+                System.out.println("Goto Jail");
+                aPlayer.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+                aPlayer.setInJail(true);
                 break;
             default:
                 break;

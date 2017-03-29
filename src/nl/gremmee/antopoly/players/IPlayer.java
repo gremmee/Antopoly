@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.players;
 
 import nl.gremmee.antopoly.core.cards.CardList;
+import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 
 public interface IPlayer {
@@ -19,6 +20,8 @@ public interface IPlayer {
 
     public boolean isAgain();
 
+    public void setCurrentTile(ITile aCurrentTile);
+
     public int getMoney();
 
     public void setWinner(boolean aWinner);
@@ -28,4 +31,9 @@ public interface IPlayer {
     public void setMoney(int aMoney);
 
     public void play();
+
+    public boolean isInJail();
+
+    public void setInJail(boolean aInJail);
+
 }

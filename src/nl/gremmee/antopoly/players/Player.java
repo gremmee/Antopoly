@@ -8,6 +8,7 @@ import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
+import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Property;
 import nl.gremmee.antopoly.core.tiles.Station;
@@ -28,6 +29,7 @@ public class Player implements IPlayer {
     private boolean busted;
     private boolean again;
     private int doubles;
+    private boolean inJail;
 
     public Player(int aID, String aName) {
         this.setId(aID);
@@ -40,6 +42,7 @@ public class Player implements IPlayer {
         this.setTileList(new TileList());
         this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         this.setAgain(false);
+        this.setInJail(false);
     }
 
     public boolean isActive() {
@@ -178,6 +181,7 @@ public class Player implements IPlayer {
             this.setMoney(getMoney() - costs);
 
         } else if (newTile instanceof ChanceTile) {
+            System.out.println(Initialize.getInstance().getChanceCardList());
             ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
             System.out.println("Chance " + card.getName());
             card.excute(this);
@@ -189,6 +193,7 @@ public class Player implements IPlayer {
             }
 
         } else if (newTile instanceof CommunityChestTile) {
+            System.out.println(Initialize.getInstance().getCommunityChestCardList());
             ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
             System.out.println("Community " + card.getName());
             card.excute(this);
@@ -196,8 +201,11 @@ public class Player implements IPlayer {
                 this.getCardList().add(card);
                 System.out.println("Store Get Out Of Jail Community Chest");
             } else {
-                Initialize.getInstance().getChanceCardList().putBack(card);
+                Initialize.getInstance().getCommunityChestCardList().putBack(card);
             }
+        } else if (newTile instanceof GotoJailTile) {
+            this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+            this.setInJail(true);
         }
 
         System.out.println("Money: " + getMoney());
@@ -318,7 +326,11 @@ public class Player implements IPlayer {
 
     @Override
     public String toString() {
-        return this.getName() + ", " + this.getMoney() + ", " + (this.isBusted() ? "B" : "A");
+        String name = this.getName();
+        int money = this.getMoney();
+        String busted = (this.isBusted() ? "BUSTED" : "active");
+        String jail = (this.isInJail() ? "JAIL" : "free");
+        return ("|" + name + ", " + money + ", " + busted + ", " + jail + "|");
     }
 
     public boolean isAgain() {
@@ -328,6 +340,14 @@ public class Player implements IPlayer {
     public void setAgain(boolean aAgain) {
         this.doubles = aAgain ? ++this.doubles : 0;
         this.again = aAgain;
+    }
+
+    public boolean isInJail() {
+        return inJail;
+    }
+
+    public void setInJail(boolean aInJail) {
+        this.inJail = aInJail;
     }
 
 }

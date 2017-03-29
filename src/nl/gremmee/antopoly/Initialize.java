@@ -14,7 +14,9 @@ import nl.gremmee.antopoly.core.cards.PayCard;
 import nl.gremmee.antopoly.core.cards.RecieveCard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
+import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.JailTile;
 import nl.gremmee.antopoly.core.tiles.Station;
 import nl.gremmee.antopoly.core.tiles.Street;
 import nl.gremmee.antopoly.core.tiles.TaxTile;
@@ -129,7 +131,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Tile(i++, "Jail", TileType.TT_Jail);
+        tile = new JailTile(i++);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -229,7 +231,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Tile(i++, "Naar de gevangenis", TileType.TT_GotoJail);
+        tile = new GotoJailTile(i++);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
