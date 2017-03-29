@@ -31,6 +31,7 @@ public class Player implements IPlayer {
     private boolean again;
     private int doubles;
     private boolean inJail;
+    private int jailBreak;
 
     public Player(int aID, String aName) {
         this.setId(aID);
@@ -44,6 +45,8 @@ public class Player implements IPlayer {
         this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         this.setAgain(false);
         this.setInJail(false);
+        this.doubles = 0;
+        this.jailBreak = 0;
     }
 
     public boolean isActive() {
@@ -83,6 +86,7 @@ public class Player implements IPlayer {
                             : Initialize.getInstance().getCommunityChestCardList();
                     cardList.putBack(card);
                     this.setInJail(false);
+                    this.jailBreak = 0;
                     break;
                 }
             }
@@ -129,100 +133,119 @@ public class Player implements IPlayer {
     public void play() {
         System.out.println("Money: " + getMoney());
         // TODO: use AI
-
+        RollList rollList = null;
+        // Getting out of jail
         if (this.isInJail()) {
             // TODO move to cardlist
             if (hasGetOutOfJailCard()) {
                 useGetOutOfJailCard();
 
+            } else {
+                DiceList diceList = Initialize.getInstance().getDiceList();
+                rollList = diceList.roll();
+                if (rollList.isDouble()) {
+                    this.setInJail(false);
+                } else {
+                    if (this.jailBreak >= 2) {
+                        this.jailBreak = 0;
+                        this.setInJail(false);
+                        this.setMoney(this.getMoney() - 50);
+                        System.out.println("Pay 50 to get out of jail");
+                    } else {
+                        this.jailBreak++;
+                    }
+                }
             }
         }
+        if (!this.isInJail()) {
+            if (rollList == null) {
+                DiceList diceList = Initialize.getInstance().getDiceList();
+                rollList = diceList.roll();
+                this.setAgain(rollList.isDouble());
+                if (this.doubles >= 3) {
+                    System.out.println("JAIL TIME");
+                }
+            }
+            int diceResult = rollList.getResult();
+            System.out.println("Rolled " + diceResult);
 
-        DiceList diceList = Initialize.getInstance().getDiceList();
-        RollList rollList = diceList.roll();
-        this.setAgain(rollList.isDouble());
-        if (this.doubles >= 3) {
-            System.out.println("JAIL TIME");
-        }
-        int diceResult = rollList.getResult();
-        System.out.println("Rolled " + diceResult);
+            int id = this.currentTile.getID();
+            int calculatedResult = id + diceResult;
+            System.out.println(id);
+            System.out.println(calculatedResult);
+            if (calculatedResult >= 40) {
+                // pass Start
+                System.out.println("Pass start");
+                this.setMoney(this.getMoney() + 200);
+            }
+            int newID = calculatedResult % 40;
 
-        int id = this.currentTile.getID();
-        int calculatedResult = id + diceResult;
-        System.out.println(id);
-        System.out.println(calculatedResult);
-        if (calculatedResult >= 40) {
-            // pass Start
-            System.out.println("Pass start");
-            this.setMoney(this.getMoney() + 200);
-        }
-        int newID = calculatedResult % 40;
+            System.out.println(id + ", " + newID);
+            System.out.println(Initialize.getInstance().getTileList());
+            ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
+            System.out.println("Goto : " + newTile.getName());
+            setCurrentTile(newTile);
 
-        System.out.println(id + ", " + newID);
-        System.out.println(Initialize.getInstance().getTileList());
-        ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
-        System.out.println("Goto : " + newTile.getName());
-        setCurrentTile(newTile);
+            if (newTile instanceof PropertyTile) {
+                System.out.println("Property");
+                PropertyTile propertyTile = (PropertyTile) newTile;
+                Player owner = propertyTile.getOwner();
+                if (owner == null) {
+                    buyProperty(propertyTile);
 
-        if (newTile instanceof PropertyTile) {
-            System.out.println("Property");
-            PropertyTile propertyTile = (PropertyTile) newTile;
-            Player owner = propertyTile.getOwner();
-            if (owner == null) {
-                buyProperty(propertyTile);
+                } else if (owner.equals(this)) {
+                    // My tile, do nothing
 
-            } else if (owner.equals(this)) {
-                // My tile, do nothing
+                } else {
+                    if (propertyTile instanceof StreetTile) {
+                        System.out.println("Street");
+                        StreetTile streetTile = (StreetTile) propertyTile;
+                        payRent(owner, streetTile);
+                    } else if (propertyTile instanceof UtilityTile) {
+                        System.out.println("Utility");
+                        UtilityTile utilityTile = (UtilityTile) propertyTile;
+                        payRent(owner, utilityTile, diceResult);
+                    } else if (propertyTile instanceof StationTile) {
+                        System.out.println("Station");
+                        StationTile stationTile = (StationTile) propertyTile;
+                        payRent(owner, stationTile);
+                    }
 
-            } else {
-                if (propertyTile instanceof StreetTile) {
-                    System.out.println("Street");
-                    StreetTile streetTile = (StreetTile) propertyTile;
-                    payRent(owner, streetTile);
-                } else if (propertyTile instanceof UtilityTile) {
-                    System.out.println("Utility");
-                    UtilityTile utilityTile = (UtilityTile) propertyTile;
-                    payRent(owner, utilityTile, diceResult);
-                } else if (propertyTile instanceof StationTile) {
-                    System.out.println("Station");
-                    StationTile stationTile = (StationTile) propertyTile;
-                    payRent(owner, stationTile);
+                }
+            } else if (newTile instanceof TaxTile) {
+                System.out.println("Tax");
+                TaxTile taxes = (TaxTile) newTile;
+                int costs = taxes.getValue();
+                this.setMoney(getMoney() - costs);
+
+            } else if (newTile instanceof ChanceTile) {
+                System.out.println(Initialize.getInstance().getChanceCardList());
+                ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
+                System.out.println("Chance " + card.getName());
+                card.excute(this);
+                if (card.isGetOutOfJailCard()) {
+                    this.getCardList().add(card);
+                    System.out.println("Store Get Out Of Jail Chance");
+                } else {
+                    Initialize.getInstance().getChanceCardList().putBack(card);
                 }
 
-            }
-        } else if (newTile instanceof TaxTile) {
-            System.out.println("Tax");
-            TaxTile taxes = (TaxTile) newTile;
-            int costs = taxes.getValue();
-            this.setMoney(getMoney() - costs);
+            } else if (newTile instanceof CommunityChestTile) {
+                System.out.println(Initialize.getInstance().getCommunityChestCardList());
+                ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
+                System.out.println("Community " + card.getName());
+                card.excute(this);
+                if (card.isGetOutOfJailCard()) {
+                    this.getCardList().add(card);
+                    System.out.println("Store Get Out Of Jail Community Chest");
+                } else {
+                    Initialize.getInstance().getCommunityChestCardList().putBack(card);
+                }
+            } else if (newTile instanceof GotoJailTile) {
+                this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+                this.setInJail(true);
 
-        } else if (newTile instanceof ChanceTile) {
-            System.out.println(Initialize.getInstance().getChanceCardList());
-            ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
-            System.out.println("Chance " + card.getName());
-            card.excute(this);
-            if (card.isGetOutOfJailCard()) {
-                this.getCardList().add(card);
-                System.out.println("Store Get Out Of Jail Chance");
-            } else {
-                Initialize.getInstance().getChanceCardList().putBack(card);
             }
-
-        } else if (newTile instanceof CommunityChestTile) {
-            System.out.println(Initialize.getInstance().getCommunityChestCardList());
-            ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
-            System.out.println("Community " + card.getName());
-            card.excute(this);
-            if (card.isGetOutOfJailCard()) {
-                this.getCardList().add(card);
-                System.out.println("Store Get Out Of Jail Community Chest");
-            } else {
-                Initialize.getInstance().getCommunityChestCardList().putBack(card);
-            }
-        } else if (newTile instanceof GotoJailTile) {
-            this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
-            this.setInJail(true);
-
         }
         System.out.println("Money: " + getMoney());
 
@@ -364,6 +387,14 @@ public class Player implements IPlayer {
 
     public void setInJail(boolean aInJail) {
         this.inJail = aInJail;
+    }
+
+    public int getJailBreak() {
+        return jailBreak;
+    }
+
+    public void setJailBreak(int jailBreak) {
+        this.jailBreak = jailBreak;
     }
 
 }
