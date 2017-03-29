@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.cards;
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
-public class Card implements ICard {
+public abstract class Card implements ICard {
 
     private String name;
     private String text;
