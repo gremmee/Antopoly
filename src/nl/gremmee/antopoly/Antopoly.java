@@ -49,20 +49,22 @@ public class Antopoly {
         GAME: do {
             for (IPlayer player : playerList) {
                 if (!player.isBusted()) {
-                    player.setActive(true);
-                    System.out.println("------------------");
-                    System.out.println(player.getName() + " is playing");
-                    System.out.println("PlayerTileList = " + player.getTileList().toString());
-                    player.play();
-                    player.setActive(false);
-                    if (player.getMoney() < 0) {
-                        player.setBusted(true);
-                        player.setMoney(0);
-                        for (ITile tile : player.getTileList()) {
-                            tile.setOwner(null);
+                    do {
+                        player.setActive(true);
+                        System.out.println("------------------");
+                        System.out.println(player.getName() + " is playing");
+                        System.out.println("PlayerTileList = " + player.getTileList().toString());
+                        player.play();
+                        player.setActive(false);
+                        if (player.getMoney() < 0) {
+                            player.setBusted(true);
+                            player.setMoney(0);
+                            for (ITile tile : player.getTileList()) {
+                                tile.setOwner(null);
+                            }
                         }
-                    }
-                    System.out.println(playerList);
+                        System.out.println(playerList);
+                    } while (player.isAgain());
                 }
             }
 

@@ -24,6 +24,8 @@ public class Player implements IPlayer {
     private ITile currentTile;
     private int money;
     private boolean busted;
+    private boolean again;
+    private int doubles;
 
     public Player(int aID, String aName) {
         this.setId(aID);
@@ -35,6 +37,7 @@ public class Player implements IPlayer {
         this.setCardList(new CardList());
         this.setTileList(new TileList());
         this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
+        this.setAgain(false);
     }
 
     public boolean isActive() {
@@ -114,11 +117,11 @@ public class Player implements IPlayer {
     public void play() {
         System.out.println("Money: " + getMoney());
         // TODO: use AI
-        int doubles = 0;
         DiceList diceList = Initialize.getInstance().getDiceList();
         RollList rollList = diceList.roll();
-        if (rollList.isDouble()) {
-            doubles++;
+        this.setAgain(rollList.isDouble());
+        if (this.doubles >= 3) {
+            System.out.println("JAIL TIME");
         }
         int diceResult = rollList.getResult();
         System.out.println("Rolled " + diceResult);
@@ -238,7 +241,6 @@ public class Player implements IPlayer {
     }
 
     public boolean hasMunicipality(Player aOwner, Street aStreet) {
-        boolean municipality = false;
         int complete = aStreet.getMunicipality().getSize();
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof Street) {
@@ -293,6 +295,15 @@ public class Player implements IPlayer {
     @Override
     public String toString() {
         return this.getName() + ", " + this.getMoney() + ", " + (this.isBusted() ? "B" : "A");
+    }
+
+    public boolean isAgain() {
+        return again;
+    }
+
+    public void setAgain(boolean aAgain) {
+        this.doubles = aAgain ? ++this.doubles : 0;
+        this.again = aAgain;
     }
 
 }

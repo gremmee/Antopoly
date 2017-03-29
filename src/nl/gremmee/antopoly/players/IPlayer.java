@@ -14,6 +14,8 @@ public interface IPlayer {
 
     public boolean isBusted();
 
+    public boolean isAgain();
+
     public int getMoney();
 
     public void setWinner(boolean aWinner);
