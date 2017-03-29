@@ -7,8 +7,8 @@ import nl.gremmee.antopoly.core.cards.ChanceCardList;
 import nl.gremmee.antopoly.core.cards.ChoiceCard;
 import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
 import nl.gremmee.antopoly.core.cards.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.GotoCard;
+import nl.gremmee.antopoly.core.cards.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.PayCard;
 import nl.gremmee.antopoly.core.cards.RecieveCard;
@@ -287,90 +287,89 @@ public class Initialize {
         System.out.println("Initializing Chance Cards");
         chanceCardList = new ChanceCardList();
         ICard card = new PayCard("Speeding", "Boete voor te snel rijden ƒ 15", 15);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Schoolfee", "Betaal schoolgeld ƒ 150", 150);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Barteljorisstraat",
                 "Ga verder naar Barteljorisstraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                 tileList.getTileByName("Barteljorisstraat"));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto West", "Reis naar station \"West\". Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                 tileList.getTileByName("Station West"));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", tileList.getTileByName("Start"));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Back 3", "Ga drie plaatsen terug", tileList.get(1));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GotoJailCard("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
-                tileList.getTileByName("Naar de gevangenis"));
-        chanceCardList.add(card);
+        card = new GotoJailCard();
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Heerestraat",
                 "Ga verder naar Heerestraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                 tileList.getTileByName("Heerestraat"));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Bank pays", "De bank betaalt u ƒ 50 dividend", 50);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GetOutOfJailCard("Verlaat de gevangenis", "Verlaat de gevangenis zonder te betalen");
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Fix houses", "Repareer uw huizen. Betaal voor elk huis ƒ 25, betaal voor elk hotel ƒ 100",
                 50);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Streettax", "U wordt aangeslagen voor straatgeld. ƒ 40 per huis, ƒ 115 per hotel", 50);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Buildinginsurance", "Uw bouwverzekering vervalt, u ontvangt ƒ 150", 150);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Drunk", "Aangehouden wegens dronkenschap ƒ 20 boete", 20);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Kalverstraat", "Ga verder naar Kalverstraat.",
                 tileList.getTileByName("Kalverstraat"));
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Crossword puzzle", "U hebt een kruiswoordpuzzel gewonnen en ontvangt ƒ 100", 100);
-        chanceCardList.add(card);
+        chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
         System.out.println(chanceCardList);
@@ -381,85 +380,84 @@ public class Initialize {
         System.out.println("Initializing Community Chest Cards");
         communityChestCardList = new CommunityChestCardList();
         ICard card = new RecieveCard("Inherit", "U erft ƒ 100", 100);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Intrest", "U ontvangt rente van 7% preferente aandelen ƒ 25", 25);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Mistake Bank", "Een vergissing van de bank in uw voordeel, u ontvangt ƒ 200", 200);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
                 tileList.getTileByName("Dorpsstraat"));
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GotoJailCard("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200",
-                tileList.getTileByName("Naar de gevangenis"));
-        chanceCardList.add(card);
+        card = new GotoJailCard();
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Birthday", "U bent jarig en ontvangt van iedere speler ƒ 10", 10);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Beauty Contest",
                 "U hebt de tweede prijs in een schoonheidswedstrijd gewonnen en ontvangt ƒ 10", 10);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Doctors bill", "Betaal uw doktersrekening ƒ 50", 50);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Insurace bill", "Betaal uw verzekeringspremie ƒ 50", 50);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Sell stock", "Door verkoop van effecten ontvangt u ƒ 50", 50);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GetOutOfJailCard("Verlaat de gevangenis", "Verlaat de gevangenis zonder te betalen");
-        chanceCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Refund taxws", "Restitutie inkomstenbelasting, u ontvangt ƒ 20", 20);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new RecieveCard("Aannuity", "Lijfrente vervalt, u ontvangt ƒ 100", 100);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new PayCard("Hospital bill", "Betaal het hospitaal ƒ 100", 100);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", tileList.getTileByName("Start"));
-        chanceCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
         card = new ChoiceCard("Choice", "Betaal ƒ 10 boete of neem een Kanskaart", 10);
-        communityChestCardList.add(card);
+        communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 

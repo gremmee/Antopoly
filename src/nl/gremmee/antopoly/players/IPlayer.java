@@ -36,4 +36,6 @@ public interface IPlayer {
 
     public void setInJail(boolean aInJail);
 
+    public ITile getCurrentTile();
+
 }

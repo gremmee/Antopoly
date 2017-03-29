@@ -8,6 +8,6 @@ public class ChanceCardList extends CardList {
     public boolean addRandom(ICard aCard) {
         ICard card = aCard;
         card.setCardType(CardType.CT_Chance);
-        return super.addRandom(aCard);
+        return super.addRandom(card);
     }
 }

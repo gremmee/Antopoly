@@ -8,6 +8,8 @@ public interface ICard {
 
     public CardType getCardType();
 
+    public CardAction getCardAction();
+
     public void setCardType(CardType aCardType);
 
     public void excute(IPlayer aPlayer);

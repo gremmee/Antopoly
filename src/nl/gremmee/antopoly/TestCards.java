@@ -2,14 +2,15 @@ package nl.gremmee.antopoly;
 
 import java.util.Random;
 
-import nl.gremmee.antopoly.core.cards.ChanceCardList;
+import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
 import nl.gremmee.antopoly.core.cards.ICard;
 
 public class TestCards {
 
     public static void main(String[] args) {
         Initialize.getInstance().initializeTileList();
-        ChanceCardList cardList = Initialize.getInstance().initializeChanceCards();
+        // ChanceCardList cardList = Initialize.getInstance().initializeChanceCards();
+        CommunityChestCardList cardList = Initialize.getInstance().initializeCommunityChestCards();
 
         System.out.println(cardList);
         ICard leave = null;

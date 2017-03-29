@@ -56,6 +56,7 @@ public class Antopoly {
                         System.out.println(player.getName() + " is playing");
                         System.out.println("PlayerTileList = " + player.getTileList().toString());
                         System.out.println("CardList = " + player.getCardList().toString());
+                        System.out.println("CurrentTile = " + player.getCurrentTile());
                         player.play();
                         player.setActive(false);
                         if (player.getMoney() < 0) {

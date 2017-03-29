@@ -5,6 +5,7 @@ import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
+import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
@@ -59,7 +60,7 @@ public class Player implements IPlayer {
 
     public boolean hasGetOutOfJailCard() {
         for (ICard card : this.cardList) {
-            if (CardAction.CA_GetOutOfJail.equals(card.getCardType())) {
+            if (CardAction.CA_GetOutOfJail.equals(card.getCardAction())) {
                 return true;
             }
         }
@@ -74,8 +75,14 @@ public class Player implements IPlayer {
         assert hasGetOutOfJailCard() : "Cannot use what you do not have!";
         if (hasGetOutOfJailCard()) {
             for (ICard card : this.cardList) {
-                if (CardAction.CA_GetOutOfJail.equals(card.getCardType())) {
+                if (CardAction.CA_GetOutOfJail.equals(card.getCardAction())) {
                     removeCard(card);
+                    CardType cardType = card.getCardType();
+                    CardList cardList = CardType.CT_Chance.equals(cardType)
+                            ? Initialize.getInstance().getChanceCardList()
+                            : Initialize.getInstance().getCommunityChestCardList();
+                    cardList.putBack(card);
+                    this.setInJail(false);
                     break;
                 }
             }
@@ -122,6 +129,15 @@ public class Player implements IPlayer {
     public void play() {
         System.out.println("Money: " + getMoney());
         // TODO: use AI
+
+        if (this.isInJail()) {
+            // TODO move to cardlist
+            if (hasGetOutOfJailCard()) {
+                useGetOutOfJailCard();
+
+            }
+        }
+
         DiceList diceList = Initialize.getInstance().getDiceList();
         RollList rollList = diceList.roll();
         this.setAgain(rollList.isDouble());
@@ -206,8 +222,8 @@ public class Player implements IPlayer {
         } else if (newTile instanceof GotoJailTile) {
             this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
             this.setInJail(true);
-        }
 
+        }
         System.out.println("Money: " + getMoney());
 
     }

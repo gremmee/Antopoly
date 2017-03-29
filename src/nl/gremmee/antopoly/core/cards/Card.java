@@ -54,7 +54,7 @@ public abstract class Card implements ICard {
 
     @Override
     public String toString() {
-        return this.getName();
+        return ("|" + this.getName() + ", " + this.getCardType() + "|");
     }
 
     @Override
