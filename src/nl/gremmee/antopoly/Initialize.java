@@ -14,6 +14,7 @@ import nl.gremmee.antopoly.core.cards.PayCard;
 import nl.gremmee.antopoly.core.cards.RecieveCard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
+import nl.gremmee.antopoly.core.tiles.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.JailTile;
@@ -21,9 +22,7 @@ import nl.gremmee.antopoly.core.tiles.StartTile;
 import nl.gremmee.antopoly.core.tiles.Station;
 import nl.gremmee.antopoly.core.tiles.Street;
 import nl.gremmee.antopoly.core.tiles.TaxTile;
-import nl.gremmee.antopoly.core.tiles.Tile;
 import nl.gremmee.antopoly.core.tiles.TileList;
-import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.Utility;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.Player;
@@ -182,7 +181,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new Tile(i++, "Vrij parkeren", TileType.TT_FreeParking);
+        tile = new FreeParkingTile(i++);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");

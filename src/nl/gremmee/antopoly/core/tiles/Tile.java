@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.players.Player;
 
-public class Tile implements ITile {
+public abstract class Tile implements ITile {
 
     private String name;
     private int ID;
