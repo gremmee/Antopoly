@@ -17,6 +17,7 @@ import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.JailTile;
+import nl.gremmee.antopoly.core.tiles.StartTile;
 import nl.gremmee.antopoly.core.tiles.Station;
 import nl.gremmee.antopoly.core.tiles.Street;
 import nl.gremmee.antopoly.core.tiles.TaxTile;
@@ -81,7 +82,7 @@ public class Initialize {
         tileList = new TileList();
         int i = 0;
 
-        ITile tile = new Tile(i++, "Start", TileType.TT_Start);
+        ITile tile = new StartTile(i++);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
