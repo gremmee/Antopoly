@@ -6,12 +6,12 @@ public class GotoCard extends Card {
 
     private ITile tile;
 
-    public GotoCard(CardType aCardType, String aName, String aText, ITile aTile) {
-        this(aCardType, CardAction.CA_Goto, aName, aText, aTile);
+    public GotoCard(String aName, String aText, ITile aTile) {
+        this(CardAction.CA_Goto, aName, aText, aTile);
     }
 
-    public GotoCard(CardType aCardType, CardAction aCardAction, String aName, String aText, ITile aTile) {
-        super(aCardType, aCardAction, aName, aText);
+    public GotoCard(CardAction aCardAction, String aName, String aText, ITile aTile) {
+        super(aCardAction, aName, aText);
         this.setTile(aTile);
     }
 

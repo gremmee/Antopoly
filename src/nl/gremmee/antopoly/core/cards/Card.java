@@ -1,5 +1,7 @@
 package nl.gremmee.antopoly.core.cards;
 
+import nl.gremmee.antopoly.players.IPlayer;
+
 public class Card implements ICard {
 
     private String name;
@@ -7,11 +9,14 @@ public class Card implements ICard {
     private CardType cardType;
     private CardAction cardAction;
 
-    public Card(CardType aCardType, CardAction aCardAction, String aName, String aText) {
+    public Card(CardAction aCardAction, String aName, String aText) {
         this.setName(aName);
         this.setText(aText);
-        this.setCardType(aCardType);
         this.setCardAction(aCardAction);
+    }
+
+    public boolean isGetOutOfJailCard() {
+        return CardAction.CA_GetOutOfJail.equals(this.getCardAction());
     }
 
     public String getName() {
@@ -44,6 +49,33 @@ public class Card implements ICard {
 
     public void setCardAction(CardAction aCardAction) {
         this.cardAction = aCardAction;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+
+    @Override
+    public void excute(IPlayer aPlayer) {
+        switch (getCardAction()) {
+            case CA_Pay:
+                PayCard payCard = (PayCard) this;
+
+                int pay = payCard.getValue();
+                System.out.println("Pay " + pay);
+                aPlayer.setMoney(aPlayer.getMoney() - pay);
+                break;
+            case CA_Recieve:
+                RecieveCard card = (RecieveCard) this;
+
+                int receive = card.getValue();
+                System.out.println("Recieve " + receive);
+                aPlayer.setMoney(aPlayer.getMoney() + receive);
+                break;
+            default:
+                break;
+        }
     }
 
 }

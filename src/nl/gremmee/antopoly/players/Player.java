@@ -6,6 +6,8 @@ import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.tiles.ChanceTile;
+import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Property;
 import nl.gremmee.antopoly.core.tiles.Station;
@@ -175,6 +177,27 @@ public class Player implements IPlayer {
             int costs = taxes.getValue();
             this.setMoney(getMoney() - costs);
 
+        } else if (newTile instanceof ChanceTile) {
+            ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
+            System.out.println("Chance " + card.getName());
+            card.excute(this);
+            if (card.isGetOutOfJailCard()) {
+                this.getCardList().add(card);
+                System.out.println("Store Get Out Of Jail Chance");
+            } else {
+                Initialize.getInstance().getChanceCardList().putBack(card);
+            }
+
+        } else if (newTile instanceof CommunityChestTile) {
+            ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
+            System.out.println("Community " + card.getName());
+            card.excute(this);
+            if (card.isGetOutOfJailCard()) {
+                this.getCardList().add(card);
+                System.out.println("Store Get Out Of Jail Community Chest");
+            } else {
+                Initialize.getInstance().getChanceCardList().putBack(card);
+            }
         }
 
         System.out.println("Money: " + getMoney());
@@ -289,6 +312,7 @@ public class Player implements IPlayer {
     }
 
     public void setBusted(boolean aBusted) {
+        setAgain(false);
         this.busted = aBusted;
     }
 

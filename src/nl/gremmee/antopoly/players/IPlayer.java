@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.players;
 
+import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.tiles.TileList;
 
 public interface IPlayer {
@@ -7,6 +8,8 @@ public interface IPlayer {
     public void setActive(boolean aActive);
 
     public TileList getTileList();
+
+    public CardList getCardList();
 
     public String getName();
 
