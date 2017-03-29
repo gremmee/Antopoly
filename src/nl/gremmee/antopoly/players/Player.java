@@ -11,6 +11,7 @@ import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.JailTile;
 import nl.gremmee.antopoly.core.tiles.PropertyTile;
 import nl.gremmee.antopoly.core.tiles.StationTile;
 import nl.gremmee.antopoly.core.tiles.StreetTile;
@@ -245,6 +246,8 @@ public class Player implements IPlayer {
                 this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
                 this.setInJail(true);
 
+            } else if (newTile instanceof JailTile) {
+                System.out.println("Just visiting");
             }
         }
         System.out.println("Money: " + getMoney());
