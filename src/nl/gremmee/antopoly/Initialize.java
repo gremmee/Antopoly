@@ -7,7 +7,7 @@ import nl.gremmee.antopoly.core.cards.ChanceCardList;
 import nl.gremmee.antopoly.core.cards.ChoiceCard;
 import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
 import nl.gremmee.antopoly.core.cards.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.GoDirect;
+import nl.gremmee.antopoly.core.cards.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.GotoCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.PayCard;
@@ -319,7 +319,7 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GoDirect("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
+        card = new GotoJailCard("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
                 tileList.getTileByName("Naar de gevangenis"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");
@@ -401,7 +401,7 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new GoDirect("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200",
+        card = new GotoJailCard("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 200",
                 tileList.getTileByName("Naar de gevangenis"));
         chanceCardList.add(card);
         System.out.print("Creating Card " + card.getName() + "...");

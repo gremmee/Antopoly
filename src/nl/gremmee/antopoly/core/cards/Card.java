@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
-import nl.gremmee.antopoly.Initialize;
+import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public abstract class Card implements ICard {
@@ -68,16 +68,28 @@ public abstract class Card implements ICard {
                 aPlayer.setMoney(aPlayer.getMoney() - pay);
                 break;
             case CA_Recieve:
-                RecieveCard card = (RecieveCard) this;
+                RecieveCard recieveCard = (RecieveCard) this;
 
-                int receive = card.getValue();
+                int receive = recieveCard.getValue();
                 System.out.println("Recieve " + receive);
                 aPlayer.setMoney(aPlayer.getMoney() + receive);
                 break;
-            case CA_GoDirect:
+            case CA_GotoJail:
+                GotoJailCard goDirectCard = (GotoJailCard) this;
+
+                ITile goDirectTile = goDirectCard.getTile();
+
                 System.out.println("Goto Jail");
-                aPlayer.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+                aPlayer.setCurrentTile(goDirectTile);
                 aPlayer.setInJail(true);
+                break;
+            case CA_Goto:
+                GotoCard gotoCard = (GotoCard) this;
+
+                ITile gotoTile = gotoCard.getTile();
+
+                System.out.println("Goto Tile " + gotoTile.getName());
+                aPlayer.setCurrentTile(gotoTile);
                 break;
             default:
                 break;
