@@ -6,9 +6,15 @@ public enum Municipality {
             200), Utrect(3, 100);
 
     private int size;
+    private int housePrice;
 
     private Municipality(int aSize, int aHousePrice) {
         this.size = aSize;
+        this.housePrice = aHousePrice;
+    }
+
+    public int getHousePrice() {
+        return this.housePrice;
     }
 
     public int getSize() {

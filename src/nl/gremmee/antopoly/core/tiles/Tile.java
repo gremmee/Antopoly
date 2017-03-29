@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.players.Player;
 
-public abstract class Tile implements ITile {
+public abstract class Tile implements ITile, Comparable<Tile> {
 
     private String name;
     private int ID;
@@ -14,6 +14,30 @@ public abstract class Tile implements ITile {
         this.setID(aID);
         this.setName(aName);
         this.setTileType(aTileType);
+    }
+
+    @Override
+    public int compareTo(Tile aThat) {
+        final int BEFORE = -1;
+        final int EQUAL = 0;
+        final int AFTER = 1;
+
+        // this optimization is usually worthwhile, and can
+        // always be added
+        if (this == aThat)
+            return EQUAL;
+
+        // primitive numbers follow this form
+        if (this.getID() < aThat.getID())
+            return BEFORE;
+        if (this.getID() > aThat.getID())
+            return AFTER;
+
+        // all comparisons have yielded equality
+        // verify that compareTo is consistent with equals (optional)
+        assert this.equals(aThat) : "compareTo inconsistent with equals.";
+
+        return EQUAL;
     }
 
     public String getName() {

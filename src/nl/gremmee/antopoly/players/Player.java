@@ -1,5 +1,7 @@
 package nl.gremmee.antopoly.players;
 
+import java.util.Collections;
+
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
@@ -12,6 +14,7 @@ import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.JailTile;
+import nl.gremmee.antopoly.core.tiles.MunicipalityList;
 import nl.gremmee.antopoly.core.tiles.PropertyTile;
 import nl.gremmee.antopoly.core.tiles.StationTile;
 import nl.gremmee.antopoly.core.tiles.StreetTile;
@@ -39,7 +42,7 @@ public class Player implements IPlayer {
         this.setActive(false);
         this.setWinner(false);
         this.setBusted(false);
-        this.setMoney(150);
+        this.setMoney(1500);
         this.setName(aName);
         this.setCardList(new CardList());
         this.setTileList(new TileList());
@@ -250,8 +253,47 @@ public class Player implements IPlayer {
                 System.out.println("Just visiting");
             }
         }
+
+        for (ITile tile : this.tileList) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (hasMunicipality(this, street)) {
+                    MunicipalityList municipalityList = getMunicipality(this.tileList, street);
+                    for (StreetTile municipalityTile : municipalityList) {
+                        int housePrice = municipalityTile.getMunicipality().getHousePrice();
+                        if (this.getMoney() > housePrice) {
+                            buyHouse(municipalityTile);
+                        }
+                    }
+                }
+            }
+        }
         System.out.println("Money: " + getMoney());
 
+    }
+
+    private MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
+        MunicipalityList municipalityList = new MunicipalityList();
+        for (ITile tile : aTileList) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+
+                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+
+                    municipalityList.add(street);
+
+                }
+            }
+        }
+        Collections.sort(municipalityList);
+        return municipalityList;
+    }
+
+    private void buyHouse(StreetTile aStreetTile) {
+        if (aStreetTile.getBuildings() < 5) {
+            aStreetTile.buyHouse();
+            this.setMoney(this.getMoney() - aStreetTile.getMunicipality().getHousePrice());
+        }
     }
 
     private void payRent(Player aOwner, StationTile stationTile) {
@@ -306,8 +348,33 @@ public class Player implements IPlayer {
 
     private void payRent(Player aOwner, StreetTile aStreet) {
         System.out.println("PayRent to " + aOwner.getName());
-        int factor = hasMunicipality(aOwner, aStreet) ? 2 : 1;
-        int rentValue = aStreet.getRent() * factor;
+        int rentValue = 0;
+        if (aStreet.getBuildings() == 0) {
+            int factor = hasMunicipality(aOwner, aStreet) ? 2 : 1;
+            rentValue = aStreet.getRent() * factor;
+        } else {
+            switch (aStreet.getBuildings()) {
+                case 1:
+                    rentValue = aStreet.getHouse1();
+                    break;
+                case 2:
+                    rentValue = aStreet.getHouse2();
+                    break;
+                case 3:
+                    rentValue = aStreet.getHouse3();
+                    break;
+                case 4:
+                    rentValue = aStreet.getHouse4();
+                    break;
+                case 5:
+                    rentValue = aStreet.getHotel();
+                    break;
+
+                default:
+                    rentValue = aStreet.getHotel();
+                    break;
+            }
+        }
         aOwner.setMoney(aOwner.getMoney() + rentValue);
         this.setMoney(getMoney() - rentValue);
 
