@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.core.tiles;
 import java.util.Collections;
 
 import nl.gremmee.antopoly.core.Municipality;
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class StreetTile extends PropertyTile {
 
@@ -27,9 +27,9 @@ public class StreetTile extends PropertyTile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
+    public void execute(IPlayer aCurrent) {
         System.out.println("Street");
-        Player owner = this.getOwner();
+        IPlayer owner = this.getOwner();
         if (owner == null) {
             buyProperty(aCurrent);
         } else {
@@ -52,7 +52,7 @@ public class StreetTile extends PropertyTile {
         }
     }
 
-    private void buyHouse(Player aCurrent) {
+    private void buyHouse(IPlayer aCurrent) {
         if (this.getBuildings() < 5) {
             this.buyHouse();
             aCurrent.setMoney(aCurrent.getMoney() - this.getMunicipality().getHousePrice());
@@ -138,7 +138,7 @@ public class StreetTile extends PropertyTile {
         return this.building;
     }
 
-    private void payRent(Player aCurrent, Player aOwner) {
+    private void payRent(IPlayer aCurrent, IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int rentValue = 0;
         if (this.getBuildings() == 0) {
@@ -171,7 +171,7 @@ public class StreetTile extends PropertyTile {
         aCurrent.setMoney(aCurrent.getMoney() - rentValue);
     }
 
-    private boolean hasMunicipality(Player aOwner, StreetTile aStreet) {
+    private boolean hasMunicipality(IPlayer aOwner, StreetTile aStreet) {
         int complete = aStreet.getMunicipality().getSize();
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof StreetTile) {

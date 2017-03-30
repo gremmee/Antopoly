@@ -12,7 +12,7 @@ public interface ICard {
 
     public void setCardType(CardType aCardType);
 
-    public void excute(IPlayer aPlayer);
+    public boolean excute(IPlayer aPlayer);
 
     public boolean isGetOutOfJailCard();
 

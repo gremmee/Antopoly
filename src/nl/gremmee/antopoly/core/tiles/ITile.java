@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public interface ITile {
 
@@ -8,8 +8,6 @@ public interface ITile {
 
     public int getID();
 
-    // public void setOwner(Player aOwner);
-
-    public void execute(Player aCurrent);
+    public void execute(IPlayer aCurrent);
 
 }

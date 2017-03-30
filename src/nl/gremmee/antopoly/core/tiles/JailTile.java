@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class JailTile extends Tile {
 
@@ -9,8 +9,13 @@ public class JailTile extends Tile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
-        System.out.println("Just visiting");
+    public void execute(IPlayer aCurrent) {
+        if (!aCurrent.isInJail()) {
+            System.out.println("Just visiting");
+
+        } else {
+            System.out.println("Locked up!");
+        }
 
     }
 

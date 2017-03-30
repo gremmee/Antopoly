@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class StationTile extends PropertyTile {
 
@@ -14,9 +14,9 @@ public class StationTile extends PropertyTile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
+    public void execute(IPlayer aCurrent) {
         System.out.println("Station");
-        Player owner = this.getOwner();
+        IPlayer owner = this.getOwner();
         if (owner == null) {
             buyProperty(aCurrent);
         } else {
@@ -25,7 +25,7 @@ public class StationTile extends PropertyTile {
 
     }
 
-    private void payRent(Player aCurrent, Player aOwner) {
+    private void payRent(IPlayer aCurrent, IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int costs = 0;
         int numStations = numberOwnedStations(aOwner);
@@ -47,7 +47,7 @@ public class StationTile extends PropertyTile {
         aCurrent.setMoney(aCurrent.getMoney() - costs);
     }
 
-    public int numberOwnedStations(Player aOwner) {
+    public int numberOwnedStations(IPlayer aOwner) {
         int owned = 0;
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof StationTile) {

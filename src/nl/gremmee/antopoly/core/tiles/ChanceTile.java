@@ -2,7 +2,7 @@ package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.cards.ICard;
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class ChanceTile extends Tile {
 
@@ -11,15 +11,11 @@ public class ChanceTile extends Tile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
+    public void execute(IPlayer aCurrent) {
         System.out.println(Initialize.getInstance().getChanceCardList());
         ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
         System.out.println("Chance " + card.getName());
-        card.excute(aCurrent);
-        if (card.isGetOutOfJailCard()) {
-            aCurrent.getCardList().add(card);
-            System.out.println("Store Get Out Of Jail Chance");
-        } else {
+        if (!card.excute(aCurrent)) {
             Initialize.getInstance().getChanceCardList().putBack(card);
         }
 

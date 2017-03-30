@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.players;
 
+import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileList;
@@ -42,4 +43,5 @@ public interface IPlayer {
 
     public int getHotels();
 
+    public RollList getRollList();
 }

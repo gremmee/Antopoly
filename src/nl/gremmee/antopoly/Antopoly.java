@@ -11,7 +11,7 @@ import nl.gremmee.antopoly.players.PlayerList;
 
 public class Antopoly {
     private static final int NUM_DICE = 2;
-    private static final int NUM_PLAYERS = 8;
+    private static final int NUM_PLAYERS = 6;
     private static DiceList diceList;
     private static ChanceCardList chanceCardList;
     private static CommunityChestCardList communityChestCardList;
@@ -80,6 +80,8 @@ public class Antopoly {
         } while (playerList.getWinner() == null);
         IPlayer winner = playerList.getWinner();
         System.out.println("Winner: " + winner.getName());
+        System.out.println(winner.getTileList());
+        System.out.println("Money " + winner.getMoney());
         System.out.println("Done!");
     }
 

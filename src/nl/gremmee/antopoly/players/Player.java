@@ -166,8 +166,6 @@ public class Player implements IPlayer {
 
             int id = this.currentTile.getID();
             int calculatedResult = id + diceResult;
-            System.out.println(id);
-            System.out.println(calculatedResult);
             if (calculatedResult >= 40) {
                 // pass Start
                 System.out.println("Pass start");
@@ -175,7 +173,7 @@ public class Player implements IPlayer {
             }
             int newID = calculatedResult % 40;
 
-            System.out.println(id + ", " + newID);
+            System.out.println(id + " => " + newID);
             System.out.println(Initialize.getInstance().getTileList());
             ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
             System.out.println("Goto : " + newTile.getName());
@@ -185,6 +183,7 @@ public class Player implements IPlayer {
         }
 
         System.out.println("Money: " + getMoney());
+        this.rollList = null;
 
     }
 

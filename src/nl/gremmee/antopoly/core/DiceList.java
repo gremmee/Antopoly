@@ -21,7 +21,7 @@ public class DiceList extends ArrayList<Die> {
         for (int i = 0; i < this.size(); i++) {
             Long roll = this.get(i).roll();
             rollList.add(roll);
-            System.out.print(roll.intValue());
+            System.out.print(roll.intValue() + " ");
         }
         System.out.println();
         return rollList;

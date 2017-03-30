@@ -1,11 +1,11 @@
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public abstract class PropertyTile extends Tile {
 
     private int value;
-    private Player owner;
+    private IPlayer owner;
 
     public PropertyTile(int aID, String aName, TileType aTileType, int aValue) {
         super(aID, aName, aTileType);
@@ -21,15 +21,15 @@ public abstract class PropertyTile extends Tile {
         this.value = aValue;
     }
 
-    public Player getOwner() {
+    public IPlayer getOwner() {
         return owner;
     }
 
-    public void setOwner(Player aOwner) {
+    public void setOwner(IPlayer aOwner) {
         this.owner = aOwner;
     }
 
-    protected void buyProperty(Player aCurrent) {
+    protected void buyProperty(IPlayer aCurrent) {
         System.out.println("Buy Property " + this.getName());
         int value = this.getValue();
         if (aCurrent.getMoney() > value) {

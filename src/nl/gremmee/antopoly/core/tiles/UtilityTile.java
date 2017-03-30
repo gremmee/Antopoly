@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class UtilityTile extends PropertyTile {
 
@@ -12,9 +12,9 @@ public class UtilityTile extends PropertyTile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
+    public void execute(IPlayer aCurrent) {
         System.out.println("Utility");
-        Player owner = this.getOwner();
+        IPlayer owner = this.getOwner();
         if (owner == null) {
             buyProperty(aCurrent);
         } else {
@@ -23,7 +23,7 @@ public class UtilityTile extends PropertyTile {
 
     }
 
-    private void payRent(Player aCurrent, Player aOwner) {
+    private void payRent(IPlayer aCurrent, IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
         int diceResult = aCurrent.getRollList().getResult();
@@ -32,7 +32,7 @@ public class UtilityTile extends PropertyTile {
         aCurrent.setMoney(aCurrent.getMoney() - costs);
     }
 
-    public boolean hasBothUtilities(Player aOwner) {
+    public boolean hasBothUtilities(IPlayer aOwner) {
         int utilities = 0;
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof UtilityTile) {

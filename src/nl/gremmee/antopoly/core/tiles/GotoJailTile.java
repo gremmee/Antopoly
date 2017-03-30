@@ -1,7 +1,7 @@
 package nl.gremmee.antopoly.core.tiles;
 
 import nl.gremmee.antopoly.Initialize;
-import nl.gremmee.antopoly.players.Player;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class GotoJailTile extends Tile {
 
@@ -10,7 +10,7 @@ public class GotoJailTile extends Tile {
     }
 
     @Override
-    public void execute(Player aCurrent) {
+    public void execute(IPlayer aCurrent) {
         aCurrent.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
         aCurrent.setInJail(true);
     }

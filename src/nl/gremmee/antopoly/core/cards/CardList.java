@@ -9,13 +9,11 @@ public class CardList extends ArrayList<ICard> {
 
     public boolean addRandom(ICard aCard) {
         int size = this.size();
-        System.out.println(size);
         if (size == 0) {
             return super.add(aCard);
         }
         Random random = new Random();
         int r = random.nextInt(size);
-        System.out.println(r);
         super.add(r, aCard);
         return true;
     }
