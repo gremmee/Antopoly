@@ -7,7 +7,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class ChoiceCard extends PayCard {
 
     public ChoiceCard(String aName, String aText, int aValue) {
-        super(CardAction.CA_Choice, aName, aText, aValue);
+        super(aName, aText, aValue);
     }
 
     @Override

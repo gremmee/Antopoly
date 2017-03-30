@@ -4,9 +4,9 @@ import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
-import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.CardType;
+import nl.gremmee.antopoly.core.cards.GetOutOfJailCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.StreetTile;
@@ -59,7 +59,7 @@ public class Player implements IPlayer {
 
     public boolean hasGetOutOfJailCard() {
         for (ICard card : this.cardList) {
-            if (CardAction.CA_GetOutOfJail.equals(card.getCardAction())) {
+            if (card instanceof GetOutOfJailCard) {
                 return true;
             }
         }
@@ -74,7 +74,7 @@ public class Player implements IPlayer {
         assert hasGetOutOfJailCard() : "Cannot use what you do not have!";
         if (hasGetOutOfJailCard()) {
             for (ICard card : this.cardList) {
-                if (CardAction.CA_GetOutOfJail.equals(card.getCardAction())) {
+                if (card instanceof GetOutOfJailCard) {
                     removeCard(card);
                     CardType cardType = card.getCardType();
                     CardList cardList = CardType.CT_Chance.equals(cardType)

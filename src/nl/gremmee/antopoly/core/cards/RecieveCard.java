@@ -6,7 +6,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class RecieveCard extends ValueCard {
 
     public RecieveCard(String aName, String aText, int aValue) {
-        super(CardAction.CA_Recieve, aName, aText, aValue);
+        super(aName, aText, aValue);
     }
 
     @Override

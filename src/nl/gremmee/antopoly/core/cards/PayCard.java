@@ -6,11 +6,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class PayCard extends ValueCard {
 
     public PayCard(String aName, String aText, int aValue) {
-        this(CardAction.CA_Pay, aName, aText, aValue);
-    }
-
-    public PayCard(CardAction aCardAction, String aName, String aText, int aValue) {
-        super(aCardAction, aName, aText, aValue);
+        super(aName, aText, aValue);
     }
 
     @Override

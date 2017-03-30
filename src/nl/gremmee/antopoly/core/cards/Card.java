@@ -7,16 +7,14 @@ public abstract class Card implements ICard {
     private String name;
     private String text;
     private CardType cardType;
-    private CardAction cardAction;
 
-    public Card(CardAction aCardAction, String aName, String aText) {
+    public Card(String aName, String aText) {
         this.setName(aName);
         this.setText(aText);
-        this.setCardAction(aCardAction);
     }
 
     public boolean isGetOutOfJailCard() {
-        return CardAction.CA_GetOutOfJail.equals(this.getCardAction());
+        return this instanceof GetOutOfJailCard;
     }
 
     public String getName() {
@@ -41,14 +39,6 @@ public abstract class Card implements ICard {
 
     public void setCardType(CardType aCardType) {
         this.cardType = aCardType;
-    }
-
-    public CardAction getCardAction() {
-        return cardAction;
-    }
-
-    public void setCardAction(CardAction aCardAction) {
-        this.cardAction = aCardAction;
     }
 
     @Override

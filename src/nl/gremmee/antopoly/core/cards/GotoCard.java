@@ -9,11 +9,7 @@ public class GotoCard extends Card {
     private ITile tile;
 
     public GotoCard(String aName, String aText, ITile aTile) {
-        this(CardAction.CA_Goto, aName, aText, aTile);
-    }
-
-    public GotoCard(CardAction aCardAction, String aName, String aText, ITile aTile) {
-        super(aCardAction, aName, aText);
+        super(aName, aText);
         this.setTile(aTile);
     }
 

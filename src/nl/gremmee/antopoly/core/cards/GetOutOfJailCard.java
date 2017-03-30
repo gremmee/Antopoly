@@ -5,7 +5,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class GetOutOfJailCard extends Card {
 
     public GetOutOfJailCard(String aName, String aText) {
-        super(CardAction.CA_GetOutOfJail, aName, aText);
+        super(aName, aText);
     }
 
     @Override

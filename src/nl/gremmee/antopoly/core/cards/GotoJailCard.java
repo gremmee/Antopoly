@@ -7,8 +7,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class GotoJailCard extends GotoCard {
 
     public GotoJailCard() {
-        super(CardAction.CA_GotoJail, "Goto Jail",
-                "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
+        super("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
                 Initialize.getInstance().getTileList().getTileByName("Jail"));
     }
 

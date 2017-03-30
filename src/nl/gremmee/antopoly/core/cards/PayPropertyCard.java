@@ -9,7 +9,7 @@ public class PayPropertyCard extends Card {
     private int perHotel;
 
     public PayPropertyCard(String aName, String aText, int aPerHouse, int aPerHotel) {
-        super(CardAction.CA_PayProperty, aName, aText);
+        super(aName, aText);
         this.setPerHouse(aPerHouse);
         this.setPerHotel(aPerHotel);
     }

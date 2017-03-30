@@ -3,8 +3,8 @@ package nl.gremmee.antopoly.core.cards;
 public abstract class ValueCard extends Card {
     private int value;
 
-    public ValueCard(CardAction aCardAction, String aName, String aText, int aValue) {
-        super(aCardAction, aName, aText);
+    public ValueCard(String aName, String aText, int aValue) {
+        super(aName, aText);
         this.setValue(aValue);
     }
 
