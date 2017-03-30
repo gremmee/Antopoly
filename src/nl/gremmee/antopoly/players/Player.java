@@ -2,6 +2,7 @@ package nl.gremmee.antopoly.players;
 
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Money;
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardList;
@@ -9,6 +10,7 @@ import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.GetOutOfJailCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.MunicipalityList;
 import nl.gremmee.antopoly.core.tiles.StreetTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 
@@ -182,11 +184,35 @@ public class Player implements IPlayer {
             setCurrentTile(newTile);
 
             newTile.execute(this);
+
+            // Try to buy houses
+            for (ITile tile : this.getTileList()) {
+                if (tile instanceof StreetTile) {
+                    StreetTile street = (StreetTile) tile;
+                    if (street.hasMunicipality(this, street)) {
+                        MunicipalityList municipalityList = street.getMunicipality(this.getTileList(), street);
+                        for (StreetTile municipalityTile : municipalityList) {
+                            int housePrice = municipalityTile.getMunicipality().getHousePrice();
+                            if (this.getMoney() > housePrice) {
+                                buyHouse(municipalityTile);
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         System.out.println("Money: " + getMoney());
         this.rollList = null;
 
+    }
+
+    private void buyHouse(StreetTile aStreet) {
+        if (aStreet.getBuildings() < 5) {
+            aStreet.buyHouse();
+            this.setMoney(this.getMoney() - (aStreet.getMunicipality().getHousePrice() * Settings.MONEY_FACTOR));
+        }
     }
 
     public ITile getCurrentTile() {

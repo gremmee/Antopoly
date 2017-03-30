@@ -37,27 +37,6 @@ public class StreetTile extends PropertyTile {
             payRent(aCurrent, owner);
         }
 
-        for (ITile tile : aCurrent.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (hasMunicipality(aCurrent, this)) {
-                    MunicipalityList municipalityList = getMunicipality(aCurrent.getTileList(), street);
-                    for (StreetTile municipalityTile : municipalityList) {
-                        int housePrice = municipalityTile.getMunicipality().getHousePrice();
-                        if (aCurrent.getMoney() > housePrice) {
-                            buyHouse(aCurrent);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void buyHouse(IPlayer aCurrent) {
-        if (this.getBuildings() < 5) {
-            this.buyHouse();
-            aCurrent.setMoney(aCurrent.getMoney() - (this.getMunicipality().getHousePrice() * Settings.MONEY_FACTOR));
-        }
     }
 
     public int build(int aNumBuildings) {
@@ -173,7 +152,7 @@ public class StreetTile extends PropertyTile {
         aCurrent.setMoney(aCurrent.getMoney() - rentValue);
     }
 
-    private boolean hasMunicipality(IPlayer aOwner, StreetTile aStreet) {
+    public boolean hasMunicipality(IPlayer aOwner, StreetTile aStreet) {
         int complete = aStreet.getMunicipality().getSize();
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof StreetTile) {
@@ -186,7 +165,7 @@ public class StreetTile extends PropertyTile {
         return (complete == 0);
     }
 
-    private MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
+    public MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
         MunicipalityList municipalityList = new MunicipalityList();
         for (ITile tile : aTileList) {
             if (tile instanceof StreetTile) {
