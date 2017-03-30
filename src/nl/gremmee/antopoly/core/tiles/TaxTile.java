@@ -16,7 +16,7 @@ public class TaxTile extends Tile {
         return value;
     }
 
-    public void setValue(int aValue) {
+    private void setValue(int aValue) {
         this.value = aValue;
     }
 

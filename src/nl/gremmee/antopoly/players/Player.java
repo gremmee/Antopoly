@@ -39,7 +39,6 @@ public class Player implements IPlayer {
         this.setName(aName);
         this.setCardList(new CardList());
         this.setTileList(new TileList());
-        this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         this.setAgain(false);
         this.setInJail(false);
         this.rollList = null;

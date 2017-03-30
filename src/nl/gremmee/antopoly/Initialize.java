@@ -70,6 +70,7 @@ public class Initialize {
         for (int i = 0; i < aNumPlayers; i++) {
             System.out.print("Creating Player " + (i + 1) + "...");
             IPlayer player = new Player(i + 1, "Player " + (i + 1));
+            player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
             playerList.add(player);
             System.out.println("[OK]");
             repaint("Creating Player " + (i + 1) + "...");
