@@ -10,8 +10,6 @@ import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.PlayerList;
 
 public class Antopoly {
-    private static final int NUM_DICE = 2;
-    private static final int NUM_PLAYERS = 6;
     private static DiceList diceList;
     private static ChanceCardList chanceCardList;
     private static CommunityChestCardList communityChestCardList;
@@ -33,7 +31,7 @@ public class Antopoly {
 
     public static void initialize() {
         Initialize.getInstance();
-        diceList = Initialize.getInstance().initializeDice(NUM_DICE);
+        diceList = Initialize.getInstance().initializeDice(Settings.NUM_DICE);
         int max = diceList.size();
         tileList = Initialize.getInstance().initializeTileList();
         max += tileList.size();
@@ -41,7 +39,7 @@ public class Antopoly {
         max += chanceCardList.size();
         communityChestCardList = Initialize.getInstance().initializeCommunityChestCards();
         max += communityChestCardList.size();
-        playerList = Initialize.getInstance().initializePlayers(NUM_PLAYERS);
+        playerList = Initialize.getInstance().initializePlayers(Settings.NUM_PLAYERS);
         max += playerList.size();
 
     }

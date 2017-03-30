@@ -1,13 +1,14 @@
 package nl.gremmee.antopoly.core.tiles;
 
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class StationTile extends PropertyTile {
 
-    public static final int PRICE_ONE = 25;
-    public static final int PRICE_TWO = 50;
-    public static final int PRICE_THREE = 100;
-    public static final int PRICE_FOUR = 200;
+    private static final int RENT_ONE = 25;
+    private static final int RENT_TWO = 50;
+    private static final int RENT_THREE = 100;
+    private static final int RENT_FOUR = 200;
 
     public StationTile(int aID, String aName) {
         super(aID, aName, TileType.TT_Station, 200);
@@ -31,18 +32,19 @@ public class StationTile extends PropertyTile {
         int numStations = numberOwnedStations(aOwner);
         switch (numStations) {
             case 1:
-                costs = StationTile.PRICE_ONE;
+                costs = StationTile.RENT_ONE;
                 break;
             case 2:
-                costs = StationTile.PRICE_TWO;
+                costs = StationTile.RENT_TWO;
                 break;
             case 3:
-                costs = StationTile.PRICE_THREE;
+                costs = StationTile.RENT_THREE;
                 break;
             case 4:
-                costs = StationTile.PRICE_FOUR;
+                costs = StationTile.RENT_FOUR;
                 break;
         }
+        costs *= Settings.MONEY_FACTOR;
         aOwner.setMoney(aOwner.getMoney() + costs);
         aCurrent.setMoney(aCurrent.getMoney() - costs);
     }

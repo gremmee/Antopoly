@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.players;
 
 import nl.gremmee.antopoly.Initialize;
+import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
 import nl.gremmee.antopoly.core.cards.CardAction;
@@ -32,7 +33,7 @@ public class Player implements IPlayer {
         this.setActive(false);
         this.setWinner(false);
         this.setBusted(false);
-        this.setMoney(1500);
+        this.setMoney(Money.PRICE_INITIAL_MONEY);
         this.setName(aName);
         this.setCardList(new CardList());
         this.setTileList(new TileList());
@@ -144,8 +145,8 @@ public class Player implements IPlayer {
                     if (this.jailBreak >= 2) {
                         this.jailBreak = 0;
                         this.setInJail(false);
-                        this.setMoney(this.getMoney() - 50);
-                        System.out.println("Pay 50 to get out of jail");
+                        this.setMoney(this.getMoney() - Money.PRICE_GET_OUT_OF_JAIL);
+                        System.out.println("Pay to get out of jail " + Money.PRICE_GET_OUT_OF_JAIL);
                     } else {
                         this.jailBreak++;
                     }
@@ -166,12 +167,13 @@ public class Player implements IPlayer {
 
             int id = this.currentTile.getID();
             int calculatedResult = id + diceResult;
-            if (calculatedResult >= 40) {
+
+            if (calculatedResult >= Initialize.getInstance().getTileList().size()) {
                 // pass Start
                 System.out.println("Pass start");
-                this.setMoney(this.getMoney() + 200);
+                this.setMoney(this.getMoney() + Money.PRICE_PASS_START);
             }
-            int newID = calculatedResult % 40;
+            int newID = calculatedResult % Initialize.getInstance().getTileList().size();
 
             System.out.println(id + " => " + newID);
             System.out.println(Initialize.getInstance().getTileList());

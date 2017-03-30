@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
+import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -36,8 +37,8 @@ public class GotoCard extends Card {
         System.out.println(currentTileId + " -> " + newTileID);
 
         if (newTileID < currentTileId) {
-            System.out.println("Pass start get 200");
-            aPlayer.setMoney(aPlayer.getMoney() + 200);
+            System.out.println("Pass start get " + Money.PRICE_PASS_START);
+            aPlayer.setMoney(aPlayer.getMoney() + Money.PRICE_PASS_START);
         }
 
         gotoTile.execute(aPlayer);

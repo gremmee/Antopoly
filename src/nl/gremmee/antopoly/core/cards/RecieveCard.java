@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class RecieveCard extends ValueCard {
@@ -10,7 +11,7 @@ public class RecieveCard extends ValueCard {
 
     @Override
     public boolean excute(IPlayer aPlayer) {
-        int receive = this.getValue();
+        int receive = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Recieve " + receive);
         aPlayer.setMoney(aPlayer.getMoney() + receive);
         return super.excute(aPlayer);

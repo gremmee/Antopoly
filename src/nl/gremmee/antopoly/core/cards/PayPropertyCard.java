@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class PayPropertyCard extends Card {
@@ -37,7 +38,7 @@ public class PayPropertyCard extends Card {
         int houseCosts = this.getPerHouse() * houses;
         int hotelCosts = this.getPerHotel() * hotels;
 
-        int totalCosts = houseCosts + hotelCosts;
+        int totalCosts = (houseCosts + hotelCosts) * Settings.MONEY_FACTOR;
         System.out.println("Pay " + totalCosts);
         aPlayer.setMoney(aPlayer.getMoney() - totalCosts);
         return super.excute(aPlayer);

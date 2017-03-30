@@ -2,6 +2,7 @@ package nl.gremmee.antopoly.core.tiles;
 
 import java.util.Collections;
 
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.Municipality;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -55,7 +56,7 @@ public class StreetTile extends PropertyTile {
     private void buyHouse(IPlayer aCurrent) {
         if (this.getBuildings() < 5) {
             this.buyHouse();
-            aCurrent.setMoney(aCurrent.getMoney() - this.getMunicipality().getHousePrice());
+            aCurrent.setMoney(aCurrent.getMoney() - (this.getMunicipality().getHousePrice() * Settings.MONEY_FACTOR));
         }
     }
 
@@ -167,6 +168,7 @@ public class StreetTile extends PropertyTile {
                     break;
             }
         }
+        rentValue *= Settings.MONEY_FACTOR;
         aOwner.setMoney(aOwner.getMoney() + rentValue);
         aCurrent.setMoney(aCurrent.getMoney() - rentValue);
     }
