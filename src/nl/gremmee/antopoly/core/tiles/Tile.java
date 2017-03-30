@@ -1,14 +1,11 @@
 
 package nl.gremmee.antopoly.core.tiles;
 
-import nl.gremmee.antopoly.players.Player;
-
 public abstract class Tile implements ITile, Comparable<Tile> {
 
     private String name;
     private int ID;
     private TileType tileType;
-    private Player owner;
 
     public Tile(int aID, String aName, TileType aTileType) {
         this.setID(aID);
@@ -62,14 +59,6 @@ public abstract class Tile implements ITile, Comparable<Tile> {
 
     public void setTileType(TileType tileType) {
         this.tileType = tileType;
-    }
-
-    public Player getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Player aOwner) {
-        this.owner = aOwner;
     }
 
     @Override

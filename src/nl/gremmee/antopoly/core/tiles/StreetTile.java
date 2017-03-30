@@ -1,6 +1,9 @@
 package nl.gremmee.antopoly.core.tiles;
 
+import java.util.Collections;
+
 import nl.gremmee.antopoly.core.Municipality;
+import nl.gremmee.antopoly.players.Player;
 
 public class StreetTile extends PropertyTile {
 
@@ -21,6 +24,39 @@ public class StreetTile extends PropertyTile {
         this.setHouse4(aHouse4);
         this.setHotel(aHotel);
         this.building = 0;
+    }
+
+    @Override
+    public void execute(Player aCurrent) {
+        System.out.println("Street");
+        Player owner = this.getOwner();
+        if (owner == null) {
+            buyProperty(aCurrent);
+        } else {
+            payRent(aCurrent, owner);
+        }
+
+        for (ITile tile : aCurrent.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (hasMunicipality(aCurrent, this)) {
+                    MunicipalityList municipalityList = getMunicipality(aCurrent.getTileList(), street);
+                    for (StreetTile municipalityTile : municipalityList) {
+                        int housePrice = municipalityTile.getMunicipality().getHousePrice();
+                        if (aCurrent.getMoney() > housePrice) {
+                            buyHouse(aCurrent);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void buyHouse(Player aCurrent) {
+        if (this.getBuildings() < 5) {
+            this.buyHouse();
+            aCurrent.setMoney(aCurrent.getMoney() - this.getMunicipality().getHousePrice());
+        }
     }
 
     public int build(int aNumBuildings) {
@@ -100,6 +136,69 @@ public class StreetTile extends PropertyTile {
 
     public int getBuildings() {
         return this.building;
+    }
+
+    private void payRent(Player aCurrent, Player aOwner) {
+        System.out.println("PayRent to " + aOwner.getName());
+        int rentValue = 0;
+        if (this.getBuildings() == 0) {
+            int factor = hasMunicipality(aOwner, this) ? 2 : 1;
+            rentValue = this.getRent() * factor;
+        } else {
+            switch (this.getBuildings()) {
+                case 1:
+                    rentValue = this.getHouse1();
+                    break;
+                case 2:
+                    rentValue = this.getHouse2();
+                    break;
+                case 3:
+                    rentValue = this.getHouse3();
+                    break;
+                case 4:
+                    rentValue = this.getHouse4();
+                    break;
+                case 5:
+                    rentValue = this.getHotel();
+                    break;
+
+                default:
+                    rentValue = this.getHotel();
+                    break;
+            }
+        }
+        aOwner.setMoney(aOwner.getMoney() + rentValue);
+        aCurrent.setMoney(aCurrent.getMoney() - rentValue);
+    }
+
+    private boolean hasMunicipality(Player aOwner, StreetTile aStreet) {
+        int complete = aStreet.getMunicipality().getSize();
+        for (ITile tile : aOwner.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile streetTile = (StreetTile) tile;
+                if (streetTile.getMunicipality().equals(aStreet.getMunicipality())) {
+                    complete--;
+                }
+            }
+        }
+        return (complete == 0);
+    }
+
+    private MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
+        MunicipalityList municipalityList = new MunicipalityList();
+        for (ITile tile : aTileList) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+
+                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+
+                    municipalityList.add(street);
+
+                }
+            }
+        }
+        Collections.sort(municipalityList);
+        return municipalityList;
     }
 
 }

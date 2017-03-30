@@ -1,5 +1,7 @@
 package nl.gremmee.antopoly.core.tiles;
 
+import nl.gremmee.antopoly.players.Player;
+
 public class TaxTile extends Tile {
 
     private int value;
@@ -15,6 +17,14 @@ public class TaxTile extends Tile {
 
     public void setValue(int aValue) {
         this.value = aValue;
+    }
+
+    @Override
+    public void execute(Player aCurrent) {
+        int costs = this.getValue();
+        System.out.println("Tax " + costs);
+        aCurrent.setMoney(aCurrent.getMoney() - costs);
+
     }
 
 }

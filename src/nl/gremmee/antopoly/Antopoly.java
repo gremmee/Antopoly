@@ -4,6 +4,7 @@ import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.cards.ChanceCardList;
 import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.PropertyTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.PlayerList;
@@ -63,7 +64,10 @@ public class Antopoly {
                             player.setBusted(true);
                             player.setMoney(0);
                             for (ITile tile : player.getTileList()) {
-                                tile.setOwner(null);
+                                if (tile instanceof PropertyTile) {
+                                    PropertyTile propertyTile = (PropertyTile) tile;
+                                    propertyTile.setOwner(null);
+                                }
                             }
                         }
                         System.out.println(playerList);

@@ -1,7 +1,5 @@
 package nl.gremmee.antopoly.players;
 
-import java.util.Collections;
-
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.DiceList;
 import nl.gremmee.antopoly.core.RollList;
@@ -9,18 +7,8 @@ import nl.gremmee.antopoly.core.cards.CardAction;
 import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
-import nl.gremmee.antopoly.core.tiles.ChanceTile;
-import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
-import nl.gremmee.antopoly.core.tiles.GotoJailTile;
 import nl.gremmee.antopoly.core.tiles.ITile;
-import nl.gremmee.antopoly.core.tiles.JailTile;
-import nl.gremmee.antopoly.core.tiles.MunicipalityList;
-import nl.gremmee.antopoly.core.tiles.PropertyTile;
-import nl.gremmee.antopoly.core.tiles.StationTile;
-import nl.gremmee.antopoly.core.tiles.StreetTile;
-import nl.gremmee.antopoly.core.tiles.TaxTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
-import nl.gremmee.antopoly.core.tiles.UtilityTile;
 
 public class Player implements IPlayer {
     private CardList cardList;
@@ -36,6 +24,7 @@ public class Player implements IPlayer {
     private int doubles;
     private boolean inJail;
     private int jailBreak;
+    private RollList rollList;
 
     public Player(int aID, String aName) {
         this.setId(aID);
@@ -49,6 +38,7 @@ public class Player implements IPlayer {
         this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         this.setAgain(false);
         this.setInJail(false);
+        this.rollList = null;
         this.doubles = 0;
         this.jailBreak = 0;
     }
@@ -137,7 +127,7 @@ public class Player implements IPlayer {
     public void play() {
         System.out.println("Money: " + getMoney());
         // TODO: use AI
-        RollList rollList = null;
+
         // Getting out of jail
         if (this.isInJail()) {
             // TODO move to cardlist
@@ -146,8 +136,8 @@ public class Player implements IPlayer {
 
             } else {
                 DiceList diceList = Initialize.getInstance().getDiceList();
-                rollList = diceList.roll();
-                if (rollList.isDouble()) {
+                this.rollList = diceList.roll();
+                if (this.rollList.isDouble()) {
                     this.setInJail(false);
                 } else {
                     if (this.jailBreak >= 2) {
@@ -162,15 +152,15 @@ public class Player implements IPlayer {
             }
         }
         if (!this.isInJail()) {
-            if (rollList == null) {
+            if (this.rollList == null) {
                 DiceList diceList = Initialize.getInstance().getDiceList();
-                rollList = diceList.roll();
-                this.setAgain(rollList.isDouble());
+                this.rollList = diceList.roll();
+                this.setAgain(this.rollList.isDouble());
                 if (this.doubles >= 3) {
                     System.out.println("JAIL TIME");
                 }
             }
-            int diceResult = rollList.getResult();
+            int diceResult = this.rollList.getResult();
             System.out.println("Rolled " + diceResult);
 
             int id = this.currentTile.getID();
@@ -190,221 +180,12 @@ public class Player implements IPlayer {
             System.out.println("Goto : " + newTile.getName());
             setCurrentTile(newTile);
 
-            if (newTile instanceof PropertyTile) {
-                System.out.println("Property");
-                PropertyTile propertyTile = (PropertyTile) newTile;
-                Player owner = propertyTile.getOwner();
-                if (owner == null) {
-                    buyProperty(propertyTile);
+            newTile.execute(this);
 
-                } else if (owner.equals(this)) {
-                    // My tile, do nothing
-
-                } else {
-                    if (propertyTile instanceof StreetTile) {
-                        System.out.println("Street");
-                        StreetTile streetTile = (StreetTile) propertyTile;
-                        payRent(owner, streetTile);
-                    } else if (propertyTile instanceof UtilityTile) {
-                        System.out.println("Utility");
-                        UtilityTile utilityTile = (UtilityTile) propertyTile;
-                        payRent(owner, utilityTile, diceResult);
-                    } else if (propertyTile instanceof StationTile) {
-                        System.out.println("Station");
-                        StationTile stationTile = (StationTile) propertyTile;
-                        payRent(owner, stationTile);
-                    }
-
-                }
-            } else if (newTile instanceof TaxTile) {
-                System.out.println("Tax");
-                TaxTile taxes = (TaxTile) newTile;
-                int costs = taxes.getValue();
-                this.setMoney(getMoney() - costs);
-
-            } else if (newTile instanceof ChanceTile) {
-                System.out.println(Initialize.getInstance().getChanceCardList());
-                ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
-                System.out.println("Chance " + card.getName());
-                card.excute(this);
-                if (card.isGetOutOfJailCard()) {
-                    this.getCardList().add(card);
-                    System.out.println("Store Get Out Of Jail Chance");
-                } else {
-                    Initialize.getInstance().getChanceCardList().putBack(card);
-                }
-
-            } else if (newTile instanceof CommunityChestTile) {
-                System.out.println(Initialize.getInstance().getCommunityChestCardList());
-                ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
-                System.out.println("Community " + card.getName());
-                card.excute(this);
-                if (card.isGetOutOfJailCard()) {
-                    this.getCardList().add(card);
-                    System.out.println("Store Get Out Of Jail Community Chest");
-                } else {
-                    Initialize.getInstance().getCommunityChestCardList().putBack(card);
-                }
-            } else if (newTile instanceof GotoJailTile) {
-                this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
-                this.setInJail(true);
-
-            } else if (newTile instanceof JailTile) {
-                System.out.println("Just visiting");
-            }
         }
 
-        for (ITile tile : this.tileList) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (hasMunicipality(this, street)) {
-                    MunicipalityList municipalityList = getMunicipality(this.tileList, street);
-                    for (StreetTile municipalityTile : municipalityList) {
-                        int housePrice = municipalityTile.getMunicipality().getHousePrice();
-                        if (this.getMoney() > housePrice) {
-                            buyHouse(municipalityTile);
-                        }
-                    }
-                }
-            }
-        }
         System.out.println("Money: " + getMoney());
 
-    }
-
-    private MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
-        MunicipalityList municipalityList = new MunicipalityList();
-        for (ITile tile : aTileList) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-
-                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
-
-                    municipalityList.add(street);
-
-                }
-            }
-        }
-        Collections.sort(municipalityList);
-        return municipalityList;
-    }
-
-    private void buyHouse(StreetTile aStreetTile) {
-        if (aStreetTile.getBuildings() < 5) {
-            aStreetTile.buyHouse();
-            this.setMoney(this.getMoney() - aStreetTile.getMunicipality().getHousePrice());
-        }
-    }
-
-    private void payRent(Player aOwner, StationTile stationTile) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int costs = 0;
-        int numStations = numberOwnedStations(aOwner);
-        switch (numStations) {
-            case 1:
-                costs = StationTile.PRICE_ONE;
-                break;
-            case 2:
-                costs = StationTile.PRICE_TWO;
-                break;
-            case 3:
-                costs = StationTile.PRICE_THREE;
-                break;
-            case 4:
-                costs = StationTile.PRICE_FOUR;
-                break;
-        }
-        aOwner.setMoney(aOwner.getMoney() + costs);
-        this.setMoney(getMoney() - costs);
-    }
-
-    public int numberOwnedStations(Player aOwner) {
-        int owned = 0;
-        for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof StationTile) {
-                owned++;
-            }
-        }
-        return owned;
-    }
-
-    private void payRent(Player aOwner, UtilityTile aUtility, int aDiceResult) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
-        int costs = aDiceResult * factor;
-        aOwner.setMoney(aOwner.getMoney() + costs);
-        this.setMoney(getMoney() - costs);
-    }
-
-    public boolean hasBothUtilities(Player aOwner) {
-        int utilities = 0;
-        for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof UtilityTile) {
-                utilities++;
-            }
-        }
-        return (utilities >= 2);
-    }
-
-    private void payRent(Player aOwner, StreetTile aStreet) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int rentValue = 0;
-        if (aStreet.getBuildings() == 0) {
-            int factor = hasMunicipality(aOwner, aStreet) ? 2 : 1;
-            rentValue = aStreet.getRent() * factor;
-        } else {
-            switch (aStreet.getBuildings()) {
-                case 1:
-                    rentValue = aStreet.getHouse1();
-                    break;
-                case 2:
-                    rentValue = aStreet.getHouse2();
-                    break;
-                case 3:
-                    rentValue = aStreet.getHouse3();
-                    break;
-                case 4:
-                    rentValue = aStreet.getHouse4();
-                    break;
-                case 5:
-                    rentValue = aStreet.getHotel();
-                    break;
-
-                default:
-                    rentValue = aStreet.getHotel();
-                    break;
-            }
-        }
-        aOwner.setMoney(aOwner.getMoney() + rentValue);
-        this.setMoney(getMoney() - rentValue);
-
-    }
-
-    public boolean hasMunicipality(Player aOwner, StreetTile aStreet) {
-        int complete = aStreet.getMunicipality().getSize();
-        for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile streetTile = (StreetTile) tile;
-                if (streetTile.getMunicipality().equals(aStreet.getMunicipality())) {
-                    complete--;
-                }
-            }
-        }
-        return (complete == 0);
-    }
-
-    private void buyProperty(PropertyTile aProperty) {
-        System.out.println("Buy Property " + aProperty.getName());
-        int value = aProperty.getValue();
-        if (this.getMoney() > value) {
-            this.tileList.add(aProperty);
-            int tileValue = aProperty.getValue();
-            aProperty.setOwner(this);
-            System.out.println("tileValue " + tileValue);
-            setMoney(getMoney() - tileValue);
-        } else {
-            System.out.println("Not enough money!");
-        }
     }
 
     public ITile getCurrentTile() {
@@ -422,6 +203,10 @@ public class Player implements IPlayer {
 
     public void setMoney(int aMoney) {
         this.money = aMoney;
+    }
+
+    public RollList getRollList() {
+        return this.rollList;
     }
 
     public boolean isBusted() {

@@ -8,6 +8,8 @@ public interface ITile {
 
     public int getID();
 
-    public void setOwner(Player aOwner);
+    // public void setOwner(Player aOwner);
+
+    public void execute(Player aCurrent);
 
 }
