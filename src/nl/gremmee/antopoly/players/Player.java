@@ -8,6 +8,7 @@ import nl.gremmee.antopoly.core.cards.CardList;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.StreetTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 
 public class Player implements IPlayer {
@@ -181,7 +182,6 @@ public class Player implements IPlayer {
             setCurrentTile(newTile);
 
             newTile.execute(this);
-
         }
 
         System.out.println("Money: " + getMoney());
@@ -250,6 +250,34 @@ public class Player implements IPlayer {
 
     public void setJailBreak(int jailBreak) {
         this.jailBreak = jailBreak;
+    }
+
+    @Override
+    public int getHouses() {
+        int houses = 0;
+        for (ITile tile : this.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() < 5) {
+                    houses += street.getBuildings();
+                }
+            }
+        }
+        return houses;
+    }
+
+    @Override
+    public int getHotels() {
+        int hotels = 0;
+        for (ITile tile : this.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() >= 5) {
+                    hotels++;
+                }
+            }
+        }
+        return hotels;
     }
 
 }

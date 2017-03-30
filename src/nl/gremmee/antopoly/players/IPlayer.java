@@ -38,4 +38,8 @@ public interface IPlayer {
 
     public ITile getCurrentTile();
 
+    public int getHouses();
+
+    public int getHotels();
+
 }

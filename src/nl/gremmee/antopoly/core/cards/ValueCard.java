@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.cards;
 
-public class ValueCard extends Card {
+public abstract class ValueCard extends Card {
     private int value;
 
     public ValueCard(CardAction aCardAction, String aName, String aText, int aValue) {

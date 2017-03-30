@@ -91,6 +91,20 @@ public abstract class Card implements ICard {
                 System.out.println("Goto Tile " + gotoTile.getName());
                 aPlayer.setCurrentTile(gotoTile);
                 break;
+            case CA_PayProperty:
+                PayPropertyCard payPropertyCard = (PayPropertyCard) this;
+
+                int houses = aPlayer.getHouses();
+                int hotels = aPlayer.getHotels();
+
+                int houseCosts = payPropertyCard.getPerHouse() * houses;
+                int hotelCosts = payPropertyCard.getPerHotel() * hotels;
+
+                int totalCosts = houseCosts + hotelCosts;
+                System.out.println("Pay " + totalCosts);
+                aPlayer.setMoney(aPlayer.getMoney() - totalCosts);
+
+                break;
             default:
                 break;
         }

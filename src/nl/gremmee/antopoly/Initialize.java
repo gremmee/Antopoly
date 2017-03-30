@@ -11,6 +11,7 @@ import nl.gremmee.antopoly.core.cards.GotoCard;
 import nl.gremmee.antopoly.core.cards.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.PayCard;
+import nl.gremmee.antopoly.core.cards.PayPropertyCard;
 import nl.gremmee.antopoly.core.cards.RecieveCard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
@@ -341,13 +342,14 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new PayCard("Fix houses", "Repareer uw huizen. Betaal voor elk huis ƒ 25, betaal voor elk hotel ƒ 100",
-                50);
+        card = new PayPropertyCard("Fix houses",
+                "Repareer uw huizen. Betaal voor elk huis ƒ 25, betaal voor elk hotel ƒ 100", 25, 100);
         chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new PayCard("Streettax", "U wordt aangeslagen voor straatgeld. ƒ 40 per huis, ƒ 115 per hotel", 50);
+        card = new PayPropertyCard("Streettax", "U wordt aangeslagen voor straatgeld. ƒ 40 per huis, ƒ 115 per hotel",
+                40, 115);
         chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
