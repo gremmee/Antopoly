@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.core.cards;
 
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public class GotoCard extends Card {
 
@@ -21,6 +22,31 @@ public class GotoCard extends Card {
 
     public void setTile(ITile tile) {
         this.tile = tile;
+    }
+
+    @Override
+    public boolean excute(IPlayer aPlayer) {
+        ITile gotoTile = this.getTile();
+        System.out.println("Goto Tile " + gotoTile.getName());
+
+        int currentTileId = aPlayer.getCurrentTile().getID();
+        aPlayer.setCurrentTile(gotoTile);
+        int newTileID = gotoTile.getID();
+
+        System.out.println(currentTileId + " -> " + newTileID);
+
+        if (newTileID < currentTileId) {
+            System.out.println("Pass start get 200");
+            aPlayer.setMoney(aPlayer.getMoney() + 200);
+        }
+
+        gotoTile.execute(aPlayer);
+        return super.excute(aPlayer);
+    }
+
+    @Override
+    protected boolean getKeepCard() {
+        return false;
     }
 
 }
