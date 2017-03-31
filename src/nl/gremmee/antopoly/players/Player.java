@@ -61,6 +61,7 @@ public class Player implements IPlayer, Cloneable {
             return false;
         Player player = (Player) aOther;
         // field comparison
+        // TODO: Extends fields
         return Objects.equals(name, player.name) && Objects.equals(inJail, player.inJail)
                 && Objects.equals(active, player.active);
     }
