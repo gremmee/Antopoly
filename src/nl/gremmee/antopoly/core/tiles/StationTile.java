@@ -5,10 +5,10 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class StationTile extends PropertyTile {
 
-    private static final int RENT_ONE = 25;
-    private static final int RENT_TWO = 50;
-    private static final int RENT_THREE = 100;
-    private static final int RENT_FOUR = 200;
+    public static final int RENT_ONE = 25;
+    public static final int RENT_TWO = 50;
+    public static final int RENT_THREE = 100;
+    public static final int RENT_FOUR = 200;
 
     public StationTile(int aID, String aName) {
         super(aID, aName, TileType.TT_Station, 200);
