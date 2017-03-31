@@ -1,5 +1,7 @@
 package nl.gremmee.antopoly.players;
 
+import java.util.Objects;
+
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.Settings;
@@ -14,7 +16,7 @@ import nl.gremmee.antopoly.core.tiles.MunicipalityList;
 import nl.gremmee.antopoly.core.tiles.StreetTile;
 import nl.gremmee.antopoly.core.tiles.TileList;
 
-public class Player implements IPlayer {
+public class Player implements IPlayer, Cloneable {
     private CardList cardList;
     private TileList tileList;
     private String name;
@@ -44,6 +46,28 @@ public class Player implements IPlayer {
         this.rollList = null;
         this.doubles = 0;
         this.jailBreak = 0;
+    }
+
+    @Override
+    public boolean equals(Object aOther) {
+        // self check
+        if (this == aOther)
+            return true;
+        // null check
+        if (aOther == null)
+            return false;
+        // type check and cast
+        if (getClass() != aOther.getClass())
+            return false;
+        Player player = (Player) aOther;
+        // field comparison
+        return Objects.equals(name, player.name) && Objects.equals(inJail, player.inJail)
+                && Objects.equals(active, player.active);
+    }
+
+    @Override
+    public Player clone() throws CloneNotSupportedException {
+        return (Player) super.clone();
     }
 
     public boolean isActive() {
