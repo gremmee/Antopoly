@@ -49,7 +49,7 @@ public class StreetTile extends PropertyTile {
         return this.municipality;
     }
 
-    public void setMunicipality(Municipality aMunicipality) {
+    private void setMunicipality(Municipality aMunicipality) {
         this.municipality = aMunicipality;
     }
 
@@ -57,7 +57,7 @@ public class StreetTile extends PropertyTile {
         return this.rent;
     }
 
-    public void setRent(int aRent) {
+    private void setRent(int aRent) {
         this.rent = aRent;
     }
 
@@ -78,7 +78,7 @@ public class StreetTile extends PropertyTile {
         return house1;
     }
 
-    public void setHouse1(int aHouse1) {
+    private void setHouse1(int aHouse1) {
         this.house1 = aHouse1;
     }
 
@@ -86,7 +86,7 @@ public class StreetTile extends PropertyTile {
         return house2;
     }
 
-    public void setHouse2(int aHouse2) {
+    private void setHouse2(int aHouse2) {
         this.house2 = aHouse2;
     }
 
@@ -94,7 +94,7 @@ public class StreetTile extends PropertyTile {
         return house3;
     }
 
-    public void setHouse3(int aHouse3) {
+    private void setHouse3(int aHouse3) {
         this.house3 = aHouse3;
     }
 
@@ -102,7 +102,7 @@ public class StreetTile extends PropertyTile {
         return house4;
     }
 
-    public void setHouse4(int aHouse4) {
+    private void setHouse4(int aHouse4) {
         this.house4 = aHouse4;
     }
 
@@ -110,7 +110,7 @@ public class StreetTile extends PropertyTile {
         return hotel;
     }
 
-    public void setHotel(int aHotel) {
+    private void setHotel(int aHotel) {
         this.hotel = aHotel;
     }
 

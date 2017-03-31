@@ -6,8 +6,8 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class ChanceTile extends Tile {
 
-    public ChanceTile(int aID) {
-        super(aID, "Chance", TileType.TT_Chance);
+    public ChanceTile(int aID, int aNumber) {
+        super(aID, "Chance " + aNumber, TileType.TT_Chance);
     }
 
     @Override

@@ -8,7 +8,7 @@ public class TileList extends ArrayList<ITile> {
 
     public ITile getTileByName(String aName) {
         for (ITile tile : this) {
-            if (tile.getName().contains(aName))
+            if (tile.getName().equals(aName))
                 return tile;
         }
         return null;

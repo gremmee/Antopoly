@@ -14,7 +14,7 @@ public class TaxTileTest {
     @Before
     public void setUp() throws Exception {
         player = new Player(0, "TestPlayer");
-        tile = new TaxTile(1, 200);
+        tile = new TaxTile(1, "Income Taxes", 200);
     }
 
     @Test
@@ -24,12 +24,13 @@ public class TaxTileTest {
 
     @Test
     public void testName() {
-        assertEquals("Taxes", tile.getName());
+        assertEquals("Income Taxes", tile.getName());
     }
 
     @Test
     public void textExecute() {
+        int money = player.getMoney();
         tile.execute(player);
-        assertEquals(1300, player.getMoney());
+        assertEquals(money - tile.getValue(), player.getMoney());
     }
 }

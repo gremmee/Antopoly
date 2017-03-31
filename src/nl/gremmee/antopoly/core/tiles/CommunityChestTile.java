@@ -6,8 +6,8 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class CommunityChestTile extends Tile {
 
-    public CommunityChestTile(int aID) {
-        super(aID, "Community Chest", TileType.TT_CommunityChest);
+    public CommunityChestTile(int aID, int aNumber) {
+        super(aID, "Community Chest " + aNumber, TileType.TT_CommunityChest);
     }
 
     @Override

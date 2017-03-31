@@ -93,7 +93,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new CommunityChestTile(i++);
+        tile = new CommunityChestTile(i++, 1);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -103,7 +103,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new TaxTile(i++, 200);
+        tile = new TaxTile(i++, "Income Taxes", 200);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -118,7 +118,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new ChanceTile(i++);
+        tile = new ChanceTile(i++, 1);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -168,7 +168,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new CommunityChestTile(i++);
+        tile = new CommunityChestTile(i++, 2);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -193,7 +193,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new ChanceTile(i++);
+        tile = new ChanceTile(i++, 2);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -243,12 +243,12 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new StreetTile(i++, "Brink", Municipality.Rotterdam, 300, 26, 130, 390, 900, 1100, 1275);
+        tile = new StreetTile(i++, "Blaak", Municipality.Rotterdam, 300, 26, 130, 390, 900, 1100, 1275);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new CommunityChestTile(i++);
+        tile = new CommunityChestTile(i++, 3);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -263,7 +263,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new ChanceTile(i++);
+        tile = new ChanceTile(i++, 3);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
@@ -273,7 +273,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new TaxTile(i++, 100);
+        tile = new TaxTile(i++, "Taxes", 100);
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");

@@ -7,8 +7,8 @@ public class TaxTile extends Tile {
 
     private int value;
 
-    public TaxTile(int aID, int aValue) {
-        super(aID, "Taxes", TileType.TT_Taxes);
+    public TaxTile(int aID, String aName, int aValue) {
+        super(aID, aName, TileType.TT_Taxes);
         this.setValue(aValue);
     }
 
