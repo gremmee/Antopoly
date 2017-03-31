@@ -126,6 +126,10 @@ public class Player implements IPlayer {
         this.winner = aWinner;
     }
 
+    public void setRollList(RollList aRollList) {
+        this.rollList = aRollList;
+    }
+
     @Override
     public void play() {
         System.out.println("Money: " + getMoney());

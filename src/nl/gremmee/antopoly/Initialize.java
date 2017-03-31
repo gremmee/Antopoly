@@ -33,7 +33,7 @@ import nl.gremmee.antopoly.players.PlayerList;
  * Initialize
  */
 public class Initialize {
-    private static final long SLEEP = 250;
+    private static final long SLEEP = 0;
     private static Initialize instance;
     private DiceList diceList;
     private ChanceCardList chanceCardList;
