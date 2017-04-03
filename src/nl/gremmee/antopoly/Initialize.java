@@ -12,7 +12,7 @@ import nl.gremmee.antopoly.core.cards.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.PayCard;
 import nl.gremmee.antopoly.core.cards.PayPropertyCard;
-import nl.gremmee.antopoly.core.cards.RecieveCard;
+import nl.gremmee.antopoly.core.cards.ReceiveCard;
 import nl.gremmee.antopoly.core.tiles.ChanceTile;
 import nl.gremmee.antopoly.core.tiles.CommunityChestTile;
 import nl.gremmee.antopoly.core.tiles.FreeParkingTile;
@@ -355,7 +355,7 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Buildinginsurance", "Uw bouwverzekering vervalt, u ontvangt ƒ 150", 150);
+        card = new ReceiveCard("Buildinginsurance", "Uw bouwverzekering vervalt, u ontvangt ƒ 150", 150);
         chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -371,7 +371,7 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Crossword puzzle", "U hebt een kruiswoordpuzzel gewonnen en ontvangt ƒ 100", 100);
+        card = new ReceiveCard("Crossword puzzle", "U hebt een kruiswoordpuzzel gewonnen en ontvangt ƒ 100", 100);
         chanceCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -382,17 +382,17 @@ public class Initialize {
     public CommunityChestCardList initializeCommunityChestCards() {
         System.out.println("Initializing Community Chest Cards");
         communityChestCardList = new CommunityChestCardList();
-        ICard card = new RecieveCard("Inherit", "U erft ƒ 100", 100);
+        ICard card = new ReceiveCard("Inherit", "U erft ƒ 100", 100);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Intrest", "U ontvangt rente van 7% preferente aandelen ƒ 25", 25);
+        card = new ReceiveCard("Intrest", "U ontvangt rente van 7% preferente aandelen ƒ 25", 25);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Mistake Bank", "Een vergissing van de bank in uw voordeel, u ontvangt ƒ 200", 200);
+        card = new ReceiveCard("Mistake Bank", "Een vergissing van de bank in uw voordeel, u ontvangt ƒ 200", 200);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -408,12 +408,12 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Birthday", "U bent jarig en ontvangt van iedere speler ƒ 10", 10);
+        card = new ReceiveCard("Birthday", "U bent jarig en ontvangt van iedere speler ƒ 10", 10);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Beauty Contest",
+        card = new ReceiveCard("Beauty Contest",
                 "U hebt de tweede prijs in een schoonheidswedstrijd gewonnen en ontvangt ƒ 10", 10);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
@@ -429,7 +429,7 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Sell stock", "Door verkoop van effecten ontvangt u ƒ 50", 50);
+        card = new ReceiveCard("Sell stock", "Door verkoop van effecten ontvangt u ƒ 50", 50);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
@@ -439,12 +439,12 @@ public class Initialize {
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Refund taxws", "Restitutie inkomstenbelasting, u ontvangt ƒ 20", 20);
+        card = new ReceiveCard("Refund taxws", "Restitutie inkomstenbelasting, u ontvangt ƒ 20", 20);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
 
-        card = new RecieveCard("Aannuity", "Lijfrente vervalt, u ontvangt ƒ 100", 100);
+        card = new ReceiveCard("Aannuity", "Lijfrente vervalt, u ontvangt ƒ 100", 100);
         communityChestCardList.addRandom(card);
         System.out.print("Creating Card " + card.getName() + "...");
         System.out.println("[OK]");
