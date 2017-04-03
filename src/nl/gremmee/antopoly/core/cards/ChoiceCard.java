@@ -23,7 +23,7 @@ public class ChoiceCard extends PayCard {
         } else {
             aPlayer.setMoney(aPlayer.getMoney() - value);
         }
-        return super.excute(aPlayer);
+        return getKeepCard();
     }
 
     @Override
