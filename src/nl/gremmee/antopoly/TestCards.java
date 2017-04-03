@@ -2,8 +2,8 @@ package nl.gremmee.antopoly;
 
 import java.util.Random;
 
-import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 
 public class TestCards {
 

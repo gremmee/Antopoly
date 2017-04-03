@@ -4,8 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import nl.gremmee.antopoly.core.cards.CardTests;
-import nl.gremmee.antopoly.core.tiles.TileTests;
+import nl.gremmee.antopoly.core.cards.tst.CardTests;
+import nl.gremmee.antopoly.core.tiles.tst.TileTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CardTests.class, DieTest.class, MunicipalityTest.class, //

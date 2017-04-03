@@ -1,13 +1,13 @@
 package nl.gremmee.antopoly;
 
-import nl.gremmee.antopoly.core.DiceList;
-import nl.gremmee.antopoly.core.cards.ChanceCardList;
-import nl.gremmee.antopoly.core.cards.CommunityChestCardList;
+import nl.gremmee.antopoly.core.lists.ChanceCardList;
+import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
+import nl.gremmee.antopoly.core.lists.DiceList;
+import nl.gremmee.antopoly.core.lists.PlayerList;
+import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
-import nl.gremmee.antopoly.core.tiles.PropertyTile;
-import nl.gremmee.antopoly.core.tiles.TileList;
+import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
-import nl.gremmee.antopoly.players.PlayerList;
 
 public class Antopoly {
     private static DiceList diceList;

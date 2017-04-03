@@ -1,9 +1,9 @@
 package nl.gremmee.antopoly.players;
 
-import nl.gremmee.antopoly.core.RollList;
-import nl.gremmee.antopoly.core.cards.CardList;
+import nl.gremmee.antopoly.core.lists.CardList;
+import nl.gremmee.antopoly.core.lists.RollList;
+import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
-import nl.gremmee.antopoly.core.tiles.TileList;
 
 public interface IPlayer {
 
