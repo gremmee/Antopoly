@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ GetOutOfJailCardTest.class, GotoCardTest.class, GotoJailCardTest.class })
+@SuiteClasses({ GetOutOfJailCardTest.class, GotoCardTest.class, GotoJailCardTest.class, PayCardTest.class,
+        RecieveCardTest.class })
 public class CardTests {
 
 }
