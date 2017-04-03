@@ -5,10 +5,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import nl.gremmee.antopoly.core.cards.tst.CardTests;
+import nl.gremmee.antopoly.core.lists.tst.ListsTests;
 import nl.gremmee.antopoly.core.tiles.tst.TileTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CardTests.class, DieTest.class, MunicipalityTest.class, //
+@SuiteClasses({ ListsTests.class, CardTests.class, DieTest.class, MunicipalityTest.class, //
         TileTests.class })
 
 public class CoreTests {

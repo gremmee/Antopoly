@@ -1,4 +1,4 @@
-package nl.gremmee.antopoly.core.lists;
+package nl.gremmee.antopoly.core.lists.tst;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,6 +12,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import nl.gremmee.antopoly.Initialize;
+import nl.gremmee.antopoly.core.lists.TileList;
 
 @RunWith(Parameterized.class)
 public class TileListTest {
