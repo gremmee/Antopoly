@@ -1,6 +1,8 @@
 
 package nl.gremmee.antopoly.core.tiles;
 
+import java.util.Objects;
+
 public abstract class Tile implements ITile, Comparable<Tile> {
 
     private String name;
@@ -35,6 +37,22 @@ public abstract class Tile implements ITile, Comparable<Tile> {
         assert this.equals(aThat) : "compareTo inconsistent with equals.";
 
         return EQUAL;
+    }
+
+    @Override
+    public boolean equals(Object aOther) {
+        // self check
+        if (this == aOther)
+            return true;
+        // null check
+        if (aOther == null)
+            return false;
+        // type check and cast
+        if (getClass() != aOther.getClass())
+            return false;
+        Tile tile = (Tile) aOther;
+        // field comparison
+        return Objects.equals(name, tile.name) && Objects.equals(tileType, tile.tileType);
     }
 
     public String getName() {
