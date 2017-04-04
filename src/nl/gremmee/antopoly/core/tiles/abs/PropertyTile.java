@@ -30,8 +30,8 @@ public abstract class PropertyTile extends Tile {
         this.owner = aOwner;
     }
 
-    protected void buyProperty(IPlayer aCurrent) {
-        aCurrent.getArtificialIntelligence().executeBuyTile(this, aCurrent);
+    protected void buyProperty(IPlayer aPlayer) {
+        aPlayer.getArtificialIntelligence().executeBuyTile(this, aPlayer);
     }
 
 }

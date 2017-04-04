@@ -33,15 +33,15 @@ public class StreetTile extends PropertyTile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         System.out.println("Street");
         IPlayer owner = this.getOwner();
         if (owner == null) {
-            buyProperty(aCurrent);
+            buyProperty(aPlayer);
         } else {
-            payRent(aCurrent, owner);
+            payRent(aPlayer, owner);
         }
-        super.execute(aCurrent);
+        super.execute(aPlayer);
     }
 
     public int build(int aNumBuildings) {
@@ -123,7 +123,7 @@ public class StreetTile extends PropertyTile {
         return this.building;
     }
 
-    private void payRent(IPlayer aCurrent, IPlayer aOwner) {
+    private void payRent(IPlayer aPlayer, IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int rentValue = 0;
         if (this.getBuildings() == 0) {
@@ -153,7 +153,7 @@ public class StreetTile extends PropertyTile {
             }
         }
         rentValue *= Settings.MONEY_FACTOR;
-        aCurrent.payMoney(rentValue);
+        aPlayer.payMoney(rentValue);
         aOwner.receiveMoney(rentValue);
     }
 

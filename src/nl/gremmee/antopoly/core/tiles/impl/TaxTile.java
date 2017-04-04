@@ -23,11 +23,11 @@ public class TaxTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         int costs = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Tax " + costs);
-        aCurrent.payMoney(costs);
-        super.execute(aCurrent);
+        aPlayer.payMoney(costs);
+        super.execute(aPlayer);
     }
 
 }

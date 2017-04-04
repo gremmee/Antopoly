@@ -11,8 +11,8 @@ public class StartTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
-        super.execute(aCurrent);
+    public void execute(IPlayer aPlayer) {
+        super.execute(aPlayer);
     }
 
 }

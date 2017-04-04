@@ -45,7 +45,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         Initialize.getInstance().initializeRules();
     }
 

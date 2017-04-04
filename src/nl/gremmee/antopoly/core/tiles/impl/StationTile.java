@@ -18,18 +18,18 @@ public class StationTile extends PropertyTile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         System.out.println("Station");
         IPlayer owner = this.getOwner();
         if (owner == null) {
-            buyProperty(aCurrent);
+            buyProperty(aPlayer);
         } else {
-            payRent(aCurrent, owner);
+            payRent(aPlayer, owner);
         }
-        super.execute(aCurrent);
+        super.execute(aPlayer);
     }
 
-    private void payRent(IPlayer aCurrent, IPlayer aOwner) {
+    private void payRent(IPlayer aPlayer, IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int costs = 0;
         int numStations = numberOwnedStations(aOwner);
@@ -48,7 +48,7 @@ public class StationTile extends PropertyTile {
                 break;
         }
         costs *= Settings.MONEY_FACTOR;
-        aCurrent.payMoney(costs);
+        aPlayer.payMoney(costs);
         aOwner.receiveMoney(costs);
     }
 

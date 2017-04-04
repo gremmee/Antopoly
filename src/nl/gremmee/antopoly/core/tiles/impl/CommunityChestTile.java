@@ -13,14 +13,14 @@ public class CommunityChestTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         System.out.println(Initialize.getInstance().getCommunityChestCardList());
         ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
         System.out.println("Community " + card.getName());
-        if (!card.excute(aCurrent)) {
+        if (!card.excute(aPlayer)) {
             Initialize.getInstance().getCommunityChestCardList().putBack(card);
         }
-        super.execute(aCurrent);
+        super.execute(aPlayer);
     }
 
 }

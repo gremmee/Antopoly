@@ -13,14 +13,14 @@ public class ChanceTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
+    public void execute(IPlayer aPlayer) {
         System.out.println(Initialize.getInstance().getChanceCardList());
         ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
         System.out.println("Chance " + card.getName());
-        if (!card.excute(aCurrent)) {
+        if (!card.excute(aPlayer)) {
             Initialize.getInstance().getChanceCardList().putBack(card);
         }
-        super.execute(aCurrent);
+        super.execute(aPlayer);
     }
 
 }

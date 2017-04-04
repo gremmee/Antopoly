@@ -12,10 +12,10 @@ public class GotoJailTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
-        aCurrent.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
-        aCurrent.setInJail(true);
-        super.execute(aCurrent);
+    public void execute(IPlayer aPlayer) {
+        aPlayer.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+        aPlayer.setInJail(true);
+        super.execute(aPlayer);
     }
 
 }

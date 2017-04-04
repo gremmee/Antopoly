@@ -11,14 +11,14 @@ public class JailTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aCurrent) {
-        if (!aCurrent.isInJail()) {
+    public void execute(IPlayer aPlayer) {
+        if (!aPlayer.isInJail()) {
             System.out.println("Just visiting");
 
         } else {
             System.out.println("Locked up!");
         }
-        super.execute(aCurrent);
+        super.execute(aPlayer);
     }
 
 }
