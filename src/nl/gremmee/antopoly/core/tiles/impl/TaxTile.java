@@ -27,7 +27,7 @@ public class TaxTile extends Tile {
         int costs = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Tax " + costs);
         aCurrent.setMoney(aCurrent.getMoney() - costs);
-
+        super.execute(aCurrent);
     }
 
 }

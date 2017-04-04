@@ -234,6 +234,7 @@ public class Player implements IPlayer, Cloneable {
 
         System.out.println("Money: " + getMoney());
         this.rollList = null;
+        Initialize.getInstance().executeRules(this);
 
     }
 

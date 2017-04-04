@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.core.cards.abs;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
@@ -53,6 +54,7 @@ public abstract class Card implements ICard {
 
     @Override
     public boolean excute(IPlayer aPlayer) {
+        Initialize.getInstance().initializeRules();
         return getKeepCard();
     }
 

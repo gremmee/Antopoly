@@ -26,7 +26,7 @@ public class StationTile extends PropertyTile {
         } else {
             payRent(aCurrent, owner);
         }
-
+        super.execute(aCurrent);
     }
 
     private void payRent(IPlayer aCurrent, IPlayer aOwner) {

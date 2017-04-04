@@ -3,8 +3,10 @@ package nl.gremmee.antopoly.core.tiles.abs;
 
 import java.util.Objects;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.players.IPlayer;
 
 public abstract class Tile implements ITile, Comparable<Tile> {
 
@@ -40,6 +42,11 @@ public abstract class Tile implements ITile, Comparable<Tile> {
         assert this.equals(aThat) : "compareTo inconsistent with equals.";
 
         return EQUAL;
+    }
+
+    @Override
+    public void execute(IPlayer aCurrent) {
+        Initialize.getInstance().initializeRules();
     }
 
     @Override

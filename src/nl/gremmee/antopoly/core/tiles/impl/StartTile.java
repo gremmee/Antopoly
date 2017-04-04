@@ -12,7 +12,7 @@ public class StartTile extends Tile {
 
     @Override
     public void execute(IPlayer aCurrent) {
-
+        super.execute(aCurrent);
     }
 
 }

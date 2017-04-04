@@ -41,7 +41,7 @@ public class StreetTile extends PropertyTile {
         } else {
             payRent(aCurrent, owner);
         }
-
+        super.execute(aCurrent);
     }
 
     public int build(int aNumBuildings) {

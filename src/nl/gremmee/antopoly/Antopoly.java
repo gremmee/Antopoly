@@ -4,9 +4,8 @@ import nl.gremmee.antopoly.core.lists.ChanceCardList;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.lists.DiceList;
 import nl.gremmee.antopoly.core.lists.PlayerList;
+import nl.gremmee.antopoly.core.lists.RuleList;
 import nl.gremmee.antopoly.core.lists.TileList;
-import nl.gremmee.antopoly.core.tiles.ITile;
-import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class Antopoly {
@@ -15,6 +14,7 @@ public class Antopoly {
     private static CommunityChestCardList communityChestCardList;
     private static PlayerList playerList;
     private static TileList tileList;
+    private static RuleList ruleList;
 
     public static void main(String[] args) {
         long beginTime = System.currentTimeMillis();
@@ -35,6 +35,8 @@ public class Antopoly {
         int max = diceList.size();
         tileList = Initialize.getInstance().initializeTileList();
         max += tileList.size();
+        ruleList = Initialize.getInstance().initializeRules();
+        max += ruleList.size();
         chanceCardList = Initialize.getInstance().initializeChanceCards();
         max += chanceCardList.size();
         communityChestCardList = Initialize.getInstance().initializeCommunityChestCards();
@@ -58,16 +60,6 @@ public class Antopoly {
                         System.out.println("CurrentTile = " + player.getCurrentTile());
                         player.play();
                         player.setActive(false);
-                        if (player.getMoney() < 0) {
-                            player.setBusted(true);
-                            player.setMoney(0);
-                            for (ITile tile : player.getTileList()) {
-                                if (tile instanceof PropertyTile) {
-                                    PropertyTile propertyTile = (PropertyTile) tile;
-                                    propertyTile.setOwner(null);
-                                }
-                            }
-                        }
                         System.out.println(playerList);
                     } while (player.isAgain());
                 }

@@ -15,8 +15,9 @@ public class FreeParkingTileTest {
 
     @Before
     public void setUp() throws Exception {
-        player = new Player(0, "TestPlayer");
         tile = new FreeParkingTile(0);
+        player = new Player(0, "TestPlayer");
+        player.setCurrentTile(tile);
     }
 
     @Test

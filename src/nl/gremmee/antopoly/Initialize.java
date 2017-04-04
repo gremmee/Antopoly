@@ -14,6 +14,7 @@ import nl.gremmee.antopoly.core.lists.ChanceCardList;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.lists.DiceList;
 import nl.gremmee.antopoly.core.lists.PlayerList;
+import nl.gremmee.antopoly.core.lists.RuleList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.impl.ChanceTile;
@@ -28,6 +29,8 @@ import nl.gremmee.antopoly.core.tiles.impl.TaxTile;
 import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.impl.Player;
+import nl.gremmee.antopoly.rules.IRule;
+import nl.gremmee.antopoly.rules.impl.BankruptRule;
 
 /**
  * Initialize
@@ -40,6 +43,7 @@ public class Initialize {
     private CommunityChestCardList communityChestCardList;
     private PlayerList playerList;
     private TileList tileList;
+    private RuleList ruleList;
 
     private Initialize() {
     }
@@ -379,6 +383,17 @@ public class Initialize {
         return chanceCardList;
     }
 
+    public RuleList initializeRules() {
+        System.out.println("Initializing Rules");
+        ruleList = new RuleList();
+        IRule rule = new BankruptRule();
+        ruleList.add(rule);
+        System.out.print("Creating Rule " + rule.getName() + "...");
+        System.out.println("[OK]");
+
+        return ruleList;
+    }
+
     public CommunityChestCardList initializeCommunityChestCards() {
         System.out.println("Initializing Community Chest Cards");
         communityChestCardList = new CommunityChestCardList();
@@ -485,6 +500,11 @@ public class Initialize {
         return this.diceList;
     }
 
+    public RuleList getRuleList() {
+
+        return this.ruleList;
+    }
+
     public ChanceCardList getChanceCardList() {
 
         return this.chanceCardList;
@@ -498,5 +518,14 @@ public class Initialize {
     public TileList getTileList() {
 
         return this.tileList;
+    }
+
+    public void executeRules(IPlayer aPlayer) {
+        RuleList ruleList = Initialize.getInstance().getRuleList();
+        for (IRule rule : ruleList) {
+            System.out.println("Checking rule: " + rule + "...");
+            rule.execute(aPlayer);
+        }
+
     }
 }

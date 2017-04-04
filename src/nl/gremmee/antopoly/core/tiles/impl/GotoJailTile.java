@@ -15,6 +15,7 @@ public class GotoJailTile extends Tile {
     public void execute(IPlayer aCurrent) {
         aCurrent.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
         aCurrent.setInJail(true);
+        super.execute(aCurrent);
     }
 
 }

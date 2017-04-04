@@ -34,6 +34,7 @@ public class ChoiceCardTest {
 
     @Test
     public void testExecuteChance() throws CloneNotSupportedException {
+        Initialize.getInstance().initializeRules();
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeChanceCards();
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));

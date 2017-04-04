@@ -20,7 +20,7 @@ public class ChanceTile extends Tile {
         if (!card.excute(aCurrent)) {
             Initialize.getInstance().getChanceCardList().putBack(card);
         }
-
+        super.execute(aCurrent);
     }
 
 }

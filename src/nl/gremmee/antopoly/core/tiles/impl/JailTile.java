@@ -18,7 +18,7 @@ public class JailTile extends Tile {
         } else {
             System.out.println("Locked up!");
         }
-
+        super.execute(aCurrent);
     }
 
 }

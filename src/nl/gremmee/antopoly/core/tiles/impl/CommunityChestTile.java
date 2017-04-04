@@ -20,7 +20,7 @@ public class CommunityChestTile extends Tile {
         if (!card.excute(aCurrent)) {
             Initialize.getInstance().getCommunityChestCardList().putBack(card);
         }
-
+        super.execute(aCurrent);
     }
 
 }

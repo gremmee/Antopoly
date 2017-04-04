@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.cards.impl.GotoCard;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
@@ -41,6 +42,7 @@ public class GotoCardTest {
 
     @Test
     public void testExecute() throws CloneNotSupportedException {
+        Initialize.getInstance().initializeRules();
         Player playerBefore = player.clone();
         card.excute(player);
         assertEquals(tile, player.getCurrentTile());
