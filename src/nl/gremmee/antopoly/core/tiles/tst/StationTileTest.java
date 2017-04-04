@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
+import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class StationTileTest {
@@ -46,53 +47,62 @@ public class StationTileTest {
     }
 
     @Test
-    public void textExecuteBuyTile() {
-        int money = player.getMoney();
+    public void textExecuteBuyTile() throws CloneNotSupportedException {
+        IPlayer playerBefore = player.clone();
         stationTile1.execute(player);
-        assertEquals(money - stationTile1.getValue(), player.getMoney());
+        playerBefore.payMoney(stationTile1.getValue());
+        assertEquals(playerBefore.getMoney(), player.getMoney());
     }
 
     @Test
-    public void textExecuteOwner1Tile() {
+    public void textExecuteOwner1Tile() throws CloneNotSupportedException {
+        IPlayer playerBefore = player.clone();
+        IPlayer ownerBefore = owner.clone();
         stationTile1.setOwner(owner);
         owner.getTileList().add(stationTile1);
-        int ownMoney = player.getMoney();
-        int ownerMoney = owner.getMoney();
         stationTile1.execute(player);
-        assertEquals(ownMoney - StationTile.RENT_ONE, player.getMoney());
-        assertEquals(ownerMoney + StationTile.RENT_ONE, owner.getMoney());
+        playerBefore.payMoney(StationTile.RENT_ONE);
+        ownerBefore.receiveMoney(StationTile.RENT_ONE);
+        assertEquals(playerBefore.getMoney(), player.getMoney());
+        assertEquals(ownerBefore.getMoney(), owner.getMoney());
     }
 
     @Test
-    public void textExecuteOwner2Tiles() {
+    public void textExecuteOwner2Tiles() throws CloneNotSupportedException {
+        IPlayer playerBefore = player.clone();
+        IPlayer ownerBefore = owner.clone();
         stationTile1.setOwner(owner);
         owner.getTileList().add(stationTile1);
         stationTile2.setOwner(owner);
         owner.getTileList().add(stationTile2);
-        int ownMoney = player.getMoney();
-        int ownerMoney = owner.getMoney();
         stationTile1.execute(player);
-        assertEquals(ownMoney - StationTile.RENT_TWO, player.getMoney());
-        assertEquals(ownerMoney + StationTile.RENT_TWO, owner.getMoney());
+        playerBefore.payMoney(StationTile.RENT_TWO);
+        ownerBefore.receiveMoney(StationTile.RENT_TWO);
+        assertEquals(playerBefore.getMoney(), player.getMoney());
+        assertEquals(ownerBefore.getMoney(), owner.getMoney());
     }
 
     @Test
-    public void textExecuteOwner3Tiles() {
+    public void textExecuteOwner3Tiles() throws CloneNotSupportedException {
+        IPlayer playerBefore = player.clone();
+        IPlayer ownerBefore = owner.clone();
         stationTile1.setOwner(owner);
         owner.getTileList().add(stationTile1);
         stationTile2.setOwner(owner);
         owner.getTileList().add(stationTile2);
         stationTile3.setOwner(owner);
         owner.getTileList().add(stationTile3);
-        int ownMoney = player.getMoney();
-        int ownerMoney = owner.getMoney();
         stationTile1.execute(player);
-        assertEquals(ownMoney - StationTile.RENT_THREE, player.getMoney());
-        assertEquals(ownerMoney + StationTile.RENT_THREE, owner.getMoney());
+        playerBefore.payMoney(StationTile.RENT_THREE);
+        ownerBefore.receiveMoney(StationTile.RENT_THREE);
+        assertEquals(playerBefore.getMoney(), player.getMoney());
+        assertEquals(ownerBefore.getMoney(), owner.getMoney());
     }
 
     @Test
-    public void textExecuteOwner4Tiles() {
+    public void textExecuteOwner4Tiles() throws CloneNotSupportedException {
+        IPlayer playerBefore = player.clone();
+        IPlayer ownerBefore = owner.clone();
         stationTile1.setOwner(owner);
         owner.getTileList().add(stationTile1);
         stationTile2.setOwner(owner);
@@ -101,11 +111,11 @@ public class StationTileTest {
         owner.getTileList().add(stationTile3);
         stationTile4.setOwner(owner);
         owner.getTileList().add(stationTile4);
-        int ownMoney = player.getMoney();
-        int ownerMoney = owner.getMoney();
         stationTile1.execute(player);
-        assertEquals(ownMoney - StationTile.RENT_FOUR, player.getMoney());
-        assertEquals(ownerMoney + StationTile.RENT_FOUR, owner.getMoney());
+        playerBefore.payMoney(StationTile.RENT_FOUR);
+        ownerBefore.receiveMoney(StationTile.RENT_FOUR);
+        assertEquals(playerBefore.getMoney(), player.getMoney());
+        assertEquals(ownerBefore.getMoney(), owner.getMoney());
     }
 
 }

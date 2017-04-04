@@ -14,7 +14,7 @@ public class PayCard extends ValueCard {
     public boolean excute(IPlayer aPlayer) {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
-        aPlayer.setMoney(aPlayer.getMoney() - pay);
+        aPlayer.payMoney(pay);
         return super.excute(aPlayer);
     }
 

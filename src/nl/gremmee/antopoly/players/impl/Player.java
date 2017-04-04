@@ -245,6 +245,14 @@ public class Player implements IPlayer, Cloneable {
         }
     }
 
+    public void receiveMoney(int aMoney) {
+        this.money += aMoney;
+    }
+
+    public void payMoney(int aMoney) {
+        this.money -= aMoney;
+    }
+
     public ITile getCurrentTile() {
         return currentTile;
     }
@@ -258,8 +266,12 @@ public class Player implements IPlayer, Cloneable {
         return money;
     }
 
-    public void setMoney(int aMoney) {
+    private void setMoney(int aMoney) {
         this.money = aMoney;
+    }
+
+    public void resetMoney() {
+        this.money = 0;
     }
 
     public RollList getRollList() {

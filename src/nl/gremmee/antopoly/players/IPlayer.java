@@ -29,7 +29,7 @@ public interface IPlayer {
 
     public void setBusted(boolean aBusted);
 
-    public void setMoney(int aMoney);
+    public void resetMoney();
 
     public void play();
 
@@ -44,4 +44,8 @@ public interface IPlayer {
     public int getHotels();
 
     public RollList getRollList();
+
+    public void payMoney(int aMoney);
+
+    public void receiveMoney(int aMoney);
 }

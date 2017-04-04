@@ -61,7 +61,6 @@ public class PlayerTest {
         Initialize.getInstance().initializeChanceCards();
         Initialize.getInstance().initializeCommunityChestCards();
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
-        Player playerBefore = player.clone();
         ICard card = new GetOutOfJailCard("Verlaat de gevangenis", "Verlaat de gevangenis zonder te betalen");
         player.getCardList().add(card);
         player.setInJail(true);

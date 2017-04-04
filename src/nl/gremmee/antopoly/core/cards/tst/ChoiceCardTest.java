@@ -38,7 +38,7 @@ public class ChoiceCardTest {
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeChanceCards();
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
-        player.setMoney(170); // make sure it's below the thresshold
+        // player.setMoney(170); // make sure it's below the thresshold
         Player playerBefore = player.clone();
         card.excute(player);
         assertEquals(playerBefore, player);

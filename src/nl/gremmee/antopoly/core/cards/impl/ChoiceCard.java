@@ -22,7 +22,7 @@ public class ChoiceCard extends PayCard {
             }
 
         } else {
-            aPlayer.setMoney(aPlayer.getMoney() - value);
+            aPlayer.payMoney(value);
         }
         Initialize.getInstance().initializeRules();
         return getKeepCard();

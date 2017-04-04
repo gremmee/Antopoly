@@ -48,8 +48,8 @@ public class StationTile extends PropertyTile {
                 break;
         }
         costs *= Settings.MONEY_FACTOR;
-        aOwner.setMoney(aOwner.getMoney() + costs);
-        aCurrent.setMoney(aCurrent.getMoney() - costs);
+        aCurrent.payMoney(costs);
+        aOwner.receiveMoney(costs);
     }
 
     public int numberOwnedStations(IPlayer aOwner) {

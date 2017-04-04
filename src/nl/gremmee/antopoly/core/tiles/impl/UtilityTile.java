@@ -32,8 +32,8 @@ public class UtilityTile extends PropertyTile {
         int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
         int diceResult = aCurrent.getRollList().getResult();
         int costs = diceResult * factor * Settings.MONEY_FACTOR;
-        aOwner.setMoney(aOwner.getMoney() + costs);
-        aCurrent.setMoney(aCurrent.getMoney() - costs);
+        aCurrent.payMoney(costs);
+        aOwner.receiveMoney(costs);
     }
 
     public boolean hasBothUtilities(IPlayer aOwner) {

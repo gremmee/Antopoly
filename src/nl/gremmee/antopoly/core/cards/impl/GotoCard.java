@@ -35,7 +35,7 @@ public class GotoCard extends Card {
 
         if (newTileID < currentTileId) {
             System.out.println("Pass start get " + Money.PRICE_PASS_START);
-            aPlayer.setMoney(aPlayer.getMoney() + Money.PRICE_PASS_START);
+            aPlayer.receiveMoney(Money.PRICE_PASS_START);
         }
 
         gotoTile.execute(aPlayer);

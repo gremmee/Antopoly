@@ -38,7 +38,7 @@ public abstract class PropertyTile extends Tile {
             aCurrent.getTileList().add(this);
             this.setOwner(aCurrent);
             System.out.println("tileValue " + value);
-            aCurrent.setMoney(aCurrent.getMoney() - value);
+            aCurrent.payMoney(value);
         } else {
             System.out.println("Not enough money!");
         }

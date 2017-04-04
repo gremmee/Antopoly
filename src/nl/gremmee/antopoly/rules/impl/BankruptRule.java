@@ -16,7 +16,7 @@ public class BankruptRule extends Rule {
         if (aPlayer.getMoney() < 0) {
             System.out.println("Executing rule: " + this);
             aPlayer.setBusted(true);
-            aPlayer.setMoney(0);
+            aPlayer.resetMoney();
             for (ITile tile : aPlayer.getTileList()) {
                 if (tile instanceof PropertyTile) {
                     PropertyTile propertyTile = (PropertyTile) tile;

@@ -24,7 +24,6 @@ public class StreetTileTest {
     public void setUp() throws Exception {
         Initialize.getInstance().initializeRules();
         player = new Player(0, "TestPlayer");
-        player.setMoney(2000);
         owner = new Player(1, "TestOwner");
         ownTile = new StreetTile(0, "OwnStreet", Municipality.DenHaag, 200, 20, 30, 40, 50, 60, 170);
         ownTile.setOwner(player);

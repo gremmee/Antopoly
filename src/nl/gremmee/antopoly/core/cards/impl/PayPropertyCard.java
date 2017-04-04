@@ -41,7 +41,7 @@ public class PayPropertyCard extends Card {
 
         int totalCosts = (houseCosts + hotelCosts) * Settings.MONEY_FACTOR;
         System.out.println("Pay per property " + totalCosts);
-        aPlayer.setMoney(aPlayer.getMoney() - totalCosts);
+        aPlayer.payMoney(totalCosts);
         return super.excute(aPlayer);
     }
 

@@ -28,7 +28,7 @@ public class FreeParkingTile extends Tile {
     public void execute(IPlayer aPlayer) {
         if (Settings.USE_FREE_PARKING_POT) {
             if (aPlayer.getCurrentTile().equals(this)) {
-                aPlayer.setMoney(aPlayer.getMoney() + this.collectPot());
+                aPlayer.receiveMoney(this.collectPot());
             }
         }
         super.execute(aPlayer);
