@@ -1,7 +1,9 @@
 package nl.gremmee.antopoly.core.cards.impl;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.abs.Card;
+import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class PayPropertyCard extends Card {
@@ -42,6 +44,12 @@ public class PayPropertyCard extends Card {
         int totalCosts = (houseCosts + hotelCosts) * Settings.MONEY_FACTOR;
         System.out.println("Pay per property " + totalCosts);
         aPlayer.payMoney(totalCosts);
+        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
+            FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
+                    .getTileByName("Vrij parkeren");
+            tile.addToPot(totalCosts);
+        }
+
         return super.excute(aPlayer);
     }
 

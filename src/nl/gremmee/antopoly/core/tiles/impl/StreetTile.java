@@ -76,7 +76,7 @@ public class StreetTile extends PropertyTile {
 
     @Override
     public String toString() {
-        return this.getName() + ", " + this.building;
+        return "| " + this.getName() + ", " + this.building + " |";
     }
 
     public int getHouse1() {

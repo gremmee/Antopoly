@@ -14,6 +14,7 @@ import nl.gremmee.antopoly.core.lists.MunicipalityList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
@@ -216,7 +217,7 @@ public class Player implements IPlayer, Cloneable {
             System.out.println(id + " => " + newID);
             System.out.println(Initialize.getInstance().getTileList());
             ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
-            System.out.println("Goto : " + newTile.getName());
+            System.out.println("Goto : " + newTile);
             setCurrentTile(newTile);
 
             newTile.execute(this);
@@ -250,6 +251,11 @@ public class Player implements IPlayer, Cloneable {
         this.jailBreakTries = 0;
         this.setInJail(false);
         this.payMoney(Money.PRICE_GET_OUT_OF_JAIL);
+        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
+            FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
+                    .getTileByName("Vrij parkeren");
+            tile.addToPot(Money.PRICE_GET_OUT_OF_JAIL);
+        }
     }
 
     private void buyHouse(StreetTile aStreet) {

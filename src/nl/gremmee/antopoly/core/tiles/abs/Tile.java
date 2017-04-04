@@ -91,7 +91,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
 
     @Override
     public String toString() {
-        return this.getName();
+        return "| " + this.getName() + " |";
     }
 
 }

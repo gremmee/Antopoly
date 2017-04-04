@@ -34,4 +34,9 @@ public class FreeParkingTile extends Tile {
         super.execute(aPlayer);
     }
 
+    @Override
+    public String toString() {
+        return "| " + this.getName() + ", " + this.pot + " |";
+    }
+
 }
