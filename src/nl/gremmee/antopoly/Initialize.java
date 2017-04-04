@@ -49,8 +49,10 @@ public class Initialize {
     private TileList tileList;
     private RuleList ruleList;
     private ArtificialIntelligenceList artificialIntelligenceList;
+    private Settings settings;
 
     private Initialize() {
+        settings = new Settings();
     }
 
     public static Initialize getInstance() {
@@ -58,6 +60,10 @@ public class Initialize {
             instance = new Initialize();
         }
         return instance;
+    }
+
+    public Settings getSettings() {
+        return this.settings;
     }
 
     public DiceList initializeDice(int aNumDice) {
@@ -282,7 +288,7 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        if (Settings.USE_TAXES_PERCENTAGE) {
+        if (settings.isTaxesPercentage()) {
             tile = new TaxPercentageTile(i++, "Taxes", 10);
         } else {
             tile = new TaxTile(i++, "Taxes", 100);

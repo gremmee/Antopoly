@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.core.tiles.impl;
 
-import nl.gremmee.antopoly.Settings;
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.abs.Tile;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -26,7 +26,7 @@ public class FreeParkingTile extends Tile {
 
     @Override
     public void execute(IPlayer aPlayer) {
-        if (Settings.USE_FREE_PARKING_POT) {
+        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
             if (aPlayer.getCurrentTile().equals(this)) {
                 aPlayer.receiveMoney(this.collectPot());
             }

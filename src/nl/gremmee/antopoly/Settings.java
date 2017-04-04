@@ -7,10 +7,26 @@ public class Settings {
 
     public static final int MONEY_FACTOR = 1;
 
-    public static final boolean USE_FREE_PARKING_POT = true;
-    // TODO implement
-    public static final boolean USE_TAXES_PERCENTAGE = true;
+    private boolean freeParkingPot = true;
+    private boolean taxesPercentage = false;
+
     // TODO implement
     public static final boolean USE_SHORT_PLAY = false;
+
+    public boolean isFreeParkingPot() {
+        return freeParkingPot;
+    }
+
+    public void setFreeParkingPot(boolean aFreeParkingPot) {
+        freeParkingPot = aFreeParkingPot;
+    }
+
+    public boolean isTaxesPercentage() {
+        return taxesPercentage;
+    }
+
+    public void setTaxesPercentage(boolean aTaxesPercentage) {
+        taxesPercentage = aTaxesPercentage;
+    }
 
 }
