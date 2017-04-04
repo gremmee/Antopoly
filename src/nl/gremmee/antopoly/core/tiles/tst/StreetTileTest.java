@@ -23,6 +23,8 @@ public class StreetTileTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
+        Initialize.getInstance().initializeRules();
         Initialize.getInstance().initializeRules();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
@@ -32,13 +34,13 @@ public class StreetTileTest {
         ownerTile = new StreetTile(1, "OwnerStreet", Municipality.Arnhem, 100, 10, 20, 30, 40, 50, 160);
         ownerTile.setOwner(owner);
         owner.getTileList().add(ownerTile);
-        ownerTile1 = new StreetTile(2, "OwnerStreet1", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1600);
+        ownerTile1 = new StreetTile(2, "OwnerStreet1", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
         ownerTile1.setOwner(owner);
         owner.getTileList().add(ownerTile1);
-        ownerTile2 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1600);
+        ownerTile2 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
         ownerTile2.setOwner(owner);
         owner.getTileList().add(ownerTile2);
-        ownerTile3 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1600);
+        ownerTile3 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
         ownerTile3.setOwner(owner);
         owner.getTileList().add(ownerTile3);
         buyTile = new StreetTile(30, "BuyStreet", Municipality.OnsDorp, 150, 20, 30, 40, 50, 60, 170);

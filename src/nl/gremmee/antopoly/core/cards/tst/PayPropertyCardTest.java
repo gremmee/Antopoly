@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.Municipality;
 import nl.gremmee.antopoly.core.cards.impl.PayPropertyCard;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
@@ -19,6 +20,8 @@ public class PayPropertyCardTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
+        Initialize.getInstance().initializeRules();
         player = new Player(0, "TestPlayer");
         card = new PayPropertyCard("PayProperty", "Pay Property", 104, 200);
         street1 = new StreetTile(0, "Street1", Municipality.OnsDorp, 100, 10, 20, 30, 40, 50, 75);

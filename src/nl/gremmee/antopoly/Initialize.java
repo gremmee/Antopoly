@@ -26,6 +26,7 @@ import nl.gremmee.antopoly.core.tiles.impl.JailTile;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
+import nl.gremmee.antopoly.core.tiles.impl.TaxPercentageTile;
 import nl.gremmee.antopoly.core.tiles.impl.TaxTile;
 import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -281,7 +282,11 @@ public class Initialize {
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");
 
-        tile = new TaxTile(i++, "Taxes", 100);
+        if (Settings.USE_TAXES_PERCENTAGE) {
+            tile = new TaxPercentageTile(i++, "Taxes", 10);
+        } else {
+            tile = new TaxTile(i++, "Taxes", 100);
+        }
         tileList.add(tile);
         System.out.print("Creating Tile " + tile.getName() + "...");
         System.out.println("[OK]");

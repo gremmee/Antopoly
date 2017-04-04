@@ -20,6 +20,7 @@ public class GotoCardTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
         startTile = new StartTile(0);
         tile = new StationTile(1, "Station");
         player = new Player(0, "TestPlayer");

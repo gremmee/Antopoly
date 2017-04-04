@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -20,6 +21,8 @@ public class StationTileTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
+        Initialize.getInstance().initializeRules();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
         stationTile1 = new StationTile(1, "Station 1");

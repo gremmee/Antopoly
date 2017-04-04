@@ -9,7 +9,7 @@ public class Settings {
 
     public static final boolean USE_FREE_PARKING_POT = true;
     // TODO implement
-    public static final boolean USE_10_PERCENT_TAXES = false;
+    public static final boolean USE_TAXES_PERCENTAGE = true;
     // TODO implement
     public static final boolean USE_SHORT_PLAY = false;
 

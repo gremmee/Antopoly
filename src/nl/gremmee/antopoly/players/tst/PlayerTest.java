@@ -16,6 +16,8 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
+        Initialize.getInstance().initializeRules();
         player = new Player(1, "TestPlayer");
     }
 

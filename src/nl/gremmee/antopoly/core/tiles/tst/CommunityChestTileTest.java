@@ -16,6 +16,8 @@ public class CommunityChestTileTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
+        Initialize.getInstance().initializeRules();
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeCommunityChestCards();
         player = new Player(0, "TestPlayer");
