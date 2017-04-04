@@ -4,6 +4,7 @@ import nl.gremmee.antopoly.core.lists.CardList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 
 public interface IPlayer {
 
@@ -48,4 +49,6 @@ public interface IPlayer {
     public void payMoney(int aMoney);
 
     public void receiveMoney(int aMoney);
+
+    public IArtificialIntelligence getArtificialIntelligence();
 }

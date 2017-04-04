@@ -13,9 +13,10 @@ public class ChoiceCard extends PayCard {
 
     @Override
     public boolean excute(IPlayer aPlayer) {
+
         int value = this.getValue() * Settings.MONEY_FACTOR;
 
-        if (aPlayer.getMoney() < value * 20) {
+        if (aPlayer.getArtificialIntelligence().executeChoiceCard(this, aPlayer)) {
             ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
             if (!card.excute(aPlayer)) {
                 Initialize.getInstance().getChanceCardList().putBack(card);
@@ -24,7 +25,8 @@ public class ChoiceCard extends PayCard {
         } else {
             aPlayer.payMoney(value);
         }
-        Initialize.getInstance().initializeRules();
+
+        Initialize.getInstance().executeRules(aPlayer);
         return getKeepCard();
     }
 

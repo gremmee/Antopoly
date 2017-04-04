@@ -54,7 +54,7 @@ public abstract class Card implements ICard {
 
     @Override
     public boolean excute(IPlayer aPlayer) {
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().executeRules(aPlayer);
         return getKeepCard();
     }
 

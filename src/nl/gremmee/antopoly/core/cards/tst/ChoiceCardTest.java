@@ -16,6 +16,7 @@ public class ChoiceCardTest {
 
     @Before
     public void setUp() throws Exception {
+        Initialize.getInstance().initializeArtificialIntelligenceList();
         player = new Player(0, "TestPlayer");
         card = new ChoiceCard("ChoiceCard", "Choice Card", 10);
     }

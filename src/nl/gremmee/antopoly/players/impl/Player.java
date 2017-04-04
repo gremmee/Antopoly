@@ -16,6 +16,7 @@ import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 
 public class Player implements IPlayer, Cloneable {
     private CardList cardList;
@@ -30,14 +31,20 @@ public class Player implements IPlayer, Cloneable {
     private boolean again;
     private int doubles;
     private boolean inJail;
-    private int jailBreak;
+    private int jailBreakTries;
     private RollList rollList;
+    private IArtificialIntelligence artificialIntelligence;
 
     public Player(int aID, String aName) {
+        this(aID, aName, Initialize.getInstance().getArtificialIntelligenceList().getAIByName("AIAggressive"));
+    }
+
+    public Player(int aID, String aName, IArtificialIntelligence aArtificialIntelligence) {
         this.setId(aID);
         this.setActive(false);
         this.setWinner(false);
         this.setBusted(false);
+        this.setArtificialIntelligence(aArtificialIntelligence);
         this.setMoney(Money.PRICE_INITIAL_MONEY);
         this.setName(aName);
         this.setCardList(new CardList());
@@ -46,7 +53,7 @@ public class Player implements IPlayer, Cloneable {
         this.setInJail(false);
         this.rollList = null;
         this.doubles = 0;
-        this.jailBreak = 0;
+        this.jailBreakTries = 0;
     }
 
     @Override
@@ -109,7 +116,7 @@ public class Player implements IPlayer, Cloneable {
                             : Initialize.getInstance().getCommunityChestCardList();
                     cardList.putBack(card);
                     this.setInJail(false);
-                    this.jailBreak = 0;
+                    this.jailBreakTries = 0;
                     break;
                 }
             }
@@ -159,7 +166,6 @@ public class Player implements IPlayer, Cloneable {
     @Override
     public void play() {
         System.out.println("Money: " + getMoney());
-        // TODO: use AI
 
         // Getting out of jail
         if (this.isInJail()) {
@@ -173,13 +179,14 @@ public class Player implements IPlayer, Cloneable {
                 if (this.rollList.isDouble()) {
                     this.setInJail(false);
                 } else {
-                    if (this.jailBreak >= 2) {
-                        this.jailBreak = 0;
-                        this.setInJail(false);
-                        this.setMoney(this.getMoney() - Money.PRICE_GET_OUT_OF_JAIL);
-                        System.out.println("Pay to get out of jail " + Money.PRICE_GET_OUT_OF_JAIL);
+                    if (artificialIntelligence.executeGetOutOfJail()) {
+                        getOutOfJail();
                     } else {
-                        this.jailBreak++;
+                        if (this.jailBreakTries >= 2) {
+                            getOutOfJail();
+                        } else {
+                            this.jailBreakTries++;
+                        }
                     }
                 }
             }
@@ -236,6 +243,13 @@ public class Player implements IPlayer, Cloneable {
         this.rollList = null;
         Initialize.getInstance().executeRules(this);
 
+    }
+
+    private void getOutOfJail() {
+        System.out.println("Pay to get out of jail " + Money.PRICE_GET_OUT_OF_JAIL);
+        this.jailBreakTries = 0;
+        this.setInJail(false);
+        this.payMoney(Money.PRICE_GET_OUT_OF_JAIL);
     }
 
     private void buyHouse(StreetTile aStreet) {
@@ -313,12 +327,8 @@ public class Player implements IPlayer, Cloneable {
         this.inJail = aInJail;
     }
 
-    public int getJailBreak() {
-        return jailBreak;
-    }
-
     public void setJailBreak(int jailBreak) {
-        this.jailBreak = jailBreak;
+        this.jailBreakTries = jailBreak;
     }
 
     @Override
@@ -347,6 +357,14 @@ public class Player implements IPlayer, Cloneable {
             }
         }
         return hotels;
+    }
+
+    public IArtificialIntelligence getArtificialIntelligence() {
+        return artificialIntelligence;
+    }
+
+    private void setArtificialIntelligence(IArtificialIntelligence aArtificialIntelligence) {
+        this.artificialIntelligence = aArtificialIntelligence;
     }
 
 }

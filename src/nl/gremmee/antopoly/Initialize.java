@@ -10,6 +10,7 @@ import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.PayPropertyCard;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
+import nl.gremmee.antopoly.core.lists.ArtificialIntelligenceList;
 import nl.gremmee.antopoly.core.lists.ChanceCardList;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.lists.DiceList;
@@ -28,6 +29,8 @@ import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.core.tiles.impl.TaxTile;
 import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
+import nl.gremmee.antopoly.players.ai.impl.AIAggressive;
 import nl.gremmee.antopoly.players.impl.Player;
 import nl.gremmee.antopoly.rules.IRule;
 import nl.gremmee.antopoly.rules.impl.BankruptRule;
@@ -44,6 +47,7 @@ public class Initialize {
     private PlayerList playerList;
     private TileList tileList;
     private RuleList ruleList;
+    private ArtificialIntelligenceList artificialIntelligenceList;
 
     private Initialize() {
     }
@@ -394,6 +398,17 @@ public class Initialize {
         return ruleList;
     }
 
+    public ArtificialIntelligenceList initializeArtificialIntelligenceList() {
+        System.out.println("Initializing Artificial Intelligences");
+        artificialIntelligenceList = new ArtificialIntelligenceList();
+        IArtificialIntelligence ai = new AIAggressive();
+        artificialIntelligenceList.add(ai);
+        System.out.print("Creating Artificial Intelligences " + ai + "...");
+        System.out.println("[OK]");
+
+        return artificialIntelligenceList;
+    }
+
     public CommunityChestCardList initializeCommunityChestCards() {
         System.out.println("Initializing Community Chest Cards");
         communityChestCardList = new CommunityChestCardList();
@@ -527,5 +542,9 @@ public class Initialize {
             rule.execute(aPlayer);
         }
 
+    }
+
+    public ArtificialIntelligenceList getArtificialIntelligenceList() {
+        return this.artificialIntelligenceList;
     }
 }

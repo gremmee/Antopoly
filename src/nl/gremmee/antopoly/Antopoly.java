@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly;
 
+import nl.gremmee.antopoly.core.lists.ArtificialIntelligenceList;
 import nl.gremmee.antopoly.core.lists.ChanceCardList;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.lists.DiceList;
@@ -15,6 +16,7 @@ public class Antopoly {
     private static PlayerList playerList;
     private static TileList tileList;
     private static RuleList ruleList;
+    private static ArtificialIntelligenceList artificialIntelligenceList;
 
     public static void main(String[] args) {
         long beginTime = System.currentTimeMillis();
@@ -41,6 +43,8 @@ public class Antopoly {
         max += chanceCardList.size();
         communityChestCardList = Initialize.getInstance().initializeCommunityChestCards();
         max += communityChestCardList.size();
+        artificialIntelligenceList = Initialize.getInstance().initializeArtificialIntelligenceList();
+        max += artificialIntelligenceList.size();
         playerList = Initialize.getInstance().initializePlayers(Settings.NUM_PLAYERS);
         max += playerList.size();
 

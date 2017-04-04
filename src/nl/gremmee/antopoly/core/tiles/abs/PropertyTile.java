@@ -1,6 +1,5 @@
 package nl.gremmee.antopoly.core.tiles.abs;
 
-import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -32,16 +31,7 @@ public abstract class PropertyTile extends Tile {
     }
 
     protected void buyProperty(IPlayer aCurrent) {
-        System.out.println("Buy Property " + this.getName());
-        int value = this.getValue() * Settings.MONEY_FACTOR;
-        if (aCurrent.getMoney() > value) {
-            aCurrent.getTileList().add(this);
-            this.setOwner(aCurrent);
-            System.out.println("tileValue " + value);
-            aCurrent.payMoney(value);
-        } else {
-            System.out.println("Not enough money!");
-        }
+        aCurrent.getArtificialIntelligence().executeBuyTile(this, aCurrent);
     }
 
 }
