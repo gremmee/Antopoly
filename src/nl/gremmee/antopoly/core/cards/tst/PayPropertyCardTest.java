@@ -12,10 +12,10 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class PayPropertyCardTest {
 
-    Player player;
-    PayPropertyCard card;
-    StreetTile street1;
-    StreetTile street2;
+    private Player player;
+    private PayPropertyCard card;
+    private StreetTile street1;
+    private StreetTile street2;
 
     @Before
     public void setUp() throws Exception {

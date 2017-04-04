@@ -10,12 +10,13 @@ import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class StationTileTest {
-    StationTile stationTile1;
-    StationTile stationTile2;
-    StationTile stationTile3;
-    StationTile stationTile4;
-    Player player;
-    Player owner;
+
+    private StationTile stationTile1;
+    private StationTile stationTile2;
+    private StationTile stationTile3;
+    private StationTile stationTile4;
+    private Player player;
+    private Player owner;
 
     @Before
     public void setUp() throws Exception {

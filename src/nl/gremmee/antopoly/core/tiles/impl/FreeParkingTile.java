@@ -7,7 +7,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class FreeParkingTile extends Tile {
 
-    int pot;
+    private int pot;
 
     public FreeParkingTile(int aID) {
         super(aID, "Vrij parkeren", TileType.TT_FreeParking);
@@ -18,7 +18,7 @@ public class FreeParkingTile extends Tile {
         this.pot += aValue;
     }
 
-    public int collectPot() {
+    private int collectPot() {
         int value = pot;
         this.pot = 0;
         return value;

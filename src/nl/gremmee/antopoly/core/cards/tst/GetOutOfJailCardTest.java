@@ -11,8 +11,8 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class GetOutOfJailCardTest {
 
-    Player player;
-    GetOutOfJailCard card;
+    private Player player;
+    private GetOutOfJailCard card;
 
     @Before
     public void setUp() throws Exception {

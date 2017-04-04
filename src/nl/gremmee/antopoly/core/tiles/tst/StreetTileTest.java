@@ -11,14 +11,15 @@ import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class StreetTileTest {
-    StreetTile ownTile;
-    StreetTile ownerTile;
-    StreetTile ownerTile1;
-    StreetTile ownerTile2;
-    StreetTile ownerTile3;
-    StreetTile buyTile;
-    Player player;
-    Player owner;
+
+    private StreetTile ownTile;
+    private StreetTile ownerTile;
+    private StreetTile ownerTile1;
+    private StreetTile ownerTile2;
+    private StreetTile ownerTile3;
+    private StreetTile buyTile;
+    private Player player;
+    private Player owner;
 
     @Before
     public void setUp() throws Exception {

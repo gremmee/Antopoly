@@ -14,10 +14,10 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class GotoJailCardTest {
 
-    Player player;
-    JailTile tile;
-    StartTile startTile;
-    GotoJailCard card;
+    private Player player;
+    private JailTile tile;
+    private StartTile startTile;
+    private GotoJailCard card;
 
     @Before
     public void setUp() throws Exception {

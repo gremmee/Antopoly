@@ -10,8 +10,8 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class PayCardTest {
 
-    Player player;
-    PayCard card;
+    private Player player;
+    private PayCard card;
 
     @Before
     public void setUp() throws Exception {

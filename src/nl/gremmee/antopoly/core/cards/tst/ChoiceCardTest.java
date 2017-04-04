@@ -11,8 +11,8 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class ChoiceCardTest {
 
-    Player player;
-    ChoiceCard card;
+    private Player player;
+    private ChoiceCard card;
 
     @Before
     public void setUp() throws Exception {

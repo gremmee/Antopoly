@@ -10,8 +10,8 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class ReceiveCardTest {
 
-    Player player;
-    ReceiveCard card;
+    private Player player;
+    private ReceiveCard card;
 
     @Before
     public void setUp() throws Exception {

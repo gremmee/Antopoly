@@ -12,7 +12,7 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class PlayerTest {
 
-    Player player;
+    private Player player;
 
     @Before
     public void setUp() throws Exception {

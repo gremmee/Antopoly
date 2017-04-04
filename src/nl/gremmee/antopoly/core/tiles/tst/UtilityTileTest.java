@@ -13,11 +13,12 @@ import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class UtilityTileTest {
-    UtilityTile utilityTile1;
-    UtilityTile utilityTile2;
-    DiceList diceList;
-    Player player;
-    Player owner;
+
+    private UtilityTile utilityTile1;
+    private UtilityTile utilityTile2;
+    private DiceList diceList;
+    private Player player;
+    private Player owner;
 
     @Before
     public void setUp() throws Exception {

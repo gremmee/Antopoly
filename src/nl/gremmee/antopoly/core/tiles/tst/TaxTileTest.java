@@ -9,8 +9,8 @@ import nl.gremmee.antopoly.core.tiles.impl.TaxTile;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class TaxTileTest {
-    TaxTile tile;
-    Player player;
+    private TaxTile tile;
+    private Player player;
 
     @Before
     public void setUp() throws Exception {

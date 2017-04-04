@@ -13,10 +13,10 @@ import nl.gremmee.antopoly.players.impl.Player;
 
 public class GotoCardTest {
 
-    Player player;
-    StationTile tile;
-    StartTile startTile;
-    GotoCard card;
+    private Player player;
+    private StationTile tile;
+    private StartTile startTile;
+    private GotoCard card;
 
     @Before
     public void setUp() throws Exception {
