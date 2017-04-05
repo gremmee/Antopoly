@@ -35,6 +35,7 @@ import nl.gremmee.antopoly.players.ai.impl.AIAggressive;
 import nl.gremmee.antopoly.players.impl.Player;
 import nl.gremmee.antopoly.rules.IRule;
 import nl.gremmee.antopoly.rules.impl.BankruptRule;
+import nl.gremmee.antopoly.statistics.InitializeStatistics;
 
 /**
  * Initialize
@@ -53,6 +54,7 @@ public class Initialize {
 
     private Initialize() {
         settings = new Settings();
+        InitializeStatistics.getInstance().initializeCollectors();
     }
 
     public static Initialize getInstance() {

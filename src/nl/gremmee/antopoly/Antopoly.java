@@ -8,6 +8,7 @@ import nl.gremmee.antopoly.core.lists.PlayerList;
 import nl.gremmee.antopoly.core.lists.RuleList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.statistics.InitializeStatistics;
 
 public class Antopoly {
     private static DiceList diceList;
@@ -71,6 +72,7 @@ public class Antopoly {
             round++;
             System.out.println("------------------");
             System.out.println("Round " + round);
+            System.out.println(InitializeStatistics.getInstance().getCollectorList());
         } while (playerList.getWinner() == null);
         IPlayer winner = playerList.getWinner();
         System.out.println("Winner: " + winner.getName());

@@ -18,6 +18,8 @@ import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
+import nl.gremmee.antopoly.statistics.ICollector;
+import nl.gremmee.antopoly.statistics.InitializeStatistics;
 
 public class Player implements IPlayer, Cloneable {
     private CardList cardList;
@@ -280,6 +282,8 @@ public class Player implements IPlayer, Cloneable {
     public void setCurrentTile(ITile aCurrentTile) {
         assert aCurrentTile != null : "aCurrentTile cannot be null!";
         this.currentTile = aCurrentTile;
+        ICollector collector = InitializeStatistics.getInstance().getCollectorList().getTileCollector();
+        collector.collect(this);
     }
 
     public int getMoney() {
