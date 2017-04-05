@@ -1,6 +1,6 @@
 package nl.gremmee.antopoly.rules.impl;
 
-import nl.gremmee.antopoly.Initialize;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.rules.abs.Rule;
 

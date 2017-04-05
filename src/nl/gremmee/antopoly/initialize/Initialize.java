@@ -1,5 +1,6 @@
-package nl.gremmee.antopoly;
+package nl.gremmee.antopoly.initialize;
 
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.Die;
 import nl.gremmee.antopoly.core.Municipality;
 import nl.gremmee.antopoly.core.cards.ICard;

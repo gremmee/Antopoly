@@ -7,6 +7,7 @@ import nl.gremmee.antopoly.core.lists.DiceList;
 import nl.gremmee.antopoly.core.lists.PlayerList;
 import nl.gremmee.antopoly.core.lists.RuleList;
 import nl.gremmee.antopoly.core.lists.TileList;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.statistics.InitializeStatistics;
 

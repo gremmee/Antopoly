@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class ReceiveCardTest {

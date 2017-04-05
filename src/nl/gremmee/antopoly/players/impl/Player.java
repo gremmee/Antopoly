@@ -2,7 +2,6 @@ package nl.gremmee.antopoly.players.impl;
 
 import java.util.Objects;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
@@ -13,6 +12,7 @@ import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 import nl.gremmee.antopoly.statistics.ICollector;

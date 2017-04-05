@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.lists.TileList;
+import nl.gremmee.antopoly.initialize.Initialize;
 
 @RunWith(Parameterized.class)
 public class TileListTest {

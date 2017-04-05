@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
 import nl.gremmee.antopoly.core.tiles.impl.JailTile;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class GotoJailCardTest {

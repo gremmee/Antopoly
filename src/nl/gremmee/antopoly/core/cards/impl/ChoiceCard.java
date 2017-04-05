@@ -1,8 +1,8 @@
 package nl.gremmee.antopoly.core.cards.impl;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class ChoiceCard extends PayCard {

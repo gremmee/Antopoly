@@ -1,6 +1,5 @@
 package nl.gremmee.antopoly.players.ai.impl;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
 import nl.gremmee.antopoly.core.lists.MunicipalityList;
@@ -8,6 +7,7 @@ import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.abs.ArtificialIntelligence;
 

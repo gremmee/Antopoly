@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.lists.DiceList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class UtilityTileTest {

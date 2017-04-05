@@ -3,9 +3,9 @@ package nl.gremmee.antopoly.core.tiles.abs;
 
 import java.util.Objects;
 
-import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public abstract class Tile implements ITile, Comparable<Tile> {
