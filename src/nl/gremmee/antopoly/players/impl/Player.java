@@ -194,13 +194,16 @@ public class Player implements IPlayer, Cloneable {
                 }
             }
         }
-        if (!this.isInJail()) {
+        END: if (!this.isInJail()) {
             if (this.rollList == null) {
                 DiceList diceList = Initialize.getInstance().getDiceList();
                 this.rollList = diceList.roll();
                 this.setAgain(this.rollList.isDouble());
                 if (this.doubles >= 3) {
                     System.out.println("JAIL TIME");
+                    this.setInJail(true);
+                    this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+                    break END;
                 }
             }
             int diceResult = this.rollList.getResult();
@@ -241,7 +244,6 @@ public class Player implements IPlayer, Cloneable {
             }
 
         }
-
         System.out.println("Money: " + getMoney());
         this.rollList = null;
         Initialize.getInstance().executeRules(this);
