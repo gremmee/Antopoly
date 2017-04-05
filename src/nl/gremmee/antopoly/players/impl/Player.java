@@ -32,10 +32,11 @@ public class Player implements IPlayer, Cloneable {
     private int money;
     private boolean busted;
     private boolean again;
-    private int doubles;
+    // private int doubles;
     private boolean inJail;
     private int jailBreakTries;
     private RollList rollList;
+    private DiceList diceList;
     private IArtificialIntelligence artificialIntelligence;
 
     public Player(int aID, String aName) {
@@ -44,6 +45,8 @@ public class Player implements IPlayer, Cloneable {
 
     public Player(int aID, String aName, IArtificialIntelligence aArtificialIntelligence) {
         this.setId(aID);
+        this.diceList = Initialize.getInstance().getDiceList();
+        this.rollList = new RollList();
         this.setActive(false);
         this.setWinner(false);
         this.setBusted(false);
@@ -54,8 +57,7 @@ public class Player implements IPlayer, Cloneable {
         this.setTileList(new TileList());
         this.setAgain(false);
         this.setInJail(false);
-        this.rollList = null;
-        this.doubles = 0;
+        // this.doubles = 0;
         this.jailBreakTries = 0;
     }
 
@@ -177,7 +179,7 @@ public class Player implements IPlayer, Cloneable {
                 useGetOutOfJailCard();
 
             } else {
-                DiceList diceList = Initialize.getInstance().getDiceList();
+
                 this.rollList = diceList.roll();
                 if (this.rollList.isDouble()) {
                     this.setInJail(false);
@@ -194,18 +196,9 @@ public class Player implements IPlayer, Cloneable {
                 }
             }
         }
-        END: if (!this.isInJail()) {
-            if (this.rollList == null) {
-                DiceList diceList = Initialize.getInstance().getDiceList();
-                this.rollList = diceList.roll();
-                this.setAgain(this.rollList.isDouble());
-                if (this.doubles >= 3) {
-                    System.out.println("JAIL TIME");
-                    this.setInJail(true);
-                    this.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
-                    break END;
-                }
-            }
+        Initialize.getInstance().executeRules(this);
+        if (!this.isInJail()) {
+
             int diceResult = this.rollList.getResult();
             System.out.println("Rolled " + diceResult);
 
@@ -327,8 +320,13 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public void setAgain(boolean aAgain) {
-        this.doubles = aAgain ? ++this.doubles : 0;
+        // this.doubles = aAgain ? ++this.doubles : 0;
+        int doubles = (aAgain = true) ? this.rollList.increaseDoubles() : this.rollList.resetDoubles();
         this.again = aAgain;
+    }
+
+    public RollList roll() {
+        return diceList.roll();
     }
 
     public boolean isInJail() {

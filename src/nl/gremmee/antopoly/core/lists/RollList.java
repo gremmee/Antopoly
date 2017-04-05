@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class RollList extends ArrayList<Long> {
 
+    int doubles = 0;
+
     private static final long serialVersionUID = -1283759404224639418L;
 
     public int getResult() {
@@ -24,5 +26,18 @@ public class RollList extends ArrayList<Long> {
             initRoll = roll;
         }
         return false;
+    }
+
+    public int increaseDoubles() {
+        return ++this.doubles;
+    }
+
+    public int resetDoubles() {
+        this.doubles = 0;
+        return this.doubles;
+    }
+
+    public int getDoubles() {
+        return this.doubles;
     }
 }

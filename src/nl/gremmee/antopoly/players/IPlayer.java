@@ -44,6 +44,8 @@ public interface IPlayer {
 
     public int getHotels();
 
+    public RollList roll();
+
     public RollList getRollList();
 
     public void payMoney(int aMoney);
@@ -51,4 +53,6 @@ public interface IPlayer {
     public void receiveMoney(int aMoney);
 
     public IArtificialIntelligence getArtificialIntelligence();
+
+    public void setAgain(boolean aAgain);
 }
