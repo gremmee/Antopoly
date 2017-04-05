@@ -32,7 +32,6 @@ public class Player implements IPlayer, Cloneable {
     private int money;
     private boolean busted;
     private boolean again;
-    // private int doubles;
     private boolean inJail;
     private int jailBreakTries;
     private RollList rollList;
@@ -339,34 +338,6 @@ public class Player implements IPlayer, Cloneable {
 
     public void setJailBreak(int jailBreak) {
         this.jailBreakTries = jailBreak;
-    }
-
-    @Override
-    public int getHouses() {
-        int houses = 0;
-        for (ITile tile : this.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() < 5) {
-                    houses += street.getBuildings();
-                }
-            }
-        }
-        return houses;
-    }
-
-    @Override
-    public int getHotels() {
-        int hotels = 0;
-        for (ITile tile : this.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() >= 5) {
-                    hotels++;
-                }
-            }
-        }
-        return hotels;
     }
 
     public IArtificialIntelligence getArtificialIntelligence() {

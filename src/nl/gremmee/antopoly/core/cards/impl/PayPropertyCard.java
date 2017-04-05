@@ -3,7 +3,9 @@ package nl.gremmee.antopoly.core.cards.impl;
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.abs.Card;
+import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
+import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class PayPropertyCard extends Card {
@@ -35,8 +37,8 @@ public class PayPropertyCard extends Card {
 
     @Override
     public boolean excute(IPlayer aPlayer) {
-        int houses = aPlayer.getHouses();
-        int hotels = aPlayer.getHotels();
+        int houses = getHouses(aPlayer);
+        int hotels = getHotels(aPlayer);
 
         int houseCosts = this.getPerHouse() * houses;
         int hotelCosts = this.getPerHotel() * hotels;
@@ -56,6 +58,32 @@ public class PayPropertyCard extends Card {
     @Override
     protected boolean getKeepCard() {
         return false;
+    }
+
+    public int getHouses(IPlayer aPlayer) {
+        int houses = 0;
+        for (ITile tile : aPlayer.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() < 5) {
+                    houses += street.getBuildings();
+                }
+            }
+        }
+        return houses;
+    }
+
+    public int getHotels(IPlayer aPlayer) {
+        int hotels = 0;
+        for (ITile tile : aPlayer.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() >= 5) {
+                    hotels++;
+                }
+            }
+        }
+        return hotels;
     }
 
 }
