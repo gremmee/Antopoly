@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -14,9 +15,9 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     private int ID;
     private TileType tileType;
 
-    public Tile(int aID, String aName, TileType aTileType) {
-        this.setID(aID);
-        this.setName(aName);
+    public Tile(Tiles aTiles, TileType aTileType) {
+        this.setID(aTiles.getId());
+        this.setName(aTiles.getName());
         this.setTileType(aTileType);
     }
 

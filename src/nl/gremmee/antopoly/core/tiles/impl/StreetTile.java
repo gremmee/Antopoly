@@ -8,6 +8,7 @@ import nl.gremmee.antopoly.core.lists.MunicipalityList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -19,9 +20,9 @@ public class StreetTile extends PropertyTile {
     private int house1, house2, house3, house4;
     private int hotel;
 
-    public StreetTile(int aID, String aName, Municipality aMunicipality, int aValue, int aRent, int aHouse1,
-            int aHouse2, int aHouse3, int aHouse4, int aHotel) {
-        super(aID, aName, TileType.TT_Street, aValue);
+    public StreetTile(Tiles aTiles, Municipality aMunicipality, int aValue, int aRent, int aHouse1, int aHouse2,
+            int aHouse3, int aHouse4, int aHotel) {
+        super(aTiles, TileType.TT_Street, aValue);
         this.setMunicipality(aMunicipality);
         this.setRent(aRent);
         this.setHouse1(aHouse1);

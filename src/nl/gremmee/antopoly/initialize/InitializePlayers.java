@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.initialize;
 
 import nl.gremmee.antopoly.core.lists.PlayerList;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.impl.Player;
 
@@ -24,7 +25,7 @@ public class InitializePlayers {
         for (int i = 0; i < aNumPlayers; i++) {
             System.out.print("Creating Player " + (i + 1) + "...");
             IPlayer player = new Player(i + 1, "Player " + (i + 1));
-            player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
+            player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
             playerList.add(player);
             System.out.println("[OK]");
         }

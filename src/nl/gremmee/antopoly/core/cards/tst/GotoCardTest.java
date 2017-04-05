@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.cards.impl.GotoCard;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
 import nl.gremmee.antopoly.initialize.Initialize;
@@ -21,8 +22,8 @@ public class GotoCardTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        startTile = new StartTile(0);
-        tile = new StationTile(1, "Station");
+        startTile = new StartTile(Tiles.START);
+        tile = new StationTile(Tiles.PENNSYLVANIA_RAILROAD);
         player = new Player(0, "TestPlayer");
         player.getTileList().add(tile);
         tile.setOwner(player);

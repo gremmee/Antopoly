@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.core.tiles.impl;
 
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.Tile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -9,8 +10,8 @@ public class FreeParkingTile extends Tile {
 
     private int pot;
 
-    public FreeParkingTile(int aID) {
-        super(aID, "Vrij parkeren", TileType.TT_FreeParking);
+    public FreeParkingTile(Tiles aTiles) {
+        super(aTiles, TileType.TT_FreeParking);
         this.pot = 0;
     }
 

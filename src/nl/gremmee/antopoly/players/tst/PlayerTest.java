@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
@@ -62,7 +63,7 @@ public class PlayerTest {
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeChanceCardsList();
         Initialize.getInstance().initializeCommunityChestCardsList();
-        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
+        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.JAIL));
         ICard card = new GetOutOfJailCard("Verlaat de gevangenis", "Verlaat de gevangenis zonder te betalen");
         player.getCardList().add(card);
         player.setInJail(true);

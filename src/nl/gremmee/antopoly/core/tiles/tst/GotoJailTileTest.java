@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
@@ -20,7 +21,7 @@ public class GotoJailTileTest {
         Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         Initialize.getInstance().initializeTileList();
-        tile = Initialize.getInstance().getTileList().getTileByName("Goto Jail");
+        tile = Initialize.getInstance().getTileList().getTileByName(Tiles.GOTO_JAIL);
     }
 
     @Test

@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.JailTile;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.initialize.Initialize;
@@ -24,8 +25,8 @@ public class GotoJailCardTest {
         Initialize.getInstance().initializeArtificialIntelligenceList();
         Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
-        startTile = new StartTile(0);
-        tile = new JailTile(1);
+        startTile = new StartTile(Tiles.START);
+        tile = new JailTile(Tiles.JAIL);
         player = new Player(0, "TestPlayer");
         player.setCurrentTile(startTile);
 

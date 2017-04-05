@@ -1,13 +1,14 @@
 package nl.gremmee.antopoly.core.tiles.impl;
 
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.Tile;
 import nl.gremmee.antopoly.players.IPlayer;
 
 public class JailTile extends Tile {
 
-    public JailTile(int aID) {
-        super(aID, "Jail", TileType.TT_Jail);
+    public JailTile(Tiles aTiles) {
+        super(aTiles, TileType.TT_Jail);
     }
 
     @Override

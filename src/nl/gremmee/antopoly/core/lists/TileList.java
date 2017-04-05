@@ -3,22 +3,23 @@ package nl.gremmee.antopoly.core.lists;
 import java.util.ArrayList;
 
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 
 public class TileList extends ArrayList<ITile> {
 
     private static final long serialVersionUID = -8238183105633419715L;
 
-    public ITile getTileByName(String aName) {
+    public ITile getTileByName(Tiles aTiles) {
         for (ITile tile : this) {
-            if (tile.getName().equals(aName))
+            if (tile.getName().equals(aTiles.getName()))
                 return tile;
         }
         return null;
     }
 
-    public ITile getTileByID(int aID) {
+    public ITile getTileByID(int aId) {
         for (ITile tile : this) {
-            if (tile.getID() == aID)
+            if (tile.getID() == aId)
                 return tile;
         }
         return null;

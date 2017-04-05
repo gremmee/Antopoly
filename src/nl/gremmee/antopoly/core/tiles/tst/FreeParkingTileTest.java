@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -18,14 +19,14 @@ public class FreeParkingTileTest {
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
         Initialize.getInstance().initializeRuleList();
-        tile = new FreeParkingTile(0);
+        tile = new FreeParkingTile(Tiles.FREE_PARKING);
         player = new Player(0, "TestPlayer");
         player.setCurrentTile(tile);
     }
 
     @Test
     public void testName() {
-        assertEquals("Vrij parkeren", tile.getName());
+        assertEquals("Free Parking", tile.getName());
     }
 
     @Test

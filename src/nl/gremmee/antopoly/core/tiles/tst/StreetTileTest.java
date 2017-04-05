@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.Municipality;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -27,22 +28,24 @@ public class StreetTileTest {
         Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
-        ownTile = new StreetTile(0, "OwnStreet", Municipality.DenHaag, 200, 20, 30, 40, 50, 60, 170);
+        ownTile = new StreetTile(Tiles.ATLANTIC_AVENUE, Municipality.DenHaag, 200, 20, 30, 40, 50, 60, 170);
         ownTile.setOwner(player);
         player.getTileList().add(ownTile);
-        ownerTile = new StreetTile(1, "OwnerStreet", Municipality.Arnhem, 100, 10, 20, 30, 40, 50, 160);
+        ownerTile = new StreetTile(Tiles.ORIENTAL_AVENUE, Municipality.Arnhem, 100, 10, 20, 30, 40, 50, 160);
         ownerTile.setOwner(owner);
         owner.getTileList().add(ownerTile);
-        ownerTile1 = new StreetTile(2, "OwnerStreet1", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
+        ownerTile1 = new StreetTile(Tiles.PACIFIC_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
         ownerTile1.setOwner(owner);
         owner.getTileList().add(ownerTile1);
-        ownerTile2 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
+        ownerTile2 = new StreetTile(Tiles.NORTH_CAROLINA_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500,
+                1000);
         ownerTile2.setOwner(owner);
         owner.getTileList().add(ownerTile2);
-        ownerTile3 = new StreetTile(3, "OwnerStreet3", Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
+        ownerTile3 = new StreetTile(Tiles.PENNSYLVANIA_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500,
+                1000);
         ownerTile3.setOwner(owner);
         owner.getTileList().add(ownerTile3);
-        buyTile = new StreetTile(30, "BuyStreet", Municipality.OnsDorp, 150, 20, 30, 40, 50, 60, 170);
+        buyTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 150, 20, 30, 40, 50, 60, 170);
     }
 
     @Test
@@ -57,12 +60,12 @@ public class StreetTileTest {
 
     @Test
     public void testOwnName() {
-        assertEquals("OwnStreet", ownTile.getName());
+        assertEquals("Atlantic Avenue", ownTile.getName());
     }
 
     @Test
     public void testOwnerName() {
-        assertEquals("OwnerStreet", ownerTile.getName());
+        assertEquals("Oriental Avenue", ownerTile.getName());
     }
 
     @Test

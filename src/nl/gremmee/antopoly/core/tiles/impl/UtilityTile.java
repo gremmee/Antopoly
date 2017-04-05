@@ -3,6 +3,7 @@ package nl.gremmee.antopoly.core.tiles.impl;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -11,8 +12,8 @@ public class UtilityTile extends PropertyTile {
     public static final int FACTOR_OWN_SINGLE = 4;
     public static final int FACTOR_OWN_DOUBLE = 10;
 
-    public UtilityTile(int aID, String aName) {
-        super(aID, aName, TileType.TT_Utility, 150);
+    public UtilityTile(Tiles aTiles) {
+        super(aTiles, TileType.TT_Utility, 150);
     }
 
     @Override

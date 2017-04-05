@@ -11,6 +11,7 @@ import nl.gremmee.antopoly.core.lists.DiceList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -235,7 +236,7 @@ public class Player implements IPlayer, Cloneable {
         this.payMoney(Money.PRICE_GET_OUT_OF_JAIL);
         if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
             FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
-                    .getTileByName("Vrij parkeren");
+                    .getTileByName(Tiles.FREE_PARKING);
             tile.addToPot(Money.PRICE_GET_OUT_OF_JAIL);
         }
     }

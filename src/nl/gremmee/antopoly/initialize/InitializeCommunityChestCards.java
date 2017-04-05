@@ -9,6 +9,7 @@ import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.lists.TileList;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 
 public class InitializeCommunityChestCards {
     private static InitializeCommunityChestCards instance;
@@ -44,7 +45,7 @@ public class InitializeCommunityChestCards {
             System.out.println("[OK]");
 
             card = new GotoCard("Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
-                    aTileList.getTileByName("Dorpsstraat"));
+                    aTileList.getTileByName(Tiles.MEDITERRANEAN_AVENUE));
             communityChestCardList.addRandom(card);
             System.out.print("Creating Card " + card.getName() + "...");
             System.out.println("[OK]");
@@ -100,7 +101,7 @@ public class InitializeCommunityChestCards {
             System.out.print("Creating Card " + card.getName() + "...");
             System.out.println("[OK]");
 
-            card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName("Start"));
+            card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName(Tiles.START));
             communityChestCardList.addRandom(card);
             System.out.print("Creating Card " + card.getName() + "...");
             System.out.println("[OK]");

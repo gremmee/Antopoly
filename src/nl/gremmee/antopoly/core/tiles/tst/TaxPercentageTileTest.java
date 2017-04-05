@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.TaxPercentageTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -19,7 +20,7 @@ public class TaxPercentageTileTest {
         Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
         player = new Player(0, "TestPlayer");
-        tile = new TaxPercentageTile(1, "Income Taxes Percentage", 10);
+        tile = new TaxPercentageTile(Tiles.TAXES_PERCENTAGE, 10);
     }
 
     @Test
@@ -29,7 +30,7 @@ public class TaxPercentageTileTest {
 
     @Test
     public void testName() {
-        assertEquals("Income Taxes Percentage", tile.getName());
+        assertEquals("Taxes Percentage", tile.getName());
     }
 
     @Test

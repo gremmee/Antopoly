@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -19,7 +20,7 @@ public class StartTileTest {
         Initialize.getInstance().initializeArtificialIntelligenceList();
         Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
-        tile = new StartTile(0);
+        tile = new StartTile(Tiles.START);
     }
 
     @Test

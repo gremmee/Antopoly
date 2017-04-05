@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.CommunityChestTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
@@ -21,8 +22,8 @@ public class CommunityChestTileTest {
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeCommunityChestCardsList();
         player = new Player(0, "TestPlayer");
-        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
-        tile = new CommunityChestTile(0, 1);
+        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
+        tile = new CommunityChestTile(Tiles.COMMUNITY_CHEST_1);
     }
 
     @Test

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -25,10 +26,10 @@ public class StationTileTest {
         Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
-        stationTile1 = new StationTile(1, "Station 1");
-        stationTile2 = new StationTile(2, "Station 2");
-        stationTile3 = new StationTile(3, "Station 3");
-        stationTile4 = new StationTile(4, "Station 4");
+        stationTile1 = new StationTile(Tiles.READING_RAILROAD);
+        stationTile2 = new StationTile(Tiles.PENNSYLVANIA_RAILROAD);
+        stationTile3 = new StationTile(Tiles.B_O_RAILROAD);
+        stationTile4 = new StationTile(Tiles.SHORT_LINE);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class StationTileTest {
 
     @Test
     public void testOwnName() {
-        assertEquals("Station 1", stationTile1.getName());
+        assertEquals("Reading Railroad", stationTile1.getName());
     }
 
     @Test

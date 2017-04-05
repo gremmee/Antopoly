@@ -3,6 +3,7 @@ package nl.gremmee.antopoly.core.tiles.impl;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -13,8 +14,8 @@ public class StationTile extends PropertyTile {
     public static final int RENT_THREE = 100;
     public static final int RENT_FOUR = 200;
 
-    public StationTile(int aID, String aName) {
-        super(aID, aName, TileType.TT_Station, 200);
+    public StationTile(Tiles aTiles) {
+        super(aTiles, TileType.TT_Station, 200);
     }
 
     @Override

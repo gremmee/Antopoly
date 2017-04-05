@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
+import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
@@ -38,7 +39,7 @@ public class ChoiceCardTest {
         Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
         Initialize.getInstance().initializeChanceCardsList();
-        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
+        player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
         // player.setMoney(170); // make sure it's below the thresshold
         Player playerBefore = player.clone();
         card.excute(player);
