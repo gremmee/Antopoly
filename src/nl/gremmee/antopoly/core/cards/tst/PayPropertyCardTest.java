@@ -21,7 +21,7 @@ public class PayPropertyCardTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         card = new PayPropertyCard("PayProperty", "Pay Property", 104, 200);
         street1 = new StreetTile(0, "Street1", Municipality.OnsDorp, 100, 10, 20, 30, 40, 50, 75);

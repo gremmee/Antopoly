@@ -17,7 +17,7 @@ public class PayCardTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         card = new PayCard("Pay", "Pay", 100);
     }

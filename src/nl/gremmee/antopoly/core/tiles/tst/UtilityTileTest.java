@@ -23,8 +23,8 @@ public class UtilityTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
-        Initialize.getInstance().initializeDice(Settings.NUM_DICE);
+        Initialize.getInstance().initializeRuleList();
+        Initialize.getInstance().initializeDiceList(Settings.NUM_DICE);
         diceList = Initialize.getInstance().getDiceList();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");

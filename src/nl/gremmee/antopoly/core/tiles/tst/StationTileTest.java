@@ -22,7 +22,7 @@ public class StationTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
         stationTile1 = new StationTile(1, "Station 1");

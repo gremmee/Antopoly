@@ -17,9 +17,9 @@ public class CommunityChestTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
-        Initialize.getInstance().initializeCommunityChestCards();
+        Initialize.getInstance().initializeCommunityChestCardsList();
         player = new Player(0, "TestPlayer");
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         tile = new CommunityChestTile(0, 1);

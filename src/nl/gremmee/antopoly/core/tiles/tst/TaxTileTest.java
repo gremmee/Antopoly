@@ -16,7 +16,7 @@ public class TaxTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         tile = new TaxTile(1, "Income Taxes", 200);
     }

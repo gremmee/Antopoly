@@ -43,7 +43,7 @@ public class GotoCardTest {
 
     @Test
     public void testExecute() throws CloneNotSupportedException {
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         Player playerBefore = player.clone();
         card.excute(player);
         assertEquals(tile, player.getCurrentTile());

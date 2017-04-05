@@ -17,9 +17,9 @@ public class ChanceTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
-        Initialize.getInstance().initializeChanceCards();
+        Initialize.getInstance().initializeChanceCardsList();
         player = new Player(0, "TestPlayer");
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         tile = new ChanceTile(0, 1);

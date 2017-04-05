@@ -35,26 +35,26 @@ public class Antopoly {
 
     public static void initialize() {
         Initialize.getInstance();
-        diceList = Initialize.getInstance().initializeDice(Settings.NUM_DICE);
+        diceList = Initialize.getInstance().initializeDiceList(Settings.NUM_DICE);
         int max = diceList.size();
         tileList = Initialize.getInstance().initializeTileList();
         max += tileList.size();
-        ruleList = Initialize.getInstance().initializeRules();
+        ruleList = Initialize.getInstance().initializeRuleList();
         max += ruleList.size();
-        chanceCardList = Initialize.getInstance().initializeChanceCards();
+        chanceCardList = Initialize.getInstance().initializeChanceCardsList();
         max += chanceCardList.size();
-        communityChestCardList = Initialize.getInstance().initializeCommunityChestCards();
+        communityChestCardList = Initialize.getInstance().initializeCommunityChestCardsList();
         max += communityChestCardList.size();
         artificialIntelligenceList = Initialize.getInstance().initializeArtificialIntelligenceList();
         max += artificialIntelligenceList.size();
-        playerList = Initialize.getInstance().initializePlayers(Settings.NUM_PLAYERS);
+        playerList = Initialize.getInstance().initializePlayerList(Settings.NUM_PLAYERS);
         max += playerList.size();
 
     }
 
     public static void game() {
         long round = 0;
-        GAME: do {
+        do {
             for (IPlayer player : playerList) {
                 if (!player.isBusted()) {
                     do {

@@ -35,9 +35,9 @@ public class ChoiceCardTest {
 
     @Test
     public void testExecuteChance() throws CloneNotSupportedException {
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
-        Initialize.getInstance().initializeChanceCards();
+        Initialize.getInstance().initializeChanceCardsList();
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Start"));
         // player.setMoney(170); // make sure it's below the thresshold
         Player playerBefore = player.clone();

@@ -24,8 +24,7 @@ public class StreetTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
         ownTile = new StreetTile(0, "OwnStreet", Municipality.DenHaag, 200, 20, 30, 40, 50, 60, 170);

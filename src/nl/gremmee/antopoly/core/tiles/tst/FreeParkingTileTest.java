@@ -17,7 +17,7 @@ public class FreeParkingTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         tile = new FreeParkingTile(0);
         player = new Player(0, "TestPlayer");
         player.setCurrentTile(tile);

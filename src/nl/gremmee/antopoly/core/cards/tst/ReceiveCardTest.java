@@ -17,7 +17,7 @@ public class ReceiveCardTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         card = new ReceiveCard("Receive", "Receive", 100);
     }

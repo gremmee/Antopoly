@@ -17,7 +17,7 @@ public class PlayerTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(1, "TestPlayer");
     }
 
@@ -60,8 +60,8 @@ public class PlayerTest {
     @Test
     public void testUseGetOUtOfJailCard() throws CloneNotSupportedException {
         Initialize.getInstance().initializeTileList();
-        Initialize.getInstance().initializeChanceCards();
-        Initialize.getInstance().initializeCommunityChestCards();
+        Initialize.getInstance().initializeChanceCardsList();
+        Initialize.getInstance().initializeCommunityChestCardsList();
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
         ICard card = new GetOutOfJailCard("Verlaat de gevangenis", "Verlaat de gevangenis zonder te betalen");
         player.getCardList().add(card);

@@ -17,7 +17,7 @@ public class GotoJailTileTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         Initialize.getInstance().initializeTileList();
         tile = Initialize.getInstance().getTileList().getTileByName("Goto Jail");

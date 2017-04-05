@@ -22,7 +22,7 @@ public class GotoJailCardTest {
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        Initialize.getInstance().initializeRules();
+        Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
         startTile = new StartTile(0);
         tile = new JailTile(1);
