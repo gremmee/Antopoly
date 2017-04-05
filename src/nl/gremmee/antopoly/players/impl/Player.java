@@ -13,6 +13,7 @@ import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
+import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
@@ -289,9 +290,17 @@ public class Player implements IPlayer, Cloneable {
     public String toString() {
         String name = this.getName();
         int money = this.getMoney();
+        int value = this.getValue();
         String busted = (this.isBusted() ? "BUSTED" : "active");
         String jail = (this.isInJail() ? "JAIL" : "free");
-        return ("|" + name + ", " + money + ", " + busted + ", " + jail + "|");
+        return ("|" + name + ", " + money + ", " + value + ", " + busted + ", " + jail + "|");
+    }
+
+    public int getValue() {
+        int totalValue = this.getMoney();
+        totalValue += this.getHousesValue();
+        totalValue += this.getHotelsValue();
+        return totalValue;
     }
 
     public boolean isAgain() {
@@ -326,6 +335,32 @@ public class Player implements IPlayer, Cloneable {
 
     private void setArtificialIntelligence(IArtificialIntelligence aArtificialIntelligence) {
         this.artificialIntelligence = aArtificialIntelligence;
+    }
+
+    public int getHousesValue() {
+        int value = 0;
+        for (ITile tile : this.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() > 0 && street.getBuildings() < 5) {
+                    value += (street.getBuildings() * street.getMunicipality().getHousePrice());
+                }
+            }
+        }
+        return value;
+    }
+
+    public int getHotelsValue() {
+        int value = 0;
+        for (ITile tile : this.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.getBuildings() >= 5) {
+                    value += street.getMunicipality().getHousePrice();
+                }
+            }
+        }
+        return value;
     }
 
 }
