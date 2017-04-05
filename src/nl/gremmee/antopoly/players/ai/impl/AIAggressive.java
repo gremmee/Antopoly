@@ -3,9 +3,11 @@ package nl.gremmee.antopoly.players.ai.impl;
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
+import nl.gremmee.antopoly.core.lists.MunicipalityList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
+import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.abs.ArtificialIntelligence;
 
@@ -60,5 +62,23 @@ public class AIAggressive extends ArtificialIntelligence {
             }
         }
         return false;
+    }
+
+    @Override
+    public void executeBuyHouses(IPlayer aPlayer) {
+        for (ITile tile : aPlayer.getTileList()) {
+            if (tile instanceof StreetTile) {
+                StreetTile street = (StreetTile) tile;
+                if (street.hasMunicipality(aPlayer, street)) {
+                    MunicipalityList municipalityList = street.getMunicipality(aPlayer.getTileList(), street);
+                    for (StreetTile municipalityTile : municipalityList) {
+                        int housePrice = municipalityTile.getMunicipality().getHousePrice();
+                        if (aPlayer.getMoney() > housePrice) {
+                            buyHouse(aPlayer, municipalityTile);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

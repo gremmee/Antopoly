@@ -4,18 +4,15 @@ import java.util.Objects;
 
 import nl.gremmee.antopoly.Initialize;
 import nl.gremmee.antopoly.Money;
-import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
 import nl.gremmee.antopoly.core.lists.CardList;
 import nl.gremmee.antopoly.core.lists.DiceList;
-import nl.gremmee.antopoly.core.lists.MunicipalityList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
-import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 import nl.gremmee.antopoly.statistics.ICollector;
@@ -197,8 +194,11 @@ public class Player implements IPlayer, Cloneable {
         }
         Initialize.getInstance().executeRules(this);
         if (!this.isInJail()) {
-
             int diceResult = this.rollList.getResult();
+            if (diceResult == 0) {
+                this.rollList = diceList.roll();
+                diceResult = this.rollList.getResult();
+            }
             System.out.println("Rolled " + diceResult);
 
             int id = this.currentTile.getID();
@@ -219,21 +219,7 @@ public class Player implements IPlayer, Cloneable {
 
             newTile.execute(this);
 
-            // Try to buy houses
-            for (ITile tile : this.getTileList()) {
-                if (tile instanceof StreetTile) {
-                    StreetTile street = (StreetTile) tile;
-                    if (street.hasMunicipality(this, street)) {
-                        MunicipalityList municipalityList = street.getMunicipality(this.getTileList(), street);
-                        for (StreetTile municipalityTile : municipalityList) {
-                            int housePrice = municipalityTile.getMunicipality().getHousePrice();
-                            if (this.getMoney() > housePrice) {
-                                buyHouse(municipalityTile);
-                            }
-                        }
-                    }
-                }
-            }
+            artificialIntelligence.executeBuyHouses(this);
 
         }
         System.out.println("Money: " + getMoney());
@@ -251,13 +237,6 @@ public class Player implements IPlayer, Cloneable {
             FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
                     .getTileByName("Vrij parkeren");
             tile.addToPot(Money.PRICE_GET_OUT_OF_JAIL);
-        }
-    }
-
-    private void buyHouse(StreetTile aStreet) {
-        if (aStreet.getBuildings() < 5) {
-            aStreet.buyHouse();
-            this.setMoney(this.getMoney() - (aStreet.getMunicipality().getHousePrice() * Settings.MONEY_FACTOR));
         }
     }
 
@@ -319,13 +298,13 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public void setAgain(boolean aAgain) {
-        // this.doubles = aAgain ? ++this.doubles : 0;
-        int doubles = (aAgain = true) ? this.rollList.increaseDoubles() : this.rollList.resetDoubles();
+        int doubles = (aAgain == true) ? this.rollList.increaseDoubles() : this.rollList.resetDoubles();
         this.again = aAgain;
     }
 
     public RollList roll() {
-        return diceList.roll();
+        this.rollList = diceList.roll();
+        return this.rollList;
     }
 
     public boolean isInJail() {
@@ -336,7 +315,7 @@ public class Player implements IPlayer, Cloneable {
         this.inJail = aInJail;
     }
 
-    public void setJailBreak(int jailBreak) {
+    private void setJailBreak(int jailBreak) {
         this.jailBreakTries = jailBreak;
     }
 

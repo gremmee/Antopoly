@@ -17,4 +17,6 @@ public interface IArtificialIntelligence {
     public boolean executeChoiceCard(ChoiceCard aChoiceCard, IPlayer aPlayer);
 
     public boolean executeGetOutOfJail();
+
+    public void executeBuyHouses(IPlayer aPlayer);
 }

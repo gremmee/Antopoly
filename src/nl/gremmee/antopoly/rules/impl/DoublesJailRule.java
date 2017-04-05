@@ -14,11 +14,13 @@ public class DoublesJailRule extends Rule {
     public void execute(IPlayer aPlayer) {
         if (!aPlayer.isInJail()) {
             if (aPlayer.getRollList() == null) {
+                System.out.println("Executing rule: " + this);
                 aPlayer.roll();
                 aPlayer.setAgain(aPlayer.getRollList().isDouble());
                 if (aPlayer.getRollList().getDoubles() >= 3) {
                     System.out.println("JAIL TIME");
                     aPlayer.setInJail(true);
+                    aPlayer.setAgain(false);
                     aPlayer.setCurrentTile(Initialize.getInstance().getTileList().getTileByName("Jail"));
                 }
             }
