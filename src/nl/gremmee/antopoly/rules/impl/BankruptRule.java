@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.rules.impl;
 
+import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -13,16 +14,45 @@ public class BankruptRule extends Rule {
 
     @Override
     public void execute(IPlayer aPlayer) {
-        if (aPlayer.getMoney() < 0) {
+        if (aPlayer.getMoney() < aPlayer.getOwesMoney()) {
             System.out.println("Executing rule: " + this);
-            aPlayer.setBusted(true);
-            aPlayer.resetMoney();
-            for (ITile tile : aPlayer.getTileList()) {
-                if (tile instanceof PropertyTile) {
-                    PropertyTile propertyTile = (PropertyTile) tile;
-                    propertyTile.setOwner(null);
+
+            // Try to sell
+
+            // Try to mortage
+
+            // Bankrupt
+            IPlayer owes = aPlayer.getOwes();
+            if (owes != null) {
+                // Gets all money
+                owes.receiveMoney(aPlayer.getMoney());
+
+                // Gets all properties
+                for (ITile tile : aPlayer.getTileList()) {
+                    if (tile instanceof PropertyTile) {
+                        PropertyTile propertyTile = (PropertyTile) tile;
+                        owes.getTileList().add(propertyTile);
+                        propertyTile.setOwner(owes);
+                    }
+                }
+                aPlayer.getTileList().clear();
+
+                // Gets all cards
+                for (ICard card : aPlayer.getCardList()) {
+                    owes.getCardList().add(card);
+                }
+                aPlayer.getCardList().clear();
+            } else {
+                for (ITile tile : aPlayer.getTileList()) {
+                    if (tile instanceof PropertyTile) {
+                        PropertyTile propertyTile = (PropertyTile) tile;
+                        propertyTile.setOwner(null);
+                    }
                 }
             }
+            aPlayer.resetMoney();
+            aPlayer.setBusted(true);
+            aPlayer.setOwes(null);
         }
 
     }

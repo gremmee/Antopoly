@@ -3,11 +3,11 @@ package nl.gremmee.antopoly;
 public class Settings {
 
     public static final int NUM_DICE = 2;
-    public static final int NUM_PLAYERS = 6;
+    public static final int NUM_PLAYERS = 8;
 
     public static final int MONEY_FACTOR = 1;
 
-    private boolean freeParkingPot = true;
+    private boolean freeParkingPot = false;
     private boolean taxesPercentage = false;
 
     // TODO implement

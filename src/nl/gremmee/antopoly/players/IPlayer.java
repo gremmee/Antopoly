@@ -51,4 +51,13 @@ public interface IPlayer {
     public IArtificialIntelligence getArtificialIntelligence();
 
     public void setAgain(boolean aAgain);
+
+    public IPlayer getOwes();
+
+    public void setOwes(IPlayer aOwes);
+
+    public int getOwesMoney();
+
+    public void setOwesMoney(int aOwesMoney);
+
 }

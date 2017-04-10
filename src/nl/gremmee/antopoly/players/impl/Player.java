@@ -36,6 +36,8 @@ public class Player implements IPlayer, Cloneable {
     private RollList rollList;
     private DiceList diceList;
     private IArtificialIntelligence artificialIntelligence;
+    private IPlayer owes;
+    private int owesMoney;
 
     public Player(int aID, String aName) {
         this(aID, aName, Initialize.getInstance().getArtificialIntelligenceList().getAIByName("AIAggressive"));
@@ -57,6 +59,8 @@ public class Player implements IPlayer, Cloneable {
         this.setInJail(false);
         // this.doubles = 0;
         this.jailBreakTries = 0;
+        this.setOwes(null);
+        this.setOwesMoney(0);
     }
 
     @Override
@@ -225,8 +229,8 @@ public class Player implements IPlayer, Cloneable {
 
         }
         System.out.println("Money: " + getMoney());
-        this.rollList = null;
         Initialize.getInstance().executeRules(this);
+        this.rollList = null;
 
     }
 
@@ -361,6 +365,22 @@ public class Player implements IPlayer, Cloneable {
             }
         }
         return value;
+    }
+
+    public IPlayer getOwes() {
+        return owes;
+    }
+
+    public void setOwes(IPlayer aOwes) {
+        this.owes = aOwes;
+    }
+
+    public int getOwesMoney() {
+        return owesMoney;
+    }
+
+    public void setOwesMoney(int aOwesMoney) {
+        this.owesMoney = aOwesMoney;
     }
 
 }

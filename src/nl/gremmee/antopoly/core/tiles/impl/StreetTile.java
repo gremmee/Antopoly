@@ -154,8 +154,13 @@ public class StreetTile extends PropertyTile {
             }
         }
         rentValue *= Settings.MONEY_FACTOR;
-        aPlayer.payMoney(rentValue);
-        aOwner.receiveMoney(rentValue);
+        if (rentValue > aPlayer.getMoney()) {
+            aPlayer.setOwes(aOwner);
+            aPlayer.setOwesMoney(rentValue);
+        } else {
+            aPlayer.payMoney(rentValue);
+            aOwner.receiveMoney(rentValue);
+        }
     }
 
     public boolean hasMunicipality(IPlayer aOwner, StreetTile aStreet) {
