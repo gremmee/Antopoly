@@ -17,7 +17,7 @@ public class UtilityTile extends PropertyTile {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         System.out.println("Utility");
         IPlayer owner = this.getOwner();
         if (owner == null) {
@@ -28,7 +28,7 @@ public class UtilityTile extends PropertyTile {
         super.execute(aPlayer);
     }
 
-    private void payRent(IPlayer aPlayer, IPlayer aOwner) {
+    private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
         int diceResult = aPlayer.getRollList().getResult();
@@ -42,7 +42,7 @@ public class UtilityTile extends PropertyTile {
         }
     }
 
-    public boolean hasBothUtilities(IPlayer aOwner) {
+    public boolean hasBothUtilities(final IPlayer aOwner) {
         int utilities = 0;
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof UtilityTile) {

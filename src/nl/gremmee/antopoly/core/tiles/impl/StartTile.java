@@ -7,12 +7,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class StartTile extends Tile {
 
-    public StartTile(Tiles aTiles) {
+    public StartTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_Start);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         super.execute(aPlayer);
     }
 

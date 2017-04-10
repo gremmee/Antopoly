@@ -10,12 +10,12 @@ public class FreeParkingTile extends Tile {
 
     private int pot;
 
-    public FreeParkingTile(Tiles aTiles) {
+    public FreeParkingTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_FreeParking);
         this.pot = 0;
     }
 
-    public void addToPot(int aValue) {
+    public void addToPot(final int aValue) {
         this.pot += aValue;
     }
 
@@ -26,7 +26,7 @@ public class FreeParkingTile extends Tile {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
             if (aPlayer.getCurrentTile().equals(this)) {
                 aPlayer.receiveMoney(this.collectPot());

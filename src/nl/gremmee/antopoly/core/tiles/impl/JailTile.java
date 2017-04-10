@@ -7,12 +7,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class JailTile extends Tile {
 
-    public JailTile(Tiles aTiles) {
+    public JailTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_Jail);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         if (!aPlayer.isInJail()) {
             System.out.println("Just visiting");
 

@@ -8,6 +8,6 @@ public interface ITile {
 
     public int getID();
 
-    public void execute(IPlayer aPlayer);
+    public void execute(final IPlayer aPlayer);
 
 }

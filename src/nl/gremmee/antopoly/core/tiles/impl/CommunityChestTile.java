@@ -9,12 +9,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class CommunityChestTile extends Tile {
 
-    public CommunityChestTile(Tiles aTiles) {
+    public CommunityChestTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_CommunityChest);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         System.out.println(Initialize.getInstance().getCommunityChestCardList());
         ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
         System.out.println("Community " + card.getName());

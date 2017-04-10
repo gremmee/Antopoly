@@ -9,7 +9,7 @@ public abstract class PropertyTile extends Tile {
     private int value;
     private IPlayer owner;
 
-    public PropertyTile(Tiles aTiles, TileType aTileType, int aValue) {
+    public PropertyTile(final Tiles aTiles, final TileType aTileType, final int aValue) {
         super(aTiles, aTileType);
         this.setValue(aValue);
         this.setOwner(null);
@@ -19,7 +19,7 @@ public abstract class PropertyTile extends Tile {
         return value;
     }
 
-    public void setValue(int aValue) {
+    public void setValue(final int aValue) {
         this.value = aValue;
     }
 
@@ -27,11 +27,11 @@ public abstract class PropertyTile extends Tile {
         return owner;
     }
 
-    public void setOwner(IPlayer aOwner) {
+    public void setOwner(final IPlayer aOwner) {
         this.owner = aOwner;
     }
 
-    protected void buyProperty(IPlayer aPlayer) {
+    protected void buyProperty(final IPlayer aPlayer) {
         aPlayer.getArtificialIntelligence().executeBuyTile(this, aPlayer);
     }
 

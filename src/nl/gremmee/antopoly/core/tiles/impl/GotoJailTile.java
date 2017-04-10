@@ -8,12 +8,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class GotoJailTile extends Tile {
 
-    public GotoJailTile(Tiles aTiles) {
+    public GotoJailTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_GotoJail);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         aPlayer.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.JAIL));
         aPlayer.setInJail(true);
         super.execute(aPlayer);

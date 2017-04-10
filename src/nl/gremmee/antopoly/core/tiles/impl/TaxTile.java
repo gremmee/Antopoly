@@ -10,7 +10,7 @@ public class TaxTile extends Tile {
 
     private int value;
 
-    public TaxTile(Tiles aTiles, int aValue) {
+    public TaxTile(final Tiles aTiles, final int aValue) {
         super(aTiles, TileType.TT_Taxes);
         this.setValue(aValue);
     }
@@ -19,12 +19,12 @@ public class TaxTile extends Tile {
         return value;
     }
 
-    private void setValue(int aValue) {
+    private void setValue(final int aValue) {
         this.value = aValue;
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         int costs = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Tax " + costs);
         aPlayer.payMoney(costs);

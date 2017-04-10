@@ -14,12 +14,12 @@ public class StationTile extends PropertyTile {
     public static final int RENT_THREE = 100;
     public static final int RENT_FOUR = 200;
 
-    public StationTile(Tiles aTiles) {
+    public StationTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_Station, 200);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         System.out.println("Station");
         IPlayer owner = this.getOwner();
         if (owner == null) {
@@ -30,7 +30,7 @@ public class StationTile extends PropertyTile {
         super.execute(aPlayer);
     }
 
-    private void payRent(IPlayer aPlayer, IPlayer aOwner) {
+    private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int costs = 0;
         int numStations = numberOwnedStations(aOwner);
@@ -58,7 +58,7 @@ public class StationTile extends PropertyTile {
         }
     }
 
-    public int numberOwnedStations(IPlayer aOwner) {
+    public int numberOwnedStations(final IPlayer aOwner) {
         int owned = 0;
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof StationTile) {

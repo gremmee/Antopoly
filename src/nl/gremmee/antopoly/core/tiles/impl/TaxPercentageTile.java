@@ -10,7 +10,7 @@ public class TaxPercentageTile extends Tile {
 
     private int percentage;
 
-    public TaxPercentageTile(Tiles aTiles, int aPercentage) {
+    public TaxPercentageTile(final Tiles aTiles, final int aPercentage) {
         super(aTiles, TileType.TT_TaxesPercentage);
         this.setPercentage(aPercentage);
     }
@@ -19,12 +19,12 @@ public class TaxPercentageTile extends Tile {
         return percentage;
     }
 
-    private void setPercentage(int aValue) {
+    private void setPercentage(final int aValue) {
         this.percentage = aValue;
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         int costs = ((aPlayer.getMoney() * this.getPercentage()) / 100) * Settings.MONEY_FACTOR;
         System.out.println("Tax percentage " + costs);
         aPlayer.payMoney(costs);

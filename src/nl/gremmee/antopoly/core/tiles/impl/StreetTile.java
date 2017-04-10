@@ -20,8 +20,8 @@ public class StreetTile extends PropertyTile {
     private int house1, house2, house3, house4;
     private int hotel;
 
-    public StreetTile(Tiles aTiles, Municipality aMunicipality, int aValue, int aRent, int aHouse1, int aHouse2,
-            int aHouse3, int aHouse4, int aHotel) {
+    public StreetTile(final Tiles aTiles, final Municipality aMunicipality, final int aValue, final int aRent,
+            final int aHouse1, final int aHouse2, final int aHouse3, final int aHouse4, final int aHotel) {
         super(aTiles, TileType.TT_Street, aValue);
         this.setMunicipality(aMunicipality);
         this.setRent(aRent);
@@ -34,7 +34,7 @@ public class StreetTile extends PropertyTile {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         System.out.println("Street");
         IPlayer owner = this.getOwner();
         if (owner == null) {
@@ -45,7 +45,7 @@ public class StreetTile extends PropertyTile {
         super.execute(aPlayer);
     }
 
-    public int build(int aNumBuildings) {
+    public int build(final int aNumBuildings) {
         assert aNumBuildings + this.building < 5 : "Cannot build more than a hotel!";
 
         return 0;
@@ -55,7 +55,7 @@ public class StreetTile extends PropertyTile {
         return this.municipality;
     }
 
-    private void setMunicipality(Municipality aMunicipality) {
+    private void setMunicipality(final Municipality aMunicipality) {
         this.municipality = aMunicipality;
     }
 
@@ -63,7 +63,7 @@ public class StreetTile extends PropertyTile {
         return this.rent;
     }
 
-    private void setRent(int aRent) {
+    private void setRent(final int aRent) {
         this.rent = aRent;
     }
 
@@ -84,7 +84,7 @@ public class StreetTile extends PropertyTile {
         return house1;
     }
 
-    private void setHouse1(int aHouse1) {
+    private void setHouse1(final int aHouse1) {
         this.house1 = aHouse1;
     }
 
@@ -92,7 +92,7 @@ public class StreetTile extends PropertyTile {
         return house2;
     }
 
-    private void setHouse2(int aHouse2) {
+    private void setHouse2(final int aHouse2) {
         this.house2 = aHouse2;
     }
 
@@ -100,7 +100,7 @@ public class StreetTile extends PropertyTile {
         return house3;
     }
 
-    private void setHouse3(int aHouse3) {
+    private void setHouse3(final int aHouse3) {
         this.house3 = aHouse3;
     }
 
@@ -108,7 +108,7 @@ public class StreetTile extends PropertyTile {
         return house4;
     }
 
-    private void setHouse4(int aHouse4) {
+    private void setHouse4(final int aHouse4) {
         this.house4 = aHouse4;
     }
 
@@ -116,7 +116,7 @@ public class StreetTile extends PropertyTile {
         return hotel;
     }
 
-    private void setHotel(int aHotel) {
+    private void setHotel(final int aHotel) {
         this.hotel = aHotel;
     }
 
@@ -124,7 +124,7 @@ public class StreetTile extends PropertyTile {
         return this.building;
     }
 
-    private void payRent(IPlayer aPlayer, IPlayer aOwner) {
+    private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
         System.out.println("PayRent to " + aOwner.getName());
         int rentValue = 0;
         if (this.getBuildings() == 0) {
@@ -163,7 +163,7 @@ public class StreetTile extends PropertyTile {
         }
     }
 
-    public boolean hasMunicipality(IPlayer aOwner, StreetTile aStreet) {
+    public boolean hasMunicipality(final IPlayer aOwner, final StreetTile aStreet) {
         int complete = aStreet.getMunicipality().getSize();
         for (ITile tile : aOwner.getTileList()) {
             if (tile instanceof StreetTile) {
@@ -176,7 +176,7 @@ public class StreetTile extends PropertyTile {
         return (complete == 0);
     }
 
-    public MunicipalityList getMunicipality(TileList aTileList, StreetTile aStreet) {
+    public MunicipalityList getMunicipality(final TileList aTileList, final StreetTile aStreet) {
         MunicipalityList municipalityList = new MunicipalityList();
         for (ITile tile : aTileList) {
             if (tile instanceof StreetTile) {

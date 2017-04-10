@@ -15,14 +15,14 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     private int ID;
     private TileType tileType;
 
-    public Tile(Tiles aTiles, TileType aTileType) {
+    public Tile(final Tiles aTiles, final TileType aTileType) {
         this.setID(aTiles.getId());
         this.setName(aTiles.getName());
         this.setTileType(aTileType);
     }
 
     @Override
-    public int compareTo(Tile aThat) {
+    public int compareTo(final Tile aThat) {
         final int BEFORE = -1;
         final int EQUAL = 0;
         final int AFTER = 1;
@@ -46,12 +46,12 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         Initialize.getInstance().executeRules(aPlayer);
     }
 
     @Override
-    public boolean equals(Object aOther) {
+    public boolean equals(final Object aOther) {
         // self check
         if (this == aOther)
             return true;
@@ -70,7 +70,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 
@@ -78,7 +78,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
         return ID;
     }
 
-    public void setID(int aID) {
+    public void setID(final int aID) {
         ID = aID;
     }
 
@@ -86,7 +86,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
         return tileType;
     }
 
-    public void setTileType(TileType tileType) {
+    public void setTileType(final TileType tileType) {
         this.tileType = tileType;
     }
 

@@ -9,12 +9,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class ChanceTile extends Tile {
 
-    public ChanceTile(Tiles aTiles) {
+    public ChanceTile(final Tiles aTiles) {
         super(aTiles, TileType.TT_Chance);
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         System.out.println(Initialize.getInstance().getChanceCardList());
         ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
         System.out.println("Chance " + card.getName());

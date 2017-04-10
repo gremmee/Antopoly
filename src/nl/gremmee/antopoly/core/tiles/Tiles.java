@@ -35,7 +35,7 @@ public enum Tiles {
     private int id;
     private String name;
 
-    private Tiles(int aID, String aName) {
+    private Tiles(final int aID, final String aName) {
         this.setId(aID);
         this.setName(aName);
     }
@@ -44,7 +44,7 @@ public enum Tiles {
         return id;
     }
 
-    private void setId(int aID) {
+    private void setId(final int aID) {
         this.id = aID;
     }
 
@@ -52,7 +52,7 @@ public enum Tiles {
         return name;
     }
 
-    private void setName(String aName) {
+    private void setName(final String aName) {
         this.name = aName;
     }
 
