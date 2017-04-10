@@ -25,7 +25,7 @@ public class Settings {
         return taxesPercentage;
     }
 
-    public void setTaxesPercentagefinal(boolean aTaxesPercentage) {
+    public void setTaxesPercentagefinal(final boolean aTaxesPercentage) {
         taxesPercentage = aTaxesPercentage;
     }
 
