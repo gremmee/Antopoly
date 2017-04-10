@@ -12,7 +12,7 @@ public class DoublesJailRule extends Rule {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         if (!aPlayer.isInJail()) {
             if (aPlayer.getRollList() == null) {
                 System.out.println("Executing rule: " + this);

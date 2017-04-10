@@ -6,7 +6,7 @@ public abstract class Rule implements IRule {
 
     private String name;
 
-    public Rule(String aName) {
+    public Rule(final String aName) {
         this.setName(aName);
     }
 
@@ -14,7 +14,7 @@ public abstract class Rule implements IRule {
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 

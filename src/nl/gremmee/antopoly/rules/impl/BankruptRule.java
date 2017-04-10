@@ -13,7 +13,7 @@ public class BankruptRule extends Rule {
     }
 
     @Override
-    public void execute(IPlayer aPlayer) {
+    public void execute(final IPlayer aPlayer) {
         if (aPlayer.getMoney() < aPlayer.getOwesMoney()) {
             System.out.println("Executing rule: " + this);
 

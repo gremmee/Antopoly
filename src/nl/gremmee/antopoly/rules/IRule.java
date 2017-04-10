@@ -6,5 +6,5 @@ public interface IRule {
 
     public String getName();
 
-    public void execute(IPlayer aPlayer);
+    public void execute(final IPlayer aPlayer);
 }
