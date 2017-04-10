@@ -1,19 +1,17 @@
 package nl.gremmee.antopoly.core.cards.impl;
 
 import nl.gremmee.antopoly.Money;
-import nl.gremmee.antopoly.core.cards.abs.Card;
+import nl.gremmee.antopoly.core.cards.abs.GotoCard;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.players.IPlayer;
 
-public class GotoTileCard extends Card {
+public class GotoTileCard extends GotoCard {
 
     private ITile tile;
-    private boolean forward;
 
     public GotoTileCard(String aName, String aText, ITile aTile, boolean aForward) {
-        super(aName, aText);
+        super(aName, aText, aForward);
         this.setTile(aTile);
-        this.setForward(aForward);
     }
 
     public GotoTileCard(String aName, String aText, ITile aTile) {
@@ -40,10 +38,10 @@ public class GotoTileCard extends Card {
         if (this.isForward()) {
             System.out.println(currentTileId + " -> " + newTileID);
         } else {
-            System.out.println(currentTileId + " <- " + newTileID);
+            System.out.println(newTileID + " <- " + currentTileId);
         }
 
-        if ((this.forward) && (newTileID < currentTileId)) {
+        if ((isForward()) && (newTileID < currentTileId)) {
             System.out.println("Pass start get " + Money.PRICE_PASS_START);
             aPlayer.receiveMoney(Money.PRICE_PASS_START);
         }
@@ -55,14 +53,6 @@ public class GotoTileCard extends Card {
     @Override
     protected boolean getKeepCard() {
         return false;
-    }
-
-    public boolean isForward() {
-        return forward;
-    }
-
-    private void setForward(boolean aForward) {
-        this.forward = aForward;
     }
 
 }

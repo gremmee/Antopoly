@@ -2,8 +2,9 @@ package nl.gremmee.antopoly.initialize;
 
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoStepsCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.PayPropertyCard;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
@@ -54,7 +55,7 @@ public class InitializeChanceCards {
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoTileCard("Goto Back 3", "Ga drie plaatsen terug", aTileList.get(1));
+            card = new GotoStepsCard("Goto Back 3", "Ga drie plaatsen terug", 3, false);
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
