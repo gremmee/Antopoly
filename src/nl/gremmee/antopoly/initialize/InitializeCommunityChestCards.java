@@ -43,7 +43,7 @@ public class InitializeCommunityChestCards {
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
             card = new GotoCard("Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
-                    aTileList.getTileByName(Tiles.MEDITERRANEAN_AVENUE));
+                    aTileList.getTileByName(Tiles.MEDITERRANEAN_AVENUE), false);
             communityChestCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 

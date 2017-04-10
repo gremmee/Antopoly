@@ -5,49 +5,77 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.gremmee.antopoly.core.Municipality;
 import nl.gremmee.antopoly.core.cards.impl.GotoCard;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
+import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
 public class GotoCardTest {
 
     private Player player;
-    private StationTile tile;
+    private StationTile stationTile;
+    private StreetTile medAveTile;
     private StartTile startTile;
-    private GotoCard card;
+    private GotoCard stationCard;
+    private GotoCard medaveCard;
 
     @Before
     public void setUp() throws Exception {
         Initialize.getInstance().initializeArtificialIntelligenceList();
-        startTile = new StartTile(Tiles.START);
-        tile = new StationTile(Tiles.PENNSYLVANIA_RAILROAD);
+        startTile = new StartTile(Tiles.CHANCE_1);
+        stationTile = new StationTile(Tiles.PENNSYLVANIA_RAILROAD);
         player = new Player(0, "TestPlayer");
-        player.getTileList().add(tile);
-        tile.setOwner(player);
+        player.getTileList().add(stationTile);
+        stationTile.setOwner(player);
         player.setCurrentTile(startTile);
 
-        card = new GotoCard("Goto Station", "Ga naar station", tile);
+        medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 10, 20, 30, 40, 50, 60, 80);
+        player.getTileList().add(medAveTile);
+        medAveTile.setOwner(player);
+
+        stationCard = new GotoCard("Goto Station", "Ga naar stationCard", stationTile);
+        medaveCard = new GotoCard("Goto Med ave", "Ga naar dorpsstraat", medAveTile, false);
     }
 
     @Test
     public void testGetName() {
-        assertEquals("Goto Station", card.getName());
+        assertEquals("Goto Station", stationCard.getName());
     }
 
     @Test
     public void testGetTile() {
-        assertEquals(tile, card.getTile());
+        assertEquals(stationTile, stationCard.getTile());
     }
 
     @Test
-    public void testExecute() throws CloneNotSupportedException {
+    public void testGetForwards() {
+        assertEquals(true, stationCard.isForward());
+    }
+
+    @Test
+    public void testGetBackwards() {
+        assertEquals(false, medaveCard.isForward());
+    }
+
+    @Test
+    public void testExecuteForwards() throws CloneNotSupportedException {
         Initialize.getInstance().initializeRuleList();
         Player playerBefore = player.clone();
-        card.excute(player);
-        assertEquals(tile, player.getCurrentTile());
+        stationCard.excute(player);
+        assertEquals(stationTile, player.getCurrentTile());
+        assertEquals(playerBefore.getMoney(), player.getMoney());
+    }
+
+    @Test
+    public void testExecuteBackwards() throws CloneNotSupportedException {
+        Initialize.getInstance().initializeRuleList();
+        Player playerBefore = player.clone();
+        medaveCard.excute(player);
+        assertEquals(medAveTile, player.getCurrentTile());
         assertEquals(playerBefore.getMoney(), player.getMoney());
     }
 

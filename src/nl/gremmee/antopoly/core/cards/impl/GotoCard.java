@@ -8,10 +8,16 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class GotoCard extends Card {
 
     private ITile tile;
+    private boolean forward;
 
-    public GotoCard(String aName, String aText, ITile aTile) {
+    public GotoCard(String aName, String aText, ITile aTile, boolean aForward) {
         super(aName, aText);
         this.setTile(aTile);
+        this.setForward(aForward);
+    }
+
+    public GotoCard(String aName, String aText, ITile aTile) {
+        this(aName, aText, aTile, true);
     }
 
     public ITile getTile() {
@@ -31,9 +37,13 @@ public class GotoCard extends Card {
         aPlayer.setCurrentTile(gotoTile);
         int newTileID = gotoTile.getID();
 
-        System.out.println(currentTileId + " -> " + newTileID);
+        if (this.isForward()) {
+            System.out.println(currentTileId + " -> " + newTileID);
+        } else {
+            System.out.println(currentTileId + " <- " + newTileID);
+        }
 
-        if (newTileID < currentTileId) {
+        if ((this.forward) && (newTileID < currentTileId)) {
             System.out.println("Pass start get " + Money.PRICE_PASS_START);
             aPlayer.receiveMoney(Money.PRICE_PASS_START);
         }
@@ -45,6 +55,14 @@ public class GotoCard extends Card {
     @Override
     protected boolean getKeepCard() {
         return false;
+    }
+
+    public boolean isForward() {
+        return forward;
+    }
+
+    private void setForward(boolean aForward) {
+        this.forward = aForward;
     }
 
 }
