@@ -17,7 +17,12 @@ public class PayCard extends ValueCard {
     public boolean excute(final IPlayer aPlayer) {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
-        aPlayer.payMoney(pay);
+        if (pay > aPlayer.getMoney()) {
+            aPlayer.setOwes(null);
+            aPlayer.setOwesMoney(pay);
+        } else {
+            aPlayer.payMoney(pay);
+        }
         if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
             FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
                     .getTileByName(Tiles.FREE_PARKING);

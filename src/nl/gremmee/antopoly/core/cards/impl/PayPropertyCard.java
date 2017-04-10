@@ -46,7 +46,13 @@ public class PayPropertyCard extends Card {
 
         int totalCosts = (houseCosts + hotelCosts) * Settings.MONEY_FACTOR;
         System.out.println("Pay per property " + totalCosts);
-        aPlayer.payMoney(totalCosts);
+        if (totalCosts > aPlayer.getMoney()) {
+            aPlayer.setOwes(null);
+            aPlayer.setOwesMoney(totalCosts);
+        } else {
+
+            aPlayer.payMoney(totalCosts);
+        }
         if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
             FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
                     .getTileByName(Tiles.FREE_PARKING);

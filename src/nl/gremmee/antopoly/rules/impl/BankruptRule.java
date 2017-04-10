@@ -1,8 +1,11 @@
 package nl.gremmee.antopoly.rules.impl;
 
+import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.lists.CardList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
+import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.rules.abs.Rule;
 
@@ -49,10 +52,23 @@ public class BankruptRule extends Rule {
                         propertyTile.setOwner(null);
                     }
                 }
+                aPlayer.getTileList().clear();
+
+                // Put back all cards
+                for (ICard card : aPlayer.getCardList()) {
+                    CardType cardType = card.getCardType();
+                    CardList cardList = CardType.CT_Chance.equals(cardType)
+                            ? Initialize.getInstance().getChanceCardList()
+                            : Initialize.getInstance().getCommunityChestCardList();
+                    cardList.putBack(card);
+                }
+                aPlayer.getCardList().clear();
+
             }
             aPlayer.resetMoney();
             aPlayer.setBusted(true);
             aPlayer.setOwes(null);
+            aPlayer.setOwesMoney(0);
         }
 
     }
