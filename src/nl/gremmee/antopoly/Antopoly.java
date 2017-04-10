@@ -20,7 +20,7 @@ public class Antopoly {
     private static RuleList ruleList;
     private static ArtificialIntelligenceList artificialIntelligenceList;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         long beginTime = System.currentTimeMillis();
         System.out.println("Starting application " + Antopoly.class.getSimpleName() + "...");
         System.out.println("Initializing...");

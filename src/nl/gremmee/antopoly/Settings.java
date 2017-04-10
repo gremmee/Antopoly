@@ -17,7 +17,7 @@ public class Settings {
         return freeParkingPot;
     }
 
-    public void setFreeParkingPot(boolean aFreeParkingPot) {
+    public void setFreeParkingPot(final boolean aFreeParkingPot) {
         freeParkingPot = aFreeParkingPot;
     }
 
@@ -25,7 +25,7 @@ public class Settings {
         return taxesPercentage;
     }
 
-    public void setTaxesPercentage(boolean aTaxesPercentage) {
+    public void setTaxesPercentagefinal(boolean aTaxesPercentage) {
         taxesPercentage = aTaxesPercentage;
     }
 

@@ -6,7 +6,7 @@ public abstract class Collector implements ICollector {
 
     private String name;
 
-    public Collector(String aName) {
+    public Collector(final String aName) {
         this.setName(aName);
     }
 
@@ -14,7 +14,7 @@ public abstract class Collector implements ICollector {
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 

@@ -6,5 +6,5 @@ public interface ICollector {
 
     public String getName();
 
-    public void collect(IPlayer aPlayer);
+    public void collect(final IPlayer aPlayer);
 }

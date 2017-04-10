@@ -6,7 +6,7 @@ public class CollectorList extends ArrayList<ICollector> {
 
     private static final long serialVersionUID = 8638978140693596281L;
 
-    public ICollector getCollectorTileByName(String aName) {
+    public ICollector getCollectorTileByName(final String aName) {
         for (ICollector collector : this) {
             if (collector.getName().equals(aName))
                 return collector;

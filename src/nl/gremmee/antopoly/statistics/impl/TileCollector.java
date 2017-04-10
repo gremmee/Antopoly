@@ -19,7 +19,7 @@ public class TileCollector extends Collector {
     }
 
     @Override
-    public void collect(IPlayer aPlayer) {
+    public void collect(final IPlayer aPlayer) {
         ITile tile = aPlayer.getCurrentTile();
         Integer value = coll.get(tile.getName());
         if (value != null) {
