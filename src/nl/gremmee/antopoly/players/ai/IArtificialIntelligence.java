@@ -12,11 +12,11 @@ public interface IArtificialIntelligence {
 
     public void executeGetMortage();
 
-    public void executeBuyTile(PropertyTile aTile, IPlayer aPlayer);
+    public void executeBuyTile(final PropertyTile aTile, final IPlayer aPlayer);
 
-    public boolean executeChoiceCard(ChoiceCard aChoiceCard, IPlayer aPlayer);
+    public boolean executeChoiceCard(final ChoiceCard aChoiceCard, final IPlayer aPlayer);
 
     public boolean executeGetOutOfJail();
 
-    public void executeBuyHouses(IPlayer aPlayer);
+    public void executeBuyHouses(final IPlayer aPlayer);
 }

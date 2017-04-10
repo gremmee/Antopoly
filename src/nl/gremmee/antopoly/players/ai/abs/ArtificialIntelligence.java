@@ -9,7 +9,7 @@ public abstract class ArtificialIntelligence implements IArtificialIntelligence 
 
     private String name;
 
-    public ArtificialIntelligence(String aName) {
+    public ArtificialIntelligence(final String aName) {
         this.setName(aName);
     }
 
@@ -18,11 +18,11 @@ public abstract class ArtificialIntelligence implements IArtificialIntelligence 
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 
-    protected void buyHouse(IPlayer aPlayer, StreetTile aStreet) {
+    protected void buyHouse(final IPlayer aPlayer, final StreetTile aStreet) {
         if (aStreet.getBuildings() < 5) {
             aStreet.buyHouse();
             aPlayer.payMoney(aStreet.getMunicipality().getHousePrice() * Settings.MONEY_FACTOR);

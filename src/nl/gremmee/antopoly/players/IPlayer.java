@@ -8,7 +8,7 @@ import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 
 public interface IPlayer {
 
-    public void setActive(boolean aActive);
+    public void setActive(final boolean aActive);
 
     public TileList getTileList();
 
@@ -26,9 +26,9 @@ public interface IPlayer {
 
     public int getMoney();
 
-    public void setWinner(boolean aWinner);
+    public void setWinner(final boolean aWinner);
 
-    public void setBusted(boolean aBusted);
+    public void setBusted(final boolean aBusted);
 
     public void resetMoney();
 
@@ -36,7 +36,7 @@ public interface IPlayer {
 
     public boolean isInJail();
 
-    public void setInJail(boolean aInJail);
+    public void setInJail(final boolean aInJail);
 
     public ITile getCurrentTile();
 
@@ -44,20 +44,20 @@ public interface IPlayer {
 
     public RollList getRollList();
 
-    public void payMoney(int aMoney);
+    public void payMoney(final int aMoney);
 
-    public void receiveMoney(int aMoney);
+    public void receiveMoney(final int aMoney);
 
     public IArtificialIntelligence getArtificialIntelligence();
 
-    public void setAgain(boolean aAgain);
+    public void setAgain(final boolean aAgain);
 
     public IPlayer getOwes();
 
-    public void setOwes(IPlayer aOwes);
+    public void setOwes(final IPlayer aOwes);
 
     public int getOwesMoney();
 
-    public void setOwesMoney(int aOwesMoney);
+    public void setOwesMoney(final int aOwesMoney);
 
 }

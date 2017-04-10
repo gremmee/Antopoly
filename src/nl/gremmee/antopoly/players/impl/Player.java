@@ -39,11 +39,11 @@ public class Player implements IPlayer, Cloneable {
     private IPlayer owes;
     private int owesMoney;
 
-    public Player(int aID, String aName) {
+    public Player(final int aID, final String aName) {
         this(aID, aName, Initialize.getInstance().getArtificialIntelligenceList().getAIByName("AIAggressive"));
     }
 
-    public Player(int aID, String aName, IArtificialIntelligence aArtificialIntelligence) {
+    public Player(final int aID, final String aName, final IArtificialIntelligence aArtificialIntelligence) {
         this.setId(aID);
         this.diceList = Initialize.getInstance().getDiceList();
         this.rollList = new RollList();
@@ -64,7 +64,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     @Override
-    public boolean equals(Object aOther) {
+    public boolean equals(final Object aOther) {
         // self check
         if (this == aOther)
             return true;
@@ -90,7 +90,7 @@ public class Player implements IPlayer, Cloneable {
         return this.active;
     }
 
-    public void setActive(boolean aActive) {
+    public void setActive(final boolean aActive) {
         this.active = aActive;
     }
 
@@ -107,7 +107,7 @@ public class Player implements IPlayer, Cloneable {
         return false;
     }
 
-    private void removeCard(ICard aCard) {
+    private void removeCard(final ICard aCard) {
         this.cardList.remove(aCard);
     }
 
@@ -130,7 +130,7 @@ public class Player implements IPlayer, Cloneable {
         }
     }
 
-    private void setCardList(CardList cardList) {
+    private void setCardList(final CardList cardList) {
         this.cardList = cardList;
     }
 
@@ -138,7 +138,7 @@ public class Player implements IPlayer, Cloneable {
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 
@@ -146,7 +146,7 @@ public class Player implements IPlayer, Cloneable {
         return id;
     }
 
-    public void setId(int aID) {
+    public void setId(final int aID) {
         this.id = aID;
     }
 
@@ -154,7 +154,7 @@ public class Player implements IPlayer, Cloneable {
         return tileList;
     }
 
-    public void setTileList(TileList aTileList) {
+    public void setTileList(final TileList aTileList) {
         this.tileList = aTileList;
     }
 
@@ -162,11 +162,11 @@ public class Player implements IPlayer, Cloneable {
         return winner;
     }
 
-    public void setWinner(boolean aWinner) {
+    public void setWinner(final boolean aWinner) {
         this.winner = aWinner;
     }
 
-    public void setRollList(RollList aRollList) {
+    public void setRollList(final RollList aRollList) {
         this.rollList = aRollList;
     }
 
@@ -246,11 +246,11 @@ public class Player implements IPlayer, Cloneable {
         }
     }
 
-    public void receiveMoney(int aMoney) {
+    public void receiveMoney(final int aMoney) {
         this.money += aMoney;
     }
 
-    public void payMoney(int aMoney) {
+    public void payMoney(final int aMoney) {
         this.money -= aMoney;
     }
 
@@ -258,7 +258,7 @@ public class Player implements IPlayer, Cloneable {
         return currentTile;
     }
 
-    public void setCurrentTile(ITile aCurrentTile) {
+    public void setCurrentTile(final ITile aCurrentTile) {
         assert aCurrentTile != null : "aCurrentTile cannot be null!";
         this.currentTile = aCurrentTile;
         ICollector collector = InitializeStatistics.getInstance().getCollectorList().getTileCollector();
@@ -269,7 +269,7 @@ public class Player implements IPlayer, Cloneable {
         return money;
     }
 
-    private void setMoney(int aMoney) {
+    private void setMoney(final int aMoney) {
         this.money = aMoney;
     }
 
@@ -285,7 +285,7 @@ public class Player implements IPlayer, Cloneable {
         return busted;
     }
 
-    public void setBusted(boolean aBusted) {
+    public void setBusted(final boolean aBusted) {
         setAgain(false);
         this.busted = aBusted;
     }
@@ -311,7 +311,7 @@ public class Player implements IPlayer, Cloneable {
         return again;
     }
 
-    public void setAgain(boolean aAgain) {
+    public void setAgain(final boolean aAgain) {
         int doubles = (aAgain == true) ? this.rollList.increaseDoubles() : this.rollList.resetDoubles();
         this.again = aAgain;
     }
@@ -325,11 +325,11 @@ public class Player implements IPlayer, Cloneable {
         return inJail;
     }
 
-    public void setInJail(boolean aInJail) {
+    public void setInJail(final boolean aInJail) {
         this.inJail = aInJail;
     }
 
-    private void setJailBreak(int jailBreak) {
+    private void setJailBreak(final int jailBreak) {
         this.jailBreakTries = jailBreak;
     }
 
@@ -337,7 +337,7 @@ public class Player implements IPlayer, Cloneable {
         return artificialIntelligence;
     }
 
-    private void setArtificialIntelligence(IArtificialIntelligence aArtificialIntelligence) {
+    private void setArtificialIntelligence(final IArtificialIntelligence aArtificialIntelligence) {
         this.artificialIntelligence = aArtificialIntelligence;
     }
 
@@ -371,7 +371,7 @@ public class Player implements IPlayer, Cloneable {
         return owes;
     }
 
-    public void setOwes(IPlayer aOwes) {
+    public void setOwes(final IPlayer aOwes) {
         this.owes = aOwes;
     }
 
@@ -379,7 +379,7 @@ public class Player implements IPlayer, Cloneable {
         return owesMoney;
     }
 
-    public void setOwesMoney(int aOwesMoney) {
+    public void setOwesMoney(final int aOwesMoney) {
         this.owesMoney = aOwesMoney;
     }
 

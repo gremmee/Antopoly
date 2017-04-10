@@ -31,7 +31,7 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public void executeBuyTile(PropertyTile aTile, IPlayer aPlayer) {
+    public void executeBuyTile(final PropertyTile aTile, final IPlayer aPlayer) {
         System.out.println("Buy Property " + aTile);
         int value = aTile.getValue() * Settings.MONEY_FACTOR;
         if (aPlayer.getMoney() > value) {
@@ -46,7 +46,7 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public boolean executeChoiceCard(ChoiceCard aChoiceCard, IPlayer aPlayer) {
+    public boolean executeChoiceCard(final ChoiceCard aChoiceCard, final IPlayer aPlayer) {
         return (aPlayer.getMoney() < aChoiceCard.getValue() * 20);
     }
 
@@ -65,7 +65,7 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public void executeBuyHouses(IPlayer aPlayer) {
+    public void executeBuyHouses(final IPlayer aPlayer) {
         for (ITile tile : aPlayer.getTileList()) {
             if (tile instanceof StreetTile) {
                 StreetTile street = (StreetTile) tile;
