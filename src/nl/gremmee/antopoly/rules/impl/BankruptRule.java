@@ -22,7 +22,7 @@ public class BankruptRule extends Rule {
 
             // Try to sell
 
-            // Try to mortage
+            // Try to mortgage
 
             // Bankrupt
             IPlayer owes = aPlayer.getOwes();

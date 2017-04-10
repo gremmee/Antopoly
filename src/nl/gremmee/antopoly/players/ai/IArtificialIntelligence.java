@@ -8,9 +8,9 @@ public interface IArtificialIntelligence {
 
     public String getName();
 
-    public void executeRepayMortage();
+    public void executeRepayMortgage();
 
-    public void executeGetMortage();
+    public void executeGetMortgage();
 
     public void executeBuyTile(final PropertyTile aTile, final IPlayer aPlayer);
 

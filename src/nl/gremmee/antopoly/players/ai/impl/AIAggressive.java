@@ -23,11 +23,11 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public void executeRepayMortage() {
+    public void executeRepayMortgage() {
     }
 
     @Override
-    public void executeGetMortage() {
+    public void executeGetMortgage() {
     }
 
     @Override
