@@ -29,16 +29,21 @@ public class UtilityTile extends PropertyTile {
     }
 
     private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
-        int diceResult = aPlayer.getRollList().getResult();
-        int costs = diceResult * factor * Settings.MONEY_FACTOR;
-        if (costs > aPlayer.getMoney()) {
-            aPlayer.setOwes(aOwner);
-            aPlayer.setOwesMoney(costs);
+        if (!this.isMortgage()) {
+            System.out.println("PayRent to " + aOwner.getName());
+            int factor = hasBothUtilities(aOwner) ? UtilityTile.FACTOR_OWN_DOUBLE : UtilityTile.FACTOR_OWN_SINGLE;
+            int diceResult = aPlayer.getRollList().getResult();
+            int costs = diceResult * factor * Settings.MONEY_FACTOR;
+            if (costs > aPlayer.getMoney()) {
+                aPlayer.setOwes(aOwner);
+                aPlayer.setOwesMoney(costs);
+            } else {
+                aPlayer.payMoney(costs);
+                aOwner.receiveMoney(costs);
+            }
         } else {
-            aPlayer.payMoney(costs);
-            aOwner.receiveMoney(costs);
+            System.out.println(this + " is mortaged");
+
         }
     }
 

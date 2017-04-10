@@ -1,9 +1,15 @@
 package nl.gremmee.antopoly;
 
+import java.math.BigDecimal;
+
 public class Settings {
 
     public static final int NUM_DICE = 2;
-    public static final int NUM_PLAYERS = 8;
+    public static final int NUM_PLAYERS = 5;
+
+    public static final BigDecimal SELL_HOUSE_FACTOR = new BigDecimal("0.5");
+    public static final BigDecimal MORTAGE_FACTOR = new BigDecimal("0.5");
+    public static final BigDecimal MORTGAGE_INTEREST = new BigDecimal("0.1");
 
     public static final int MONEY_FACTOR = 1;
 

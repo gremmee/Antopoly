@@ -31,30 +31,34 @@ public class StationTile extends PropertyTile {
     }
 
     private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int costs = 0;
-        int numStations = numberOwnedStations(aOwner);
-        switch (numStations) {
-            case 1:
-                costs = StationTile.RENT_ONE;
-                break;
-            case 2:
-                costs = StationTile.RENT_TWO;
-                break;
-            case 3:
-                costs = StationTile.RENT_THREE;
-                break;
-            case 4:
-                costs = StationTile.RENT_FOUR;
-                break;
-        }
-        costs *= Settings.MONEY_FACTOR;
-        if (costs > aPlayer.getMoney()) {
-            aPlayer.setOwes(aOwner);
-            aPlayer.setOwesMoney(costs);
+        if (!this.isMortgage()) {
+            System.out.println("PayRent to " + aOwner.getName());
+            int costs = 0;
+            int numStations = numberOwnedStations(aOwner);
+            switch (numStations) {
+                case 1:
+                    costs = StationTile.RENT_ONE;
+                    break;
+                case 2:
+                    costs = StationTile.RENT_TWO;
+                    break;
+                case 3:
+                    costs = StationTile.RENT_THREE;
+                    break;
+                case 4:
+                    costs = StationTile.RENT_FOUR;
+                    break;
+            }
+            costs *= Settings.MONEY_FACTOR;
+            if (costs > aPlayer.getMoney()) {
+                aPlayer.setOwes(aOwner);
+                aPlayer.setOwesMoney(costs);
+            } else {
+                aPlayer.payMoney(costs);
+                aOwner.receiveMoney(costs);
+            }
         } else {
-            aPlayer.payMoney(costs);
-            aOwner.receiveMoney(costs);
+            System.out.println(this + " is mortaged");
         }
     }
 

@@ -10,7 +10,7 @@ public interface IArtificialIntelligence {
 
     public void executeRepayMortgage();
 
-    public void executeGetMortgage();
+    public void executeGetMortgage(final IPlayer aPlayer);
 
     public void executeBuyTile(final PropertyTile aTile, final IPlayer aPlayer);
 

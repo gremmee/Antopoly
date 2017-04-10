@@ -1,5 +1,7 @@
 package nl.gremmee.antopoly.players.ai.impl;
 
+import java.math.BigDecimal;
+
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
 import nl.gremmee.antopoly.core.lists.MunicipalityList;
@@ -27,7 +29,23 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public void executeGetMortgage() {
+    public void executeGetMortgage(final IPlayer aPlayer) {
+
+        int owes = aPlayer.getOwesMoney();
+        for (ITile tile : aPlayer.getTileList()) {
+            if (owes < aPlayer.getMoney()) {
+                return;
+            }
+            if (tile instanceof PropertyTile) {
+                PropertyTile propertyTile = (PropertyTile) tile;
+                if (!propertyTile.isMortgage()) {
+                    int mortgageValue = BigDecimal.valueOf((long) propertyTile.getValue())
+                            .multiply(Settings.MORTAGE_FACTOR).intValue();
+                    aPlayer.receiveMoney(mortgageValue);
+                    propertyTile.setMortgage(true);
+                }
+            }
+        }
     }
 
     @Override

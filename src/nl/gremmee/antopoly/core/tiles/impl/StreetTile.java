@@ -125,41 +125,45 @@ public class StreetTile extends PropertyTile {
     }
 
     private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
-        System.out.println("PayRent to " + aOwner.getName());
-        int rentValue = 0;
-        if (this.getBuildings() == 0) {
-            int factor = hasMunicipality(aOwner, this) ? 2 : 1;
-            rentValue = this.getRent() * factor;
-        } else {
-            switch (this.getBuildings()) {
-                case 1:
-                    rentValue = this.getHouse1();
-                    break;
-                case 2:
-                    rentValue = this.getHouse2();
-                    break;
-                case 3:
-                    rentValue = this.getHouse3();
-                    break;
-                case 4:
-                    rentValue = this.getHouse4();
-                    break;
-                case 5:
-                    rentValue = this.getHotel();
-                    break;
+        if (!this.isMortgage()) {
+            System.out.println("PayRent to " + aOwner.getName());
+            int rentValue = 0;
+            if (this.getBuildings() == 0) {
+                int factor = hasMunicipality(aOwner, this) ? 2 : 1;
+                rentValue = this.getRent() * factor;
+            } else {
+                switch (this.getBuildings()) {
+                    case 1:
+                        rentValue = this.getHouse1();
+                        break;
+                    case 2:
+                        rentValue = this.getHouse2();
+                        break;
+                    case 3:
+                        rentValue = this.getHouse3();
+                        break;
+                    case 4:
+                        rentValue = this.getHouse4();
+                        break;
+                    case 5:
+                        rentValue = this.getHotel();
+                        break;
 
-                default:
-                    rentValue = this.getHotel();
-                    break;
+                    default:
+                        rentValue = this.getHotel();
+                        break;
+                }
             }
-        }
-        rentValue *= Settings.MONEY_FACTOR;
-        if (rentValue > aPlayer.getMoney()) {
-            aPlayer.setOwes(aOwner);
-            aPlayer.setOwesMoney(rentValue);
+            rentValue *= Settings.MONEY_FACTOR;
+            if (rentValue > aPlayer.getMoney()) {
+                aPlayer.setOwes(aOwner);
+                aPlayer.setOwesMoney(rentValue);
+            } else {
+                aPlayer.payMoney(rentValue);
+                aOwner.receiveMoney(rentValue);
+            }
         } else {
-            aPlayer.payMoney(rentValue);
-            aOwner.receiveMoney(rentValue);
+            System.out.println(this + " is mortaged");
         }
     }
 
