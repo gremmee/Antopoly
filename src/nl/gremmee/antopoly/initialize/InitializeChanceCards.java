@@ -26,7 +26,7 @@ public class InitializeChanceCards {
         return instance;
     }
 
-    public ChanceCardList initializeChanceCards(TileList aTileList) {
+    public ChanceCardList initializeChanceCards(final TileList aTileList) {
         if (chanceCardList == null) {
             System.out.println("Initializing Chance Cards");
             chanceCardList = new ChanceCardList();

@@ -3,8 +3,8 @@ package nl.gremmee.antopoly.initialize;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
 import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
@@ -25,7 +25,7 @@ public class InitializeCommunityChestCards {
         return instance;
     }
 
-    public CommunityChestCardList initializeCommunityChestCards(TileList aTileList) {
+    public CommunityChestCardList initializeCommunityChestCards(final TileList aTileList) {
         if (communityChestCardList == null) {
             System.out.println("Initializing Community Chest Cards");
             communityChestCardList = new CommunityChestCardList();

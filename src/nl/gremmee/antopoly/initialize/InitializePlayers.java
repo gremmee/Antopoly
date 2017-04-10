@@ -19,7 +19,7 @@ public class InitializePlayers {
         return instance;
     }
 
-    public PlayerList initializePlayers(int aNumPlayers) {
+    public PlayerList initializePlayers(final int aNumPlayers) {
         System.out.println("Initializing Players");
         playerList = new PlayerList();
         for (int i = 0; i < aNumPlayers; i++) {

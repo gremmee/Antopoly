@@ -42,7 +42,7 @@ public class Initialize {
         return this.settings;
     }
 
-    public void executeRules(IPlayer aPlayer) {
+    public void executeRules(final IPlayer aPlayer) {
         RuleList ruleList = Initialize.getInstance().getRuleList();
         for (IRule rule : ruleList) {
             System.out.println("Checking rule: " + rule + "...");
@@ -81,7 +81,7 @@ public class Initialize {
         return this.diceList;
     }
 
-    public DiceList initializeDiceList(int aNumDice) {
+    public DiceList initializeDiceList(final int aNumDice) {
         return this.diceList = InitializeDice.getInstance().initializeDice(aNumDice);
     }
 
@@ -89,7 +89,7 @@ public class Initialize {
         return this.playerList;
     }
 
-    public PlayerList initializePlayerList(int aNumPlayers) {
+    public PlayerList initializePlayerList(final int aNumPlayers) {
         return this.playerList = InitializePlayers.getInstance().initializePlayers(aNumPlayers);
     }
 

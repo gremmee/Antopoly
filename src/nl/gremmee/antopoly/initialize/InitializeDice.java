@@ -17,7 +17,7 @@ public class InitializeDice {
         return instance;
     }
 
-    public DiceList initializeDice(int aNumDice) {
+    public DiceList initializeDice(final int aNumDice) {
         System.out.println("Initializing Dice");
         diceList = new DiceList();
         for (int i = 0; i < aNumDice; i++) {
