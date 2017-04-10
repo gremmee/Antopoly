@@ -10,7 +10,7 @@ public enum Municipality {
     private int size;
     private int housePrice;
 
-    private Municipality(int aSize, int aHousePrice) {
+    private Municipality(final int aSize, final int aHousePrice) {
         this.size = aSize;
         this.housePrice = aHousePrice;
     }

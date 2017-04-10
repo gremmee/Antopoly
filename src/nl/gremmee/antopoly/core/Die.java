@@ -4,7 +4,7 @@ public class Die {
 
     private int sides;
 
-    public Die(int aSides) {
+    public Die(final int aSides) {
         this.sides = aSides;
     }
 
