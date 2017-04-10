@@ -1,9 +1,11 @@
 package nl.gremmee.antopoly.core.lists;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Tiles;
+import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 
 public class TileList extends ArrayList<ITile> {
 
@@ -23,5 +25,16 @@ public class TileList extends ArrayList<ITile> {
                 return tile;
         }
         return null;
+    }
+
+    public List<PropertyTile> getPropertyTiles() {
+        List<PropertyTile> propertyTiles = new ArrayList<PropertyTile>();
+        for (ITile tile : this) {
+            if (tile instanceof PropertyTile) {
+                PropertyTile propertyTile = (PropertyTile) tile;
+                propertyTiles.add(propertyTile);
+            }
+        }
+        return propertyTiles;
     }
 }

@@ -3,7 +3,6 @@ package nl.gremmee.antopoly.rules.impl;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.lists.CardList;
-import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -31,12 +30,9 @@ public class BankruptRule extends Rule {
                 owes.receiveMoney(aPlayer.getMoney());
 
                 // Gets all properties
-                for (ITile tile : aPlayer.getTileList()) {
-                    if (tile instanceof PropertyTile) {
-                        PropertyTile propertyTile = (PropertyTile) tile;
-                        owes.getTileList().add(propertyTile);
-                        propertyTile.setOwner(owes);
-                    }
+                for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                    owes.getTileList().add(propertyTile);
+                    propertyTile.setOwner(owes);
                 }
                 aPlayer.getTileList().clear();
 
@@ -46,11 +42,8 @@ public class BankruptRule extends Rule {
                 }
                 aPlayer.getCardList().clear();
             } else {
-                for (ITile tile : aPlayer.getTileList()) {
-                    if (tile instanceof PropertyTile) {
-                        PropertyTile propertyTile = (PropertyTile) tile;
-                        propertyTile.setOwner(null);
-                    }
+                for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                    propertyTile.setOwner(null);
                 }
                 aPlayer.getTileList().clear();
 

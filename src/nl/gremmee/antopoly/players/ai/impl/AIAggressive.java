@@ -32,18 +32,15 @@ public class AIAggressive extends ArtificialIntelligence {
     public void executeGetMortgage(final IPlayer aPlayer) {
 
         int owes = aPlayer.getOwesMoney();
-        for (ITile tile : aPlayer.getTileList()) {
+        for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
             if (owes < aPlayer.getMoney()) {
                 return;
             }
-            if (tile instanceof PropertyTile) {
-                PropertyTile propertyTile = (PropertyTile) tile;
-                if (!propertyTile.isMortgage()) {
-                    int mortgageValue = BigDecimal.valueOf((long) propertyTile.getValue())
-                            .multiply(Settings.MORTAGE_FACTOR).intValue();
-                    aPlayer.receiveMoney(mortgageValue);
-                    propertyTile.setMortgage(true);
-                }
+            if (!propertyTile.isMortgage()) {
+                int mortgageValue = BigDecimal.valueOf((long) propertyTile.getValue()).multiply(Settings.MORTAGE_FACTOR)
+                        .intValue();
+                aPlayer.receiveMoney(mortgageValue);
+                propertyTile.setMortgage(true);
             }
         }
     }
@@ -71,12 +68,9 @@ public class AIAggressive extends ArtificialIntelligence {
     @Override
     public boolean executeGetOutOfJail() {
         TileList tileList = Initialize.getInstance().getTileList();
-        for (ITile tile : tileList) {
-            if (tile instanceof PropertyTile) {
-                PropertyTile propertyTile = (PropertyTile) tile;
-                if (propertyTile.getOwner() == null) {
-                    return true;
-                }
+        for (PropertyTile propertyTile : tileList.getPropertyTiles()) {
+            if (propertyTile.getOwner() == null) {
+                return true;
             }
         }
         return false;

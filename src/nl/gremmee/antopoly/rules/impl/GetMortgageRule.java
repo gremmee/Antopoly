@@ -18,13 +18,11 @@ public class GetMortgageRule extends Rule {
 
             IPlayer owes = aPlayer.getOwes();
             if (owes != null) {
-                if (aPlayer.getMoney() < aPlayer.getOwesMoney()) {
-                    owes.receiveMoney(aPlayer.getMoney());
-                    aPlayer.resetMoney();
-                    aPlayer.setOwesMoney(aPlayer.getOwesMoney() - aPlayer.getMoney());
-                }
+                if (aPlayer.getMoney() > aPlayer.getOwesMoney()) {
+                    owes.receiveMoney(aPlayer.getOwesMoney());
+                    aPlayer.setOwesMoney(aPlayer.getMoney() - aPlayer.getOwesMoney());
+                } // else bankrupt
             } else {
-                owes.receiveMoney(aPlayer.getOwesMoney());
                 aPlayer.payMoney(aPlayer.getOwesMoney());
                 aPlayer.setOwes(null);
                 aPlayer.setOwesMoney(0);
