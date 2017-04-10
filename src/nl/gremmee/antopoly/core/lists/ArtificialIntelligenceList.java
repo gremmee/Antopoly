@@ -8,7 +8,7 @@ public class ArtificialIntelligenceList extends ArrayList<IArtificialIntelligenc
 
     private static final long serialVersionUID = 7932809588117562310L;
 
-    public IArtificialIntelligence getAIByName(String aName) {
+    public IArtificialIntelligence getAIByName(final String aName) {
         for (IArtificialIntelligence artificialIntelligence : this) {
             if (artificialIntelligence.getName().equals(aName))
                 return artificialIntelligence;

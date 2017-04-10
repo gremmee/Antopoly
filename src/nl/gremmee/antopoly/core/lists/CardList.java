@@ -9,7 +9,7 @@ public class CardList extends ArrayList<ICard> {
 
     private static final long serialVersionUID = -1529154175329821765L;
 
-    public boolean addRandom(ICard aCard) {
+    public boolean addRandom(final ICard aCard) {
         int size = this.size();
         if (size == 0) {
             return super.add(aCard);
@@ -24,7 +24,7 @@ public class CardList extends ArrayList<ICard> {
         return super.remove(0);
     }
 
-    public void putBack(ICard aCard) {
+    public void putBack(final ICard aCard) {
         super.add(this.size(), aCard);
     }
 

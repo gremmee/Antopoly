@@ -9,7 +9,7 @@ public class TileList extends ArrayList<ITile> {
 
     private static final long serialVersionUID = -8238183105633419715L;
 
-    public ITile getTileByName(Tiles aTiles) {
+    public ITile getTileByName(final Tiles aTiles) {
         for (ITile tile : this) {
             if (tile.getName().equals(aTiles.getName()))
                 return tile;
@@ -17,7 +17,7 @@ public class TileList extends ArrayList<ITile> {
         return null;
     }
 
-    public ITile getTileByID(int aId) {
+    public ITile getTileByID(final int aId) {
         for (ITile tile : this) {
             if (tile.getID() == aId)
                 return tile;
