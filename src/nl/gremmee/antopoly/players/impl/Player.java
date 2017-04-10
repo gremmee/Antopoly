@@ -213,7 +213,7 @@ public class Player implements IPlayer, Cloneable {
             if (calculatedResult >= Initialize.getInstance().getTileList().size()) {
                 // pass Start
                 System.out.println("Pass start");
-                this.setMoney(this.getMoney() + Money.PRICE_PASS_START);
+                this.receiveMoney(Money.PRICE_PASS_START);
             }
             int newID = calculatedResult % Initialize.getInstance().getTileList().size();
 
