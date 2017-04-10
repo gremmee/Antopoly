@@ -5,18 +5,18 @@ import nl.gremmee.antopoly.core.cards.abs.Card;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.players.IPlayer;
 
-public class GotoCard extends Card {
+public class GotoTileCard extends Card {
 
     private ITile tile;
     private boolean forward;
 
-    public GotoCard(String aName, String aText, ITile aTile, boolean aForward) {
+    public GotoTileCard(String aName, String aText, ITile aTile, boolean aForward) {
         super(aName, aText);
         this.setTile(aTile);
         this.setForward(aForward);
     }
 
-    public GotoCard(String aName, String aText, ITile aTile) {
+    public GotoTileCard(String aName, String aText, ITile aTile) {
         this(aName, aText, aTile, true);
     }
 

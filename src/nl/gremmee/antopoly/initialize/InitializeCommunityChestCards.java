@@ -3,7 +3,7 @@ package nl.gremmee.antopoly.initialize;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.ChoiceCard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.impl.GotoCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.ReceiveCard;
@@ -42,7 +42,7 @@ public class InitializeCommunityChestCards {
             communityChestCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
+            card = new GotoTileCard("Goto Dorpsstraat", "Ga terug naar Dorpsstraat (Ons Dorp)",
                     aTileList.getTileByName(Tiles.MEDITERRANEAN_AVENUE), false);
             communityChestCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
@@ -88,7 +88,7 @@ public class InitializeCommunityChestCards {
             communityChestCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName(Tiles.START));
+            card = new GotoTileCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName(Tiles.START));
             communityChestCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 

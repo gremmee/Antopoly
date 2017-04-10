@@ -2,7 +2,7 @@ package nl.gremmee.antopoly.initialize;
 
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
-import nl.gremmee.antopoly.core.cards.impl.GotoCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.cards.impl.GotoJailCard;
 import nl.gremmee.antopoly.core.cards.impl.PayCard;
 import nl.gremmee.antopoly.core.cards.impl.PayPropertyCard;
@@ -38,23 +38,23 @@ public class InitializeChanceCards {
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Barteljorisstraat",
+            card = new GotoTileCard("Goto Barteljorisstraat",
                     "Ga verder naar Barteljorisstraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                     aTileList.getTileByName(Tiles.ST_CHARLES_PLACE));
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto West",
+            card = new GotoTileCard("Goto West",
                     "Reis naar station \"West\". Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                     aTileList.getTileByName(Tiles.PENNSYLVANIA_RAILROAD));
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName(Tiles.START));
+            card = new GotoTileCard("Goto Start", "Ga verder naar \"Start\"", aTileList.getTileByName(Tiles.START));
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Back 3", "Ga drie plaatsen terug", aTileList.get(1));
+            card = new GotoTileCard("Goto Back 3", "Ga drie plaatsen terug", aTileList.get(1));
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
@@ -62,7 +62,7 @@ public class InitializeChanceCards {
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Heerestraat",
+            card = new GotoTileCard("Goto Heerestraat",
                     "Ga verder naar Heerestraat. Indien u langs \"Start\" komt, ontvangt u ƒ 200",
                     aTileList.getTileByName(Tiles.KENTUCKY_AVENUE));
             chanceCardList.addRandom(card);
@@ -94,7 +94,7 @@ public class InitializeChanceCards {
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");
 
-            card = new GotoCard("Goto Kalverstraat", "Ga verder naar Kalverstraat.",
+            card = new GotoTileCard("Goto Kalverstraat", "Ga verder naar Kalverstraat.",
                     aTileList.getTileByName(Tiles.BOARDWALK));
             chanceCardList.addRandom(card);
             System.out.println("Creating Card " + card.getName() + "...[OK]");

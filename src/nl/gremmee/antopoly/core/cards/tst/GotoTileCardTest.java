@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.gremmee.antopoly.core.Municipality;
-import nl.gremmee.antopoly.core.cards.impl.GotoCard;
+import nl.gremmee.antopoly.core.cards.impl.GotoTileCard;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.StartTile;
 import nl.gremmee.antopoly.core.tiles.impl.StationTile;
@@ -14,14 +14,14 @@ import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.impl.Player;
 
-public class GotoCardTest {
+public class GotoTileCardTest {
 
     private Player player;
     private StationTile stationTile;
     private StreetTile medAveTile;
     private StartTile startTile;
-    private GotoCard stationCard;
-    private GotoCard medaveCard;
+    private GotoTileCard stationCard;
+    private GotoTileCard medaveCard;
 
     @Before
     public void setUp() throws Exception {
@@ -37,8 +37,8 @@ public class GotoCardTest {
         player.getTileList().add(medAveTile);
         medAveTile.setOwner(player);
 
-        stationCard = new GotoCard("Goto Station", "Ga naar stationCard", stationTile);
-        medaveCard = new GotoCard("Goto Med ave", "Ga naar dorpsstraat", medAveTile, false);
+        stationCard = new GotoTileCard("Goto Station", "Ga naar stationCard", stationTile);
+        medaveCard = new GotoTileCard("Goto Med ave", "Ga naar dorpsstraat", medAveTile, false);
     }
 
     @Test

@@ -5,7 +5,7 @@ import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
-public class GotoJailCard extends GotoCard {
+public class GotoJailCard extends GotoTileCard {
 
     public GotoJailCard() {
         super("Goto Jail", "Ga direct naar de gevangenis. Ga niet langs \"Start\". U ontvangt geen ƒ 20",
