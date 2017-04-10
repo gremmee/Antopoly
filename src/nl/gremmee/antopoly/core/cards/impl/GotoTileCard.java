@@ -9,12 +9,12 @@ public class GotoTileCard extends GotoCard {
 
     private ITile tile;
 
-    public GotoTileCard(String aName, String aText, ITile aTile, boolean aForward) {
+    public GotoTileCard(final String aName, final String aText, final ITile aTile, final boolean aForward) {
         super(aName, aText, aForward);
         this.setTile(aTile);
     }
 
-    public GotoTileCard(String aName, String aText, ITile aTile) {
+    public GotoTileCard(final String aName, final String aText, final ITile aTile) {
         this(aName, aText, aTile, true);
     }
 
@@ -22,12 +22,12 @@ public class GotoTileCard extends GotoCard {
         return tile;
     }
 
-    public void setTile(ITile tile) {
+    public void setTile(final ITile tile) {
         this.tile = tile;
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         ITile gotoTile = this.getTile();
         System.out.println("Goto Tile " + gotoTile.getName());
 

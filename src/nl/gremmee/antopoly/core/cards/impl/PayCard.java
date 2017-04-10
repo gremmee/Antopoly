@@ -9,12 +9,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class PayCard extends ValueCard {
 
-    public PayCard(String aName, String aText, int aValue) {
+    public PayCard(final String aName, final String aText, final int aValue) {
         super(aName, aText, aValue);
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
         aPlayer.payMoney(pay);

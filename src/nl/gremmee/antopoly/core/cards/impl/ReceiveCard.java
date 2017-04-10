@@ -6,12 +6,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class ReceiveCard extends ValueCard {
 
-    public ReceiveCard(String aName, String aText, int aValue) {
+    public ReceiveCard(final String aName, final String aText, final int aValue) {
         super(aName, aText, aValue);
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         int receive = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Receive " + receive);
         aPlayer.receiveMoney(receive);

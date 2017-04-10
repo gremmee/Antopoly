@@ -10,13 +10,13 @@ public class GotoStepsCard extends GotoCard {
 
     private int numSteps;
 
-    public GotoStepsCard(String aName, String aText, int aNumSteps, boolean aForward) {
+    public GotoStepsCard(final String aName, final String aText, final int aNumSteps, final boolean aForward) {
         super(aName, aText, aForward);
         this.setNumSteps(aNumSteps);
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         int currentTileId = aPlayer.getCurrentTile().getID();
         int calculatedResult = 0;
         if (this.isForward()) {
@@ -56,7 +56,7 @@ public class GotoStepsCard extends GotoCard {
         return numSteps;
     }
 
-    private void setNumSteps(int aNumSteps) {
+    private void setNumSteps(final int aNumSteps) {
         this.numSteps = aNumSteps;
     }
 

@@ -5,12 +5,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class GetOutOfJailCard extends Card {
 
-    public GetOutOfJailCard(String aName, String aText) {
+    public GetOutOfJailCard(final String aName, final String aText) {
         super(aName, aText);
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         aPlayer.getCardList().add(this);
         System.out.println("Store Get Out Of Jail " + this.getCardType());
         return super.excute(aPlayer);

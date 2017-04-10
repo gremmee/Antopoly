@@ -4,7 +4,7 @@ public abstract class GotoCard extends Card {
 
     private boolean forward;
 
-    public GotoCard(String aName, String aText, boolean aForward) {
+    public GotoCard(final String aName, final String aText, final boolean aForward) {
         super(aName, aText);
         this.setForward(aForward);
     }
@@ -13,7 +13,7 @@ public abstract class GotoCard extends Card {
         return forward;
     }
 
-    private void setForward(boolean aForward) {
+    private void setForward(final boolean aForward) {
         this.forward = aForward;
     }
 

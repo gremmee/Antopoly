@@ -7,12 +7,12 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class ChoiceCard extends PayCard {
 
-    public ChoiceCard(String aName, String aText, int aValue) {
+    public ChoiceCard(final String aName, final String aText, final int aValue) {
         super(aName, aText, aValue);
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
 
         int value = this.getValue() * Settings.MONEY_FACTOR;
 

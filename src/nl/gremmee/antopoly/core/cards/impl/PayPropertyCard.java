@@ -14,7 +14,7 @@ public class PayPropertyCard extends Card {
     private int perHouse;
     private int perHotel;
 
-    public PayPropertyCard(String aName, String aText, int aPerHouse, int aPerHotel) {
+    public PayPropertyCard(final String aName, final String aText, final int aPerHouse, final int aPerHotel) {
         super(aName, aText);
         this.setPerHouse(aPerHouse);
         this.setPerHotel(aPerHotel);
@@ -24,7 +24,7 @@ public class PayPropertyCard extends Card {
         return perHouse;
     }
 
-    public void setPerHouse(int aPerHouse) {
+    public void setPerHouse(final int aPerHouse) {
         this.perHouse = aPerHouse;
     }
 
@@ -32,12 +32,12 @@ public class PayPropertyCard extends Card {
         return perHotel;
     }
 
-    public void setPerHotel(int aPerHotel) {
+    public void setPerHotel(final int aPerHotel) {
         this.perHotel = aPerHotel;
     }
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         int houses = getHouses(aPlayer);
         int hotels = getHotels(aPlayer);
 
@@ -61,7 +61,7 @@ public class PayPropertyCard extends Card {
         return false;
     }
 
-    public int getHouses(IPlayer aPlayer) {
+    public int getHouses(final IPlayer aPlayer) {
         int houses = 0;
         for (ITile tile : aPlayer.getTileList()) {
             if (tile instanceof StreetTile) {
@@ -74,7 +74,7 @@ public class PayPropertyCard extends Card {
         return houses;
     }
 
-    public int getHotels(IPlayer aPlayer) {
+    public int getHotels(final IPlayer aPlayer) {
         int hotels = 0;
         for (ITile tile : aPlayer.getTileList()) {
             if (tile instanceof StreetTile) {

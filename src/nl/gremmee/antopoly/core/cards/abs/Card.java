@@ -12,7 +12,7 @@ public abstract class Card implements ICard {
     private String text;
     private CardType cardType;
 
-    public Card(String aName, String aText) {
+    public Card(final String aName, final String aText) {
         this.setName(aName);
         this.setText(aText);
     }
@@ -25,7 +25,7 @@ public abstract class Card implements ICard {
         return name;
     }
 
-    public void setName(String aName) {
+    public void setName(final String aName) {
         this.name = aName;
     }
 
@@ -33,7 +33,7 @@ public abstract class Card implements ICard {
         return text;
     }
 
-    public void setText(String aText) {
+    public void setText(final String aText) {
         this.text = aText;
     }
 
@@ -53,7 +53,7 @@ public abstract class Card implements ICard {
     protected abstract boolean getKeepCard();
 
     @Override
-    public boolean excute(IPlayer aPlayer) {
+    public boolean excute(final IPlayer aPlayer) {
         Initialize.getInstance().executeRules(aPlayer);
         return getKeepCard();
     }

@@ -8,9 +8,9 @@ public interface ICard {
 
     public CardType getCardType();
 
-    public void setCardType(CardType aCardType);
+    public void setCardType(final CardType aCardType);
 
-    public boolean excute(IPlayer aPlayer);
+    public boolean excute(final IPlayer aPlayer);
 
     public boolean isGetOutOfJailCard();
 
