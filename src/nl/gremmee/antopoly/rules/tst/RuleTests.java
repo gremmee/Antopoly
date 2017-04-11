@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BankruptRuleTest.class })
+@SuiteClasses({ BankruptRuleTest.class, DoublesJailRuleTest.class })
 public class RuleTests {
 
 }

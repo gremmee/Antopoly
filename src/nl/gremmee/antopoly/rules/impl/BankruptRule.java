@@ -19,10 +19,6 @@ public class BankruptRule extends Rule {
         if (aPlayer.getMoney() < aPlayer.getOwe().getOwes()) {
             System.out.println("Executing rule: " + this);
 
-            // Try to sell
-
-            // Try to mortgage
-
             // Bankrupt
             IPlayer owes = aPlayer.getOwe().getOwesTo();
             if (owes != null) {
