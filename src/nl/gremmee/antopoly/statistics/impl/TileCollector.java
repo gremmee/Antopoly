@@ -11,7 +11,7 @@ import nl.gremmee.antopoly.statistics.abs.Collector;
 
 public class TileCollector extends Collector {
 
-    Map<String, Integer> coll;
+    Map<String, CollectorPojo> coll;
 
     public TileCollector() {
         super("Tile Collector");
@@ -21,21 +21,27 @@ public class TileCollector extends Collector {
     @Override
     public void collect(final IPlayer aPlayer) {
         ITile tile = aPlayer.getCurrentTile();
-        Integer value = coll.get(tile.getName());
+        CollectorPojo value = coll.get(tile.getName());
         if (value != null) {
-            value = Integer.valueOf(value.intValue() + 1);
-            coll.remove(tile.getName());
-            coll.put(tile.getName(), value);
+            value.increaseCount();
+            // coll.remove(tile.getName());
+            // coll.put(tile.getName(), value);
         } else {
 
-            coll.put(tile.getName(), Integer.valueOf(1));
+            coll.put(tile.getName(), new CollectorPojo());
         }
+        increaseTotalCount();
+    }
 
+    public void increaseTotalCount() {
+        for (CollectorPojo collPojo : coll.values()) {
+            collPojo.increaseTotalCount();
+        }
     }
 
     @Override
     public String toString() {
-        Map<String, Integer> sorted = sortByValues(coll);
+        Map<String, CollectorPojo> sorted = sortByValues(coll);
         return sorted.toString();
     }
 
