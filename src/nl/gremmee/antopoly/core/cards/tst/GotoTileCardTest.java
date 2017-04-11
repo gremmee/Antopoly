@@ -32,7 +32,7 @@ public class GotoTileCardTest {
         player.addTile(stationTile);
         player.setCurrentTile(startTile);
 
-        medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 10, 20, 30, 40, 50, 60, 80);
+        medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.BROWN, 10, 20, 30, 40, 50, 60, 80);
         player.addTile(medAveTile);
 
         stationCard = new GotoTileCard("Goto Station", "Ga naar stationCard", stationTile);

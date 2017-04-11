@@ -25,8 +25,8 @@ public class PayPropertyCardTest {
         Initialize.getInstance().initializeRuleList();
         player = new Player(0, "TestPlayer");
         card = new PayPropertyCard("PayProperty", "Pay Property", 104, 200);
-        street1 = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 100, 10, 20, 30, 40, 50, 75);
-        street2 = new StreetTile(Tiles.BALTIC_AVENUE, Municipality.OnsDorp, 100, 10, 20, 30, 40, 50, 75);
+        street1 = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.BROWN, 100, 10, 20, 30, 40, 50, 75);
+        street2 = new StreetTile(Tiles.BALTIC_AVENUE, Municipality.BROWN, 100, 10, 20, 30, 40, 50, 75);
     }
 
     @Test

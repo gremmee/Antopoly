@@ -77,7 +77,7 @@ public class StreetTile extends PropertyTile {
 
     @Override
     public String toString() {
-        return "| " + this.getName() + ", " + this.building + " |";
+        return "| " + this.getName() + ", " + this.getMunicipality().getAbbreviation() + ", " + this.building + " |";
     }
 
     public int getHouse1() {
@@ -163,7 +163,7 @@ public class StreetTile extends PropertyTile {
                 aOwner.receiveMoney(rentValue);
             }
         } else {
-            System.out.println(this + " is mortaged");
+            System.out.println(this + " is mortgaged");
         }
     }
 

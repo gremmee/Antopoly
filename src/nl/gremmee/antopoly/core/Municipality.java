@@ -4,8 +4,7 @@ import nl.gremmee.antopoly.Settings;
 
 public enum Municipality {
 
-    Amsterdam(2, 200), Arnhem(3, 50), DenHaag(3, 150), Groningen(3, 150), Haarlem(3, 100), OnsDorp(2, 50), Rotterdam(3,
-            200), Utrect(3, 100);
+    BLUE(3, 50), BROWN(2, 50), GREEM(3, 200), ORANGE(3, 100), PINK(3, 100), PURPLE(2, 200), RED(3, 150), YELLOW(3, 150);
 
     private int size;
     private int housePrice;
@@ -23,4 +22,7 @@ public enum Municipality {
         return this.size;
     }
 
+    public String getAbbreviation() {
+        return this.name().substring(0, 2);
+    }
 }
