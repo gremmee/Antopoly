@@ -30,7 +30,7 @@ public class GetOutOfJailCardTest {
 
     @Test
     public void testExecute() throws CloneNotSupportedException {
-        card.excute(player);
+        card.execute(player);
         assertEquals(1, player.getCardList().size());
         assertTrue(player.hasGetOutOfJailCard());
     }

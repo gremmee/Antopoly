@@ -12,13 +12,13 @@ public class ChoiceCard extends PayCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
 
         int value = this.getValue() * Settings.MONEY_FACTOR;
 
         if (aPlayer.getArtificialIntelligence().executeChoiceCard(this, aPlayer)) {
             ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
-            if (!card.excute(aPlayer)) {
+            if (!card.execute(aPlayer)) {
                 Initialize.getInstance().getChanceCardList().putBack(card);
             }
 

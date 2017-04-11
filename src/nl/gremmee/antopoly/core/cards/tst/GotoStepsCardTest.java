@@ -56,7 +56,7 @@ public class GotoStepsCardTest {
         Initialize.getInstance().initializeRuleList();
         Initialize.getInstance().initializeTileList();
         Player playerBefore = player.clone();
-        goBackCard.excute(player);
+        goBackCard.execute(player);
         assertEquals(playerBefore.getCurrentTile().getID() - NUM_STEPS, player.getCurrentTile().getID());
     }
 

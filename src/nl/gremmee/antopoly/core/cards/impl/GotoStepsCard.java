@@ -16,7 +16,7 @@ public class GotoStepsCard extends GotoCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         int currentTileId = aPlayer.getCurrentTile().getID();
         int calculatedResult = 0;
         if (this.isForward()) {
@@ -44,7 +44,7 @@ public class GotoStepsCard extends GotoCard {
         aPlayer.setCurrentTile(gotoTile);
 
         gotoTile.execute(aPlayer);
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

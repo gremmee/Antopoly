@@ -30,7 +30,7 @@ public class ChoiceCardTest {
     @Test
     public void testExecutePay() throws CloneNotSupportedException {
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore.getMoney() - card.getValue(), player.getMoney());
     }
 
@@ -42,7 +42,7 @@ public class ChoiceCardTest {
         player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
         // player.setMoney(170); // make sure it's below the thresshold
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore, player);
         System.out.println(playerBefore);
         System.out.println(player);

@@ -10,10 +10,10 @@ public class GetOutOfJailCard extends Card {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         aPlayer.getCardList().add(this);
         System.out.println("Store Get Out Of Jail " + this.getCardType());
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

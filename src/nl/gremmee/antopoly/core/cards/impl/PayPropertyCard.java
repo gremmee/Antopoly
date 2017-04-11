@@ -37,7 +37,7 @@ public class PayPropertyCard extends Card {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         int houses = getHouses(aPlayer);
         int hotels = getHotels(aPlayer);
 
@@ -59,7 +59,7 @@ public class PayPropertyCard extends Card {
             tile.addToPot(totalCosts);
         }
 
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class PayCard extends ValueCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
         if (pay > aPlayer.getMoney()) {
@@ -29,7 +29,7 @@ public class PayCard extends ValueCard {
             tile.addToPot(pay);
         }
 
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

@@ -13,13 +13,13 @@ public class GotoJailCard extends GotoTileCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         ITile goDirectTile = this.getTile();
         System.out.println("Goto Jail");
         aPlayer.setCurrentTile(goDirectTile);
         aPlayer.setInJail(true);
         goDirectTile.execute(aPlayer);
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

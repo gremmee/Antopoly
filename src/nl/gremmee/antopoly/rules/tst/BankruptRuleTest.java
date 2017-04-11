@@ -39,7 +39,7 @@ public class BankruptRuleTest {
         card = new PayCard("Pay", "Pay", 100);
         Player playerBefore = player.clone();
         System.out.println(playerBefore.getMoney());
-        card.excute(player);
+        card.execute(player);
         assertEquals(0, player.getMoney());
     }
 

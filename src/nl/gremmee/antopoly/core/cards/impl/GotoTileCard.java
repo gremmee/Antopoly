@@ -27,7 +27,7 @@ public class GotoTileCard extends GotoCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         ITile gotoTile = this.getTile();
         System.out.println("Goto Tile " + gotoTile.getName());
 
@@ -47,7 +47,7 @@ public class GotoTileCard extends GotoCard {
         }
 
         gotoTile.execute(aPlayer);
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

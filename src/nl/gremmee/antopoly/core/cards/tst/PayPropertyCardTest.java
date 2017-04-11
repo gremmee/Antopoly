@@ -39,7 +39,7 @@ public class PayPropertyCardTest {
         player.getTileList().add(street1);
         street1.setOwner(player);
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore.getMoney() - ((0 * card.getPerHouse()) + (0 * card.getPerHotel())),
                 player.getMoney());
     }
@@ -51,7 +51,7 @@ public class PayPropertyCardTest {
         street1.buyHouse();
         street1.buyHouse();
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore.getMoney() - ((2 * card.getPerHouse()) + (0 * card.getPerHotel())),
                 player.getMoney());
     }
@@ -66,7 +66,7 @@ public class PayPropertyCardTest {
         street1.buyHouse();
         street1.buyHouse();
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore.getMoney() - ((0 * card.getPerHouse()) + (1 * card.getPerHotel())),
                 player.getMoney());
     }
@@ -87,7 +87,7 @@ public class PayPropertyCardTest {
         street2.buyHouse();
         street2.buyHouse();
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(playerBefore.getMoney() - ((4 * card.getPerHouse()) + (1 * card.getPerHotel())),
                 player.getMoney());
     }

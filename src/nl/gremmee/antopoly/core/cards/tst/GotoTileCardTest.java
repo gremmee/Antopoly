@@ -65,7 +65,7 @@ public class GotoTileCardTest {
     public void testExecuteForwards() throws CloneNotSupportedException {
         Initialize.getInstance().initializeRuleList();
         Player playerBefore = player.clone();
-        stationCard.excute(player);
+        stationCard.execute(player);
         assertEquals(stationTile, player.getCurrentTile());
         assertEquals(playerBefore.getMoney(), player.getMoney());
     }
@@ -74,7 +74,7 @@ public class GotoTileCardTest {
     public void testExecuteBackwards() throws CloneNotSupportedException {
         Initialize.getInstance().initializeRuleList();
         Player playerBefore = player.clone();
-        medaveCard.excute(player);
+        medaveCard.execute(player);
         assertEquals(medAveTile, player.getCurrentTile());
         assertEquals(playerBefore.getMoney(), player.getMoney());
     }

@@ -18,7 +18,7 @@ public class CommunityChestTile extends Tile {
         System.out.println(Initialize.getInstance().getCommunityChestCardList());
         ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
         System.out.println("Community " + card.getName());
-        if (!card.excute(aPlayer)) {
+        if (!card.execute(aPlayer)) {
             Initialize.getInstance().getCommunityChestCardList().putBack(card);
         }
         super.execute(aPlayer);

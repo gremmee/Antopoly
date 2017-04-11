@@ -18,7 +18,7 @@ public class ChanceTile extends Tile {
         System.out.println(Initialize.getInstance().getChanceCardList());
         ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
         System.out.println("Chance " + card.getName());
-        if (!card.excute(aPlayer)) {
+        if (!card.execute(aPlayer)) {
             Initialize.getInstance().getChanceCardList().putBack(card);
         }
         super.execute(aPlayer);

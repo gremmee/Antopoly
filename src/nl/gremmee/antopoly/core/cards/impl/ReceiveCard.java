@@ -11,11 +11,11 @@ public class ReceiveCard extends ValueCard {
     }
 
     @Override
-    public boolean excute(final IPlayer aPlayer) {
+    public boolean execute(final IPlayer aPlayer) {
         int receive = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Receive " + receive);
         aPlayer.receiveMoney(receive);
-        return super.excute(aPlayer);
+        return super.execute(aPlayer);
     }
 
     @Override

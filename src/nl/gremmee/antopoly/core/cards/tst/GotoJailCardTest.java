@@ -46,7 +46,7 @@ public class GotoJailCardTest {
     @Test
     public void testExecute() throws CloneNotSupportedException {
         Player playerBefore = player.clone();
-        card.excute(player);
+        card.execute(player);
         assertEquals(tile, player.getCurrentTile());
         assertTrue(player.isInJail());
         assertEquals(playerBefore.getMoney(), player.getMoney());
