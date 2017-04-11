@@ -24,8 +24,6 @@ public class TileCollector extends Collector {
         CollectorPojo value = coll.get(tile.getName());
         if (value != null) {
             value.increaseCount();
-            // coll.remove(tile.getName());
-            // coll.put(tile.getName(), value);
         } else {
 
             coll.put(tile.getName(), new CollectorPojo());

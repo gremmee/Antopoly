@@ -1,17 +1,14 @@
 package nl.gremmee.antopoly.statistics.impl;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
-public class CollectorPojo implements Comparable {
+public class CollectorPojo implements Comparable<CollectorPojo> {
     private Integer totalCount;
     private Integer count;
-    private BigDecimal percentage;
 
     public CollectorPojo() {
         this.setCount(Integer.valueOf(1));
         this.setTotalCount(Integer.valueOf(1));
-        this.setPercentage(BigDecimal.ZERO.setScale(4, RoundingMode.UP));
     }
 
     public Integer increaseCount() {
@@ -44,20 +41,15 @@ public class CollectorPojo implements Comparable {
         return dividend.divide(divisor, 2, BigDecimal.ROUND_HALF_UP);
     }
 
-    private void setPercentage(final BigDecimal aPercentage) {
-        this.percentage = aPercentage;
-    }
-
     @Override
-    public int compareTo(Object aOther) {
+    public int compareTo(CollectorPojo aOther) {
 
-        CollectorPojo other = (CollectorPojo) aOther;
-        return this.getCount().compareTo(other.getCount());
+        return this.getCount().compareTo(aOther.getCount());
     }
 
     @Override
     public String toString() {
         return this.getCount().toString() + "/" + this.getTotalCount().toString() + "=="
-                + this.getPercentage().toString();
+                + this.getPercentage().toString() + "%";
     }
 }
