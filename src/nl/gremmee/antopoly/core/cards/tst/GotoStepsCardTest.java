@@ -30,8 +30,7 @@ public class GotoStepsCardTest {
         player.setCurrentTile(startTile);
 
         medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 10, 20, 30, 40, 50, 60, 80);
-        player.getTileList().add(medAveTile);
-        medAveTile.setOwner(player);
+        player.addTile(medAveTile);
 
         goBackCard = new GotoStepsCard("Go back " + NUM_STEPS, "Ga terug", NUM_STEPS, false);
     }

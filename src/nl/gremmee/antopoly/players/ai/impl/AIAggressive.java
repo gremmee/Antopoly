@@ -50,8 +50,7 @@ public class AIAggressive extends ArtificialIntelligence {
         System.out.println("Buy Property " + aTile);
         int value = aTile.getValue() * Settings.MONEY_FACTOR;
         if (aPlayer.getMoney() > value) {
-            aPlayer.getTileList().add(aTile);
-            aTile.setOwner(aPlayer);
+            aPlayer.addTile(aTile);
             System.out.println("tileValue " + value);
             aPlayer.payMoney(value);
         } else {

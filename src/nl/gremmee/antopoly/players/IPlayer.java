@@ -4,6 +4,7 @@ import nl.gremmee.antopoly.core.lists.CardList;
 import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
+import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
 import nl.gremmee.antopoly.players.impl.Owe;
 
@@ -12,6 +13,8 @@ public interface IPlayer {
     public void setActive(final boolean aActive);
 
     public TileList getTileList();
+
+    public void addTile(final PropertyTile aTile);
 
     public CardList getCardList();
 

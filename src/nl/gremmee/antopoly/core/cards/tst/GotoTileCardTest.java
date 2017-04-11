@@ -29,13 +29,11 @@ public class GotoTileCardTest {
         startTile = new StartTile(Tiles.CHANCE_1);
         stationTile = new StationTile(Tiles.PENNSYLVANIA_RAILROAD);
         player = new Player(0, "TestPlayer");
-        player.getTileList().add(stationTile);
-        stationTile.setOwner(player);
+        player.addTile(stationTile);
         player.setCurrentTile(startTile);
 
         medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 10, 20, 30, 40, 50, 60, 80);
-        player.getTileList().add(medAveTile);
-        medAveTile.setOwner(player);
+        player.addTile(medAveTile);
 
         stationCard = new GotoTileCard("Goto Station", "Ga naar stationCard", stationTile);
         medaveCard = new GotoTileCard("Goto Med ave", "Ga naar dorpsstraat", medAveTile, false);

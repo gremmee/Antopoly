@@ -31,8 +31,7 @@ public class BankruptRule extends Rule {
 
                 // Gets all properties
                 for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
-                    owes.getTileList().add(propertyTile);
-                    propertyTile.setOwner(owes);
+                    owes.addTile(propertyTile);
                 }
                 aPlayer.getTileList().clear();
 

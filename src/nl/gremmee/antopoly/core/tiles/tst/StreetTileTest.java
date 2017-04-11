@@ -29,22 +29,17 @@ public class StreetTileTest {
         player = new Player(0, "TestPlayer");
         owner = new Player(1, "TestOwner");
         ownTile = new StreetTile(Tiles.ATLANTIC_AVENUE, Municipality.DenHaag, 200, 20, 30, 40, 50, 60, 170);
-        ownTile.setOwner(player);
-        player.getTileList().add(ownTile);
+        player.addTile(ownTile);
         ownerTile = new StreetTile(Tiles.ORIENTAL_AVENUE, Municipality.Arnhem, 100, 10, 20, 30, 40, 50, 160);
-        ownerTile.setOwner(owner);
-        owner.getTileList().add(ownerTile);
+        owner.addTile(ownerTile);
         ownerTile1 = new StreetTile(Tiles.PACIFIC_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500, 1000);
-        ownerTile1.setOwner(owner);
-        owner.getTileList().add(ownerTile1);
+        owner.addTile(ownerTile1);
         ownerTile2 = new StreetTile(Tiles.NORTH_CAROLINA_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500,
                 1000);
-        ownerTile2.setOwner(owner);
-        owner.getTileList().add(ownerTile2);
+        owner.addTile(ownerTile2);
         ownerTile3 = new StreetTile(Tiles.PENNSYLVANIA_AVENUE, Municipality.Rotterdam, 1000, 100, 200, 300, 400, 500,
                 1000);
-        ownerTile3.setOwner(owner);
-        owner.getTileList().add(ownerTile3);
+        owner.addTile(ownerTile3);
         buyTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.OnsDorp, 150, 20, 30, 40, 50, 60, 170);
     }
 

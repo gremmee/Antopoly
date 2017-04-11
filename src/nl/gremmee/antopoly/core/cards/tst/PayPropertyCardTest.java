@@ -36,8 +36,7 @@ public class PayPropertyCardTest {
 
     @Test
     public void testExecuteNoHouses() throws CloneNotSupportedException {
-        player.getTileList().add(street1);
-        street1.setOwner(player);
+        player.addTile(street1);
         Player playerBefore = player.clone();
         card.execute(player);
         assertEquals(playerBefore.getMoney() - ((0 * card.getPerHouse()) + (0 * card.getPerHotel())),
@@ -46,8 +45,7 @@ public class PayPropertyCardTest {
 
     @Test
     public void testExecuteHouses() throws CloneNotSupportedException {
-        player.getTileList().add(street1);
-        street1.setOwner(player);
+        player.addTile(street1);
         street1.buyHouse();
         street1.buyHouse();
         Player playerBefore = player.clone();
@@ -58,8 +56,7 @@ public class PayPropertyCardTest {
 
     @Test
     public void testExecuteHotels() throws CloneNotSupportedException {
-        player.getTileList().add(street1);
-        street1.setOwner(player);
+        player.addTile(street1);
         street1.buyHouse();
         street1.buyHouse();
         street1.buyHouse();
@@ -73,15 +70,13 @@ public class PayPropertyCardTest {
 
     @Test
     public void testExecuteHouseAndHotels() throws CloneNotSupportedException {
-        player.getTileList().add(street1);
-        street1.setOwner(player);
+        player.addTile(street1);
         street1.buyHouse();
         street1.buyHouse();
         street1.buyHouse();
         street1.buyHouse();
         street1.buyHouse();
-        player.getTileList().add(street2);
-        street2.setOwner(player);
+        player.addTile(street2);
         street2.buyHouse();
         street2.buyHouse();
         street2.buyHouse();

@@ -47,8 +47,7 @@ public class BankruptRuleTest {
     public void testExecuteToOtherPlayer() throws CloneNotSupportedException {
         other = new Player(1, "TestOther");
         tile = new StationTile(Tiles.B_O_RAILROAD);
-        tile.setOwner(other);
-        other.getTileList().add(tile);
+        other.addTile(tile);
         player.setCurrentTile(tile);
         Player playerBefore = player.clone();
         Player otherBefore = other.clone();

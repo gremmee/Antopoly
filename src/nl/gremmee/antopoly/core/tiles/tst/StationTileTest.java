@@ -44,8 +44,7 @@ public class StationTileTest {
 
     @Test
     public void textExecuteOwnTile() {
-        stationTile1.setOwner(player);
-        player.getTileList().add(stationTile1);
+        player.addTile(stationTile1);
         int money = player.getMoney();
         stationTile1.execute(player);
         assertEquals(money, player.getMoney());
@@ -63,8 +62,7 @@ public class StationTileTest {
     public void textExecuteOwner1Tile() throws CloneNotSupportedException {
         IPlayer playerBefore = player.clone();
         IPlayer ownerBefore = owner.clone();
-        stationTile1.setOwner(owner);
-        owner.getTileList().add(stationTile1);
+        owner.addTile(stationTile1);
         stationTile1.execute(player);
         playerBefore.payMoney(StationTile.RENT_ONE);
         ownerBefore.receiveMoney(StationTile.RENT_ONE);
@@ -76,10 +74,8 @@ public class StationTileTest {
     public void textExecuteOwner2Tiles() throws CloneNotSupportedException {
         IPlayer playerBefore = player.clone();
         IPlayer ownerBefore = owner.clone();
-        stationTile1.setOwner(owner);
-        owner.getTileList().add(stationTile1);
-        stationTile2.setOwner(owner);
-        owner.getTileList().add(stationTile2);
+        owner.addTile(stationTile1);
+        owner.addTile(stationTile2);
         stationTile1.execute(player);
         playerBefore.payMoney(StationTile.RENT_TWO);
         ownerBefore.receiveMoney(StationTile.RENT_TWO);
@@ -91,12 +87,9 @@ public class StationTileTest {
     public void textExecuteOwner3Tiles() throws CloneNotSupportedException {
         IPlayer playerBefore = player.clone();
         IPlayer ownerBefore = owner.clone();
-        stationTile1.setOwner(owner);
-        owner.getTileList().add(stationTile1);
-        stationTile2.setOwner(owner);
-        owner.getTileList().add(stationTile2);
-        stationTile3.setOwner(owner);
-        owner.getTileList().add(stationTile3);
+        owner.addTile(stationTile1);
+        owner.addTile(stationTile2);
+        owner.addTile(stationTile3);
         stationTile1.execute(player);
         playerBefore.payMoney(StationTile.RENT_THREE);
         ownerBefore.receiveMoney(StationTile.RENT_THREE);
@@ -108,14 +101,10 @@ public class StationTileTest {
     public void textExecuteOwner4Tiles() throws CloneNotSupportedException {
         IPlayer playerBefore = player.clone();
         IPlayer ownerBefore = owner.clone();
-        stationTile1.setOwner(owner);
-        owner.getTileList().add(stationTile1);
-        stationTile2.setOwner(owner);
-        owner.getTileList().add(stationTile2);
-        stationTile3.setOwner(owner);
-        owner.getTileList().add(stationTile3);
-        stationTile4.setOwner(owner);
-        owner.getTileList().add(stationTile4);
+        owner.addTile(stationTile1);
+        owner.addTile(stationTile2);
+        owner.addTile(stationTile3);
+        owner.addTile(stationTile4);
         stationTile1.execute(player);
         playerBefore.payMoney(StationTile.RENT_FOUR);
         ownerBefore.receiveMoney(StationTile.RENT_FOUR);

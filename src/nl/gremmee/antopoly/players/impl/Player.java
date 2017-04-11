@@ -12,6 +12,7 @@ import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Tiles;
+import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
@@ -145,6 +146,12 @@ public class Player implements IPlayer, Cloneable {
 
     public void setId(final int aID) {
         this.id = aID;
+    }
+
+    public void addTile(final PropertyTile aTile) {
+        this.tileList.add(aTile);
+        aTile.setOwner(this);
+
     }
 
     public TileList getTileList() {

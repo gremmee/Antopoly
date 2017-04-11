@@ -45,8 +45,7 @@ public class UtilityTileTest {
 
     @Test
     public void textExecuteOwnTile() {
-        utilityTile1.setOwner(player);
-        player.getTileList().add(utilityTile1);
+        player.addTile(utilityTile1);
         int money = player.getMoney();
         RollList rollList = diceList.roll();
         player.setRollList(rollList);
@@ -63,8 +62,7 @@ public class UtilityTileTest {
 
     @Test
     public void textExecuteOwner1Tile() {
-        utilityTile1.setOwner(owner);
-        owner.getTileList().add(utilityTile1);
+        owner.addTile(utilityTile1);
         int ownMoney = player.getMoney();
         int ownerMoney = owner.getMoney();
         RollList rollList = diceList.roll();
@@ -76,10 +74,8 @@ public class UtilityTileTest {
 
     @Test
     public void textExecuteOwner2Tiles() {
-        utilityTile1.setOwner(owner);
-        owner.getTileList().add(utilityTile1);
-        utilityTile2.setOwner(owner);
-        owner.getTileList().add(utilityTile2);
+        owner.addTile(utilityTile1);
+        owner.addTile(utilityTile2);
         int ownMoney = player.getMoney();
         int ownerMoney = owner.getMoney();
         RollList rollList = diceList.roll();
