@@ -5,6 +5,7 @@ import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.players.ai.IArtificialIntelligence;
+import nl.gremmee.antopoly.players.impl.Owe;
 
 public interface IPlayer {
 
@@ -52,12 +53,5 @@ public interface IPlayer {
 
     public void setAgain(final boolean aAgain);
 
-    public IPlayer getOwes();
-
-    public void setOwes(final IPlayer aOwes);
-
-    public int getOwesMoney();
-
-    public void setOwesMoney(final int aOwesMoney);
-
+    public Owe getOwe();
 }

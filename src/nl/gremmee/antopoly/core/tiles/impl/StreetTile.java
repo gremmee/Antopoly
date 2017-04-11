@@ -156,8 +156,8 @@ public class StreetTile extends PropertyTile {
             }
             rentValue *= Settings.MONEY_FACTOR;
             if (rentValue > aPlayer.getMoney()) {
-                aPlayer.setOwes(aOwner);
-                aPlayer.setOwesMoney(rentValue);
+                aPlayer.getOwe().setOwesTo(aOwner);
+                aPlayer.getOwe().setOwes(rentValue);
             } else {
                 aPlayer.payMoney(rentValue);
                 aOwner.receiveMoney(rentValue);

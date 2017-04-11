@@ -16,7 +16,7 @@ public class BankruptRule extends Rule {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        if (aPlayer.getMoney() < aPlayer.getOwesMoney()) {
+        if (aPlayer.getMoney() < aPlayer.getOwe().getOwes()) {
             System.out.println("Executing rule: " + this);
 
             // Try to sell
@@ -24,7 +24,7 @@ public class BankruptRule extends Rule {
             // Try to mortgage
 
             // Bankrupt
-            IPlayer owes = aPlayer.getOwes();
+            IPlayer owes = aPlayer.getOwe().getOwesTo();
             if (owes != null) {
                 // Gets all money
                 owes.receiveMoney(aPlayer.getMoney());
@@ -60,8 +60,8 @@ public class BankruptRule extends Rule {
             }
             aPlayer.resetMoney();
             aPlayer.setBusted(true);
-            aPlayer.setOwes(null);
-            aPlayer.setOwesMoney(0);
+            aPlayer.getOwe().setOwesTo(null);
+            aPlayer.getOwe().setOwes(0);
         }
 
     }

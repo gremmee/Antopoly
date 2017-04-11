@@ -31,7 +31,7 @@ public class AIAggressive extends ArtificialIntelligence {
     @Override
     public void executeGetMortgage(final IPlayer aPlayer) {
 
-        int owes = aPlayer.getOwesMoney();
+        int owes = aPlayer.getOwe().getOwes();
         for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
             if (owes < aPlayer.getMoney()) {
                 return;

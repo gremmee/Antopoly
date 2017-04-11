@@ -18,8 +18,8 @@ public class PayCard extends ValueCard {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
         if (pay > aPlayer.getMoney()) {
-            aPlayer.setOwes(null);
-            aPlayer.setOwesMoney(pay);
+            aPlayer.getOwe().setOwesTo(null);
+            aPlayer.getOwe().setOwes(pay);
         } else {
             aPlayer.payMoney(pay);
         }

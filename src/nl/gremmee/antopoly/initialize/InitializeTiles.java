@@ -36,7 +36,6 @@ public class InitializeTiles {
     public TileList initializeTileList() {
         System.out.println("Initializing Tiles");
         tileList = new TileList();
-        int i = 0;
 
         ITile tile = new StartTile(Tiles.START);
         tileList.add(tile);

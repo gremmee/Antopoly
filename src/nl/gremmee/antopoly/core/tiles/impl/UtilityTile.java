@@ -35,8 +35,8 @@ public class UtilityTile extends PropertyTile {
             int diceResult = aPlayer.getRollList().getResult();
             int costs = diceResult * factor * Settings.MONEY_FACTOR;
             if (costs > aPlayer.getMoney()) {
-                aPlayer.setOwes(aOwner);
-                aPlayer.setOwesMoney(costs);
+                aPlayer.getOwe().setOwesTo(aOwner);
+                aPlayer.getOwe().setOwes(costs);
             } else {
                 aPlayer.payMoney(costs);
                 aOwner.receiveMoney(costs);

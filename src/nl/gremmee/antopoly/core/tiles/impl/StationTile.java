@@ -51,8 +51,8 @@ public class StationTile extends PropertyTile {
             }
             costs *= Settings.MONEY_FACTOR;
             if (costs > aPlayer.getMoney()) {
-                aPlayer.setOwes(aOwner);
-                aPlayer.setOwesMoney(costs);
+                aPlayer.getOwe().setOwesTo(aOwner);
+                aPlayer.getOwe().setOwes(costs);
             } else {
                 aPlayer.payMoney(costs);
                 aOwner.receiveMoney(costs);

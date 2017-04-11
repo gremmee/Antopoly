@@ -11,21 +11,21 @@ public class GetMortgageRule extends Rule {
 
     @Override
     public void execute(IPlayer aPlayer) {
-        if (aPlayer.getMoney() < aPlayer.getOwesMoney()) {
+        if (aPlayer.getMoney() < aPlayer.getOwe().getOwes()) {
             System.out.println("Executing rule: " + this);
 
             aPlayer.getArtificialIntelligence().executeGetMortgage(aPlayer);
 
-            IPlayer owes = aPlayer.getOwes();
+            IPlayer owes = aPlayer.getOwe().getOwesTo();
             if (owes != null) {
-                if (aPlayer.getMoney() > aPlayer.getOwesMoney()) {
-                    owes.receiveMoney(aPlayer.getOwesMoney());
-                    aPlayer.setOwesMoney(aPlayer.getMoney() - aPlayer.getOwesMoney());
+                if (aPlayer.getMoney() > aPlayer.getOwe().getOwes()) {
+                    owes.receiveMoney(aPlayer.getOwe().getOwes());
+                    aPlayer.getOwe().setOwes(aPlayer.getMoney() - aPlayer.getOwe().getOwes());
                 } // else bankrupt
             } else {
-                aPlayer.payMoney(aPlayer.getOwesMoney());
-                aPlayer.setOwes(null);
-                aPlayer.setOwesMoney(0);
+                aPlayer.payMoney(aPlayer.getOwe().getOwes());
+                aPlayer.getOwe().setOwesTo(null);
+                aPlayer.getOwe().setOwes(0);
             }
         }
     }
