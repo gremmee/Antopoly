@@ -39,6 +39,7 @@ public class UtilityTile extends PropertyTile {
             } else {
                 aPlayer.payMoney(costs);
                 aOwner.receiveMoney(costs);
+                aPlayer.getOwe().resetOwe();
             }
         } else {
             System.out.println(this + " is mortaged");

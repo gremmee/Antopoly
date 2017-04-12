@@ -33,4 +33,9 @@ public class Owe {
         return "| " + this.getOwesMoney() + " to " + this.getOwesTo() + " |";
     }
 
+    public void resetOwe() {
+        this.setOwesTo(null);
+        this.setOwesMoney(0);
+    }
+
 }

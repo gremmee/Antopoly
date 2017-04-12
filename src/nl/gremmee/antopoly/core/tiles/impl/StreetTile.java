@@ -169,6 +169,7 @@ public class StreetTile extends PropertyTile {
             } else {
                 aPlayer.payMoney(rentValue);
                 aOwner.receiveMoney(rentValue);
+                aPlayer.getOwe().resetOwe();
             }
         } else {
             System.out.println(this + " is mortgaged");

@@ -30,9 +30,9 @@ public class SellPropertiesRuleTest {
         rule = Initialize.getInstance().getRuleList().getRuleByName("Sell Properties");
         player = new Player(0, "TestPlayer");
         medAveTile = new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.BROWN, 10, 20, 30, 40, 50, 60, 80);
-        medAveTile.buyHouse();
-        medAveTile.buyHouse();
         player.addTile(medAveTile);
+        medAveTile.buyHouse();
+        medAveTile.buyHouse();
         player.payMoney(1480);
     }
 
@@ -46,9 +46,8 @@ public class SellPropertiesRuleTest {
         card = new PayCard("Pay", "Pay", 100);
         player.getOwe().setOwesMoney(200);
         Player playerBefore = player.clone();
-        System.out.println(playerBefore.getMoney());
         player.getArtificialIntelligence().executeSellProperties(player);
-        assertEquals(playerBefore.getMoney() + (Municipality.BROWN.getHousePrice() / 2), player.getMoney());
+        assertEquals(playerBefore.getMoney() + ((Municipality.BROWN.getHousePrice() / 2) * 2), player.getMoney());
         card.execute(player);
         assertEquals(0, player.getMoney());
     }
@@ -63,7 +62,6 @@ public class SellPropertiesRuleTest {
         player.setCurrentTile(tile);
         Player playerBefore = player.clone();
         Player otherBefore = other.clone();
-        System.out.println(playerBefore.getMoney());
         player.getArtificialIntelligence().executeSellProperties(player);
         assertEquals(playerBefore.getMoney() + (Municipality.BROWN.getHousePrice() / 2), player.getMoney());
         tile.execute(player);
@@ -72,19 +70,18 @@ public class SellPropertiesRuleTest {
 
     @Test
     public void testExecuteMultipleProperties() throws CloneNotSupportedException {
+        StreetTile balAveTile = new StreetTile(Tiles.BALTIC_AVENUE, Municipality.BROWN, 20, 20, 30, 40, 50, 60, 80);
+        player.addTile(balAveTile);
+        balAveTile.buyHouse();
         other = new Player(1, "TestOther");
         tile = new StationTile(Tiles.B_O_RAILROAD);
         other.addTile(tile);
-        player.getOwe().setOwesMoney(40);
+        player.getOwe().setOwesMoney(140);
         player.getOwe().setOwesTo(other);
         player.setCurrentTile(tile);
         Player playerBefore = player.clone();
-        Player otherBefore = other.clone();
-        System.out.println(playerBefore.getMoney());
         player.getArtificialIntelligence().executeSellProperties(player);
-        assertEquals(playerBefore.getMoney() + (Municipality.BROWN.getHousePrice() / 2), player.getMoney());
-        tile.execute(player);
-        assertEquals(otherBefore.getMoney() + (Municipality.BROWN.getHousePrice() / 2), other.getMoney());
+        assertEquals(playerBefore.getMoney() + ((Municipality.BROWN.getHousePrice() / 2) * 3), player.getMoney());
     }
 
 }

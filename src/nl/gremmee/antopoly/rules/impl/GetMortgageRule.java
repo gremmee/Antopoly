@@ -6,7 +6,7 @@ import nl.gremmee.antopoly.rules.abs.Rule;
 public class GetMortgageRule extends Rule {
 
     public GetMortgageRule() {
-        super("GetMortgage");
+        super("Get Mortgage");
     }
 
     @Override

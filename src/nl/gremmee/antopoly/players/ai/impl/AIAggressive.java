@@ -35,10 +35,15 @@ public class AIAggressive extends ArtificialIntelligence {
                 return;
             }
             if (streetTile.getBuildings() > 0) {
-                System.out.println("Selling a house on " + streetTile);
-                int houseValue = (streetTile.getMunicipality().getHousePrice() / 2);
-                aPlayer.receiveMoney(houseValue);
-                streetTile.sellHouse();
+                do {
+                    if (owes < aPlayer.getMoney()) {
+                        return;
+                    }
+                    int houseValue = (streetTile.getMunicipality().getHousePrice() / 2);
+                    System.out.println("Selling a house on " + streetTile + " for " + houseValue);
+                    aPlayer.receiveMoney(houseValue);
+                    streetTile.sellHouse();
+                } while (streetTile.getBuildings() > 0);
             }
         }
     }
@@ -54,6 +59,7 @@ public class AIAggressive extends ArtificialIntelligence {
             if (!propertyTile.isMortgage()) {
                 int mortgageValue = BigDecimal.valueOf((long) propertyTile.getValue()).multiply(Settings.MORTAGE_FACTOR)
                         .intValue();
+                System.out.println("Mortgage " + propertyTile + " for " + mortgageValue);
                 aPlayer.receiveMoney(mortgageValue);
                 propertyTile.setMortgage(true);
             }
