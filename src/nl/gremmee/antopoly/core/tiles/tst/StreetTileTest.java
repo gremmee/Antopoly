@@ -92,8 +92,8 @@ public class StreetTileTest {
         int ownerMoney = owner.getMoney();
         ownerTile1.buyHouse();
         ownerTile1.execute(player);
-        assertEquals(ownMoney - ownerTile1.getHouse1(), player.getMoney());
-        assertEquals(ownerMoney + ownerTile1.getHouse1(), owner.getMoney());
+        assertEquals(ownMoney - ownerTile1.getRentHouse1(), player.getMoney());
+        assertEquals(ownerMoney + ownerTile1.getRentHouse1(), owner.getMoney());
     }
 
     @Test
@@ -103,8 +103,8 @@ public class StreetTileTest {
         ownerTile1.buyHouse();
         ownerTile1.buyHouse();
         ownerTile1.execute(player);
-        assertEquals(ownMoney - ownerTile1.getHouse2(), player.getMoney());
-        assertEquals(ownerMoney + ownerTile1.getHouse2(), owner.getMoney());
+        assertEquals(ownMoney - ownerTile1.getRentHouse2(), player.getMoney());
+        assertEquals(ownerMoney + ownerTile1.getRentHouse2(), owner.getMoney());
     }
 
     @Test
@@ -115,8 +115,8 @@ public class StreetTileTest {
         ownerTile1.buyHouse();
         ownerTile1.buyHouse();
         ownerTile1.execute(player);
-        assertEquals(ownMoney - ownerTile1.getHouse3(), player.getMoney());
-        assertEquals(ownerMoney + ownerTile1.getHouse3(), owner.getMoney());
+        assertEquals(ownMoney - ownerTile1.getRentHouse3(), player.getMoney());
+        assertEquals(ownerMoney + ownerTile1.getRentHouse3(), owner.getMoney());
     }
 
     @Test
@@ -128,8 +128,8 @@ public class StreetTileTest {
         ownerTile1.buyHouse();
         ownerTile1.buyHouse();
         ownerTile1.execute(player);
-        assertEquals(ownMoney - ownerTile1.getHouse4(), player.getMoney());
-        assertEquals(ownerMoney + ownerTile1.getHouse4(), owner.getMoney());
+        assertEquals(ownMoney - ownerTile1.getRentHouse4(), player.getMoney());
+        assertEquals(ownerMoney + ownerTile1.getRentHouse4(), owner.getMoney());
     }
 
     @Test
@@ -142,8 +142,8 @@ public class StreetTileTest {
         ownerTile1.buyHouse();
         ownerTile1.buyHouse();
         ownerTile1.execute(player);
-        assertEquals(ownMoney - ownerTile1.getHotel(), player.getMoney());
-        assertEquals(ownerMoney + ownerTile1.getHotel(), owner.getMoney());
+        assertEquals(ownMoney - ownerTile1.getRentHotel(), player.getMoney());
+        assertEquals(ownerMoney + ownerTile1.getRentHotel(), owner.getMoney());
     }
 
     @Test

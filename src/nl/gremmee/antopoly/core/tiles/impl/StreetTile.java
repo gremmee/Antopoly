@@ -16,19 +16,20 @@ public class StreetTile extends PropertyTile {
     private Municipality municipality;
     private int buildings;
     private int rent;
-    private int house1, house2, house3, house4;
-    private int hotel;
+    private int rentHouse1, rentHouse2, rentHouse3, rentHouse4;
+    private int rentHotel;
 
     public StreetTile(final Tiles aTiles, final Municipality aMunicipality, final int aValue, final int aRent,
-            final int aHouse1, final int aHouse2, final int aHouse3, final int aHouse4, final int aHotel) {
+            final int aRentHouse1, final int aRentHouse2, final int aRentHouse3, final int aRentHouse4,
+            final int aRentHotel) {
         super(aTiles, TileType.TT_Street, aValue);
         this.setMunicipality(aMunicipality);
         this.setRent(aRent);
-        this.setHouse1(aHouse1);
-        this.setHouse2(aHouse2);
-        this.setHouse3(aHouse3);
-        this.setHouse4(aHouse4);
-        this.setHotel(aHotel);
+        this.setRentHouse1(aRentHouse1);
+        this.setRentHouse2(aRentHouse2);
+        this.setRentHouse3(aRentHouse3);
+        this.setRentHouse4(aRentHouse4);
+        this.setRentHotel(aRentHotel);
         this.buildings = 0;
     }
 
@@ -45,7 +46,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int build(final int aNumBuildings) {
-        assert aNumBuildings + this.buildings < 5 : "Cannot build more than a hotel!";
+        assert aNumBuildings + this.buildings < 5 : "Cannot build more than a rentHotel!";
 
         return 0;
     }
@@ -88,44 +89,44 @@ public class StreetTile extends PropertyTile {
         return "| " + this.getName() + ", " + this.getMunicipality().getAbbreviation() + ", " + this.buildings + " |";
     }
 
-    public int getHouse1() {
-        return this.house1;
+    public int getRentHouse1() {
+        return this.rentHouse1;
     }
 
-    private void setHouse1(final int aHouse1) {
-        this.house1 = aHouse1;
+    private void setRentHouse1(final int aHouse1) {
+        this.rentHouse1 = aHouse1;
     }
 
-    public int getHouse2() {
-        return this.house2;
+    public int getRentHouse2() {
+        return this.rentHouse2;
     }
 
-    private void setHouse2(final int aHouse2) {
-        this.house2 = aHouse2;
+    private void setRentHouse2(final int aHouse2) {
+        this.rentHouse2 = aHouse2;
     }
 
-    public int getHouse3() {
-        return this.house3;
+    public int getRentHouse3() {
+        return this.rentHouse3;
     }
 
-    private void setHouse3(final int aHouse3) {
-        this.house3 = aHouse3;
+    private void setRentHouse3(final int aHouse3) {
+        this.rentHouse3 = aHouse3;
     }
 
-    public int getHouse4() {
-        return this.house4;
+    public int getRentHouse4() {
+        return this.rentHouse4;
     }
 
-    private void setHouse4(final int aHouse4) {
-        this.house4 = aHouse4;
+    private void setRentHouse4(final int aHouse4) {
+        this.rentHouse4 = aHouse4;
     }
 
-    public int getHotel() {
-        return this.hotel;
+    public int getRentHotel() {
+        return this.rentHotel;
     }
 
-    private void setHotel(final int aHotel) {
-        this.hotel = aHotel;
+    private void setRentHotel(final int aHotel) {
+        this.rentHotel = aHotel;
     }
 
     public int getBuildings() {
@@ -142,23 +143,23 @@ public class StreetTile extends PropertyTile {
             } else {
                 switch (this.getBuildings()) {
                     case 1:
-                        rentValue = this.getHouse1();
+                        rentValue = this.getRentHouse1();
                         break;
                     case 2:
-                        rentValue = this.getHouse2();
+                        rentValue = this.getRentHouse2();
                         break;
                     case 3:
-                        rentValue = this.getHouse3();
+                        rentValue = this.getRentHouse3();
                         break;
                     case 4:
-                        rentValue = this.getHouse4();
+                        rentValue = this.getRentHouse4();
                         break;
                     case 5:
-                        rentValue = this.getHotel();
+                        rentValue = this.getRentHotel();
                         break;
 
                     default:
-                        rentValue = this.getHotel();
+                        rentValue = this.getRentHotel();
                         break;
                 }
             }
