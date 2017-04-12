@@ -343,12 +343,9 @@ public class Player implements IPlayer, Cloneable {
 
     public int getHousesValue() {
         int value = 0;
-        for (ITile tile : this.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() > 0 && street.getBuildings() < 5) {
-                    value += (street.getBuildings() * street.getMunicipality().getHousePrice());
-                }
+        for (StreetTile street : this.getTileList().getStreetTiles()) {
+            if (street.getBuildings() > 0 && street.getBuildings() < 5) {
+                value += (street.getBuildings() * street.getMunicipality().getHousePrice());
             }
         }
         return value;
@@ -356,15 +353,13 @@ public class Player implements IPlayer, Cloneable {
 
     public int getHotelsValue() {
         int value = 0;
-        for (ITile tile : this.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() >= 5) {
-                    value += street.getMunicipality().getHousePrice();
-                }
+        for (StreetTile street : this.getTileList().getStreetTiles()) {
+            if (street.getBuildings() >= 5) {
+                value += street.getMunicipality().getHousePrice();
             }
         }
         return value;
+
     }
 
     public Owe getOwe() {

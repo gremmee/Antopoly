@@ -6,7 +6,6 @@ import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.Municipality;
 import nl.gremmee.antopoly.core.lists.MunicipalityList;
 import nl.gremmee.antopoly.core.lists.TileList;
-import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
@@ -169,12 +168,9 @@ public class StreetTile extends PropertyTile {
 
     public boolean hasMunicipality(final IPlayer aOwner, final StreetTile aStreet) {
         int complete = aStreet.getMunicipality().getSize();
-        for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile streetTile = (StreetTile) tile;
-                if (streetTile.getMunicipality().equals(aStreet.getMunicipality())) {
-                    complete--;
-                }
+        for (StreetTile street : aOwner.getTileList().getStreetTiles()) {
+            if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+                complete--;
             }
         }
         return (complete == 0);
@@ -182,15 +178,12 @@ public class StreetTile extends PropertyTile {
 
     public MunicipalityList getMunicipality(final TileList aTileList, final StreetTile aStreet) {
         MunicipalityList municipalityList = new MunicipalityList();
-        for (ITile tile : aTileList) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
+        for (StreetTile street : aTileList.getStreetTiles()) {
 
-                if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+            if (street.getMunicipality().equals(aStreet.getMunicipality())) {
 
-                    municipalityList.add(street);
+                municipalityList.add(street);
 
-                }
             }
         }
         Collections.sort(municipalityList);

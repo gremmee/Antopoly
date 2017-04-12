@@ -2,7 +2,6 @@ package nl.gremmee.antopoly.core.cards.impl;
 
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.abs.Card;
-import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
@@ -69,12 +68,9 @@ public class PayPropertyCard extends Card {
 
     public int getHouses(final IPlayer aPlayer) {
         int houses = 0;
-        for (ITile tile : aPlayer.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() < 5) {
-                    houses += street.getBuildings();
-                }
+        for (StreetTile street : aPlayer.getTileList().getStreetTiles()) {
+            if (street.getBuildings() < 5) {
+                houses += street.getBuildings();
             }
         }
         return houses;
@@ -82,12 +78,9 @@ public class PayPropertyCard extends Card {
 
     public int getHotels(final IPlayer aPlayer) {
         int hotels = 0;
-        for (ITile tile : aPlayer.getTileList()) {
-            if (tile instanceof StreetTile) {
-                StreetTile street = (StreetTile) tile;
-                if (street.getBuildings() >= 5) {
-                    hotels++;
-                }
+        for (StreetTile street : aPlayer.getTileList().getStreetTiles()) {
+            if (street.getBuildings() >= 5) {
+                hotels++;
             }
         }
         return hotels;
