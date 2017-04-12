@@ -12,7 +12,7 @@ public abstract class Rule implements IRule {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(final String aName) {

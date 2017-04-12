@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.core.cards.abs;
 
 public abstract class ValueCard extends Card {
+
     private int value;
 
     public ValueCard(final String aName, final String aText, final int aValue) {
@@ -9,7 +10,7 @@ public abstract class ValueCard extends Card {
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     public void setValue(final int aValue) {

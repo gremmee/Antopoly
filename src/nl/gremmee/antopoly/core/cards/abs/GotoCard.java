@@ -10,7 +10,7 @@ public abstract class GotoCard extends Card {
     }
 
     public boolean isForward() {
-        return forward;
+        return this.forward;
     }
 
     private void setForward(final boolean aForward) {

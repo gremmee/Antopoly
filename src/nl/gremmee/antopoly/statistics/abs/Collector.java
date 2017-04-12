@@ -11,7 +11,7 @@ public abstract class Collector implements ICollector {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(final String aName) {

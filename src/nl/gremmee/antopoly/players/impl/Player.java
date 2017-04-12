@@ -77,8 +77,8 @@ public class Player implements IPlayer, Cloneable {
         Player player = (Player) aOther;
         // field comparison
         // TODO: Extends fields
-        return Objects.equals(name, player.name) && Objects.equals(inJail, player.inJail)
-                && Objects.equals(active, player.active);
+        return Objects.equals(this.name, player.name) && Objects.equals(this.inJail, player.inJail)
+                && Objects.equals(this.active, player.active);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public CardList getCardList() {
-        return cardList;
+        return this.cardList;
     }
 
     public boolean hasGetOutOfJailCard() {
@@ -127,7 +127,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(final String aName) {
@@ -135,7 +135,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(final int aID) {
@@ -149,7 +149,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public TileList getTileList() {
-        return tileList;
+        return this.tileList;
     }
 
     public void setTileList(final TileList aTileList) {
@@ -157,7 +157,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public boolean isWinner() {
-        return winner;
+        return this.winner;
     }
 
     public void setWinner(final boolean aWinner) {
@@ -180,11 +180,11 @@ public class Player implements IPlayer, Cloneable {
 
             } else {
 
-                this.rollList = diceList.roll();
+                this.rollList = this.diceList.roll();
                 if (this.rollList.isDouble()) {
                     this.setInJail(false);
                 } else {
-                    if (artificialIntelligence.executeGetOutOfJail()) {
+                    if (this.artificialIntelligence.executeGetOutOfJail()) {
                         getOutOfJail();
                     } else {
                         if (this.jailBreakTries >= 2) {
@@ -205,8 +205,8 @@ public class Player implements IPlayer, Cloneable {
             }
             System.out.println("Rolled " + diceResult);
 
-            int id = this.currentTile.getID();
-            int calculatedResult = id + diceResult;
+            int currentTileID = this.currentTile.getID();
+            int calculatedResult = currentTileID + diceResult;
 
             if (calculatedResult >= Initialize.getInstance().getTileList().size()) {
                 // pass Start
@@ -215,7 +215,7 @@ public class Player implements IPlayer, Cloneable {
             }
             int newID = calculatedResult % Initialize.getInstance().getTileList().size();
 
-            System.out.println(id + " => " + newID);
+            System.out.println(currentTileID + " => " + newID);
             System.out.println(Initialize.getInstance().getTileList());
             ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
             System.out.println("Goto : " + newTile);
@@ -253,7 +253,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public ITile getCurrentTile() {
-        return currentTile;
+        return this.currentTile;
     }
 
     public void setCurrentTile(final ITile aCurrentTile) {
@@ -264,7 +264,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public int getMoney() {
-        return money;
+        return this.money;
     }
 
     private void setMoney(final int aMoney) {
@@ -280,7 +280,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public boolean isBusted() {
-        return busted;
+        return this.busted;
     }
 
     public void setBusted(final boolean aBusted) {
@@ -308,7 +308,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public boolean isAgain() {
-        return again;
+        return this.again;
     }
 
     public void setAgain(final boolean aAgain) {
@@ -322,7 +322,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public boolean isInJail() {
-        return inJail;
+        return this.inJail;
     }
 
     public void setInJail(final boolean aInJail) {
@@ -330,7 +330,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public IArtificialIntelligence getArtificialIntelligence() {
-        return artificialIntelligence;
+        return this.artificialIntelligence;
     }
 
     private void setArtificialIntelligence(final IArtificialIntelligence aArtificialIntelligence) {

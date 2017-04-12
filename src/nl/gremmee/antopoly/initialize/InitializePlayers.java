@@ -21,15 +21,15 @@ public class InitializePlayers {
 
     public PlayerList initializePlayers(final int aNumPlayers) {
         System.out.println("Initializing Players");
-        playerList = new PlayerList();
+        this.playerList = new PlayerList();
         for (int i = 0; i < aNumPlayers; i++) {
             System.out.print("Creating Player " + (i + 1) + "...");
             IPlayer player = new Player(i + 1, "Player " + (i + 1));
             player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
-            playerList.add(player);
+            this.playerList.add(player);
             System.out.println("[OK]");
         }
-        return playerList;
+        return this.playerList;
     }
 
 }

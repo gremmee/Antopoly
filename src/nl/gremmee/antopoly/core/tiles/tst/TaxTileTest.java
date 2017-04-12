@@ -24,7 +24,7 @@ public class TaxTileTest {
 
     @Test
     public void testValue() {
-        assertEquals(200, tile.getValue());
+        assertEquals(200, tile.getTax());
     }
 
     @Test
@@ -36,6 +36,6 @@ public class TaxTileTest {
     public void textExecute() {
         int money = player.getMoney();
         tile.execute(player);
-        assertEquals(money - tile.getValue(), player.getMoney());
+        assertEquals(money - tile.getTax(), player.getMoney());
     }
 }

@@ -16,7 +16,7 @@ public class TaxPercentageTile extends Tile {
     }
 
     public int getPercentage() {
-        return percentage;
+        return this.percentage;
     }
 
     private void setPercentage(final int aValue) {

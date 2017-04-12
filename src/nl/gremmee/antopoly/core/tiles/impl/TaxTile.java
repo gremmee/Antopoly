@@ -8,24 +8,24 @@ import nl.gremmee.antopoly.players.IPlayer;
 
 public class TaxTile extends Tile {
 
-    private int value;
+    private int tax;
 
     public TaxTile(final Tiles aTiles, final int aValue) {
         super(aTiles, TileType.TT_Taxes);
-        this.setValue(aValue);
+        this.setTax(aValue);
     }
 
-    public int getValue() {
-        return value;
+    public int getTax() {
+        return this.tax;
     }
 
-    private void setValue(final int aValue) {
-        this.value = aValue;
+    private void setTax(final int aValue) {
+        this.tax = aValue;
     }
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        int costs = this.getValue() * Settings.MONEY_FACTOR;
+        int costs = this.getTax() * Settings.MONEY_FACTOR;
         System.out.println("Tax " + costs);
         aPlayer.payMoney(costs);
         super.execute(aPlayer);

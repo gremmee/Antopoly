@@ -19,7 +19,7 @@ public class GotoTileCard extends GotoCard {
     }
 
     public ITile getTile() {
-        return tile;
+        return this.tile;
     }
 
     public void setTile(final ITile tile) {

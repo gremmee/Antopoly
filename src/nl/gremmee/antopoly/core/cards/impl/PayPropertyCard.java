@@ -20,7 +20,7 @@ public class PayPropertyCard extends Card {
     }
 
     public int getPerHouse() {
-        return perHouse;
+        return this.perHouse;
     }
 
     public void setPerHouse(final int aPerHouse) {
@@ -28,7 +28,7 @@ public class PayPropertyCard extends Card {
     }
 
     public int getPerHotel() {
-        return perHotel;
+        return this.perHotel;
     }
 
     public void setPerHotel(final int aPerHotel) {
@@ -66,7 +66,7 @@ public class PayPropertyCard extends Card {
         return false;
     }
 
-    public int getHouses(final IPlayer aPlayer) {
+    private int getHouses(final IPlayer aPlayer) {
         int houses = 0;
         for (StreetTile street : aPlayer.getTileList().getStreetTiles()) {
             if (street.getBuildings() < 5) {
@@ -76,7 +76,7 @@ public class PayPropertyCard extends Card {
         return houses;
     }
 
-    public int getHotels(final IPlayer aPlayer) {
+    private int getHotels(final IPlayer aPlayer) {
         int hotels = 0;
         for (StreetTile street : aPlayer.getTileList().getStreetTiles()) {
             if (street.getBuildings() >= 5) {

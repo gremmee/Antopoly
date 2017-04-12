@@ -22,14 +22,14 @@ public class InitializeRules {
 
     public RuleList initializeRules() {
         System.out.println("Initializing Rules");
-        ruleList = new RuleList();
+        this.ruleList = new RuleList();
         // keep in order
-        ruleList.add(new SellPropertiesRule());
-        ruleList.add(new GetMortgageRule());
-        ruleList.add(new BankruptRule());
-        ruleList.add(new DoublesJailRule());
+        this.ruleList.add(new SellPropertiesRule());
+        this.ruleList.add(new GetMortgageRule());
+        this.ruleList.add(new BankruptRule());
+        this.ruleList.add(new DoublesJailRule());
 
-        return ruleList;
+        return this.ruleList;
     }
 
 }

@@ -53,7 +53,7 @@ public class GotoStepsCard extends GotoCard {
     }
 
     public int getNumSteps() {
-        return numSteps;
+        return this.numSteps;
     }
 
     private void setNumSteps(final int aNumSteps) {

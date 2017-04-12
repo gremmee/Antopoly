@@ -67,7 +67,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(final String aName) {
@@ -75,7 +75,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     }
 
     public int getID() {
-        return ID;
+        return this.ID;
     }
 
     public void setID(final int aID) {
@@ -83,7 +83,7 @@ public abstract class Tile implements ITile, Comparable<Tile> {
     }
 
     public TileType getTileType() {
-        return tileType;
+        return this.tileType;
     }
 
     public void setTileType(final TileType tileType) {

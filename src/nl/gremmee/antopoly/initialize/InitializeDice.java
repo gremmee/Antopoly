@@ -19,14 +19,14 @@ public class InitializeDice {
 
     public DiceList initializeDice(final int aNumDice) {
         System.out.println("Initializing Dice");
-        diceList = new DiceList();
+        this.diceList = new DiceList();
         for (int i = 0; i < aNumDice; i++) {
             System.out.print("Creating Die " + (i + 1) + "...");
             Die die = new Die(6);
-            diceList.add(die);
+            this.diceList.add(die);
             System.out.println("[OK]");
         }
-        return diceList;
+        return this.diceList;
     }
 
 }

@@ -15,7 +15,7 @@ public abstract class ArtificialIntelligence implements IArtificialIntelligence 
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(final String aName) {

@@ -89,7 +89,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getHouse1() {
-        return house1;
+        return this.house1;
     }
 
     private void setHouse1(final int aHouse1) {
@@ -97,7 +97,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getHouse2() {
-        return house2;
+        return this.house2;
     }
 
     private void setHouse2(final int aHouse2) {
@@ -105,7 +105,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getHouse3() {
-        return house3;
+        return this.house3;
     }
 
     private void setHouse3(final int aHouse3) {
@@ -113,7 +113,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getHouse4() {
-        return house4;
+        return this.house4;
     }
 
     private void setHouse4(final int aHouse4) {
@@ -121,7 +121,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getHotel() {
-        return hotel;
+        return this.hotel;
     }
 
     private void setHotel(final int aHotel) {

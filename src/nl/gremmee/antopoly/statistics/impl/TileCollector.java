@@ -21,25 +21,25 @@ public class TileCollector extends Collector {
     @Override
     public void collect(final IPlayer aPlayer) {
         ITile tile = aPlayer.getCurrentTile();
-        CollectorPojo value = coll.get(tile.getName());
+        CollectorPojo value = this.coll.get(tile.getName());
         if (value != null) {
             value.increaseCount();
         } else {
 
-            coll.put(tile.getName(), new CollectorPojo());
+            this.coll.put(tile.getName(), new CollectorPojo());
         }
         increaseTotalCount();
     }
 
     public void increaseTotalCount() {
-        for (CollectorPojo collPojo : coll.values()) {
+        for (CollectorPojo collPojo : this.coll.values()) {
             collPojo.increaseTotalCount();
         }
     }
 
     @Override
     public String toString() {
-        Map<String, CollectorPojo> sorted = sortByValues(coll);
+        Map<String, CollectorPojo> sorted = sortByValues(this.coll);
         return sorted.toString();
     }
 
