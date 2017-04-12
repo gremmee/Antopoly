@@ -20,14 +20,15 @@ public class InitializePlayers {
     }
 
     public PlayerList initializePlayers(final int aNumPlayers) {
-        System.out.println("Initializing Players");
-        this.playerList = new PlayerList();
-        for (int i = 0; i < aNumPlayers; i++) {
-            System.out.print("Creating Player " + (i + 1) + "...");
-            IPlayer player = new Player(i + 1, "Player " + (i + 1));
-            player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
-            this.playerList.add(player);
-            System.out.println("[OK]");
+        if (this.playerList == null) {
+            System.out.println("Initializing Players");
+            this.playerList = new PlayerList();
+
+            for (int i = 0; i < aNumPlayers; i++) {
+                IPlayer player = new Player(i + 1, "Player " + (i + 1));
+                player.setCurrentTile(Initialize.getInstance().getTileList().getTileByName(Tiles.START));
+                this.playerList.add(player);
+            }
         }
         return this.playerList;
     }

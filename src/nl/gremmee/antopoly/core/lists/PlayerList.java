@@ -8,6 +8,12 @@ public class PlayerList extends ArrayList<IPlayer> {
 
     private static final long serialVersionUID = -8862672490776383051L;
 
+    @Override
+    public boolean add(final IPlayer aPlayer) {
+        System.out.println("Creating Die " + (this.size() + 1) + "...[OK]");
+        return super.add(aPlayer);
+    }
+
     public boolean isWinner() {
         for (IPlayer player : this) {
             if (player.isWinner()) {
