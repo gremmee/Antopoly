@@ -1,7 +1,6 @@
 package nl.gremmee.antopoly.core.tiles.impl;
 
 import nl.gremmee.antopoly.Settings;
-import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
@@ -48,12 +47,6 @@ public class UtilityTile extends PropertyTile {
     }
 
     public boolean hasBothUtilities(final IPlayer aOwner) {
-        int utilities = 0;
-        for (ITile tile : aOwner.getTileList()) {
-            if (tile instanceof UtilityTile) {
-                utilities++;
-            }
-        }
-        return (utilities >= 2);
+        return (aOwner.getTileList().getUtilityTiles().size() >= 2);
     }
 }

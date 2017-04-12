@@ -14,7 +14,7 @@ import nl.gremmee.antopoly.players.IPlayer;
 public class StreetTile extends PropertyTile {
 
     private Municipality municipality;
-    private int building;
+    private int buildings;
     private int rent;
     private int house1, house2, house3, house4;
     private int hotel;
@@ -29,7 +29,7 @@ public class StreetTile extends PropertyTile {
         this.setHouse3(aHouse3);
         this.setHouse4(aHouse4);
         this.setHotel(aHotel);
-        this.building = 0;
+        this.buildings = 0;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int build(final int aNumBuildings) {
-        assert aNumBuildings + this.building < 5 : "Cannot build more than a hotel!";
+        assert aNumBuildings + this.buildings < 5 : "Cannot build more than a hotel!";
 
         return 0;
     }
@@ -67,16 +67,25 @@ public class StreetTile extends PropertyTile {
     }
 
     public void buyHouse() {
-        this.building++;
+        assert (this.getOwner() != null) : "Cannot buy a house when not owned!";
+        assert (!this.isMortgage()) : "Cannot buy a house when mortgaged!";
+        this.buildings++;
+    }
+
+    public void buyHotel() {
+        int diff = 5 - this.buildings;
+        for (int i = 0; i < diff; i++) {
+            buyHouse();
+        }
     }
 
     public void sellHouse() {
-        this.building--;
+        this.buildings--;
     }
 
     @Override
     public String toString() {
-        return "| " + this.getName() + ", " + this.getMunicipality().getAbbreviation() + ", " + this.building + " |";
+        return "| " + this.getName() + ", " + this.getMunicipality().getAbbreviation() + ", " + this.buildings + " |";
     }
 
     public int getHouse1() {
@@ -120,7 +129,7 @@ public class StreetTile extends PropertyTile {
     }
 
     public int getBuildings() {
-        return this.building;
+        return this.buildings;
     }
 
     private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {

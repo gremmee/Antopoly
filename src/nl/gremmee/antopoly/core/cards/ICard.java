@@ -12,6 +12,4 @@ public interface ICard {
 
     public boolean execute(final IPlayer aPlayer);
 
-    public boolean isGetOutOfJailCard();
-
 }

@@ -6,7 +6,9 @@ import java.util.List;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
+import nl.gremmee.antopoly.core.tiles.impl.StationTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
+import nl.gremmee.antopoly.core.tiles.impl.UtilityTile;
 
 public class TileList extends ArrayList<ITile> {
 
@@ -39,6 +41,17 @@ public class TileList extends ArrayList<ITile> {
         return propertyTiles;
     }
 
+    public List<StationTile> getStationTiles() {
+        List<StationTile> stationTiles = new ArrayList<StationTile>();
+        for (ITile tile : this) {
+            if (tile instanceof StationTile) {
+                StationTile stationTile = (StationTile) tile;
+                stationTiles.add(stationTile);
+            }
+        }
+        return stationTiles;
+    }
+
     public List<StreetTile> getStreetTiles() {
         List<StreetTile> streetTiles = new ArrayList<StreetTile>();
         for (ITile tile : this) {
@@ -48,5 +61,16 @@ public class TileList extends ArrayList<ITile> {
             }
         }
         return streetTiles;
+    }
+
+    public List<UtilityTile> getUtilityTiles() {
+        List<UtilityTile> utilityTiles = new ArrayList<UtilityTile>();
+        for (ITile tile : this) {
+            if (tile instanceof UtilityTile) {
+                UtilityTile utilityTile = (UtilityTile) tile;
+                utilityTiles.add(utilityTile);
+            }
+        }
+        return utilityTiles;
     }
 }

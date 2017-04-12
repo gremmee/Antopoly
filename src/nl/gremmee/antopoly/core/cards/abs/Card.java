@@ -2,7 +2,6 @@ package nl.gremmee.antopoly.core.cards.abs;
 
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
-import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -15,10 +14,6 @@ public abstract class Card implements ICard {
     public Card(final String aName, final String aText) {
         this.setName(aName);
         this.setText(aText);
-    }
-
-    public boolean isGetOutOfJailCard() {
-        return this instanceof GetOutOfJailCard;
     }
 
     public String getName() {

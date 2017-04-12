@@ -1,8 +1,10 @@
 package nl.gremmee.antopoly.players.impl;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import nl.gremmee.antopoly.Money;
+import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.cards.impl.GetOutOfJailCard;
@@ -97,12 +99,7 @@ public class Player implements IPlayer, Cloneable {
     }
 
     public boolean hasGetOutOfJailCard() {
-        for (ICard card : this.cardList) {
-            if (card instanceof GetOutOfJailCard) {
-                return true;
-            }
-        }
-        return false;
+        return this.cardList.getOutOfJailCards().size() > 0;
     }
 
     private void removeCard(final ICard aCard) {
@@ -112,18 +109,15 @@ public class Player implements IPlayer, Cloneable {
     public void useGetOutOfJailCard() {
         assert hasGetOutOfJailCard() : "Cannot use what you do not have!";
         if (hasGetOutOfJailCard()) {
-            for (ICard card : this.cardList) {
-                if (card instanceof GetOutOfJailCard) {
-                    removeCard(card);
-                    CardType cardType = card.getCardType();
-                    CardList cardList = CardType.CT_Chance.equals(cardType)
-                            ? Initialize.getInstance().getChanceCardList()
-                            : Initialize.getInstance().getCommunityChestCardList();
-                    cardList.putBack(card);
-                    this.setInJail(false);
-                    this.jailBreakTries = 0;
-                    break;
-                }
+            for (GetOutOfJailCard getOutOfJailCard : this.cardList.getOutOfJailCards()) {
+                removeCard(getOutOfJailCard);
+                CardType cardType = getOutOfJailCard.getCardType();
+                CardList cardList = CardType.CT_Chance.equals(cardType) ? Initialize.getInstance().getChanceCardList()
+                        : Initialize.getInstance().getCommunityChestCardList();
+                cardList.putBack(getOutOfJailCard);
+                this.setInJail(false);
+                this.jailBreakTries = 0;
+                break;
             }
         }
     }
@@ -306,8 +300,10 @@ public class Player implements IPlayer, Cloneable {
 
     public int getValue() {
         int totalValue = this.getMoney();
+        totalValue += this.getPropertiesValue();
         totalValue += this.getHousesValue();
         totalValue += this.getHotelsValue();
+        totalValue += this.getOutOfJailCardsValue();
         return totalValue;
     }
 
@@ -345,7 +341,7 @@ public class Player implements IPlayer, Cloneable {
         int value = 0;
         for (StreetTile street : this.getTileList().getStreetTiles()) {
             if (street.getBuildings() > 0 && street.getBuildings() < 5) {
-                value += (street.getBuildings() * street.getMunicipality().getHousePrice());
+                value += (street.getBuildings() * (street.getMunicipality().getHousePrice() / 2));
             }
         }
         return value;
@@ -355,11 +351,22 @@ public class Player implements IPlayer, Cloneable {
         int value = 0;
         for (StreetTile street : this.getTileList().getStreetTiles()) {
             if (street.getBuildings() >= 5) {
-                value += street.getMunicipality().getHousePrice();
+                value += (street.getMunicipality().getHousePrice() / 2) * 5;
             }
         }
         return value;
+    }
 
+    private int getOutOfJailCardsValue() {
+        return this.getCardList().getOutOfJailCards().size() * Money.PRICE_GET_OUT_OF_JAIL_CARD;
+    }
+
+    private int getPropertiesValue() {
+        int value = 0;
+        for (PropertyTile property : this.getTileList().getPropertyTiles()) {
+            value += Settings.MORTAGE_FACTOR.multiply(BigDecimal.valueOf(property.getValue())).intValue();
+        }
+        return value;
     }
 
     public Owe getOwe() {
