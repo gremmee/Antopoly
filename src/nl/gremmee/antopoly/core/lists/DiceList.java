@@ -10,7 +10,13 @@ public class DiceList extends ArrayList<Die> {
     private RollList rollList;
 
     public DiceList() {
-        rollList = new RollList();
+        this.rollList = new RollList();
+    }
+
+    @Override
+    public boolean add(final Die aDie) {
+        System.out.println("Creating Die " + (this.size() + 1) + "...[OK]");
+        return super.add(aDie);
     }
 
     public RollList getRollList() {
@@ -18,14 +24,14 @@ public class DiceList extends ArrayList<Die> {
     }
 
     public RollList roll() {
-        rollList.clear();
+        this.rollList.clear();
         System.out.print("Rolling ");
         for (int i = 0; i < this.size(); i++) {
             Long roll = this.get(i).roll();
-            rollList.add(roll);
+            this.rollList.add(roll);
             System.out.print(roll.intValue() + " ");
         }
         System.out.println();
-        return rollList;
+        return this.rollList;
     }
 }

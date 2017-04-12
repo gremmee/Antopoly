@@ -18,13 +18,14 @@ public class InitializeDice {
     }
 
     public DiceList initializeDice(final int aNumDice) {
-        System.out.println("Initializing Dice");
-        this.diceList = new DiceList();
-        for (int i = 0; i < aNumDice; i++) {
-            System.out.print("Creating Die " + (i + 1) + "...");
-            Die die = new Die(6);
-            this.diceList.add(die);
-            System.out.println("[OK]");
+        if (this.diceList == null) {
+            System.out.println("Initializing Dice");
+            this.diceList = new DiceList();
+
+            for (int i = 0; i < aNumDice; i++) {
+                Die die = new Die(6);
+                this.diceList.add(die);
+            }
         }
         return this.diceList;
     }
