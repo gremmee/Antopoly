@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.rules.abs;
 
+import nl.gremmee.antopoly.players.IPlayer;
 import nl.gremmee.antopoly.rules.IRule;
 
 public abstract class Rule implements IRule {
@@ -22,4 +23,10 @@ public abstract class Rule implements IRule {
     public String toString() {
         return ("|" + this.getName() + "|");
     }
+
+    protected boolean isMe(IPlayer aPlayer) {
+        IPlayer owesTo = aPlayer.getOwe().getOwesTo();
+        return (aPlayer.equals(owesTo));
+    }
+
 }

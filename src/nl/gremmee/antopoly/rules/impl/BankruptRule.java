@@ -16,49 +16,50 @@ public class BankruptRule extends Rule {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        if (aPlayer.getMoney() < aPlayer.getOwe().getOwes()) {
-            System.out.println("Executing rule: " + this);
+        if (!isMe(aPlayer)) {
+            if (aPlayer.getMoney() < aPlayer.getOwe().getOwes()) {
+                System.out.println("Executing rule: " + this);
 
-            // Bankrupt
-            IPlayer owes = aPlayer.getOwe().getOwesTo();
-            if (owes != null) {
-                // Gets all money
-                owes.receiveMoney(aPlayer.getMoney());
+                // Bankrupt
+                IPlayer owesTo = aPlayer.getOwe().getOwesTo();
+                if (owesTo != null) {
+                    // Gets all money
+                    owesTo.receiveMoney(aPlayer.getMoney());
 
-                // Gets all properties
-                for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
-                    owes.addTile(propertyTile);
+                    // Gets all properties
+                    for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                        owesTo.addTile(propertyTile);
+                    }
+                    aPlayer.getTileList().clear();
+
+                    // Gets all cards
+                    for (ICard card : aPlayer.getCardList()) {
+                        owesTo.getCardList().add(card);
+                    }
+                    aPlayer.getCardList().clear();
+                } else {
+                    for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                        propertyTile.setOwner(null);
+                    }
+                    aPlayer.getTileList().clear();
+
+                    // Put back all cards
+                    for (ICard card : aPlayer.getCardList()) {
+                        CardType cardType = card.getCardType();
+                        CardList cardList = CardType.CT_Chance.equals(cardType)
+                                ? Initialize.getInstance().getChanceCardList()
+                                : Initialize.getInstance().getCommunityChestCardList();
+                        cardList.putBack(card);
+                    }
+                    aPlayer.getCardList().clear();
+
                 }
-                aPlayer.getTileList().clear();
-
-                // Gets all cards
-                for (ICard card : aPlayer.getCardList()) {
-                    owes.getCardList().add(card);
-                }
-                aPlayer.getCardList().clear();
-            } else {
-                for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
-                    propertyTile.setOwner(null);
-                }
-                aPlayer.getTileList().clear();
-
-                // Put back all cards
-                for (ICard card : aPlayer.getCardList()) {
-                    CardType cardType = card.getCardType();
-                    CardList cardList = CardType.CT_Chance.equals(cardType)
-                            ? Initialize.getInstance().getChanceCardList()
-                            : Initialize.getInstance().getCommunityChestCardList();
-                    cardList.putBack(card);
-                }
-                aPlayer.getCardList().clear();
-
+                aPlayer.resetMoney();
+                aPlayer.setBusted(true);
+                aPlayer.getOwe().setOwesTo(null);
+                aPlayer.getOwe().setOwes(0);
             }
-            aPlayer.resetMoney();
-            aPlayer.setBusted(true);
-            aPlayer.getOwe().setOwesTo(null);
-            aPlayer.getOwe().setOwes(0);
         }
-
     }
 
 }

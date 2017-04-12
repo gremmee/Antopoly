@@ -29,6 +29,22 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
+    public void executeSellProperties(IPlayer aPlayer) {
+        int owes = aPlayer.getOwe().getOwes();
+        for (StreetTile streetTile : aPlayer.getTileList().getStreetTiles()) {
+            if (owes < aPlayer.getMoney()) {
+                return;
+            }
+            if (streetTile.getBuildings() > 0) {
+                System.out.println("Selling a house on " + streetTile);
+                int houseValue = (streetTile.getMunicipality().getHousePrice() / 2);
+                aPlayer.receiveMoney(houseValue);
+                streetTile.sellHouse();
+            }
+        }
+    }
+
+    @Override
     public void executeGetMortgage(final IPlayer aPlayer) {
 
         int owes = aPlayer.getOwe().getOwes();
@@ -92,4 +108,5 @@ public class AIAggressive extends ArtificialIntelligence {
             }
         }
     }
+
 }

@@ -19,4 +19,6 @@ public interface IArtificialIntelligence {
     public boolean executeGetOutOfJail();
 
     public void executeBuyHouses(final IPlayer aPlayer);
+
+    public void executeSellProperties(final IPlayer aPlayer);
 }

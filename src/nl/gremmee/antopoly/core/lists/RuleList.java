@@ -15,4 +15,11 @@ public class RuleList extends ArrayList<IRule> {
         }
         return null;
     }
+
+    @Override
+    public boolean add(final IRule aRule) {
+        System.out.println("Creating Rule " + aRule.getName() + "...[OK]");
+        return super.add(aRule);
+
+    }
 }
