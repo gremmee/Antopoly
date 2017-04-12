@@ -21,14 +21,15 @@ public class InitializeRules {
     }
 
     public RuleList initializeRules() {
-        System.out.println("Initializing Rules");
-        this.ruleList = new RuleList();
-        // keep in order
-        this.ruleList.add(new SellPropertiesRule());
-        this.ruleList.add(new GetMortgageRule());
-        this.ruleList.add(new BankruptRule());
-        this.ruleList.add(new DoublesJailRule());
-
+        if (this.ruleList == null) {
+            System.out.println("Initializing Rules");
+            this.ruleList = new RuleList();
+            // keep in order
+            this.ruleList.add(new SellPropertiesRule());
+            this.ruleList.add(new GetMortgageRule());
+            this.ruleList.add(new BankruptRule());
+            this.ruleList.add(new DoublesJailRule());
+        }
         return this.ruleList;
     }
 
