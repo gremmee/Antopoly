@@ -19,7 +19,7 @@ public class StationTile extends PropertyTile {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        System.out.println("Station");
+        System.out.println("Landing on Station");
         super.execute(aPlayer);
     }
 
