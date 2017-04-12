@@ -38,6 +38,7 @@ public class InitializeTiles {
             System.out.println("Initializing Tiles");
             this.tileList = new TileList();
 
+            // 0 - 9
             this.tileList.add(new StartTile(Tiles.START));
             this.tileList
                     .add(new StreetTile(Tiles.MEDITERRANEAN_AVENUE, Municipality.BROWN, 60, 2, 10, 30, 90, 160, 250));
@@ -51,6 +52,7 @@ public class InitializeTiles {
             this.tileList
                     .add(new StreetTile(Tiles.CONNECTICUT_AVENUE, Municipality.BLUE, 120, 8, 40, 100, 300, 450, 600));
 
+            // 10-19
             this.tileList.add(new JailTile(Tiles.JAIL));
             this.tileList
                     .add(new StreetTile(Tiles.ST_CHARLES_PLACE, Municipality.PINK, 140, 10, 50, 150, 450, 625, 750));
@@ -67,6 +69,7 @@ public class InitializeTiles {
             this.tileList
                     .add(new StreetTile(Tiles.NEW_YORK_AVENUE, Municipality.ORANGE, 200, 16, 80, 220, 600, 800, 1000));
 
+            // 20 - 29
             this.tileList.add(new FreeParkingTile(Tiles.FREE_PARKING));
             this.tileList
                     .add(new StreetTile(Tiles.KENTUCKY_AVENUE, Municipality.RED, 220, 18, 90, 250, 700, 875, 1050));
@@ -83,6 +86,7 @@ public class InitializeTiles {
             this.tileList
                     .add(new StreetTile(Tiles.MARVIN_GARDENS, Municipality.YELLOW, 280, 22, 120, 360, 850, 1025, 1200));
 
+            // 30 - 39
             this.tileList.add(new GotoJailTile(Tiles.GOTO_JAIL));
             this.tileList
                     .add(new StreetTile(Tiles.PACIFIC_AVENUE, Municipality.GREEM, 300, 26, 130, 390, 900, 1100, 1275));
