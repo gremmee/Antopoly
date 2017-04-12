@@ -20,16 +20,11 @@ public class StationTile extends PropertyTile {
     @Override
     public void execute(final IPlayer aPlayer) {
         System.out.println("Station");
-        IPlayer owner = this.getOwner();
-        if (owner == null) {
-            buyProperty(aPlayer);
-        } else {
-            payRent(aPlayer, owner);
-        }
         super.execute(aPlayer);
     }
 
-    private void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
+    @Override
+    protected void payRent(final IPlayer aPlayer, final IPlayer aOwner) {
         if (!this.isMortgage()) {
             System.out.println("PayRent to " + aOwner.getName());
             int costs = 0;

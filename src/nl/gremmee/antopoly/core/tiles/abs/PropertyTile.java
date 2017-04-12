@@ -17,6 +17,17 @@ public abstract class PropertyTile extends Tile {
         this.setMortgage(false);
     }
 
+    @Override
+    public void execute(IPlayer aPlayer) {
+        IPlayer owner = this.getOwner();
+        if (owner == null) {
+            buyProperty(aPlayer);
+        } else {
+            payRent(aPlayer, owner);
+        }
+        super.execute(aPlayer);
+    }
+
     public int getValue() {
         return this.value;
     }
@@ -45,4 +56,5 @@ public abstract class PropertyTile extends Tile {
         this.mortgage = aMortgage;
     }
 
+    protected abstract void payRent(final IPlayer aPlayer, final IPlayer aOwner);
 }
