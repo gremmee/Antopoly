@@ -14,6 +14,12 @@ public class TileList extends ArrayList<ITile> {
 
     private static final long serialVersionUID = -8238183105633419715L;
 
+    @Override
+    public boolean add(final ITile aTile) {
+        System.out.println("Creating Tile " + aTile.getName() + "...[OK]");
+        return super.add(aTile);
+    }
+
     public ITile getTileByName(final Tiles aTiles) {
         for (ITile tile : this) {
             if (tile.getName().equals(aTiles.getName()))
