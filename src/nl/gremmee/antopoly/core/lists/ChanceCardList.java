@@ -9,8 +9,8 @@ public class ChanceCardList extends CardList {
 
     @Override
     public boolean addRandom(final ICard aCard) {
-        ICard card = aCard;
-        card.setCardType(CardType.CT_Chance);
-        return super.addRandom(card);
+        aCard.setCardType(CardType.CT_Chance);
+        System.out.println("Creating Card " + aCard.getName() + "...[OK]");
+        return super.addRandom(aCard);
     }
 }

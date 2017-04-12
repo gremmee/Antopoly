@@ -9,9 +9,9 @@ public class CommunityChestCardList extends CardList {
 
     @Override
     public boolean addRandom(final ICard aCard) {
-        ICard card = aCard;
-        card.setCardType(CardType.CT_CommunityChest);
-        return super.addRandom(card);
+        aCard.setCardType(CardType.CT_CommunityChest);
+        System.out.println("Creating Card " + aCard.getName() + "...[OK]");
+        return super.addRandom(aCard);
     }
 
 }
