@@ -19,7 +19,7 @@ public class PayCard extends ValueCard {
         System.out.println("Pay " + pay);
         if (pay > aPlayer.getMoney()) {
             aPlayer.getOwe().setOwesTo(null);
-            aPlayer.getOwe().setOwes(pay);
+            aPlayer.getOwe().setOwesMoney(pay);
         } else {
             aPlayer.payMoney(pay);
         }

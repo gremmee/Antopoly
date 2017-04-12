@@ -44,7 +44,7 @@ public class SellPropertiesRuleTest {
     @Test
     public void testExecuteToBank() throws CloneNotSupportedException {
         card = new PayCard("Pay", "Pay", 100);
-        player.getOwe().setOwes(200);
+        player.getOwe().setOwesMoney(200);
         Player playerBefore = player.clone();
         System.out.println(playerBefore.getMoney());
         player.getArtificialIntelligence().executeSellProperties(player);
@@ -58,7 +58,7 @@ public class SellPropertiesRuleTest {
         other = new Player(1, "TestOther");
         tile = new StationTile(Tiles.B_O_RAILROAD);
         other.addTile(tile);
-        player.getOwe().setOwes(20);
+        player.getOwe().setOwesMoney(20);
         player.getOwe().setOwesTo(other);
         player.setCurrentTile(tile);
         Player playerBefore = player.clone();
@@ -75,7 +75,7 @@ public class SellPropertiesRuleTest {
         other = new Player(1, "TestOther");
         tile = new StationTile(Tiles.B_O_RAILROAD);
         other.addTile(tile);
-        player.getOwe().setOwes(40);
+        player.getOwe().setOwesMoney(40);
         player.getOwe().setOwesTo(other);
         player.setCurrentTile(tile);
         Player playerBefore = player.clone();

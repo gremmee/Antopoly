@@ -47,7 +47,7 @@ public class PayPropertyCard extends Card {
         System.out.println("Pay per property " + totalCosts);
         if (totalCosts > aPlayer.getMoney()) {
             aPlayer.getOwe().setOwesTo(null);
-            aPlayer.getOwe().setOwes(totalCosts);
+            aPlayer.getOwe().setOwesMoney(totalCosts);
         } else {
 
             aPlayer.payMoney(totalCosts);
