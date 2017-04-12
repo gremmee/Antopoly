@@ -35,7 +35,7 @@ public class StreetTile extends PropertyTile {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        System.out.println("Street");
+        System.out.println("Landing on Street");
         super.execute(aPlayer);
     }
 

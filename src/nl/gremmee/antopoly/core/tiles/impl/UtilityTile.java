@@ -17,7 +17,7 @@ public class UtilityTile extends PropertyTile {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        System.out.println("Utility");
+        System.out.println("Landing on Utility");
         super.execute(aPlayer);
     }
 
