@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ BankruptRuleTest.class, DoublesJailRuleTest.class, GetMortgageRuleTest.class,
-        SellPropertiesRuleTest.class })
+        RepayMortgageRuleTest.class, SellPropertiesRuleTest.class })
 public class RuleTests {
 
 }

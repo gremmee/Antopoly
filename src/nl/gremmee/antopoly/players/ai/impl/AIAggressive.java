@@ -28,7 +28,7 @@ public class AIAggressive extends ArtificialIntelligence {
         PropertyTile property = getNextMortgage(aPlayer);
         if (property != null) {
             if (aPlayer.getMoney() > (property.getValue() / 2)) {
-                aPlayer.payMoney(property.getValue());
+                aPlayer.payMoney(property.getValue() / 2);
                 property.setMortgage(false);
             }
         }
