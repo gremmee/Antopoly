@@ -4,6 +4,7 @@ import nl.gremmee.antopoly.core.lists.RuleList;
 import nl.gremmee.antopoly.rules.impl.BankruptRule;
 import nl.gremmee.antopoly.rules.impl.DoublesJailRule;
 import nl.gremmee.antopoly.rules.impl.GetMortgageRule;
+import nl.gremmee.antopoly.rules.impl.RepayMortgageRule;
 import nl.gremmee.antopoly.rules.impl.SellPropertiesRule;
 
 public class InitializeRules {
@@ -25,6 +26,7 @@ public class InitializeRules {
             System.out.println("Initializing Rules");
             this.ruleList = new RuleList();
             // keep in order
+            this.ruleList.add(new RepayMortgageRule());
             this.ruleList.add(new SellPropertiesRule());
             this.ruleList.add(new GetMortgageRule());
             this.ruleList.add(new BankruptRule());

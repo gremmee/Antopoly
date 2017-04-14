@@ -24,7 +24,24 @@ public class AIAggressive extends ArtificialIntelligence {
     }
 
     @Override
-    public void executeRepayMortgage() {
+    public void executeRepayMortgage(final IPlayer aPlayer) {
+        PropertyTile property = getNextMortgage(aPlayer);
+        if (property != null) {
+            if (aPlayer.getMoney() > (property.getValue() / 2)) {
+                aPlayer.payMoney(property.getValue());
+                property.setMortgage(false);
+            }
+        }
+    }
+
+    private PropertyTile getNextMortgage(final IPlayer aPlayer) {
+        for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+            if (propertyTile.isMortgage()) {
+                return propertyTile;
+            }
+
+        }
+        return null;
     }
 
     @Override

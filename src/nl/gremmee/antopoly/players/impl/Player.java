@@ -64,6 +64,16 @@ public class Player implements IPlayer, Cloneable {
     }
 
     @Override
+    public boolean hasMortgages() {
+        for (PropertyTile propertiesTile : getTileList().getPropertyTiles()) {
+            if (propertiesTile.isMortgage()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public boolean equals(final Object aOther) {
         // self check
         if (this == aOther)

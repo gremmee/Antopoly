@@ -57,4 +57,6 @@ public interface IPlayer {
     public void setAgain(final boolean aAgain);
 
     public Owe getOwe();
+
+    boolean hasMortgages();
 }
