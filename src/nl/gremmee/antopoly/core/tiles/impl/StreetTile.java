@@ -10,6 +10,7 @@ import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.impl.Owe;
 
 public class StreetTile extends PropertyTile {
 
@@ -159,13 +160,14 @@ public class StreetTile extends PropertyTile {
                 }
             }
             rentValue *= Settings.MONEY_FACTOR;
+            Owe owe = aPlayer.getOwe();
             if (rentValue > aPlayer.getMoney()) {
-                aPlayer.getOwe().setOwesTo(aOwner);
-                aPlayer.getOwe().setOwesMoney(rentValue);
+                owe.setOwesTo(aOwner);
+                owe.setOwesMoney(rentValue);
             } else {
                 aPlayer.payMoney(rentValue);
                 aOwner.receiveMoney(rentValue);
-                aPlayer.getOwe().resetOwe();
+                owe.resetOwe();
             }
         } else {
             System.out.println(this + " is mortgaged");
@@ -173,9 +175,10 @@ public class StreetTile extends PropertyTile {
     }
 
     public boolean hasMunicipality(final IPlayer aOwner, final StreetTile aStreet) {
-        int complete = aStreet.getMunicipality().getSize();
+        Municipality municipality = aStreet.getMunicipality();
+        int complete = municipality.getSize();
         for (StreetTile street : aOwner.getTileList().getStreetTiles()) {
-            if (street.getMunicipality().equals(aStreet.getMunicipality())) {
+            if (street.getMunicipality().equals(municipality)) {
                 complete--;
             }
         }
@@ -185,11 +188,8 @@ public class StreetTile extends PropertyTile {
     public MunicipalityList getMunicipality(final TileList aTileList, final StreetTile aStreet) {
         MunicipalityList municipalityList = new MunicipalityList();
         for (StreetTile street : aTileList.getStreetTiles()) {
-
             if (street.getMunicipality().equals(aStreet.getMunicipality())) {
-
                 municipalityList.add(street);
-
             }
         }
         Collections.sort(municipalityList);

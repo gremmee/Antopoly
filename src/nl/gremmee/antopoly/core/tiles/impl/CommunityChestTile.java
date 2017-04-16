@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.core.tiles.impl;
 
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.lists.CommunityChestCardList;
 import nl.gremmee.antopoly.core.tiles.TileType;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.abs.Tile;
@@ -15,11 +16,12 @@ public class CommunityChestTile extends Tile {
 
     @Override
     public void execute(final IPlayer aPlayer) {
-        System.out.println(Initialize.getInstance().getCommunityChestCardList());
-        ICard card = Initialize.getInstance().getCommunityChestCardList().pickTopCard();
+        CommunityChestCardList communityChestCardList = Initialize.getInstance().getCommunityChestCardList();
+        System.out.println(communityChestCardList);
+        ICard card = communityChestCardList.pickTopCard();
         System.out.println("Community " + card.getName());
         if (!card.execute(aPlayer)) {
-            Initialize.getInstance().getCommunityChestCardList().putBack(card);
+            communityChestCardList.putBack(card);
         }
         super.execute(aPlayer);
     }
