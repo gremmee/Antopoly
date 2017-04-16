@@ -7,6 +7,7 @@ import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.core.tiles.impl.StreetTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.impl.Owe;
 
 public class PayPropertyCard extends Card {
 
@@ -46,14 +47,16 @@ public class PayPropertyCard extends Card {
         int totalCosts = (houseCosts + hotelCosts) * Settings.MONEY_FACTOR;
         System.out.println("Pay per property " + totalCosts);
         if (totalCosts > aPlayer.getMoney()) {
-            aPlayer.getOwe().setOwesTo(null);
-            aPlayer.getOwe().setOwesMoney(totalCosts);
+            Owe owe = aPlayer.getOwe();
+            owe.setOwesTo(null);
+            owe.setOwesMoney(totalCosts);
         } else {
 
             aPlayer.payMoney(totalCosts);
         }
-        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
-            FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
+        Initialize initialize = Initialize.getInstance();
+        if (initialize.getSettings().isFreeParkingPot()) {
+            FreeParkingTile tile = (FreeParkingTile) initialize.getTileList()
                     .getTileByName(Tiles.FREE_PARKING);
             tile.addToPot(totalCosts);
         }

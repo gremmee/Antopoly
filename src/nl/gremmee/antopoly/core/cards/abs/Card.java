@@ -42,7 +42,7 @@ public abstract class Card implements ICard {
 
     @Override
     public String toString() {
-        return ("|" + this.getName() + ", " + this.getCardType() + "|");
+        return ("|" + this.name + ", " + this.cardType + "|");
     }
 
     protected abstract boolean getKeepCard();
