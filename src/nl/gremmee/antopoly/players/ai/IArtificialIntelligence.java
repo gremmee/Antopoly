@@ -8,7 +8,7 @@ public interface IArtificialIntelligence {
 
     public String getName();
 
-    public void executeRepayMortgage();
+    public void executeRepayMortgage(final IPlayer aPlayer);
 
     public void executeGetMortgage(final IPlayer aPlayer);
 
