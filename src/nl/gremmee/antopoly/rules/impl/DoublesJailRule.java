@@ -1,5 +1,6 @@
 package nl.gremmee.antopoly.rules.impl;
 
+import nl.gremmee.antopoly.core.lists.RollList;
 import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -14,11 +15,12 @@ public class DoublesJailRule extends Rule {
     @Override
     public void execute(final IPlayer aPlayer) {
         if (!aPlayer.isInJail()) {
-            if (aPlayer.getRollList() == null) {
+            RollList rollList = aPlayer.getRollList();
+            if (rollList == null) {
                 System.out.println("Executing rule: " + this);
                 aPlayer.roll();
-                aPlayer.setAgain(aPlayer.getRollList().isDouble());
-                if (aPlayer.getRollList().getDoubles() >= 3) {
+                aPlayer.setAgain(rollList.isDouble());
+                if (rollList.getDoubles() >= 3) {
                     System.out.println("JAIL TIME");
                     aPlayer.setInJail(true);
                     aPlayer.setAgain(false);

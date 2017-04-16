@@ -6,6 +6,7 @@ import nl.gremmee.antopoly.core.tiles.Tiles;
 import nl.gremmee.antopoly.core.tiles.impl.FreeParkingTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.impl.Owe;
 
 public class PayCard extends ValueCard {
 
@@ -18,13 +19,15 @@ public class PayCard extends ValueCard {
         int pay = this.getValue() * Settings.MONEY_FACTOR;
         System.out.println("Pay " + pay);
         if (pay > aPlayer.getMoney()) {
-            aPlayer.getOwe().setOwesTo(null);
-            aPlayer.getOwe().setOwesMoney(pay);
+            Owe owe = aPlayer.getOwe();
+            owe.setOwesTo(null);
+            owe.setOwesMoney(pay);
         } else {
             aPlayer.payMoney(pay);
         }
-        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
-            FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
+        Initialize initialize = Initialize.getInstance();
+        if (initialize.getSettings().isFreeParkingPot()) {
+            FreeParkingTile tile = (FreeParkingTile) initialize.getTileList()
                     .getTileByName(Tiles.FREE_PARKING);
             tile.addToPot(pay);
         }

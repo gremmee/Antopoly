@@ -2,6 +2,7 @@ package nl.gremmee.antopoly.core.cards.impl;
 
 import nl.gremmee.antopoly.Settings;
 import nl.gremmee.antopoly.core.cards.ICard;
+import nl.gremmee.antopoly.core.lists.ChanceCardList;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
 
@@ -16,17 +17,19 @@ public class ChoiceCard extends PayCard {
 
         int value = this.getValue() * Settings.MONEY_FACTOR;
 
+        Initialize initialize = Initialize.getInstance();
         if (aPlayer.getArtificialIntelligence().executeChoiceCard(this, aPlayer)) {
-            ICard card = Initialize.getInstance().getChanceCardList().pickTopCard();
+            ChanceCardList chanceCardList = initialize.getChanceCardList();
+            ICard card = chanceCardList.pickTopCard();
             if (!card.execute(aPlayer)) {
-                Initialize.getInstance().getChanceCardList().putBack(card);
+                chanceCardList.putBack(card);
             }
 
         } else {
             aPlayer.payMoney(value);
         }
 
-        Initialize.getInstance().executeRules(aPlayer);
+        initialize.executeRules(aPlayer);
         return getKeepCard();
     }
 

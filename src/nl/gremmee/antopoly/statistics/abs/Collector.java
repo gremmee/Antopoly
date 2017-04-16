@@ -20,6 +20,6 @@ public abstract class Collector implements ICollector {
 
     @Override
     public String toString() {
-        return "| " + this.getName() + " |";
+        return "| " + this.name + " |";
     }
 }

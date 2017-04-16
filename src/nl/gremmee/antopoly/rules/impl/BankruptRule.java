@@ -1,11 +1,15 @@
 package nl.gremmee.antopoly.rules.impl;
 
+import java.util.List;
+
 import nl.gremmee.antopoly.core.cards.CardType;
 import nl.gremmee.antopoly.core.cards.ICard;
 import nl.gremmee.antopoly.core.lists.CardList;
+import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.abs.PropertyTile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.impl.Owe;
 import nl.gremmee.antopoly.rules.abs.Rule;
 
 public class BankruptRule extends Rule {
@@ -17,47 +21,52 @@ public class BankruptRule extends Rule {
     @Override
     public void execute(final IPlayer aPlayer) {
         if (!isMe(aPlayer)) {
-            if (aPlayer.getMoney() < aPlayer.getOwe().getOwesMoney()) {
+            Owe owe = aPlayer.getOwe();
+            if (aPlayer.getMoney() < owe.getOwesMoney()) {
                 System.out.println("Executing rule: " + this);
 
                 // Bankrupt
-                IPlayer owesTo = aPlayer.getOwe().getOwesTo();
+                IPlayer owesTo = owe.getOwesTo();
+                TileList tileList = aPlayer.getTileList();
+                List<PropertyTile> propertyTiles = tileList.getPropertyTiles();
+                CardList playerCardList = aPlayer.getCardList();
                 if (owesTo != null) {
                     // Gets all money
                     owesTo.receiveMoney(aPlayer.getMoney());
 
                     // Gets all properties
-                    for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                    for (PropertyTile propertyTile : propertyTiles) {
                         owesTo.addTile(propertyTile);
                     }
-                    aPlayer.getTileList().clear();
+                    tileList.clear();
 
                     // Gets all cards
-                    for (ICard card : aPlayer.getCardList()) {
+                    for (ICard card : playerCardList) {
                         owesTo.getCardList().add(card);
                     }
-                    aPlayer.getCardList().clear();
+                    playerCardList.clear();
                 } else {
-                    for (PropertyTile propertyTile : aPlayer.getTileList().getPropertyTiles()) {
+                    for (PropertyTile propertyTile : propertyTiles) {
                         propertyTile.setOwner(null);
                     }
-                    aPlayer.getTileList().clear();
+                    tileList.clear();
 
                     // Put back all cards
-                    for (ICard card : aPlayer.getCardList()) {
+                    for (ICard card : playerCardList) {
                         CardType cardType = card.getCardType();
+                        Initialize initialize = Initialize.getInstance();
                         CardList cardList = CardType.CT_Chance.equals(cardType)
-                                ? Initialize.getInstance().getChanceCardList()
-                                : Initialize.getInstance().getCommunityChestCardList();
+                                ? initialize.getChanceCardList()
+                                : initialize.getCommunityChestCardList();
                         cardList.putBack(card);
                     }
-                    aPlayer.getCardList().clear();
+                    playerCardList.clear();
 
                 }
                 aPlayer.resetMoney();
                 aPlayer.setBusted(true);
-                aPlayer.getOwe().setOwesTo(null);
-                aPlayer.getOwe().setOwesMoney(0);
+                owe.setOwesTo(null);
+                owe.setOwesMoney(0);
             }
         }
     }

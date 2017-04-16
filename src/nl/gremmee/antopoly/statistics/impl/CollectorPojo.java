@@ -49,7 +49,6 @@ public class CollectorPojo implements Comparable<CollectorPojo> {
 
     @Override
     public String toString() {
-        return this.getCount().toString() + "/" + this.getTotalCount().toString() + "=="
-                + this.getPercentage().toString() + "%";
+        return this.count.toString() + "/" + this.totalCount.toString() + "==" + this.getPercentage().toString() + "%";
     }
 }

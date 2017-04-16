@@ -2,6 +2,7 @@ package nl.gremmee.antopoly.core.cards.impl;
 
 import nl.gremmee.antopoly.Money;
 import nl.gremmee.antopoly.core.cards.abs.GotoCard;
+import nl.gremmee.antopoly.core.lists.TileList;
 import nl.gremmee.antopoly.core.tiles.ITile;
 import nl.gremmee.antopoly.initialize.Initialize;
 import nl.gremmee.antopoly.players.IPlayer;
@@ -26,20 +27,22 @@ public class GotoStepsCard extends GotoCard {
 
         }
 
-        if (isForward() && (calculatedResult >= Initialize.getInstance().getTileList().size())) {
+        Initialize initialize = Initialize.getInstance();
+        TileList tileList = initialize.getTileList();
+        if (isForward() && (calculatedResult >= tileList.size())) {
             // pass Start
             System.out.println("Pass start");
             aPlayer.receiveMoney(Money.PRICE_PASS_START);
         }
-        int newID = calculatedResult % Initialize.getInstance().getTileList().size();
+        int newID = calculatedResult % tileList.size();
 
         if (this.isForward()) {
             System.out.println(currentTileId + " -> " + newID);
         } else {
             System.out.println(newID + " <- " + currentTileId);
         }
-        System.out.println(Initialize.getInstance().getTileList());
-        ITile gotoTile = Initialize.getInstance().getTileList().getTileByID(newID);
+        System.out.println(tileList);
+        ITile gotoTile = tileList.getTileByID(newID);
         System.out.println("Goto : " + gotoTile);
         aPlayer.setCurrentTile(gotoTile);
 

@@ -21,7 +21,7 @@ public abstract class Rule implements IRule {
 
     @Override
     public String toString() {
-        return ("|" + this.getName() + "|");
+        return ("|" + this.name + "|");
     }
 
     protected boolean isMe(IPlayer aPlayer) {
