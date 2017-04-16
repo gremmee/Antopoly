@@ -21,12 +21,14 @@ public class TileCollector extends Collector {
     @Override
     public void collect(final IPlayer aPlayer) {
         ITile tile = aPlayer.getCurrentTile();
-        CollectorPojo value = this.coll.get(tile.getName());
+        String name = tile.getName();
+        String tileName = name;
+        CollectorPojo value = this.coll.get(tileName);
         if (value != null) {
             value.increaseCount();
         } else {
 
-            this.coll.put(tile.getName(), new CollectorPojo());
+            this.coll.put(tileName, new CollectorPojo());
         }
         increaseTotalCount();
     }
@@ -43,9 +45,9 @@ public class TileCollector extends Collector {
         return sorted.toString();
     }
 
-    private static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> aMap) {
-        Comparator<K> valueComparator = new Comparator<K>() {
-            public int compare(K aKey1, K aKey2) {
+    private static <Key, Value extends Comparable<Value>> Map<Key, Value> sortByValues(final Map<Key, Value> aMap) {
+        Comparator<Key> valueComparator = new Comparator<Key>() {
+            public int compare(Key aKey1, Key aKey2) {
                 int compare = aMap.get(aKey2).compareTo(aMap.get(aKey1));
                 if (compare == 0)
                     return 1;
@@ -53,7 +55,7 @@ public class TileCollector extends Collector {
                     return compare;
             }
         };
-        Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
+        Map<Key, Value> sortedByValues = new TreeMap<Key, Value>(valueComparator);
         sortedByValues.putAll(aMap);
         return sortedByValues;
     }
