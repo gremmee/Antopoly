@@ -128,4 +128,13 @@ public class AIAggressive extends ArtificialIntelligence {
         }
     }
 
+    @Override
+    public void executeProposeTrade(IPlayer aAcceptPlayer, IPlayer aProposedPlayer) {
+
+    }
+
+    @Override
+    public boolean executeEvaluteTrade(IPlayer aAcceptPlayer, IPlayer aProposedPlayer) {
+        return false;
+    }
 }

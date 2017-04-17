@@ -21,4 +21,9 @@ public interface IArtificialIntelligence {
     public void executeBuyHouses(final IPlayer aPlayer);
 
     public void executeSellProperties(final IPlayer aPlayer);
+
+    public void executeProposeTrade(IPlayer aAcceptPlayer, IPlayer aProposedPlayer);
+
+    public boolean executeEvaluteTrade(IPlayer aAcceptPlayer, IPlayer aProposedPlayer);
+
 }
