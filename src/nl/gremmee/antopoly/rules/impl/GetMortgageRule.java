@@ -1,6 +1,7 @@
 package nl.gremmee.antopoly.rules.impl;
 
 import nl.gremmee.antopoly.players.IPlayer;
+import nl.gremmee.antopoly.players.impl.Owe;
 import nl.gremmee.antopoly.rules.abs.Rule;
 
 public class GetMortgageRule extends Rule {
@@ -12,21 +13,24 @@ public class GetMortgageRule extends Rule {
     @Override
     public void execute(IPlayer aPlayer) {
         if (!isMe(aPlayer)) {
-            if (aPlayer.getMoney() < aPlayer.getOwe().getOwesMoney()) {
+            Owe owe = aPlayer.getOwe();
+            int owesMoney = owe.getOwesMoney();
+            int playerMoney = aPlayer.getMoney();
+            if (playerMoney < owesMoney) {
                 System.out.println("Executing rule: " + this);
 
                 aPlayer.getArtificialIntelligence().executeGetMortgage(aPlayer);
 
-                IPlayer owesTo = aPlayer.getOwe().getOwesTo();
+                IPlayer owesTo = owe.getOwesTo();
                 if (owesTo != null) {
-                    if (aPlayer.getMoney() > aPlayer.getOwe().getOwesMoney()) {
-                        owesTo.receiveMoney(aPlayer.getOwe().getOwesMoney());
-                        aPlayer.getOwe().setOwesMoney(aPlayer.getMoney() - aPlayer.getOwe().getOwesMoney());
+                    if (playerMoney > owesMoney) {
+                        owesTo.receiveMoney(owesMoney);
+                        owe.setOwesMoney(playerMoney - owesMoney);
                     } // else bankrupt
                 } else {
-                    aPlayer.payMoney(aPlayer.getOwe().getOwesMoney());
-                    aPlayer.getOwe().setOwesTo(null);
-                    aPlayer.getOwe().setOwesMoney(0);
+                    aPlayer.payMoney(owesMoney);
+                    owe.setOwesTo(null);
+                    owe.setOwesMoney(0);
                 }
             }
         }

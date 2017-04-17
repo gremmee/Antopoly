@@ -30,7 +30,7 @@ public class Owe {
 
     @Override
     public String toString() {
-        return "| " + this.getOwesMoney() + " to " + this.getOwesTo() + " |";
+        return "| " + this.owesMoney + " to " + this.owesTo + " |";
     }
 
     public void resetOwe() {

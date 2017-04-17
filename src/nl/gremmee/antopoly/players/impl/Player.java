@@ -122,8 +122,9 @@ public class Player implements IPlayer, Cloneable {
             for (GetOutOfJailCard getOutOfJailCard : this.cardList.getOutOfJailCards()) {
                 removeCard(getOutOfJailCard);
                 CardType cardType = getOutOfJailCard.getCardType();
-                CardList cardList = CardType.CT_Chance.equals(cardType) ? Initialize.getInstance().getChanceCardList()
-                        : Initialize.getInstance().getCommunityChestCardList();
+                Initialize initialize = Initialize.getInstance();
+                CardList cardList = CardType.CT_Chance.equals(cardType) ? initialize.getChanceCardList()
+                        : initialize.getCommunityChestCardList();
                 cardList.putBack(getOutOfJailCard);
                 this.setInJail(false);
                 this.jailBreakTries = 0;
@@ -206,7 +207,8 @@ public class Player implements IPlayer, Cloneable {
                 }
             }
         }
-        Initialize.getInstance().executeRules(this);
+        Initialize initialize = Initialize.getInstance();
+        initialize.executeRules(this);
         if (!this.isInJail()) {
             int diceResult = this.rollList.getResult();
             if (diceResult == 0) {
@@ -218,16 +220,17 @@ public class Player implements IPlayer, Cloneable {
             int currentTileID = this.currentTile.getID();
             int calculatedResult = currentTileID + diceResult;
 
-            if (calculatedResult >= Initialize.getInstance().getTileList().size()) {
+            TileList tileList = initialize.getTileList();
+            if (calculatedResult >= tileList.size()) {
                 // pass Start
                 System.out.println("Pass start");
                 this.receiveMoney(Money.PRICE_PASS_START);
             }
-            int newID = calculatedResult % Initialize.getInstance().getTileList().size();
+            int newID = calculatedResult % tileList.size();
 
             System.out.println(currentTileID + " => " + newID);
-            System.out.println(Initialize.getInstance().getTileList());
-            ITile newTile = Initialize.getInstance().getTileList().getTileByID(newID);
+            System.out.println(tileList);
+            ITile newTile = tileList.getTileByID(newID);
             System.out.println("Goto : " + newTile);
             setCurrentTile(newTile);
 
@@ -237,7 +240,7 @@ public class Player implements IPlayer, Cloneable {
 
         }
         System.out.println("Money: " + getMoney());
-        Initialize.getInstance().executeRules(this);
+        initialize.executeRules(this);
         this.rollList = null;
 
     }
@@ -247,9 +250,9 @@ public class Player implements IPlayer, Cloneable {
         this.jailBreakTries = 0;
         this.setInJail(false);
         this.payMoney(Money.PRICE_GET_OUT_OF_JAIL);
-        if (Initialize.getInstance().getSettings().isFreeParkingPot()) {
-            FreeParkingTile tile = (FreeParkingTile) Initialize.getInstance().getTileList()
-                    .getTileByName(Tiles.FREE_PARKING);
+        Initialize initialize = Initialize.getInstance();
+        if (initialize.getSettings().isFreeParkingPot()) {
+            FreeParkingTile tile = (FreeParkingTile) initialize.getTileList().getTileByName(Tiles.FREE_PARKING);
             tile.addToPot(Money.PRICE_GET_OUT_OF_JAIL);
         }
     }
@@ -300,8 +303,8 @@ public class Player implements IPlayer, Cloneable {
 
     @Override
     public String toString() {
-        String name = this.getName();
-        int money = this.getMoney();
+        String name = this.name;
+        int money = this.money;
         int value = this.getValue();
         String busted = (this.isBusted() ? "BUSTED" : "active");
         String jail = (this.isInJail() ? "JAIL" : "free");
@@ -350,8 +353,9 @@ public class Player implements IPlayer, Cloneable {
     public int getHousesValue() {
         int value = 0;
         for (StreetTile street : this.getTileList().getStreetTiles()) {
-            if (street.getBuildings() > 0 && street.getBuildings() < 5) {
-                value += (street.getBuildings() * (street.getMunicipality().getHousePrice() / 2));
+            int buildings = street.getBuildings();
+            if (buildings > 0 && buildings < 5) {
+                value += (buildings * (street.getMunicipality().getHousePrice() / 2));
             }
         }
         return value;
